@@ -289,85 +289,6 @@ section
 3.1 Currency
 *********************************/
 
-.currency
-{
-	display: inline-block;
-	position: relative;
-	min-width: 50px;
-	border-right: solid 1px #33333b;
-	padding-right: 20px;
-	padding-left: 20px;
-	text-align: center;
-	vertical-align: middle;
-	background: #1e1e27;
-}
-.currency > a
-{
-	display: block;
-	color: #b5aec4;
-	font-weight: 400;
-	height: 50px;
-	line-height: 50px;
-	font-size: 13px;
-	text-transform: uppercase;
-}
-.currency > a > i
-{
-	margin-left: 8px;
-}
-.currency:hover .currency_selection
-{
-	visibility: visible;
-	opacity: 1;
-	top: 100%;
-}
-.currency_selection
-{
-	display: block;
-	position: absolute;
-	right: 0;
-	top: 120%;
-	margin: 0;
-	width: 100%;
-	background: #FFFFFF;
-	visibility: hidden;
-	opacity: 0;
-	z-index: 1;
-	box-shadow: 0 0 25px rgba(63, 78, 100, 0.15);
-	-webkit-transition: opacity 0.3s ease;
-	-moz-transition: opacity 0.3s ease;
-	-ms-transition: opacity 0.3s ease;
-	-o-transition: opacity 0.3s ease;
-	transition: all 0.3s ease;
-}
-.currency_selection li
-{
-	padding-left: 10px;
-	padding-right: 10px;
-	line-height: 50px;
-}
-.currency_selection li a
-{
-	display: block;
-	color: #232530;
-	border-bottom: solid 1px #dddddd;
-	font-size: 13px;
-	text-transform: uppercase;
-	-webkit-transition: opacity 0.3s ease;
-	-moz-transition: opacity 0.3s ease;
-	-ms-transition: opacity 0.3s ease;
-	-o-transition: opacity 0.3s ease;
-	transition: all 0.3s ease;
-}
-.currency_selection li a:hover
-{
-	color: #b5aec4;
-}
-.currency_selection li:last-child a
-{
-	border-bottom: none;
-}
-
 /*********************************
 3.2 Language
 *********************************/
@@ -538,7 +459,7 @@ section
 
 .my_account_item 
 {
-    padding-left: 300px;
+    padding-left: 280px;
 }
 
 .main_nav_container
@@ -614,6 +535,76 @@ section
 .navbar_user li a:hover
 {
 	color: #b5aec4;
+}
+
+.currency
+{
+	display: block;
+	position: relative;
+	padding-right: 5px;
+	padding-left: 5px;	
+}
+.currency > a
+{
+	display: block;
+	color: #b5aec4;
+	font-weight: 400;
+	height: 50px;
+	line-height: 50px;
+	font-size: 5px;
+}
+.currency > a > i
+{
+	margin-left: 8px;
+}
+.currency:hover .currency_selection
+{
+	visibility: visible;
+	opacity: 1;
+	top: 120%;
+}
+.currency_selection
+{
+	display: block;
+	position: absolute;
+	top: 120%;
+	width: 200%;
+	background: linear-gradient(#061F72, black);
+	visibility: hidden;
+	opacity: 0;
+	z-index: 1;
+	box-shadow: 0 0 25px rgba(63, 78, 100, 0.15);
+	-webkit-transition: opacity 0.3s ease;
+	-moz-transition: opacity 0.3s ease;
+	-ms-transition: opacity 0.3s ease;
+	-o-transition: opacity 0.3s ease;
+	transition: all 0.3s ease;
+}
+.currency_selection li
+{
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 10px;
+}
+.currency_selection li a
+{
+	display: block;
+	color: 	#FFFFFF;
+	border-bottom: solid 1px #dddddd;
+	font-size: 13px;
+	-webkit-transition: opacity 0.3s ease;
+	-moz-transition: opacity 0.3s ease;
+	-ms-transition: opacity 0.3s ease;
+	-o-transition: opacity 0.3s ease;
+	transition: all 0.3s ease;
+}
+.currency_selection li a:hover
+{
+	color: #b5aec4;
+}
+.currency_selection li:last-child a
+{
+	border-bottom: none;
 }
 .checkout a
 {
