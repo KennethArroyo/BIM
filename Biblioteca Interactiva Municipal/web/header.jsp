@@ -12,11 +12,12 @@
     <body>
     <!-- Header -->
 	<header class="header trans_300">
-		<!-- Top Navigation -->
+		<!-- Top Navigation --> 
 		<div class="top_nav">
                      <div class="company_name">BIBLIOTECA INTERACTIVA MUNICIPAL</div>
 		</div>
                     <!-- Main Navigation -->
+                        <!--Menu Principal, Vista Normal-->
                         <div class="main_nav_container">
                             <div class="container">
 				<div class="row">
@@ -39,7 +40,7 @@
                                                 <li class="my_account_item"><a href="#"><small class="glyphicon glyphicon-user"></small>&nbsp Registrarse</a></li>
                                                 <li><a href="#"><small class="glyphicon glyphicon-log-in"></small>&nbsp Iniciar Sesión</a></li>
                                             </ul>
-                                            <div class="hamburger_container">					
+                                            <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
                                                 <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>
                                             </div>
 					</nav>
@@ -49,7 +50,8 @@
                         </div>
 
 	</header>
-
+        
+        <!--Menu Principal, Modo Responsivo-->
 	<div class="fs_menu_overlay"></div>
         <div class="hamburger_menu">
             <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
@@ -57,9 +59,9 @@
                     <a class="menu_name" href="#">Biblioteca Interactiva Municipal</a><br>
                         <ul class="menu_top_nav">
                             <li class="menu_item"><a href="#" >Inicio</a></li>
-                                <li class="menu_item has-children"><a href="#"> Libros <i class="fa fa-angle-down"></i></a>
-                                    <ul class="menu_selection">
-                                        <li><a href="#"><i aria-hidden="true"></i>Agregar Libro</a></li>
+                                <li class="menu_item has-children"><a href="#"> Libros <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
+                                    <ul class="menu_selection"> 
+                                        <li><a href="#"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
                                         <li><a href="buscar.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                                     </ul>
                                 </li>

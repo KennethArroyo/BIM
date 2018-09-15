@@ -13,7 +13,8 @@
     
     <body>
         <%@include file="header.jsp"%>
-            <!-- Slider -->   
+            <!-- Slider -->
+            <!--Fondo de Pantalla-->
             <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"> 
                 
             <div class="container">

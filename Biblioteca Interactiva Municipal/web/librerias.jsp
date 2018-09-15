@@ -23,6 +23,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"> 
         <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="js/jquery-3.2.1.min.js"></script>
