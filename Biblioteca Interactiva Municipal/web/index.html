@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Biblioteca Interactiva Municipal</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Template">
+<meta name="description" content="BIM Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="estilos/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="complementos/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="complementos/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="complementos/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="complementos/OwlCarousel2-2.2.1/animate.css">
@@ -37,7 +31,6 @@ and open the template in the editor.
 		<!-- Top Navigation -->
 		<div class="top_nav">
             <div class="company_name">BIBLIOTECA INTERACTIVA MUNICIPAL</div>
-            
 		</div>
 
 		<!-- Main Navigation -->
@@ -45,25 +38,25 @@ and open the template in the editor.
 		<div class="main_nav_container">
 			<div class="container">
 				<div class="row">
-                <div class="col-lg-50">
+                <div class="col-lg-24">
 					<div class="logo_container">
-						<img class="company_logo" src="imagenes/EscudoMunicipal.png">
+						<a href=""><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
 					</div>
 					<nav class="navbar">
 						<ul class="navbar_menu">
 							<li><a href="#">Inicio</a></li>
-                                                        <li class="currency"><a href="#">Libros<i class="fa fa-angle-down"></i>
-                                                        </a>
-                                                        <ul class="currency_selection">
-                                                            <li><a href="#">Agregar libro</a></li>
-                                                            <li><a href="#">Buscar libro</a></li>
-                                                        </ul>
-                                                        </li>
-                                                        <li><a href="#">Prestamo</a></li>
-                                                        <li><a href="#">Actividades</a></li>
-                                                        <li class="my_account_item"><a href="#"><small class="glyphicon glyphicon-user"></small>&nbsp Registrarse</a></li>
-                                                        <li><a href="#"><small class="glyphicon glyphicon-log-in"></small>&nbsp Iniciar Sesión</a></li>
-                                                        </ul>
+                            <li class="currency">
+                                <a href="#">Libros<i class="fa fa-angle-down"></i></a>
+                                    <ul class="currency_selection">
+                                        <li><a href="#">Agregar libro</a></li>
+                                        <li><a href="#">Buscar libro</a></li>
+                                    </ul>
+                            </li>
+							<li><a href="#">Prestamo</a></li>
+                            <li><a href="#">Actividades</a></li>
+                            <li class="my_account_item"><a href="#"><small class="glyphicon glyphicon-user"></small>&nbsp Registrarse</a></li>
+                            <li><a href="#"><small class="glyphicon glyphicon-log-in"></small>&nbsp Iniciar Sesión</a></li>
+                        </ul>
                         <div class="hamburger_container">					
                             <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>
 						</div>
@@ -83,7 +76,13 @@ and open the template in the editor.
             <a class="menu_name" href="#">Biblioteca Interactiva Municipal</a><br>
 			<ul class="menu_top_nav">
                     <li class="menu_item"><a href="#" >Inicio</a></li>
-					<li class="menu_item"><a href="#">Libros</a></li>
+                    <li class="menu_item has-children">
+                        <a href="#"> Libros <i class="fa fa-angle-down"></i></a>
+                            <ul class="menu_selection">
+                                <li><a href="#"><i aria-hidden="true"></i>Agregar Libro</a></li>
+                                <li><a href="#"><i aria-hidden="true"></i>Buscar Libro</a></li>
+                            </ul>
+                    </li>
 					<li class="menu_item"><a href="#">Prestamo</a></li>
 					<li class="menu_item"><a href="#">Actividades</a></li>
                     <li class="menu_item"><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp Registrarse</a></li>
@@ -92,18 +91,9 @@ and open the template in the editor.
 		</div>
 	</div>
 
-	<!-- Slider -->
+<!-- Slider -->
 
-	<div class="main_slider" style="background-image:url(imagenes/slider_book.jpg)">
-		<div class="container fill_height">
-			<div class="row align-items-center fill_height">
-				<div class="col">
-					<div class="main_slider_content">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="main_slider" style="background-image:url(imagenes/slider_book.jpg)"></div>
 	
 	<!-- Footer -->
 
@@ -153,4 +143,3 @@ and open the template in the editor.
 </body>
 
 </html>
-
