@@ -27,10 +27,11 @@
 					<nav class="navbar">
                                             <ul class="navbar_menu">
                                                 <li><a href="#">Inicio</a></li>
-                                                    <li class="currency"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
-                                                        <ul class="currency_selection">
-                                                            <li><a href="#">Agregar libro</a></li>
-                                                            <li><a href="#">Buscar libro</a></li>
+                                                    <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
+                                                        <ul class="dropdown_selection">
+                                                            <li><a href="#">Agregar Libro</a></li>
+                                                            <li><a href="#">Buscar Libro</a></li>
+                                                            <li><a href="#">Habilitar/Deshabilitar Libro</a></li>
                                                         </ul>
                                                     </li>
                                                 <li><a href="#">Prestamo</a></li>
