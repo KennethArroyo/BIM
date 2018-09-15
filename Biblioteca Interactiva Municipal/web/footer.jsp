@@ -11,7 +11,6 @@
         <%@include file="librerias.jsp"%>
     </head>
     
-    <body>
     <!-- Footer -->
 	<footer class="footer">
 		<div class="container">
@@ -19,8 +18,6 @@
                         <div class="col-lg-6">
                             <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
 				<ul class="footer_nav">
-                                    <li><a href="#">Blog</a></li>		
-                                    <li><a href="#">FAQs</a></li>
                                     <li><a href="contact.html">Contact us</a></li>
 				</ul>		
                             </div>
@@ -47,5 +44,4 @@
 		</div>
 	</footer>
 
-    </body>
 </html>

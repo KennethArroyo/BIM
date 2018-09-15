@@ -22,7 +22,7 @@
 				<div class="row">
                                     <div class="col-lg-24">
 					<div class="logo_container">
-						<a href=""><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
+						<a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
 					</div>
 					<nav class="navbar">
                                             <ul class="navbar_menu">
@@ -30,7 +30,7 @@
                                                     <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
                                                         <ul class="dropdown_selection">
                                                             <li><a href="#">Agregar Libro</a></li>
-                                                            <li><a href="#">Buscar Libro</a></li>
+                                                            <li><a href="buscar.jsp">Buscar Libro</a></li>
                                                             <li><a href="#">Habilitar/Deshabilitar Libro</a></li>
                                                         </ul>
                                                     </li>
@@ -60,7 +60,7 @@
                                 <li class="menu_item has-children"><a href="#"> Libros <i class="fa fa-angle-down"></i></a>
                                     <ul class="menu_selection">
                                         <li><a href="#"><i aria-hidden="true"></i>Agregar Libro</a></li>
-                                        <li><a href="#"><i aria-hidden="true"></i>Buscar Libro</a></li>
+                                        <li><a href="buscar.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                                     </ul>
                                 </li>
                             <li class="menu_item"><a href="#">Prestamo</a></li>
@@ -70,9 +70,5 @@
                         </ul>
                 </div>
         </div>
-
-<!-- Slider -->
-
-	<div class="main_slider" style="background-image:url(imagenes/slider_book.jpg)"></div>
     </body>
 </html>

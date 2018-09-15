@@ -13,6 +13,9 @@
     <body>
         <div class="super_container">
             <%@ include file="header.jsp" %>
+                <!-- Slider -->
+                    <div class="main_slider" style="background-image:url(imagenes/slider_book.jpg)"></div> 
+                    
             <%@ include file="footer.jsp" %>
         </div>
     </body>

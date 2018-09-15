@@ -948,6 +948,25 @@ display: block;
 	color: #b5aec4;
 }
 
+/*********************************
+10. Newsletter
+*********************************/
+
+#select{
+    height: 30px;
+    width: 250px;
+
+}
+
+#input{
+    width: 250px;
+}
+
+
+.w3-container {
+    padding-top: 70px;
+    padding-left: 25px;
+}
 
 
 /*********************************
