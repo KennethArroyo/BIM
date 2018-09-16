@@ -37,8 +37,8 @@
                                                     </li>
                                                 <li><a href="#">Prestamo</a></li>
                                                 <li><a href="#">Actividades</a></li>
-                                                <li class="my_account_item"><a href="#"><small class="glyphicon glyphicon-user"></small>&nbsp Registrarse</a></li>
-                                                <li><a href="#"><small class="glyphicon glyphicon-log-in"></small>&nbsp Iniciar Sesión</a></li>
+                                                <li class="my_account_item"><a href="#"><small class="glyphicon glyphicon-user" ></small>&nbsp Registrarse</a></li>
+                                                <li><a href="#"><small class="glyphicon glyphicon-log-in" ></small>&nbsp Iniciar Sesión</a></li>
                                             </ul>
                                             <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
                                                 <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>
