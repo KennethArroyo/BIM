@@ -13,14 +13,12 @@
         <%@ include file="librerias.jsp" %>
     </head>
     <body>
-        <div class="super_container">
+        <div class="ingresar-libro">
             <%@ include file="header.jsp" %>
-            <div class="form-group"></div>
-            <div class="formu">
             <form action="AgregarLibro" method="post" class="log">
             <div class="form-group">
               <label for="clasificacion">Clasificación</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" id="input-text">
             </div>
                 
             <div class="form-group">
@@ -46,7 +44,7 @@
                 
             <div class="form-group">
               <label for="estado">Estado</label>
-              <select class="form-control" height="80">
+              <select class="form-control">
                 <option>Bueno</option>
                 <option>Regular</option>
                 <option>Malo</option>
@@ -75,9 +73,8 @@
               <textarea class="form-control" maxlength="25" rows="3"></textarea>
             </div>
           </form>
-          </div>  
            </div>
             <%@ include file="footer.jsp" %>
-        </div>
+        
     </body>
 </html>

@@ -4,6 +4,12 @@
     Author     : Kenneth
 --%>
 
+<%-- 
+    Document   : header
+    Created on : Sep 14, 2018, 11:31:12 PM
+    Author     : Kenneth
+--%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,7 +67,7 @@
                             <li class="menu_item"><a href="#" >Inicio</a></li>
                                 <li class="menu_item has-children"><a href="#"> Libros <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                                     <ul class="menu_selection"> 
-                                        <li><a href="#"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
+                                        <li><a href="AgregarLibro.jsp"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
                                         <li><a href="buscar.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                                     </ul>
                                 </li>
