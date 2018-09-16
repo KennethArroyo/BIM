@@ -30,7 +30,7 @@
                                                 <li><a href="#">Inicio</a></li>
                                                     <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
                                                         <ul class="dropdown_selection">
-                                                            <li><a href="#">Agregar Libro</a></li>
+                                                            <li><a href="AgregarLibro.jsp">Agregar Libro</a></li>
                                                             <li><a href="buscar.jsp">Buscar Libro</a></li>
                                                             <li><a href="#">Habilitar/Deshabilitar Libro</a></li>
                                                         </ul>
