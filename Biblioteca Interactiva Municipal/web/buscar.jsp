@@ -34,14 +34,18 @@
                           <option>Autor</option>
                           <option>Título</option>
                         </select></label>
-                          <br>
-                            <input type="text" id="input" class="form-control" placeholder="Search" name="search">
+                        <br><br>
+                        <div class="input-group" id="search-bar">
+                            <input type="text" class="form-control" placeholder="Buscar" name="search">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
                         <br>
                       </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                   </div>
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" id="tabla-libros">
                         <thead>
                             <tr>
                                 <th>Firstname</th>
@@ -72,7 +76,7 @@
             </div> 
             
     </body> 
-  
+    
     <footer>
         <br><br><br><br><br><br><br><br>
         <%@include file="footer.jsp"%>

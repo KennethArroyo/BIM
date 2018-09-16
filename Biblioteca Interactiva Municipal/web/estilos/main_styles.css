@@ -962,6 +962,10 @@ display: block;
     width: 250px;
 }
 
+#search-bar {
+    width: 250px;
+}
+
 
 .w3-container {
     padding-top: 70px;
