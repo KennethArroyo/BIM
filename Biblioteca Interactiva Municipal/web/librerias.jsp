@@ -17,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="complementos/OwlCarousel2-2.2.1/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="complementos/OwlCarousel2-2.2.1/owl.theme.default.css">
         <link rel="stylesheet" type="text/css" href="complementos/OwlCarousel2-2.2.1/animate.css">
+        <link href="css/addons/datatables.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="estilos/main_styles.css">
         <link rel="stylesheet" type="text/css" href="estilos/responsive.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -34,5 +35,6 @@
         <script src="complementos/OwlCarousel2-2.2.1/owl.carousel.js"></script>
         <script src="complementos/easing/easing.js"></script>
         <script src="js/custom.js"></script>
+        <script type="text/javascript" src="js/addons/datatables.min.js"></script>
     </head>
 </html>
