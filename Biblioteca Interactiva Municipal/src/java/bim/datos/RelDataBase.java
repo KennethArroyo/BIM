@@ -33,7 +33,7 @@ public class RelDataBase {
             //File file = new File(resourceUrl.toURI());            
             //prop.load(new BufferedInputStream(new FileInputStream(file)));
             String connectionUrl =
-                "jdbc:sqlserver://DESKTOP-L6REBIR;"
+                "jdbc:sqlserver://localhost;"
                         + "database=BIM;"
                         + "user=UserBIM;"
                         + "password=root;";

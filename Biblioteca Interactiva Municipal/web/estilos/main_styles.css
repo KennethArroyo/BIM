@@ -1050,6 +1050,11 @@ display: block;
 
 /*PROPIOS*/
 
+
+.ingresar-libro{
+    
+    padding-top: 200px;
+}
 .log {
     margin-left: 50px;
     align-content: center;

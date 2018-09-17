@@ -7,8 +7,8 @@
         <%@ include file="librerias.jsp" %>
     </head>
     <body>
+        <%@ include file="header.jsp" %>
         <div class="ingresar-libro">
-            <%@ include file="header.jsp" %>
             <form action="AgregarLibro" method="post" class="log">
             <div class="form-group">
               <label for="clasificacion">Clasificación</label>
