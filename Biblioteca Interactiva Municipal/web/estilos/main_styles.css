@@ -835,7 +835,7 @@ display: block;
 .main_slider
 {
 	width: 100%;
-	height: 700px;
+	height: 1000px;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -955,7 +955,7 @@ display: block;
 ***********/
 
 #select{
-    height: 30px;
+    height: 40px;
     width: 250px;
 
 }
@@ -974,9 +974,6 @@ display: block;
     padding-left: 25px;
 }
 
-.ingresar-libro {
-    padding-top: 200px;
-}
 
 #input-text{
     width: 250px;

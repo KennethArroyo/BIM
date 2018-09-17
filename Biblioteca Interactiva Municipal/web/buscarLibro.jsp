@@ -13,12 +13,12 @@
     
     <body>
         <%@include file="header.jsp"%>
-            <!-- Slider -->
             <!--Fondo de Pantalla-->
             <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"> 
                 
             <div class="container">
                 <h2>Buscar Libros</h2>
+                <br>
                 <div class="container">
                     <form action="/action_page.php">
                       <div class="form-group">
@@ -38,7 +38,7 @@
                         <div class="input-group" id="search-bar">
                             <input type="text" class="form-control" placeholder="Buscar" name="search">
                             <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
                         <br>
@@ -78,7 +78,6 @@
     </body> 
     
     <footer>
-        <br><br><br><br><br><br><br><br>
         <%@include file="footer.jsp"%>
     </footer>
 </html>

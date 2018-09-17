@@ -25,7 +25,7 @@
                         <div class="col-lg-6">
                             <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
 				<ul>
-                                    <li><a href="http://www.santodomingo.go.cr" ><i class="fa fa-chrome" aria-hidden="true"></i></a></li>
+                                    <li><a href="http://www.santodomingo.go.cr" ><i class="fa fa fa-globe" aria-hidden="true"></i></a></li>
                                     <li><a href="https://www.facebook.com/stodomingoheredia"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
                                     <li><a href="https://www.youtube.com/channel/UCrtDW5u3wtE8g_YWJQOv4fg"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                                 </ul>
