@@ -4,6 +4,12 @@
     Author     : Kenneth
 --%>
 
+<%-- 
+    Document   : header
+    Created on : Sep 14, 2018, 11:31:12 PM
+    Author     : Kenneth
+--%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,15 +36,15 @@
                                                 <li><a href="#">Inicio</a></li>
                                                     <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
                                                         <ul class="dropdown_selection">
-                                                            <li><a href="AgregarLibro.jsp">Agregar Libro</a></li>
+                                                            <li><a href="agregarLibro.jsp">Agregar Libro</a></li>
                                                             <li><a href="buscar.jsp">Buscar Libro</a></li>
                                                             <li><a href="#">Habilitar/Deshabilitar Libro</a></li>
                                                         </ul>
                                                     </li>
                                                 <li><a href="#">Prestamo</a></li>
                                                 <li><a href="#">Actividades</a></li>
-                                                <li class="my_account_item"><a href="#"><small class="glyphicon glyphicon-user"></small>&nbsp Registrarse</a></li>
-                                                <li><a href="#"><small class="glyphicon glyphicon-log-in"></small>&nbsp Iniciar Sesión</a></li>
+                                                <li class="my_account_item"><a href="#"><small class="fa fa-user-plus" ></small>&nbsp Registrarse</a></li>
+                                                <li><a href="#"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
                                             </ul>
                                             <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
                                                 <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>
@@ -61,14 +67,14 @@
                             <li class="menu_item"><a href="#" >Inicio</a></li>
                                 <li class="menu_item has-children"><a href="#"> Libros <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                                     <ul class="menu_selection"> 
-                                        <li><a href="#"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
+                                        <li><a href="agregarLibro.jsp"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
                                         <li><a href="buscar.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                                     </ul>
                                 </li>
                             <li class="menu_item"><a href="#">Prestamo</a></li>
                             <li class="menu_item"><a href="#">Actividades</a></li>
-                            <li class="menu_item"><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp Registrarse</a></li>
-                            <li class="menu_item"><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp Iniciar Sesión</a></li>
+                            <li class="menu_item"><a href="#"><span class="fa fa-user-plus"></span>&nbsp Registrarse</a></li>
+                            <li class="menu_item"><a href="#"><span class="fa fa-sign-in"></span>&nbsp Iniciar Sesión</a></li>
                         </ul>
                 </div>
         </div>
