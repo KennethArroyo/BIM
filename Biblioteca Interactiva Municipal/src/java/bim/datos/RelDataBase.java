@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bim.datos;
 
 import java.io.BufferedInputStream;
@@ -26,26 +21,27 @@ public class RelDataBase {
     public RelDataBase(){
         cnx=this.getConnection();            
     }
-
+//jdbc:sqlserver://localhost:1433;databaseName=BIM [UserBIM on USERBIM]
      public Connection getConnection(){
         try {
+            /*+ "encrypt=true;"
+                        + "trustServerCertificate=false;"
+                        + "hostNameInCertificate=*.database.windows.net;"
+                        + "loginTimeout=30;"*/
             //Properties prop = new Properties();
             //URL resourceUrl = getClass().getResource(PROPERTIES_FILE_NAME);
             //File file = new File(resourceUrl.toURI());            
             //prop.load(new BufferedInputStream(new FileInputStream(file)));
+            String connectionUrl =
+                "jdbc:sqlserver://DESKTOP-L6REBIR;"
+                        + "database=BIM;"
+                        + "user=UserBIM;"
+                        + "password=root;";
             String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-            String server = "DESKTOP-L6REBIR";
-            String port = "1433";
-            String user = "UserBIM";
-            String password = "root";
-            String database = "BIM";
-            
-            String URL_conexion="jdbc:sqlserver://"+ server+":"+port+"/"+
-                    database+"?user="+user+"&password="+password;
             Class.forName(driver).newInstance();
-            return DriverManager.getConnection(URL_conexion);
+            return DriverManager.getConnection(connectionUrl);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            String h = e.getMessage();
             System.exit(-1);
         } 
         return null;
