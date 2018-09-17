@@ -42,6 +42,7 @@ public class RelDataBase {
             return DriverManager.getConnection(connectionUrl);
         } catch (Exception e) {
             String h = e.getMessage();
+            String x = e.getMessage();
             System.exit(-1);
         } 
         return null;
