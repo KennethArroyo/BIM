@@ -999,6 +999,7 @@ display: block;
 {
 	display: inline-block;
 	margin-right: 45px;
+        margin-top: 300px;
 }
 .footer_nav li:last-child
 {
@@ -1020,7 +1021,8 @@ display: block;
 	color: #fe4c50;
 }
 .footer_social
-{
+{   
+        margin-left: 50px;
 	height: 130px;
 }
 .footer_social ul li

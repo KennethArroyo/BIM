@@ -7,22 +7,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP Page</title>
         <%@include file="librerias.jsp"%>
     </head>
     
     <!-- Footer -->
 	<footer class="footer">
 		<div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
                             <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
 				<ul class="footer_nav">
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="contact.html">Contactenos</a></li>
 				</ul>		
                             </div>
-			</div>
-                        <div class="col-lg-6">
                             <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
 				<ul>
                                     <li><a href="http://www.santodomingo.go.cr" ><i class="fa fa fa-globe" aria-hidden="true"></i></a></li>
@@ -30,15 +25,9 @@
                                     <li><a href="https://www.youtube.com/channel/UCrtDW5u3wtE8g_YWJQOv4fg"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
-			</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
                             <div class="footer_nav_container">
                                 <div class="cr">Copyright © 2018 Centro de Tecnologías de la Información, Municipalidad de Santo Domingo de Heredia</div>
                             </div>
-                        </div>
-                    </div>
 		</div>
 	</footer>
 
