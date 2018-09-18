@@ -3,6 +3,7 @@ package bim.logica;
 import bim.datos.Dao;
 import bim.entidades.Asignatura;
 import bim.entidades.Libro;
+import java.util.ArrayList;
 
 
 /**
@@ -31,5 +32,8 @@ public class Model {
 
     public void agregarLibro(Libro p) throws Exception {
         dao.agregarLibro(p);
+    }
+    public ArrayList<Asignatura> listarAsignaturas() throws Exception {
+        return dao.listarAsignaturas();
     }
 }

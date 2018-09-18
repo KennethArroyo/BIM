@@ -978,6 +978,9 @@ display: block;
     padding-left: 25px;
 }
 
+#asignatura{
+    width: 250px;   
+}
 
 #input-text{
     width: 250px;

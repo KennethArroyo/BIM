@@ -1,9 +1,12 @@
 package bim.ui;
+import com.google.gson.Gson;
 import bim.entidades.Asignatura;
 import bim.entidades.Libro;
 import bim.logica.Model;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sergio
  */
-@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro"})
+@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro","/GetAsignaturas"})
 public class AgregarLibro extends HttpServlet {
 
     /**
@@ -32,7 +35,10 @@ public class AgregarLibro extends HttpServlet {
             
             switch(request.getServletPath()) {
                 case "/AgregarLibro":
-                    this.agregarPuesto(request, response);
+                    this.agregarLibro(request, response);
+                    break;
+                case "/GetAsignaturas":
+                    this.buscarAsignatura(request, response);
                     break;
             }
         }
@@ -44,33 +50,41 @@ public class AgregarLibro extends HttpServlet {
     else return 0;
     }
     
-    protected void agregarPuesto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void agregarLibro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
+            int fisico;
+            int digital;
+            Asignatura asig=new Asignatura();
+            asig.setId(1);
+            Libro p = new Libro();
             HttpSession s = request.getSession(true);
             String clasificacion = request.getParameter("clasificacion");
             String titulo = request.getParameter("titulo");
-            String asignatura = request.getParameter("asignatura");
+            int asignatura = Integer.parseInt(request.getParameter("asignatura"));
             int cant = Integer.parseInt(request.getParameter("copias"));
             String [] list = request.getParameterValues("fisico");
-            int fisico=Integer.parseInt(list[0]);
+            if(list!=null){
+                fisico=Integer.parseInt(list[0]);
+                p.setFisico(fisico);
+            }
+            else fisico=0;
             String [] list2 = request.getParameterValues("digital");
-            int digital=Integer.parseInt(list2[0]);
+            if(list2!=null){
+                digital=Integer.parseInt(list2[0]);
+                p.setDigital(digital);
+            }
+            else fisico=0;
             String estado = request.getParameter("estado");
             String autor = request.getParameter("autor");
             String comentario = request.getParameter("comentario");
             
             //Asignatura asig = (Asignatura)Model.instance().buscarEmpresaNombre(asignatura);
-            Asignatura asig=new Asignatura();
-            asig.setId(1);
-            Libro p = new Libro();
             p.setClasificacion(clasificacion);
             p.setAutor(autor);
             p.setCantidad_copias(cant);
             p.setEstado(convert(estado));
-            p.setFisico(fisico);
             p.setAsignatura(asig);
             p.setComentario(comentario);
-            p.setDigital(digital);
             p.setTitulo(titulo);
             
             Model.instance().agregarLibro(p);
@@ -120,5 +134,23 @@ public class AgregarLibro extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void buscarAsignatura(HttpServletRequest request, HttpServletResponse response) {
+        try{
+        ArrayList<Asignatura> q = new ArrayList<Asignatura>();
+        BufferedReader reader = request.getReader();
+        PrintWriter out = response.getWriter(); 
+        HttpSession s = request.getSession(true);
+        Gson gson = new Gson();
+        q = Model.instance().listarAsignaturas(); 
+        response.setContentType("application/json; charset=UTF-8");
+        out.write(gson.toJson(q));
+        response.setStatus(200); // ok with content
+         }
+          catch(Exception e) {	
+        String text=e.getMessage();
+        response.setStatus(401); //Bad request
+      }	
+    }
 
 }

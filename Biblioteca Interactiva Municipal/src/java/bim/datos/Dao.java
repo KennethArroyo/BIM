@@ -2,6 +2,8 @@ package bim.datos;
 import bim.entidades.Asignatura;
 import bim.entidades.Libro;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Dao {
     RelDataBase db;
@@ -50,5 +52,20 @@ public class Dao {
         if(count == 0) {
             throw new Exception("Error ingresando el libro!");
         }
+    }
+    
+    public ArrayList<Asignatura> listarAsignaturas() throws Exception {
+        ArrayList<Asignatura> lista = new ArrayList<Asignatura>();
+        try{
+            String sql="select * from Asignatura";
+            ResultSet rs = db.executeQuery(sql);
+            while(rs.next()){
+            lista.add(asignatura(rs));
+            }
+        }
+        catch(SQLException ex){
+        String error = ex.getMessage();
+        }
+        return lista;
     }
 }
