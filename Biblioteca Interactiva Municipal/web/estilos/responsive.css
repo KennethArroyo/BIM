@@ -33,7 +33,7 @@
 
 @media only screen and (max-width: 1540px)
 {
-	
+
 }
 
 /************
@@ -42,7 +42,7 @@
 
 @media only screen and (max-width: 1380px)
 {
-	
+
 }
 
 /************
@@ -51,7 +51,7 @@
 
 @media only screen and (max-width: 1280px)
 {
-	
+
 }
 
 /************
@@ -65,6 +65,10 @@
 		min-height: 475px;
 		height: calc(100vw / 1.714);
 	}
+        .my_account_item 
+        {
+            padding-left: 100px;
+        }
 	.main_slider_content
 	{
 		width: 80%;
@@ -140,7 +144,9 @@
 	}
 	.hamburger_container
 	{
-		display: block;
+            display: block;
+            margin-left: 450px;
+
 	}
 	.main_slider
 	{
@@ -268,7 +274,10 @@
 
 @media only screen and (max-width: 959px)
 {
-	
+        .hamburger_container
+	{
+		margin-left: 450px;
+	}
 }
 
 /************
@@ -277,7 +286,10 @@
 
 @media only screen and (max-width: 880px)
 {
-	
+		.hamburger_container
+	{
+		margin-left: 400px;
+	}
 }
 
 /************
@@ -286,7 +298,10 @@
 
 @media only screen and (max-width: 768px)
 {
-	
+	.hamburger_container
+	{
+		margin-left: 300px;
+	}
 }
 
 /************
@@ -301,6 +316,10 @@
 	.main_slider_content h6
 	{
 		margin-bottom: 20px;
+	}
+        .hamburger_container
+	{
+		margin-left: 240px;
 	}
 	.shop_now_button
 	{
@@ -372,6 +391,10 @@
 		right: -100%;
 		width: 100%;
 	}
+        .hamburger_container
+	{
+		margin-left: 220px;
+	}
 	.product-item
 	{
 		width: 50%;
@@ -413,7 +436,10 @@
 
 @media only screen and (max-width: 539px)
 {
-	
+        .hamburger_container
+	{
+		margin-left: 200px;
+	}
 }
 
 /************
@@ -422,7 +448,10 @@
 
 @media only screen and (max-width: 480px)
 {
-	
+        .hamburger_container
+	{
+		margin-left: 120px;
+	}
 }
 
 /************
@@ -437,7 +466,7 @@
 	}
 	.hamburger_container
 	{
-		margin-left: 25px;
+		margin-left: 130px;
 	}
 	.hamburger_container i
 	{
@@ -684,5 +713,9 @@
 
 @media only screen and (max-width: 400px)
 {
+    	.hamburger_container
+	{
+		margin-left: 10px;
+	}
 	
 }

@@ -47,7 +47,7 @@
                                                 <li><a href="#"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
                                             </ul>
                                             <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
-                                                <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>
+                                                <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
                                             </div>
 					</nav>
                                     </div>

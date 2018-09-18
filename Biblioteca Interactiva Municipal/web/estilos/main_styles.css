@@ -546,11 +546,11 @@ display: block;
 {
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     margin-left: 120px;
-	width: auto;
-	height: 100px;
-	float: right;
-	padding-left: 0px;
-	padding-right: 0px;
+    width: auto;
+    height: 100px;
+    float: right;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 .navbar_menu li
 {
@@ -639,11 +639,15 @@ display: block;
 /***********
 3.5 Hamburger Menu
 ***********/
+#hamburguer-icon {
+    color: white;
+    margin-left: 140px;
+}
 
 .hamburger_container
 {
 	display: none;
-	margin-right: -300px;
+	margin-left: 40px;
 }
 .hamburger_container i
 {

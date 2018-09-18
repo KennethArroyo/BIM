@@ -48,7 +48,7 @@ public class Dao {
                 p.getFisico(),p.getDigital(),p.getAsignatura().getId());
         int count = db.executeUpdate(sql);
         if(count == 0) {
-            throw new Exception("Error ingresando la empresa!");
+            throw new Exception("Error ingresando el libro!");
         }
     }
 }
