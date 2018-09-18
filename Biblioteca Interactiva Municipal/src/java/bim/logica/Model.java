@@ -36,4 +36,8 @@ public class Model {
     public ArrayList<Asignatura> listarAsignaturas() throws Exception {
         return dao.listarAsignaturas();
     }
+    
+    public ArrayList<Libro> buscarLibro(String autor) throws Exception {
+        return dao.buscarLibro(autor);
+    }
 }

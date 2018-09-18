@@ -3,12 +3,15 @@
     Created on : Sep 15, 2018, 12:11:31 AM
     Author     : Kenneth
 --%>
-
+<%@page import="java.util.ArrayList"%>
+<%@page import="bim.entidades.Libro"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Buscar Libro</title>
         <%@include file="librerias.jsp"%>
+        <jsp:useBean id="libros" scope="request" type="ArrayList<Libro>" class="java.util.ArrayList"/>
     </head>
     
     <body>
@@ -20,19 +23,12 @@
                 <h2>Buscar Libros</h2>
                 <br>
                 <div class="container">
-                    <form action="/action_page.php">
+                    <form action="BuscarLibro">
                       <div class="form-group">
-                        <label for="sel1">Asignatura:
-                        <select id="select" class="form-control" id="sel1" name="sellist1">
-                          <option>Ciencia</option>
-                          <option>Matemática</option>
-                          <option>Física</option>
-                          <option>Literatura</option>
-                        </select></label>
                         <label for="sel1">Buscar Por:
                         <select id="select" class="form-control" id="sel1" name="sellist1">
                           <option>Autor</option>
-                          <option>Título</option>
+                          <option>TÃ­tulo</option>
                         </select></label>
                         <br><br>
                         <div class="input-group" id="search-bar">

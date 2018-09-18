@@ -4,8 +4,13 @@ import bim.entidades.Asignatura;
 import bim.entidades.Libro;
 import bim.logica.Model;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -52,8 +58,7 @@ public class AgregarLibro extends HttpServlet {
     
     protected void agregarLibro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
-            int fisico;
-            int digital;
+            int fisico; int digital;
             Asignatura asig=new Asignatura();
             asig.setId(1);
             Libro p = new Libro();
@@ -72,6 +77,16 @@ public class AgregarLibro extends HttpServlet {
             if(list2!=null){
                 digital=Integer.parseInt(list2[0]);
                 p.setDigital(digital);
+                 Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
+                String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+                OutputStream fotoFile = new FileOutputStream(new File(getServletContext().getRealPath("/")+"Libros/"+fileName));
+                InputStream fotoReader = filePart.getInputStream();
+                int read = 0;
+                final byte[] bytes = new byte[1024];
+                while ((read = fotoReader.read(bytes)) != -1) {
+                fotoFile.write(bytes, 0, read);
+            }
+            fotoFile.close();
             }
             else fisico=0;
             String estado = request.getParameter("estado");
