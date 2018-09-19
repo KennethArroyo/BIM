@@ -1,4 +1,5 @@
 package bim.ui;
+
 import com.google.gson.Gson;
 import bim.entidades.Asignatura;
 import bim.entidades.Libro;
@@ -24,7 +25,7 @@ import javax.servlet.http.Part;
  *
  * @author Sergio
  */
-@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro","/GetAsignaturas"})
+@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas"})
 public class AgregarLibro extends HttpServlet {
 
     /**
@@ -38,28 +39,36 @@ public class AgregarLibro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            switch(request.getServletPath()) {
-                case "/AgregarLibro":
-                    this.agregarLibro(request, response);
-                    break;
-                case "/GetAsignaturas":
-                    this.buscarAsignatura(request, response);
-                    break;
-            }
+
+        switch (request.getServletPath()) {
+            case "/AgregarLibro":
+                this.agregarLibro(request, response);
+                break;
+            case "/GetAsignaturas":
+                this.buscarAsignatura(request, response);
+                break;
         }
-    
-    protected int convert(String estado){
-    if(estado.equals("Bueno")) return 1;
-    if(estado.equals("Regular")) return 2;
-    if(estado.equals("Malo")) return 3;
-    else return 0;
     }
-    
-    protected void agregarLibro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        try{
-            int fisico; int digital;
-            Asignatura asig=new Asignatura();
+
+    protected int convert(String estado) {
+        if (estado.equals("Bueno")) {
+            return 1;
+        }
+        if (estado.equals("Regular")) {
+            return 2;
+        }
+        if (estado.equals("Malo")) {
+            return 3;
+        } else {
+            return 0;
+        }
+    }
+
+    protected void agregarLibro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            int fisico;
+            int digital;
+            Asignatura asig = new Asignatura();
             asig.setId(1);
             Libro p = new Libro();
             HttpSession s = request.getSession(true);
@@ -67,32 +76,34 @@ public class AgregarLibro extends HttpServlet {
             String titulo = request.getParameter("titulo");
             int asignatura = Integer.parseInt(request.getParameter("asignatura"));
             int cant = Integer.parseInt(request.getParameter("copias"));
-            String [] list = request.getParameterValues("fisico");
-            if(list!=null){
-                fisico=Integer.parseInt(list[0]);
+            String[] list = request.getParameterValues("fisico");
+            if (list != null) {
+                fisico = Integer.parseInt(list[0]);
                 p.setFisico(fisico);
+            } else {
+                fisico = 0;
             }
-            else fisico=0;
-            String [] list2 = request.getParameterValues("digital");
-            if(list2!=null){
-                digital=Integer.parseInt(list2[0]);
+            String[] list2 = request.getParameterValues("digital");
+            if (list2 != null) {
+                digital = Integer.parseInt(list2[0]);
                 p.setDigital(digital);
-                 Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
+                Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
                 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-                OutputStream fotoFile = new FileOutputStream(new File(getServletContext().getRealPath("/")+"Libros/"+fileName));
+                OutputStream fotoFile = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Libros/" + fileName));
                 InputStream fotoReader = filePart.getInputStream();
                 int read = 0;
                 final byte[] bytes = new byte[1024];
                 while ((read = fotoReader.read(bytes)) != -1) {
-                fotoFile.write(bytes, 0, read);
+                    fotoFile.write(bytes, 0, read);
+                }
+                fotoFile.close();
+            } else {
+                fisico = 0;
             }
-            fotoFile.close();
-            }
-            else fisico=0;
             String estado = request.getParameter("estado");
             String autor = request.getParameter("autor");
             String comentario = request.getParameter("comentario");
-            
+
             //Asignatura asig = (Asignatura)Model.instance().buscarEmpresaNombre(asignatura);
             p.setClasificacion(clasificacion);
             p.setAutor(autor);
@@ -101,15 +112,14 @@ public class AgregarLibro extends HttpServlet {
             p.setAsignatura(asig);
             p.setComentario(comentario);
             p.setTitulo(titulo);
-            
+
             Model.instance().agregarLibro(p);
             request.getRequestDispatcher("principal.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.setAttribute("error", "Ocurrió un error");
+            request.getRequestDispatcher("Error.jsp").forward(request, response);
         }
-        catch(Exception e) {
-            request.setAttribute("error","Ocurrió un error");
-            request.getRequestDispatcher("Error.jsp").forward( request, response);
-        }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -151,21 +161,20 @@ public class AgregarLibro extends HttpServlet {
     }// </editor-fold>
 
     private void buscarAsignatura(HttpServletRequest request, HttpServletResponse response) {
-        try{
-        ArrayList<Asignatura> q = new ArrayList<Asignatura>();
-        BufferedReader reader = request.getReader();
-        PrintWriter out = response.getWriter(); 
-        HttpSession s = request.getSession(true);
-        Gson gson = new Gson();
-        q = Model.instance().listarAsignaturas(); 
-        response.setContentType("application/json; charset=UTF-8");
-        out.write(gson.toJson(q));
-        response.setStatus(200); // ok with content
-         }
-          catch(Exception e) {	
-        String text=e.getMessage();
-        response.setStatus(401); //Bad request
-      }	
+        try {
+            ArrayList<Asignatura> q = new ArrayList<Asignatura>();
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            q = Model.instance().listarAsignaturas();
+            response.setContentType("application/json; charset=UTF-8");
+            out.write(gson.toJson(q));
+            response.setStatus(200); // ok with content
+        } catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
+        }
     }
 
 }

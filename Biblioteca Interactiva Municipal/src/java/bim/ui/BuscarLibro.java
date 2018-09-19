@@ -31,7 +31,7 @@ import javax.servlet.http.Part;
  *
  * @author Sergio
  */
-//@WebServlet(name = "BuscarLibro", urlPatterns = {"/BuscarLibro"})
+@WebServlet(name = "BuscarLibro", urlPatterns = {"/buscarLibroAutor"})
 public class BuscarLibro extends HttpServlet {
 
     /**
@@ -45,46 +45,30 @@ public class BuscarLibro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {  
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try{
-            String json;
-            HttpSession session = request.getSession();
-            String accion = request.getParameter("accion");
-            
-            switch(accion){
-                case "buscarLibroAutor":
-                ArrayList<Libro> libros = Model.instance().buscarLibro(accion); 
-                request.setAttribute("libros", libros);
-                json=new Gson().toJson(libros);
-                out.print(json);
+        response.setContentType("text/html;charset=UTF-8");          
+            switch(request.getServletPath()){
+                case "/buscarLibroAutor":
+                    buscarLibroAutor(request,response);
                 break;
             }
-            
-        }catch (NumberFormatException e) {
-            out.print("E~" + e.getMessage());
-        } catch (Exception e) {
-            out.print("E~" + e.getMessage());
-        }
-        /*switch (request.getServletPath()) {
-                case "/BuscarLibroAutor":
-                    this.buscarLibroAutor(request, response);
-                    break;
-            }*/
     }
 
     protected void buscarLibroAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
         try {
-            String json;
-            String a = request.getParameter("search");
-            ArrayList<Libro> libros = Model.instance().buscarLibro(a);
-            request.setAttribute("libros", libros);
-            json=new Gson().toJson(libros);
-            out.print(json);
+            ArrayList<Libro> q = new ArrayList<Libro>();
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter(); 
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            String a = request.getParameter("buscar");
+            q= Model.instance().buscarLibro(a);
+            response.setContentType("application/json; charset=UTF-8");
+            out.write(gson.toJson(q));
+            response.setStatus(200);
         } catch (Exception e) {
-            request.setAttribute("error", "Ocurrió un error");
-            request.getRequestDispatcher("Error.jsp").forward(request, response);
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
         }
     }
 

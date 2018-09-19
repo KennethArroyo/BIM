@@ -16,6 +16,7 @@ $(function(){
 });
 $(document).ready(function(){
 });
+
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaLibros").html("");
@@ -69,23 +70,20 @@ function dibujarFila(page,rowData) {
 
 
 function  buscarLibroAutor(autor) {
-    mostrarModal("myModal", "Espere por favor..", "Consultando la persona seleccionada");
-    $.ajax({
-        url: 'BuscarLibro',
+    $.ajax({type: "GET",
+          dataType: "json",
+        url: 'buscarLibroAutor',
         data: {
-            accion: "buscarLibroAutor",
             autor:autor
         },
         error: function () { //si existe un error en la respuesta del ajax
-            ocultarModal("myModal");
-            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
+            window.alert("Error");
         },
         success: function (data) {
-            ocultarModal("myModal");
             $('#id').val(data.id);
             $('#clasificacion').val(data.clasificacion);
-            $('#autor').val(data.autor);
             $('#titulo').val(data.titulo);
+            $('#autor').val(data.autor);
             $('#estado').val(data.estado);
             $('#comentario').val(data.comentario);
             $('#cantidad_copias').val(data.cantidad_copias);
@@ -95,11 +93,7 @@ function  buscarLibroAutor(autor) {
             $('#dir_PDF').val(data.dir_PDF);
             $('#habilitado').val(data.habilitado);
             $('#asignatura_ID').val(data.asignatura_ID);
-
-
-        },
-        type: 'POST',
-        dataType: "json"
+        }
     });
 }
 
@@ -117,7 +111,7 @@ function mostrarMensaje(classCss, msg, neg) {
     $("#mesajeResultText").html(msg);
 }
 
-function buscar(){
+function BuscarLibro(){
     var name = document.buscarLibroAutor("textoBuscar").value;
     buscarLibroAutor(name);
 }
