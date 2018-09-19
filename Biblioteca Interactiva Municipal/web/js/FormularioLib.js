@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+ //agregarLibro.jsp
 
 
     $(document).ready(function getAsignaturas(){
@@ -36,3 +36,22 @@
           $("#divFile").remove();
       }
       }
+      
+   function agregarLibro(){
+       var num = $("#copias").val();
+       if($.isNumeric(num)){
+            if($("#fisico").prop('checked')||$("#digital").prop('checked')){
+                return true;
+            }
+            else{
+                alert("Debe seleccionar al menos un tipo de Libro, físico o digital");
+                return false;
+            }
+       }
+       else{
+           $("#copias").css("border-color","#d81a1a").css("border-width", "3px");
+           alert("La cantiad de copias debe ser un valor númerico");
+           return false;
+       }
+       
+   }

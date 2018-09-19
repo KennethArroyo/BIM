@@ -978,13 +978,18 @@ display: block;
     padding-left: 25px;
 }
 
-#asignatura{
-    width: 250px;   
-}
-
-#input-text{
+#libForm input{
     width: 250px;
 }
+
+#libForm textarea{
+    width: 250px;
+}
+
+#libForm select{
+    width: 250px;
+}
+
 
 /***********
 5. Footer
