@@ -8,6 +8,7 @@ package bim.ui;
 import bim.entidades.Asignatura;
 import bim.entidades.Libro;
 import bim.logica.Model;
+import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -29,7 +31,7 @@ import javax.servlet.http.Part;
  *
  * @author Sergio
  */
-@WebServlet(name = "BuscarLibro", urlPatterns = {"/BuscarLibro"})
+//@WebServlet(name = "BuscarLibro", urlPatterns = {"/BuscarLibro"})
 public class BuscarLibro extends HttpServlet {
 
     /**
@@ -42,20 +44,44 @@ public class BuscarLibro extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        switch(request.getServletPath()) {
-                case "/BuscarLibro":
-                    this.buscarLibro(request, response);
-                    break;
+            throws ServletException, IOException {  
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try{
+            String json;
+            HttpSession session = request.getSession();
+            String accion = request.getParameter("accion");
+            
+            switch(accion){
+                case "buscarLibroAutor":
+                ArrayList<Libro> libros = Model.instance().buscarLibro(accion); 
+                request.setAttribute("libros", libros);
+                json=new Gson().toJson(libros);
+                out.print(json);
+                break;
             }
-
+            
+        }catch (NumberFormatException e) {
+            out.print("E~" + e.getMessage());
+        } catch (Exception e) {
+            out.print("E~" + e.getMessage());
+        }
+        /*switch (request.getServletPath()) {
+                case "/BuscarLibroAutor":
+                    this.buscarLibroAutor(request, response);
+                    break;
+            }*/
     }
 
-    protected void buscarLibro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void buscarLibroAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      
         try {
-            String a=request.getParameter("search");
-           ArrayList<Libro> libros = Model.instance().buscarLibro(a);
-           request.setAttribute("libros",libros);
+            String json;
+            String a = request.getParameter("search");
+            ArrayList<Libro> libros = Model.instance().buscarLibro(a);
+            request.setAttribute("libros", libros);
+            json=new Gson().toJson(libros);
+            out.print(json);
         } catch (Exception e) {
             request.setAttribute("error", "Ocurrió un error");
             request.getRequestDispatcher("Error.jsp").forward(request, response);
