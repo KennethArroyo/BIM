@@ -3,20 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-var info = [];
-var max;
-var min;
-var inicio;
-$(function(){
-    $("#buscar").click(function () {
-        buscar();
+$("#buscar").click(function () {
+        buscarLibroAutor();
     });
-});
-$(document).ready(function(){
-});
-
+    
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaLibros").html("");
@@ -69,30 +59,19 @@ function dibujarFila(page,rowData) {
 }
 
 
-function  buscarLibroAutor(autor) {
+function  buscarLibroAutor() {
+    var name = $("textobuscar").val();
+    var n = name;
     $.ajax({type: "GET",
           dataType: "json",
-        url: 'buscarLibroAutor',
-        data: {
-            autor:autor
-        },
-        error: function () { //si existe un error en la respuesta del ajax
+        url: "buscarLibroAutor",
+       data:JSON.stringify(n),
+        
+        error: function (status) { //si existe un error en la respuesta del ajax
             window.alert("Error");
         },
-        success: function (data) {
-            $('#id').val(data.id);
-            $('#clasificacion').val(data.clasificacion);
-            $('#titulo').val(data.titulo);
-            $('#autor').val(data.autor);
-            $('#estado').val(data.estado);
-            $('#comentario').val(data.comentario);
-            $('#cantidad_copias').val(data.cantidad_copias);
-            $('#fisico').val(data.fisico);
-            $('#digital').val(data.digital);
-            $('#dir_Portada').val(data.dir_Portada);
-            $('#dir_PDF').val(data.dir_PDF);
-            $('#habilitado').val(data.habilitado);
-            $('#asignatura_ID').val(data.asignatura_ID);
+        success: function dibujarTabla(data) {
+            
         }
     });
 }
@@ -112,6 +91,6 @@ function mostrarMensaje(classCss, msg, neg) {
 }
 
 function BuscarLibro(){
-    var name = document.buscarLibroAutor("textoBuscar").value;
+    var name = $("textobuscar").val();
     buscarLibroAutor(name);
 }

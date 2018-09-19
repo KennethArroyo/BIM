@@ -40,7 +40,7 @@
                 <h2>Buscar Libros</h2>
                 <br>
                 <div class="container">
-                    <form action="BuscarLibro">
+                    <form>
                         <div class="form-group">
                             <label for="sel1">Buscar Por:
                                 <select id="select" class="form-control" id="sel1" name="sellist1">
@@ -51,7 +51,7 @@
                             <div class="input-group" id="search-bar">
                                 <input type="text" class="form-control" placeholder="Buscar" id="textobuscar">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="fa fa-search" id="buscar"></i></button>
+                                    <button  class="btn btn-default" type="submit"><i class="fa fa-search" id="buscar"></i></button>
                                 </div>
                             </div>
                             <br>
