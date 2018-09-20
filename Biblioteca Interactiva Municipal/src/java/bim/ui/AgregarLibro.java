@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,7 @@ import javax.servlet.http.Part;
  * @author Sergio
  */
 @WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas"})
+@MultipartConfig
 public class AgregarLibro extends HttpServlet {
 
     /**
@@ -89,16 +91,17 @@ public class AgregarLibro extends HttpServlet {
                 p.setDigital(digital);
                 Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
                 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-                OutputStream fotoFile = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Libros/" + fileName));
-                InputStream fotoReader = filePart.getInputStream();
+                String path = getServletContext().getRealPath("/");
+                OutputStream out = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Libros/" + fileName));
+                InputStream fileContent = filePart.getInputStream();
                 int read = 0;
                 final byte[] bytes = new byte[1024];
-                while ((read = fotoReader.read(bytes)) != -1) {
-                    fotoFile.write(bytes, 0, read);
+                while ((read = fileContent.read(bytes)) != -1) {
+                    out.write(bytes, 0, read);
                 }
-                fotoFile.close();
+                out.close();
             } else {
-                fisico = 0;
+                digital = 0;
             }
             String estado = request.getParameter("estado");
             String autor = request.getParameter("autor");

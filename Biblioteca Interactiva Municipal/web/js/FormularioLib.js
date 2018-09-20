@@ -26,14 +26,13 @@
         $('#asignatura').append('<option value="' + list[i].id + '">' + list[i].nombre + '</option>');
     }
   }
+  
   function onClickDigital(){
       if($("#digital").is(':checked')){
-          $("#libForm").append('<div class="form-group" id="divFile"></div>');
           $("#libForm").append('<input type="file" name="file" class="file" id="file" required>');
       }
       else {
           $("#file").remove();
-          $("#divFile").remove();
       }
       }
       

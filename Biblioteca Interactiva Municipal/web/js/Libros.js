@@ -3,9 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$("#buscar").click(function () {
-        buscarLibroAutor();
-    });
     
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
@@ -63,9 +60,9 @@ function  buscarLibroAutor() {
     var name = $("textobuscar").val();
     var n = name;
     $.ajax({type: "GET",
-          dataType: "json",
         url: "buscarLibroAutor",
-       data:JSON.stringify(n),
+        data:JSON.stringify(n),
+        dataType: "json",
         
         error: function (status) { //si existe un error en la respuesta del ajax
             window.alert("Error");

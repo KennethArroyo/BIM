@@ -51,7 +51,7 @@
                             <div class="input-group" id="search-bar">
                                 <input type="text" class="form-control" placeholder="Buscar" id="textobuscar">
                                 <div class="input-group-btn">
-                                    <button  class="btn btn-default" type="submit"><i class="fa fa-search" id="buscar"></i></button>
+                                    <button  class="btn btn-default" onclick="busca()" ><i class="fa fa-search" id="buscar"></i></button>
                                 </div>
                             </div>
                             <br>

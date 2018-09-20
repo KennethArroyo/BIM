@@ -14,7 +14,7 @@
             <div class="container" style="background-image:url(imagenes/bg.jpg)">
                 <h2  style="align-content: center;">Agregar Libros</h2>
                 <br>
-                <form onsubmit="return agregarLibro()" action="AgregarLibro" method="post" id="libForm" class="log">
+                <form onsubmit="return agregarLibro()" action="AgregarLibro" method="POST" enctype="multipart/form-data" id="libForm" class="log">
                     <div class="form-group">
                         <label for="clasificacion">Clasificación</label>
                         <input type="text" class="form-control" id="clasificacion" name="clasificacion" required>
@@ -52,14 +52,13 @@
 
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
-                        <label class="form-check-label" for="fisico">&nbsp Libro Físico</label>
+                        <label class="form-check-label" for="fisico">&nbsp &nbsp Libro Físico</label>
                     </div>   
 
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
-                        <label class="form-check-label" for="digital">&nbsp Libro Digital</label>
+                        <label class="form-check-label" for="digital">&nbsp &nbsp Libro Digital</label>
                     </div>
-
                     <div class="form-group">
                         <label for="comentario">Comentario corto</label>
                         <textarea class="form-control" maxlength="30" rows="2" id="comentario" name="comentario"></textarea>
