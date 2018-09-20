@@ -62,9 +62,9 @@
         <div class="hamburger_menu">
             <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
                 <div class="hamburger_menu_content text-right">
-                    <a class="menu_name" href="#">Biblioteca Interactiva Municipal</a><br>
+                    <a class="menu_name" href="principal.jsp">Biblioteca Interactiva Municipal</a><br>
                         <ul class="menu_top_nav">
-                            <li class="menu_item"><a href="#" >Inicio</a></li>
+                            <li class="menu_item"><a href="principal.jsp" >Inicio</a></li>
                                 <li class="menu_item has-children"><a href="#"> Libros <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                                     <ul class="menu_selection"> 
                                         <li><a href="agregarLibro.jsp"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
