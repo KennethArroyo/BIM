@@ -37,7 +37,19 @@ public class Model {
         return dao.listarAsignaturas();
     }
     
-    public ArrayList<Libro> buscarLibro(String autor) throws Exception {
-        return dao.buscarLibro(autor);
+    public ArrayList<Libro> buscarLibroAutor(String autor) throws Exception {
+        return dao.buscarLibroAutor(autor);
+    }
+    
+    public ArrayList<Libro> buscarLibroTitulo(String titulo) throws Exception {
+        return dao.buscarLibroTitulo(titulo);
+    }
+    
+    public ArrayList<Libro> buscarLibroAsignatura(String asignatura) throws Exception {
+        return dao.buscarLibroAsignatura(asignatura);
+    }
+    
+    public ArrayList<Libro> buscarLibroClasificacion(String clasificacion) throws Exception {
+        return dao.buscarLibroClasificacion(clasificacion);
     }
 }

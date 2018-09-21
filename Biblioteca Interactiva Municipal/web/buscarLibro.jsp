@@ -31,14 +31,16 @@
                         <div class="form-group">
                             <label for="sel1">Buscar Por:
                                 <select id="select" class="form-control" id="sel1" name="sellist1">
-                                    <option>autor</option>
+                                    <option>Clasificación</option>
+                                    <option>Asignatura</option>
                                     <option>Título</option>
+                                    <option>Autor</option>                             
                                 </select></label>
                             <br><br>
                             <div class="input-group" id="search-bar">
                                 <input type="text" class="form-control" id="textobuscar" placeholder="Buscar" >
                                 <div class="input-group-btn">
-                                    <button  class="btn btn-default" onclick="buscarLibroAutor()" ><i class="fa fa-search" id="buscar"></i></button>
+                                    <button  class="btn btn-default" onclick="buscar()" ><i class="fa fa-search" id="buscar"></i></button>
                                 </div>
                             </div>
                             <br>

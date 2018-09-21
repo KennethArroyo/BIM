@@ -44,55 +44,51 @@ public class BuscarLibro extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {       
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();    
-        try{
+        PrintWriter out = response.getWriter();
+        try {
             String json;
+            ArrayList<Libro> q = new ArrayList<Libro>();
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
-            //String input=request.getParameter("nombre");
-            switch(accion){
+            String input=request.getParameter("nombre");
+            switch (accion) {
                 case "buscarLibroAutor":
                     //ArrayList<Libro> q = new ArrayList<Libro>();                 
-                    ArrayList<Libro> q =Model.instance().buscarLibro("esteban");
-                    json= new Gson().toJson(q);
+                    q = Model.instance().buscarLibroAutor(input);
+                    json = new Gson().toJson(q);
+                    out.print(json);
+                    break;
+                case "buscarLibroTitulo":
+                    //ArrayList<Libro> q = new ArrayList<Libro>();                 
+                    q = Model.instance().buscarLibroTitulo("libro1");
+                    json = new Gson().toJson(q);
+                    out.print(json);
+                    break;
+                case "buscarLibroClasificacion":
+                    //ArrayList<Libro> q = new ArrayList<Libro>();                 
+                    q = Model.instance().buscarLibroClasificacion("2");
+                    json = new Gson().toJson(q);
+                    out.print(json);
+                    break;
+                case "buscarLibroAsignatura":
+                    //ArrayList<Libro> q = new ArrayList<Libro>();                 
+                    q = Model.instance().buscarLibroAsignatura("Historia");
+                    json = new Gson().toJson(q);
                     out.print(json);
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
-                    break; 
-                
+                    break;
+
             }
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());
         } catch (Exception e) {
             out.print("E~" + e.getMessage());
         }
-//        switch(request.getServletPath()){
-//                case "/buscarLibroAutor":
-//                    this.buscarLibroAutor(request,response);
-//                break;
-//            }
     }
-
-//    protected void buscarLibroAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      
-//        try {
-//            BufferedReader reader = request.getReader();
-//            PrintWriter out = response.getWriter(); 
-//            HttpSession s = request.getSession(true);
-//            Gson gson = new Gson();
-//            String a = request.getParameter("textobuscar");
-//            ArrayList<Libro> q = Model.instance().buscarLibro(a);
-//            response.setContentType("application/json; charset=UTF-8");
-//            out.write(gson.toJson(q));
-//            response.setStatus(200);
-//        } catch (Exception e) {
-//            String text = e.getMessage();
-//            response.setStatus(401); //Bad request
-//        }
-//    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

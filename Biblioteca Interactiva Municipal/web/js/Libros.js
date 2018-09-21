@@ -11,7 +11,7 @@ var inicio;
     
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
-    //$("#tablaLibros").html("");
+    $("#tablaLibros").html("");
 
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
@@ -60,13 +60,79 @@ function dibujarFila(rowData) {
 
 }
 
+function buscar(){
+    var name = document.getElementById("textobuscar").value;
+    buscarLibroAutor(name);
+}
 
-function  buscarLibroAutor() {
+function  buscarLibroAutor(nombre) {
+    //var name = document.getElementById("textoBuscar").value;
+    //var name = $("#textobuscar").value;
+    $.ajax({
+        url: "BuscarLibro",        
+        data:{
+            accion:"buscarLibroAutor",
+            nombre:nombre
+        },
+        
+        error: function () { //si existe un error en la respuesta del ajax
+            window.alert("1-error");
+        },
+        success: function(data){
+               dibujarTabla(data);
+            
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function  buscarLibroClasificacion() {
     //var name = $("textobuscar").value;
     $.ajax({
         url: "BuscarLibro",        
         data:{
-            accion:"buscarLibroAutor"
+            accion:"buscarLibroClasificacion"
+            //nombre:name
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            window.alert("1-error");
+        },
+        success: function(data){
+               dibujarTabla(data);
+            
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function  buscarLibroTitulo() {
+    //var name = $("textobuscar").value;
+    $.ajax({
+        url: "BuscarLibro",        
+        data:{
+            accion:"buscarLibroTitulo"
+            //nombre:name
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            window.alert("1-error");
+        },
+        success: function(data){
+               dibujarTabla(data);
+            
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function  buscarLibroAsignatura() {
+    //var name = $("textobuscar").value;
+    $.ajax({
+        url: "BuscarLibro",        
+        data:{
+            accion:"buscarLibroAsignatura"
             //nombre:name
         },
         error: function () { //si existe un error en la respuesta del ajax
@@ -97,5 +163,12 @@ function mostrarMensaje(classCss, msg, neg) {
 
 function BuscarLibro(){
     var name = $("textobuscar").val();
+    var a="autor";
+    var t="titulo";
+    var c="clasificacion";
+    var as="asignatura";
+    if(name===a){
+        
+    }
     buscarLibroAutor(name);
 }

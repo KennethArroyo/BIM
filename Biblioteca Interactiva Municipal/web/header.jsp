@@ -41,7 +41,7 @@
                                                             <li><a href="">Habilitar/Deshabilitar Libro</a></li>
                                                         </ul>
                                                     </li>
-                                                <li><a href="">Prestamo</a></li>
+                                                <li><a href="">Préstamo</a></li>
                                                 <li><a href="">Actividades</a></li>
                                                 <li class="my_account_item"><a href="#"><small class="fa fa-user-plus" ></small>&nbsp Registrarse</a></li>
                                                 <li><a href="#"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>

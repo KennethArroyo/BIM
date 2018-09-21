@@ -31,7 +31,7 @@ public class Dao {
         o.setCantidad_copias(rs.getInt("Cantidad_copias"));
         o.setFisico(rs.getInt("Fisico"));
         o.setDigital(rs.getInt("Digital"));
-        o.setDir_portada(rs.getString("Dir_Portada"));
+        o.setDir_portada(rs.getString("Dir_portada"));
         o.setDir_PDF(rs.getString("Dir_PDF"));
         a.setId(rs.getInt("Asignatura_ID"));
         o.setAsignatura(a);
@@ -69,11 +69,62 @@ public class Dao {
         return lista;
     }
     
-    public ArrayList<Libro> buscarLibro(String autor)throws Exception{
+    public ArrayList<Libro> buscarLibroAutor(String autor)throws Exception{
         ArrayList<Libro> libros= new ArrayList<Libro>();
         try {
         String sql="select * from Libro where autor = '%s'";
         sql = String.format(sql, autor);
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+        libros.add(libro(rs));
+        }
+        }
+        catch(SQLException ex){
+        String error = ex.getMessage();
+        error="s";
+        }
+        return libros;
+    }
+    
+    public ArrayList<Libro> buscarLibroTitulo(String titulo)throws Exception{
+        ArrayList<Libro> libros= new ArrayList<Libro>();
+        try {
+        String sql="select * from Libro where titulo = '%s'";
+        sql = String.format(sql, titulo);
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+        libros.add(libro(rs));
+        }
+        }
+        catch(SQLException ex){
+        String error = ex.getMessage();
+        error="s";
+        }
+        return libros;
+    }
+    
+    public ArrayList<Libro> buscarLibroClasificacion(String clasificacion)throws Exception{
+        ArrayList<Libro> libros= new ArrayList<Libro>();
+        try {
+        String sql="select * from Libro where clasificacion = '%s'";
+        sql = String.format(sql, clasificacion);
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+        libros.add(libro(rs));
+        }
+        }
+        catch(SQLException ex){
+        String error = ex.getMessage();
+        error="s";
+        }
+        return libros;
+    }
+    
+    public ArrayList<Libro> buscarLibroAsignatura(String asignatura)throws Exception{
+        ArrayList<Libro> libros= new ArrayList<Libro>();
+        try {
+        String sql="select * from Libro, Asignatura where = '%s' ";
+        sql = String.format(sql, asignatura);
         ResultSet rs = db.executeQuery(sql);
         while(rs.next()){
         libros.add(libro(rs));
