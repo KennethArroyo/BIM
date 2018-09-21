@@ -58,16 +58,16 @@ function dibujarFila(page,rowData) {
 
 function  buscarLibroAutor() {
     var name = $("textobuscar").val();
-    var n = name;
     $.ajax({type: "GET",
         url: "buscarLibroAutor",
-        data:JSON.stringify(n),
+        data:JSON.stringify(name),
         dataType: "json",
         
         error: function (status) { //si existe un error en la respuesta del ajax
             window.alert("Error");
         },
-        success: function dibujarTabla(data) {
+        success: function(status){
+                window.alert("Error");
             
         }
     });
