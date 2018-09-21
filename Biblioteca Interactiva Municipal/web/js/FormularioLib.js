@@ -42,16 +42,16 @@
        if($.isNumeric(num)){
             if($("#fisico").prop('checked')||$("#digital").prop('checked')){
                  //revisar imagen
-                 if (dato != '') {
+                 if (dato !== '') {
                     var Extension = dato.substring(dato.lastIndexOf('.') + 1).toLowerCase();
             //Es imagen
-                if (Extension == "png"|| Extension == "jpeg" || Extension == "jpg") {
+                if (Extension === "png"|| Extension === "jpeg" || Extension === "jpg") {
                     
                     return true;
                 } 
             //No es imagen
                 else {
-                        //alert("Por favor subir unicamente archivos tipo imagen ");
+                        alert("Por favor subir unicamente archivos tipo imagen ");
                         return false;
                     }
                  }
@@ -59,13 +59,13 @@
             }
             //ningun check esta seleccionado
             else{
-                //alert("Debe seleccionar al menos un tipo de Libro, físico o digital");
+                alert("Debe seleccionar al menos un tipo de Libro, físico o digital");
                 return false;
             }
        }
        else{
            $("#copias").css("border-color","#d81a1a").css("border-width", "3px");
-           //alert("La cantiad de copias debe ser un valor númerico");
+           alert("La cantiad de copias debe ser un valor númerico");
            return false;
        }
        
