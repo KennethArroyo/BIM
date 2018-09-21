@@ -20,19 +20,6 @@
 
     <body>
         <%@include file="header.jsp"%>
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
-                    </div>
-                    <div class="modal-body" id="myModalMessage">
-                        <p>This is a small modal.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!--Fondo de Pantalla-->
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"> 
 
@@ -40,30 +27,31 @@
                 <h2>Buscar Libros</h2>
                 <br>
                 <div class="container">
-                    <form>
+                    <form role="form" onsubmit="return false;">
                         <div class="form-group">
                             <label for="sel1">Buscar Por:
                                 <select id="select" class="form-control" id="sel1" name="sellist1">
-                                    <option>Autor</option>
+                                    <option>autor</option>
                                     <option>Título</option>
                                 </select></label>
                             <br><br>
                             <div class="input-group" id="search-bar">
-                                <input type="text" class="form-control" placeholder="Buscar" id="textobuscar">
+                                <input type="text" class="form-control" id="textobuscar" placeholder="Buscar" >
                                 <div class="input-group-btn">
-                                    <button  class="btn btn-default" onclick="busca()" ><i class="fa fa-search" id="buscar"></i></button>
+                                    <button  class="btn btn-default" onclick="buscarLibroAutor()" ><i class="fa fa-search" id="buscar"></i></button>
                                 </div>
                             </div>
                             <br>
                         </div>
                     </form>
                 </div>
-                <div>
-                    <table border="1" class="table table-hover table-condensed" id="tablaLibros"></table>
-                </div>
-            </div>
 
+            </div>
+            <div class="container" >
+                <table border="1" class="table" id="tablaLibros"></table>
+            </div>
         </div> 
+
 
     </body> 
 

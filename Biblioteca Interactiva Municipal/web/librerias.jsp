@@ -24,9 +24,11 @@
         <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="estilos/bootstrap4/popper.js"></script>
         <script src="estilos/bootstrap4/bootstrap.min.js"></script>
@@ -35,5 +37,6 @@
         <script src="complementos/easing/easing.js"></script>
         <script src="js/custom.js"></script>
         <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
 </html>

@@ -3,10 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var info = [];
+var max;
+var min;
+var inicio;
+
     
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
-    $("#tablaLibros").html("");
+    //$("#tablaLibros").html("");
 
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
@@ -33,11 +38,11 @@ function dibujarTabla(dataJson) {
     }
 }
 
-function dibujarFila(page,rowData) {
+function dibujarFila(rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de una persona
 
-    var row = $(page);
+    var row = $("<tr/>");
     $("#tablaLibros").append(row);
     row.append($("<td>" + rowData.id + "</td>"));
     row.append($("<td>" + rowData.clasificacion + "</td>"));
@@ -57,19 +62,22 @@ function dibujarFila(page,rowData) {
 
 
 function  buscarLibroAutor() {
-    var name = $("textobuscar").val();
-    var n = name;
-    $.ajax({type: "GET",
-        url: "buscarLibroAutor",
-        data:JSON.stringify(n),
-        dataType: "json",
-        
-        error: function (status) { //si existe un error en la respuesta del ajax
-            window.alert("Error");
+    //var name = $("textobuscar").value;
+    $.ajax({
+        url: "BuscarLibro",        
+        data:{
+            accion:"buscarLibroAutor"
+            //nombre:name
         },
-        success: function dibujarTabla(data) {
+        error: function () { //si existe un error en la respuesta del ajax
+            window.alert("1-error");
+        },
+        success: function(data){
+               dibujarTabla(data);
             
-        }
+        },
+        type: 'POST',
+        dataType: "json"
     });
 }
 
