@@ -1,10 +1,13 @@
 package bim.entidades;
+
 import bim.entidades.Asignatura;
+
 /**
  *
  * @author Sergio
  */
 public class Libro {
+
     int id;
     String clasificacion;
     String autor;
@@ -17,8 +20,17 @@ public class Libro {
     String dir_portada;
     String dir_PDF;
     Asignatura asignatura;
+    int habilitado;
 
     public Libro() {
+    }
+
+    public int getHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(int habilitado) {
+        this.habilitado = habilitado;
     }
 
     public int getId() {
@@ -116,5 +128,5 @@ public class Libro {
     public void setAsignatura(Asignatura asignatura) {
         this.asignatura = asignatura;
     }
-    
+
 }
