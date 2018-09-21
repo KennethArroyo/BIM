@@ -9,8 +9,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Reader;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -70,6 +72,7 @@ public class AgregarLibro extends HttpServlet {
         try {
             int fisico;
             int digital;
+            Part PartImagen;
             Asignatura asig = new Asignatura();
             asig.setId(1);
             Libro p = new Libro();
@@ -78,36 +81,52 @@ public class AgregarLibro extends HttpServlet {
             String titulo = request.getParameter("titulo");
             int asignatura = Integer.parseInt(request.getParameter("asignatura"));
             int cant = Integer.parseInt(request.getParameter("copias"));
-            String[] list = request.getParameterValues("fisico");
-            if (list != null) {
-                fisico = Integer.parseInt(list[0]);
+                if(request.getPart("imagenPDF").getSize() != -1){
+                    PartImagen = request.getPart("imagenPDF");
+                    String nombreImagen = Paths.get(PartImagen.getSubmittedFileName()).getFileName().toString();
+                    String tipo = getServletContext().getMimeType(nombreImagen);
+                    OutputStream salida = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Portadas/" + nombreImagen));
+                    InputStream contenido1 = PartImagen.getInputStream();
+                    int leido = 0;
+                    final byte[] bytes = new byte[1024];
+                    while ((leido = contenido1.read(bytes)) != -1) {
+                        salida.write(bytes, 0, leido);
+                    }
+                    salida.close();
+                }
+            
+            String[] listaF = request.getParameterValues("fisico");
+            if (listaF != null) {
+                fisico = Integer.parseInt(listaF[0]);
                 p.setFisico(fisico);
             } else {
                 fisico = 0;
             }
-            String[] list2 = request.getParameterValues("digital");
-            if (list2 != null) {
-                digital = Integer.parseInt(list2[0]);
+            
+            String[] listaD = request.getParameterValues("digital");
+            if (listaD != null) {
+                digital = Integer.parseInt(listaD[0]);
                 p.setDigital(digital);
-                Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-                String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-                String path = getServletContext().getRealPath("/");
-                OutputStream out = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Libros/" + fileName));
-                InputStream fileContent = filePart.getInputStream();
-                int read = 0;
+                Part partPDF = request.getPart("file"); // Retrieves <input type="file" name="file">
+                String nombrePDF = Paths.get(partPDF.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+                //String path = getServletContext().getRealPath("/");
+                OutputStream salida2 = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Libros/" + nombrePDF));
+                InputStream contenido = partPDF.getInputStream();
+                int leido = 0;
                 final byte[] bytes = new byte[1024];
-                while ((read = fileContent.read(bytes)) != -1) {
-                    out.write(bytes, 0, read);
+                while ((leido = contenido.read(bytes)) != -1) {
+                    salida2.write(bytes, 0, leido);
                 }
-                out.close();
+                salida2.close();
             } else {
                 digital = 0;
             }
+            
             String estado = request.getParameter("estado");
             String autor = request.getParameter("autor");
             String comentario = request.getParameter("comentario");
 
-            //Asignatura asig = (Asignatura)Model.instance().buscarEmpresaNombre(asignatura);
+            
             p.setClasificacion(clasificacion);
             p.setAutor(autor);
             p.setCantidad_copias(cant);

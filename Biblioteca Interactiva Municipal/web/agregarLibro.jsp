@@ -49,15 +49,19 @@
                         <label for="copias">Cantidad de copias</label>
                         <input type="text" class="form-control" id="copias" name="copias">
                     </div>
+                    
+                    <br>
+                        <label for="imagenPDF">Imagen portada</label><br>
+                        <input type="file" id="imagenPDF" name="imagenPDF"><br>
 
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
-                        <label class="form-check-label" for="fisico">&nbsp &nbsp Libro Físico</label>
+                        <label class="form-check-label" for="fisico">Libro Físico</label>
                     </div>   
 
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
-                        <label class="form-check-label" for="digital">&nbsp &nbsp Libro Digital</label>
+                        <label class="form-check-label" for="digital">Libro Digital</label>
                     </div>
                     <div class="form-group">
                         <label for="comentario">Comentario corto</label>
