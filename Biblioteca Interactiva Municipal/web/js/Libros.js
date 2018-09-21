@@ -62,7 +62,22 @@ function dibujarFila(rowData) {
 
 function buscar(){
     var name = document.getElementById("textobuscar").value;
+    var tipo =document.getElementById("select").value;
+    if(tipo=="Autor"){
     buscarLibroAutor(name);
+    }
+    else
+       if(tipo=="Título"){
+           buscarLibroTitulo(name);
+       }
+   else
+       if(tipo=="Clasificación"){
+           buscarLibroTitulo(name);
+       }
+   else
+       if(tipo=="Asignatura"){
+           buscarLibroTitulo(name);
+       }
 }
 
 function  buscarLibroAutor(nombre) {

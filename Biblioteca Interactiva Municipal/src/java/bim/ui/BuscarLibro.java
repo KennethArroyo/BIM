@@ -62,19 +62,19 @@ public class BuscarLibro extends HttpServlet {
                     break;
                 case "buscarLibroTitulo":
                     //ArrayList<Libro> q = new ArrayList<Libro>();                 
-                    q = Model.instance().buscarLibroTitulo("libro1");
+                    q = Model.instance().buscarLibroTitulo(input);
                     json = new Gson().toJson(q);
                     out.print(json);
                     break;
                 case "buscarLibroClasificacion":
                     //ArrayList<Libro> q = new ArrayList<Libro>();                 
-                    q = Model.instance().buscarLibroClasificacion("2");
+                    q = Model.instance().buscarLibroClasificacion(input);
                     json = new Gson().toJson(q);
                     out.print(json);
                     break;
                 case "buscarLibroAsignatura":
                     //ArrayList<Libro> q = new ArrayList<Libro>();                 
-                    q = Model.instance().buscarLibroAsignatura("Historia");
+                    q = Model.instance().buscarLibroAsignatura(input);
                     json = new Gson().toJson(q);
                     out.print(json);
                     break;
