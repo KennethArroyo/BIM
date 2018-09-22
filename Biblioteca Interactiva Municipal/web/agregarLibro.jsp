@@ -3,7 +3,6 @@
 <html>
     <head>    
         <%@ include file="librerias.jsp" %>
-        <script src="js/FormularioLib.js" type="text/javascript"></script>
         <title>Agregar libro</title>
     </head>
     
@@ -51,9 +50,8 @@
                     </div>
                     
                     <br>
-                        <label for="imagenPDF">Imagen portada</label><br>
-                        <input type="file" id="imagenPDF" name="imagenPDF"><br>
-
+                    <input type="file" name="imagenPDF" class="file" id="imagenPDF">
+                    <br>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
                         <label class="form-check-label" for="fisico">Libro Físico</label>
@@ -71,11 +69,12 @@
                 </form>
                 <br>
                 <div class="form-group">
-                <input type="submit" class="btn btn-default" form="libForm" value="Agregar">
+                <input type="submit" class="btn btn-primary" id="botonAgregar" form="libForm" value="Agregar">
                 </div>
                 <br>
             </div>    
         </div>  
+        <script src="js/FormularioLib.js" type="text/javascript"></script>
     </body>
     
     <footer>

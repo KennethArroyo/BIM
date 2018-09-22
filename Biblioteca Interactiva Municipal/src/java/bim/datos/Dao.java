@@ -44,15 +44,29 @@ public class Dao {
     }
     
     public void agregarLibro(Libro p) throws Exception {
-        String sql = "insert into Libro(clasificacion,titulo,autor,comentario,cantidad_copias,dir_portada,dir_PDF,habilitado,fisico,digital,asignatura_ID) "
-                + "values('%s','%s','%s','%s',%d,'%s','%s',%d,%d,%d,%d)"; 
-        sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getAutor(), p.getComentario(), p.getCantidad_copias(),
+        String sql = "insert into Libro(clasificacion,titulo,autor,comentario,estado,cantidad_copias,habilitado,fisico,digital,asignatura_ID) "
+                + "values('%s','%s','%s','%s',%d,%d,%d,%d,%d,%d)"; 
+        sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getAutor(), p.getComentario(), p.getEstado(), p.getCantidad_copias(),
+               p.getHabilitado(),p.getFisico(),p.getDigital(),p.getAsignatura().getId());
+        int count = db.executeUpdate(sql);
+        if(count == 0) {
+            throw new Exception("Error ingresando el libro!");
+        }
+    }
+    
+    /* no funciona con las direcicones por ser tal largas, hablar con ronald y karolais
+    public void agregarLibro(Libro p) throws Exception {
+        String sql = "insert into Libro(clasificacion,titulo,autor,comentario,estado,cantidad_copias,dir_portada,dir_PDF,habilitado,fisico,digital,asignatura_ID) "
+                + "values('%s','%s','%s','%s',%d,%d,'%s','%s',%d,%d,%d,%d)"; 
+        sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getAutor(), p.getComentario(), p.getEstado(), p.getCantidad_copias(),
                 p.getDir_portada(),p.getDir_PDF(),p.getHabilitado(),p.getFisico(),p.getDigital(),p.getAsignatura().getId());
         int count = db.executeUpdate(sql);
         if(count == 0) {
             throw new Exception("Error ingresando el libro!");
         }
     }
+    
+    */
     
     public ArrayList<Asignatura> listarAsignaturas() throws Exception {
         ArrayList<Asignatura> lista = new ArrayList<Asignatura>();

@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -81,11 +82,14 @@ public class AgregarLibro extends HttpServlet {
             String titulo = request.getParameter("titulo");
             int asignatura = Integer.parseInt(request.getParameter("asignatura"));
             int cant = Integer.parseInt(request.getParameter("copias"));
-                if(request.getPart("imagenPDF").getSize() != -1){
+            int tamano = (int) request.getPart("imagenPDF").getSize();
+                if(tamano != 0){
                     PartImagen = request.getPart("imagenPDF");
                     String nombreImagen = Paths.get(PartImagen.getSubmittedFileName()).getFileName().toString();
                     String tipo = getServletContext().getMimeType(nombreImagen);
                     OutputStream salida = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Portadas/" + nombreImagen));
+                    String caminoImagen = Paths.get(getServletContext().getRealPath("/") + "Portadas/", nombreImagen).toString();
+                    p.setDir_portada(caminoImagen);
                     InputStream contenido1 = PartImagen.getInputStream();
                     int leido = 0;
                     final byte[] bytes = new byte[1024];
@@ -111,6 +115,8 @@ public class AgregarLibro extends HttpServlet {
                 String nombrePDF = Paths.get(partPDF.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
                 //String path = getServletContext().getRealPath("/");
                 OutputStream salida2 = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Libros/" + nombrePDF));
+                String caminoPDF = Paths.get(getServletContext().getRealPath("/") + "Portadas/", nombrePDF).toString();
+                p.setDir_PDF(caminoPDF);
                 InputStream contenido = partPDF.getInputStream();
                 int leido = 0;
                 final byte[] bytes = new byte[1024];
@@ -120,6 +126,7 @@ public class AgregarLibro extends HttpServlet {
                 salida2.close();
             } else {
                 digital = 0;
+                p.setDir_PDF("");
             }
             
             String estado = request.getParameter("estado");
@@ -134,6 +141,7 @@ public class AgregarLibro extends HttpServlet {
             p.setAsignatura(asig);
             p.setComentario(comentario);
             p.setTitulo(titulo);
+            p.setHabilitado(1);
 
             Model.instance().agregarLibro(p);
             request.getRequestDispatcher("principal.jsp").forward(request, response);
