@@ -31,8 +31,8 @@
                     <form role="form" onsubmit="return false;">
                         <div class="form-group">
 
-                            <label for="sel1">Buscar Por:
-                                <select class="form-control" id="sel1">
+                            <label for="selectBuscar">Buscar Por:
+                                <select class="form-control" id="selectBuscar">
                                     <option value="clasificacion" selected="selected">Clasificación</option>
                                     <option value="asignatura">Asignatura</option>
                                     <option value="titulo">Título</option>

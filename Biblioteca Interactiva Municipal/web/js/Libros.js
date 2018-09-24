@@ -58,34 +58,34 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.dir_portada + "</td>"));
     row.append($("<td>" + rowData.dir_PDF + "</td>"));
     row.append($("<td>" + rowData.habilitado + "</td>"));
-    row.append($("<td>" + rowData.asignatura_ID + "</td>"));
+    row.append($("<td>" + rowData.asignatura.id + "</td>"));
     row.append($('<td><button type="button" class="btn btn-info" onclick="consultarLibroId('+rowData.id+');">'+'<img src="imagenes/lead_pencil.png"/>'+'</button></td>'));
     row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 
 }
 
 function buscar(){
-//    var tipo = document.getElementById("sell").val();
-   var name = document.getElementById("textobuscar").value;
+   var tipo = $("#selectBuscar").val();
+   var name = $("#textobuscar").val();
+   // buscarLibroAutor(name);
+    if(tipo === "autor"){
     buscarLibroAutor(name);
-//    if(tipo === "autor"){
-//    buscarLibroAutor(name);
-//    }
-//    else
-//       if(tipo === "titulo"){
-//           buscarLibroTitulo(name);
-//       }
-//   else
-//       if(tipo === "clasificacion"){
-//           buscarLibroClasificacion(name);
-//       }
-//   else
-//     if(tipo === "asignatura"){
-//           buscarLibroAsignatura(name);
-//       }
-//   else{
-//       window.alert("1-error");
-//   }
+    }
+    else
+       if(tipo === "titulo"){
+           buscarLibroTitulo(name);
+       }
+   else
+       if(tipo === "clasificacion"){
+           buscarLibroClasificacion(name);
+       }
+   else
+     if(tipo === "asignatura"){
+           buscarLibroAsignatura(name);
+       }
+   else{
+       window.alert("1-error");
+   }
 }
 function consultarLibroId(idLibro){
     

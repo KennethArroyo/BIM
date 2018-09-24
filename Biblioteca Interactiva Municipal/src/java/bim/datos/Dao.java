@@ -14,14 +14,15 @@ public class Dao {
     
     private Asignatura asignatura(ResultSet rs) throws Exception{
         Asignatura p = new Asignatura();
-        p.setId(rs.getInt("ID"));
-        p.setNombre(rs.getString("Nombre"));
+        p.setId(rs.getInt("asignatura_ID"));
+        //p.setNombre(rs.getString("Nombre"));
         return p;
     }
     
    private Libro libro(ResultSet rs) throws Exception{
         Libro o = new Libro();
         Asignatura a = new Asignatura();
+        a = asignatura(rs);
         o.setId(rs.getInt("ID"));
         o.setClasificacion(rs.getString("Clasificacion"));
         o.setAutor(rs.getString("Autor"));
@@ -137,7 +138,7 @@ public class Dao {
     public ArrayList<Libro> buscarLibroAsignatura(String asignatura)throws Exception{
         ArrayList<Libro> libros= new ArrayList<Libro>();
         try {
-        String sql="select * from Libro, Asignatura where = '%s' ";
+        String sql="select * from Libro where = '%s'";
         sql = String.format(sql, asignatura);
         ResultSet rs = db.executeQuery(sql);
         while(rs.next()){
