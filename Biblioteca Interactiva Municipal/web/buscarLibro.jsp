@@ -14,6 +14,7 @@
         <%@include file="librerias.jsp"%>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="js/Libros.js" type="text/javascript"></script>
+        <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <%--<jsp:useBean id="libros" scope="request" type="ArrayList<Libro>" class="java.util.ArrayList"/>
         --%>
     </head>
@@ -32,12 +33,13 @@
 
                             <label for="sel1">Buscar Por:
                                 <select class="form-control" id="sel1">
-                                    <option value="clasificacion">Clasificación</option>
+                                    <option value="clasificacion" selected="selected">Clasificación</option>
                                     <option value="asignatura">Asignatura</option>
                                     <option value="titulo">Título</option>
                                     <option value="autor">Autor</option>                             
                                 </select>
                             </label>
+
 
                             <br><br>
                             <div class="input-group" id="search-bar">
@@ -52,8 +54,11 @@
                 </div>
 
             </div>
-            <div class="container" >
+            <%--<div class="container" >
                 <table border="1" class="table" id="tablaLibros"></table>
+            </div>--%>
+            <div class="table-responsive">
+                <table border="2" class="table" id="tablaLibros"></table>
             </div>
         </div> 
 

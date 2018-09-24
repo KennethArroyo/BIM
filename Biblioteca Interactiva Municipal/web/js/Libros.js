@@ -18,7 +18,7 @@ function dibujarTabla(dataJson) {
     var row = $("<tr />");
     head.append(row);
     $("#tablaLibros").append(head);
-    row.append($("<th>ID<b></b></th>"));
+    //row.append($("<th>ID<b></b></th>"));
     row.append($("<th>CLASIFICACION<b></b></th>"));
     row.append($("<th><b>AUTOR</b></th>"));
     row.append($("<th><b>TITULO</b></th>"));
@@ -31,6 +31,8 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>DIR PDF</th>"));
     row.append($("<th>HABILITADO<b></b></th>"));
     row.append($("<th>ASIGNATURA ID<b></b></th>"));
+    row.append($("<th>EDITAR<b></b></th>"));
+    row.append($("<th>HAB/DESHAB<b></b></th>"));
 
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
@@ -44,7 +46,7 @@ function dibujarFila(rowData) {
 
     var row = $("<tr/>");
     $("#tablaLibros").append(row);
-    row.append($("<td>" + rowData.id + "</td>"));
+    //row.append($("<td>" + rowData.id + "</td>"));
     row.append($("<td>" + rowData.clasificacion + "</td>"));
     row.append($("<td>" + rowData.autor + "</td>"));
     row.append($("<td>" + rowData.titulo + "</td>"));
@@ -57,30 +59,40 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.dir_PDF + "</td>"));
     row.append($("<td>" + rowData.habilitado + "</td>"));
     row.append($("<td>" + rowData.asignatura_ID + "</td>"));
+    row.append($('<td><button type="button" class="btn btn-info" onclick="consultarLibroId('+rowData.id+');">'+'<img src="imagenes/lead_pencil.png"/>'+'</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 
 }
 
 function buscar(){
-    var name = document.getElementById("textobuscar").value;
-    //var tipo = document.getElementsByName("sellist1").value;
-    if($("sell").val() === "autor"){
+//    var tipo = document.getElementById("sell").val();
+   var name = document.getElementById("textobuscar").value;
     buscarLibroAutor(name);
-    }
-    else
-       if($("sell").val() === "titulo"){
-           buscarLibroTitulo(name);
-       }
-   else
-       if($("sell").val() === "clasificacion"){
-           buscarLibroClasificacion(name);
-       }
-   else
-     if($("sell").val() === "asignatura"){
-           buscarLibroAsignatura(name);
-       }
-   else{
-       window.alert("1-error");
-   }
+//    if(tipo === "autor"){
+//    buscarLibroAutor(name);
+//    }
+//    else
+//       if(tipo === "titulo"){
+//           buscarLibroTitulo(name);
+//       }
+//   else
+//       if(tipo === "clasificacion"){
+//           buscarLibroClasificacion(name);
+//       }
+//   else
+//     if(tipo === "asignatura"){
+//           buscarLibroAsignatura(name);
+//       }
+//   else{
+//       window.alert("1-error");
+//   }
+}
+function consultarLibroId(idLibro){
+    
+}
+
+function deshabilitarLibro(idLibro){
+    
 }
 
 function  buscarLibroAutor(nombre) {
