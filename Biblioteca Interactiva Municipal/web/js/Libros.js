@@ -22,15 +22,15 @@ function dibujarTabla(dataJson) {
     row.append($("<th>CLASIFICACION<b></b></th>"));
     row.append($("<th><b>AUTOR</b></th>"));
     row.append($("<th><b>TITULO</b></th>"));
-    row.append($("<th><b>ESTADO</b></th>"));
+   // row.append($("<th><b>ESTADO</b></th>"));
     row.append($("<th><b>COMENTARIO</b></th>"));
     row.append($("<th>CANTIDAD COPIAS<b></b></th>"));
-    row.append($("<th>FISICO<b></b></th>"));
-    row.append($("<th>DIGITAL<b></b></th>"));
-    row.append($("<th>DIR PORTADA<b></b></th>"));
-    row.append($("<th><b>DIR PDF</th>"));
-    row.append($("<th>HABILITADO<b></b></th>"));
-    row.append($("<th>ASIGNATURA ID<b></b></th>"));
+//    row.append($("<th>FISICO<b></b></th>"));
+//    row.append($("<th>DIGITAL<b></b></th>"));
+//    row.append($("<th>DIR PORTADA<b></b></th>"));
+//    row.append($("<th><b>DIR PDF</th>"));
+//    row.append($("<th>HABILITADO<b></b></th>"));
+    row.append($("<th>ASIGNATURA<b></b></th>"));
     row.append($("<th>EDITAR<b></b></th>"));
     row.append($("<th>HAB/DESHAB<b></b></th>"));
 
@@ -50,15 +50,15 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.clasificacion + "</td>"));
     row.append($("<td>" + rowData.autor + "</td>"));
     row.append($("<td>" + rowData.titulo + "</td>"));
-    row.append($("<td>" + rowData.estado + "</td>"));
+   // row.append($("<td>" + rowData.estado + "</td>"));
     row.append($("<td>" + rowData.comentario + "</td>"));
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
-    row.append($("<td>" + rowData.fisico + "</td>"));
-    row.append($("<td>" + rowData.digital + "</td>"));
-    row.append($("<td>" + rowData.dir_portada + "</td>"));
-    row.append($("<td>" + rowData.dir_PDF + "</td>"));
-    row.append($("<td>" + rowData.habilitado + "</td>"));
-    row.append($("<td>" + rowData.asignatura.id + "</td>"));
+//    row.append($("<td>" + rowData.fisico + "</td>"));
+//    row.append($("<td>" + rowData.digital + "</td>"));
+//    row.append($("<td>" + rowData.dir_portada + "</td>"));
+//    row.append($("<td>" + rowData.dir_PDF + "</td>"));
+//    row.append($("<td>" + rowData.habilitado + "</td>"));
+    row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
     row.append($('<td><button type="button" class="btn btn-info" onclick="consultarLibroId('+rowData.id+');">'+'<img src="imagenes/lead_pencil.png"/>'+'</button></td>'));
     row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 
