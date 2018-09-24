@@ -53,7 +53,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
     row.append($("<td>" + rowData.fisico + "</td>"));
     row.append($("<td>" + rowData.digital + "</td>"));
-    row.append($("<td>" + rowData.dir_Portada + "</td>"));
+    row.append($("<td>" + rowData.dir_portada + "</td>"));
     row.append($("<td>" + rowData.dir_PDF + "</td>"));
     row.append($("<td>" + rowData.habilitado + "</td>"));
     row.append($("<td>" + rowData.asignatura_ID + "</td>"));
@@ -62,22 +62,25 @@ function dibujarFila(rowData) {
 
 function buscar(){
     var name = document.getElementById("textobuscar").value;
-    var tipo =document.getElementById("select").value;
-    if(tipo=="Autor"){
+    //var tipo = document.getElementsByName("sellist1").value;
+    if($("sell").val() === "autor"){
     buscarLibroAutor(name);
     }
     else
-       if(tipo=="Título"){
+       if($("sell").val() === "titulo"){
            buscarLibroTitulo(name);
        }
    else
-       if(tipo=="Clasificación"){
-           buscarLibroTitulo(name);
+       if($("sell").val() === "clasificacion"){
+           buscarLibroClasificacion(name);
        }
    else
-       if(tipo=="Asignatura"){
-           buscarLibroTitulo(name);
+     if($("sell").val() === "asignatura"){
+           buscarLibroAsignatura(name);
        }
+   else{
+       window.alert("1-error");
+   }
 }
 
 function  buscarLibroAutor(nombre) {
@@ -102,13 +105,13 @@ function  buscarLibroAutor(nombre) {
     });
 }
 
-function  buscarLibroClasificacion() {
+function  buscarLibroClasificacion(name) {
     //var name = $("textobuscar").value;
     $.ajax({
         url: "BuscarLibro",        
         data:{
-            accion:"buscarLibroClasificacion"
-            //nombre:name
+            accion:"buscarLibroClasificacion",
+            nombre:name
         },
         error: function () { //si existe un error en la respuesta del ajax
             window.alert("1-error");
@@ -122,13 +125,13 @@ function  buscarLibroClasificacion() {
     });
 }
 
-function  buscarLibroTitulo() {
+function  buscarLibroTitulo(name) {
     //var name = $("textobuscar").value;
     $.ajax({
         url: "BuscarLibro",        
         data:{
-            accion:"buscarLibroTitulo"
-            //nombre:name
+            accion:"buscarLibroTitulo",
+            nombre:name
         },
         error: function () { //si existe un error en la respuesta del ajax
             window.alert("1-error");
@@ -142,13 +145,13 @@ function  buscarLibroTitulo() {
     });
 }
 
-function  buscarLibroAsignatura() {
+function  buscarLibroAsignatura(name) {
     //var name = $("textobuscar").value;
     $.ajax({
         url: "BuscarLibro",        
         data:{
-            accion:"buscarLibroAsignatura"
-            //nombre:name
+            accion:"buscarLibroAsignatura",
+            nombre:name
         },
         error: function () { //si existe un error en la respuesta del ajax
             window.alert("1-error");

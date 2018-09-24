@@ -29,13 +29,16 @@
                 <div class="container">
                     <form role="form" onsubmit="return false;">
                         <div class="form-group">
+
                             <label for="sel1">Buscar Por:
-                                <select id="select" class="form-control" id="sel1" name="sellist1">
-                                    <option>Clasificación</option>
-                                    <option>Asignatura</option>
-                                    <option>Título</option>
-                                    <option>Autor</option>                             
-                                </select></label>
+                                <select class="form-control" id="sel1">
+                                    <option value="clasificacion">Clasificación</option>
+                                    <option value="asignatura">Asignatura</option>
+                                    <option value="titulo">Título</option>
+                                    <option value="autor">Autor</option>                             
+                                </select>
+                            </label>
+
                             <br><br>
                             <div class="input-group" id="search-bar">
                                 <input type="text" class="form-control" id="textobuscar" placeholder="Buscar" >
