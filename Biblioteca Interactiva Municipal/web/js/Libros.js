@@ -7,7 +7,27 @@ var info = [];
 var max;
 var min;
 var inicio;
-
+$(document).ready(function getAsignaturas(){
+            $.ajax({type: "GET", 
+                  url:"GetAsignaturas",
+                  success: 
+                    function(obj){
+                      updateList(obj);
+                       $('#asignatura').reset();
+                    },
+                  error: function(status){
+                         window.alert("Error");
+                    }                    
+                });   
+            });
+            
+            //id='\""+quest[i].dia+"\"'
+                function updateList(list){
+                    for (var i = 0; i <= list.length; i++) {
+        $('#asignatura').append('<option value="' + list[i].id + '">' + list[i].nombre + '</option>');
+    }
+  }
+  
 $("#cancelar").click(function () {
         //limpiarForm();
         $("#myModalFormulario").modal("hide");
@@ -211,7 +231,8 @@ function buscarLibroId(idLibro){
                $("#copias").val(data.cantidad_copias);
                $("#fisico").val(data.fisico);
                $("#digital").val(data.digital);
-               $("#asignatura").val(data.asignatura_ID);         
+               //$("#asignatura").val(data.asignatura);    
+               buscarLibroAsignatura(data.asignatura); 
             
         },
         type: 'POST',

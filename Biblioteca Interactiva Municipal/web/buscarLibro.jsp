@@ -114,10 +114,10 @@
                                 <div class="col-md-4">         
                                     <div class="form-group">
                                         <label for="estado">Estado</label>
-                                        <select class="form-control" id="estado" name="estado" name="estado">
-                                            <option>Bueno</option>
-                                            <option>Regular</option>
-                                            <option>Malo</option>
+                                        <select class="form-control" id="estado"name="estado">
+                                            <option value="1">Bueno</option>
+                                            <option value="2">Regular</option>
+                                            <option value="3">Malo</option>
                                         </select>
                                     </div>
                                 </div>
