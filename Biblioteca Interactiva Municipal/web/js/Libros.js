@@ -8,11 +8,11 @@ var max;
 var min;
 var inicio;
 
-//$("#cancelar").click(function () {
-//        limpiarForm();
-//        $("#myModalFormulario").modal("hide");
-//    });
-    
+$("#cancelar").click(function () {
+        //limpiarForm();
+        $("#myModalFormulario").modal("hide");
+    });
+
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaLibros").html("");
@@ -26,7 +26,7 @@ function dibujarTabla(dataJson) {
     row.append($("<th>CLASIFICACION<b></b></th>"));
     row.append($("<th><b>AUTOR</b></th>"));
     row.append($("<th><b>TITULO</b></th>"));
-   // row.append($("<th><b>ESTADO</b></th>"));
+    row.append($("<th><b>ESTADO</b></th>"));
     row.append($("<th><b>COMENTARIO</b></th>"));
     row.append($("<th>CANTIDAD COPIAS<b></b></th>"));
 //    row.append($("<th>FISICO<b></b></th>"));
@@ -54,7 +54,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.clasificacion + "</td>"));
     row.append($("<td>" + rowData.autor + "</td>"));
     row.append($("<td>" + rowData.titulo + "</td>"));
-   // row.append($("<td>" + rowData.estado + "</td>"));
+    row.append($("<td>" + rowData.estado + "</td>"));
     row.append($("<td>" + rowData.comentario + "</td>"));
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
 //    row.append($("<td>" + rowData.fisico + "</td>"));
@@ -208,7 +208,7 @@ function buscarLibroId(idLibro){
                $("#autor").val(data.autor);
                $("#comentario").val(data.comentario);
                $("#estado").val(data.estado);
-               $("#cantidadCopias").val(data.cantidad_copias);
+               $("#copias").val(data.cantidad_copias);
                $("#fisico").val(data.fisico);
                $("#digital").val(data.digital);
                $("#asignatura").val(data.asignatura_ID);         
