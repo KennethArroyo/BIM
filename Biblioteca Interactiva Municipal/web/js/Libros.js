@@ -8,6 +8,10 @@ var max;
 var min;
 var inicio;
 
+//$("#cancelar").click(function () {
+//        limpiarForm();
+//        $("#myModalFormulario").modal("hide");
+//    });
     
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
@@ -32,7 +36,7 @@ function dibujarTabla(dataJson) {
 //    row.append($("<th>HABILITADO<b></b></th>"));
     row.append($("<th>ASIGNATURA<b></b></th>"));
     row.append($("<th>EDITAR<b></b></th>"));
-    row.append($("<th>HAB/DESHAB<b></b></th>"));
+    //row.append($("<th>HAB/DESHAB<b></b></th>"));
 
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
@@ -60,7 +64,7 @@ function dibujarFila(rowData) {
 //    row.append($("<td>" + rowData.habilitado + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
     row.append($('<td><button type="button" class="btn btn-info" onclick="consultarLibroId('+rowData.id+');">'+'<img src="imagenes/lead_pencil.png"/>'+'</button></td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
+    //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 
 }
 
@@ -177,28 +181,35 @@ function  buscarLibroAsignatura(name) {
     });
 }
 
-function mostrarMensaje(classCss, msg, neg) {
-    //se le eliminan los estilos al mensaje
-    $("#mesajeResult").removeClass();
-
-    //se setean los estilos
-    $("#mesajeResult").addClass(classCss);
-
-    //se muestra la capa del mensaje con los parametros del metodo
-    $("#mesajeResult").fadeIn("slow");
-    $("#mesajeResultNeg").html(neg);
-    $("#mesajeResultText").html(msg);
-    $("#mesajeResultText").html(msg);
-}
-
-function BuscarLibro(){
-    var name = $("textobuscar").val();
-    var a="autor";
-    var t="titulo";
-    var c="clasificacion";
-    var as="asignatura";
-    if(name===a){
-        
-    }
-    buscarLibroAutor(name);
-}
+//function buscarLibroId(idLibro){
+//    $.ajax({
+//        url: "BuscarLibro",        
+//        data:{
+//            accion:"buscarLibroId",
+//            nombre:idLibro
+//        },
+//        error: function () { //si existe un error en la respuesta del ajax
+//            window.alert("1-error");
+//        },
+//        success: function(data){
+//                $("#myModalFormulario").modal();
+//               //dibujarTabla(data);
+//               $("#id").attr('readonly','readonly');
+//               $("#libroAction").val("modificarLibro");
+//               
+//               $("#id").val(data.idLibro);
+//               $("#clasificacion").val(data.clasificacion);
+//               $("#titulo").val(data.titulo);
+//               $("#autor").val(data.autor);
+//               $("#comentario").val(data.comentario);
+//               $("#estado").val(data.estado);
+//               $("#cantidadCopias").val(data.cantidad_copias);
+//               $("#fisico").val(data.fisico);
+//               $("#digital").val(data.digital);
+//               $("#asignatura").val(data.asignatura_ID);         
+//            
+//        },
+//        type: 'POST',
+//        dataType: "json"
+//    });
+//}

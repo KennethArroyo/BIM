@@ -52,4 +52,10 @@ public class Model {
     public ArrayList<Libro> buscarLibroClasificacion(String clasificacion) throws Exception {
         return dao.buscarLibroClasificacion(clasificacion);
     }
+    public Libro buscarLibroId(int id)throws Exception{
+        return dao.buscarLibroId(id);
+    }
+    public Libro modificarLibro(Libro l)throws Exception{
+    return dao.modificarLibro(l);
+    }
 }

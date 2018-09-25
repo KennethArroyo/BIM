@@ -23,7 +23,7 @@
         <%@include file="header.jsp"%>
         <!--Fondo de Pantalla-->
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"> 
-
+              
             <div class="container">
                 <h2>Buscar Libros</h2>
                 <br>
@@ -60,6 +60,8 @@
             <div class="table-responsive">
                 <table border="2" class="table" id="tablaLibros"></table>
             </div>
+            
+            
         </div> 
 
 
