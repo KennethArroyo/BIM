@@ -47,19 +47,19 @@
                     <div class="form-group">
                         <label for="copias">Cantidad de copias</label>
                         <input type="text" class="form-control" id="copias" name="copias">
-                    </div>
-                    
-                    <br>
+                    </div><br>
+                     <div class="form-group">
+                    <label for="imagenPDF">Portada</label>
                     <input type="file" name="imagenPDF" class="file" id="imagenPDF">
-                    <br>
+                    </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
-                        <label class="form-check-label" for="fisico">Libro Físico</label>
+                        <label for="fisico"><input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
+                            Libro Físico</label>
                     </div>   
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
-                        <label class="form-check-label" for="digital">Libro Digital</label>
+                        <label for="digital"><input class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
+                            Libro Digital</label>
                     </div>
                     <div class="form-group">
                         <label for="comentario">Comentario corto</label>

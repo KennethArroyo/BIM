@@ -12,7 +12,7 @@
                   success: 
                     function(obj){
                       updateList(obj);
-                       $('#asignatura').reset();
+                       //$('#asignatura').reset();
                     },
                   error: function(status){
                          window.alert("Error");
@@ -20,7 +20,6 @@
                 });   
             });
             
-            //id='\""+quest[i].dia+"\"'
                 function updateList(list){
                     for (var i = 0; i <= list.length; i++) {
         $('#asignatura').append('<option value="' + list[i].id + '">' + list[i].nombre + '</option>');
