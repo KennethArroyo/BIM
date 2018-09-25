@@ -22,7 +22,7 @@
 
     <body>
         <%@include file="header.jsp"%>
-         <%--<div class="modal fade" id="myModal" role="dialog">
+         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-        </div>--%>
+        </div>
         <!--Fondo de Pantalla-->
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"> 
               
@@ -75,7 +75,7 @@
             <div class="table-responsive">
                 <table border="2" class="table" id="tablaLibros"></table>
             </div>
-           <%-- <div class="modal fade" id="myModalFormulario" role="dialog">
+           <div class="modal fade" id="myModalFormulario" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -143,7 +143,7 @@
                     </div>
                 </div>
             </div>
-        </div>--%>
+        </div>
         </div> 
 
 

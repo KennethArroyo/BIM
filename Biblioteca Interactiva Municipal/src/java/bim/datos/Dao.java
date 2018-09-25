@@ -155,7 +155,7 @@ public class Dao {
     public Libro buscarLibroId(int id)throws Exception{
         Libro libro = new Libro();
         try {
-        String sql="select * from Libro l, Asignatura a where l.id=%d and a.nombre='%s'";
+        String sql="select * from Libro l, Asignatura a where l.id=%d and l.asignatura_ID = a.id";
         sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
         rs.next();
