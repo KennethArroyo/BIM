@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
  //agregarLibro.jsp
-
-
     $(document).ready(function getAsignaturas(){
             $.ajax({type: "GET", 
                   url:"GetAsignaturas",
