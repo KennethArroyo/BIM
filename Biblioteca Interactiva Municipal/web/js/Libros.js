@@ -35,7 +35,7 @@ function dibujarTabla(dataJson) {
 //    row.append($("<th><b>DIR PDF</th>"));
 //    row.append($("<th>HABILITADO<b></b></th>"));
     row.append($("<th>ASIGNATURA<b></b></th>"));
-    row.append($("<th>EDITAR<b></b></th>"));
+    //row.append($("<th>EDITAR<b></b></th>"));
     //row.append($("<th>HAB/DESHAB<b></b></th>"));
 
     //carga la tabla con el json devuelto
@@ -63,7 +63,7 @@ function dibujarFila(rowData) {
 //    row.append($("<td>" + rowData.dir_PDF + "</td>"));
 //    row.append($("<td>" + rowData.habilitado + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-info" onclick="consultarLibroId('+rowData.id+');">'+'<img src="imagenes/lead_pencil.png"/>'+'</button></td>'));
+    //row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId('+rowData.id+');">'+'<img src="imagenes/lead_pencil.png"/>'+'</button></td>'));
     //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 
 }
@@ -87,8 +87,12 @@ function buscar(){
      if(tipo === "asignatura"){
            buscarLibroAsignatura(name);
        }
+   else
+       if(tipo==="ident"){
+           buscarLibroId(name);
+       }
    else{
-       window.alert("1-error");
+       window.alert("2-error");
    }
 }
 function consultarLibroId(idLibro){
@@ -181,17 +185,18 @@ function  buscarLibroAsignatura(name) {
     });
 }
 
-//function buscarLibroId(idLibro){
-//    $.ajax({
-//        url: "BuscarLibro",        
-//        data:{
-//            accion:"buscarLibroId",
-//            nombre:idLibro
-//        },
-//        error: function () { //si existe un error en la respuesta del ajax
-//            window.alert("1-error");
-//        },
-//        success: function(data){
+function buscarLibroId(idLibro){
+    $.ajax({
+        url: "BuscarLibro",        
+        data:{
+            accion:"buscarLibroId",
+            idLibro:idLibro
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            window.alert("1-error");
+        },
+        success: function(data){
+                dibujarTabla(data);
 //                $("#myModalFormulario").modal();
 //               //dibujarTabla(data);
 //               $("#id").attr('readonly','readonly');
@@ -207,9 +212,9 @@ function  buscarLibroAsignatura(name) {
 //               $("#fisico").val(data.fisico);
 //               $("#digital").val(data.digital);
 //               $("#asignatura").val(data.asignatura_ID);         
-//            
-//        },
-//        type: 'POST',
-//        dataType: "json"
-//    });
-//}
+            
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}

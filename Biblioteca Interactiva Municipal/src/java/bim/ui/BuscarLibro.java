@@ -50,9 +50,11 @@ public class BuscarLibro extends HttpServlet {
         try {
             String json;
             ArrayList<Libro> q = new ArrayList<Libro>();
+            Libro l=new Libro();
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             String input=request.getParameter("nombre");
+            Integer ident=Integer.parseInt(request.getParameter("idLibro"));
             switch (accion) {
                 case "buscarLibroAutor":
                     //ArrayList<Libro> q = new ArrayList<Libro>();                 
@@ -76,6 +78,11 @@ public class BuscarLibro extends HttpServlet {
                     //ArrayList<Libro> q = new ArrayList<Libro>();                 
                     q = Model.instance().buscarLibroAsignatura(input);
                     json = new Gson().toJson(q);
+                    out.print(json);
+                    break;
+                case "buscarLibroId":
+                    l=Model.instance().buscarLibroId(ident);
+                    json=new Gson().toJson(l);
                     out.print(json);
                     break;
                 default:
