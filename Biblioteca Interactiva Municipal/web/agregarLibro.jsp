@@ -69,7 +69,8 @@
                 </form>
                 <br>
                 <div class="form-group">
-                <input type="submit" class="btn btn-primary" id="botonAgregar" form="libForm" value="Agregar">
+                <input type="submit" class="btn btn-success" id="botonAgregar" form="libForm" value="Agregar">
+                 <a href="principal.jsp" id="cancel" name="cancel" class="btn btn-danger">Cancelar</a>
                 </div>
                 <br>
             </div>    

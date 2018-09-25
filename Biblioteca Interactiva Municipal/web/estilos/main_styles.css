@@ -1074,13 +1074,3 @@ display: block;
     align-content: center;
     
 }
-
-.table{
-    border:1px solid blue;
-  }
-.table > thead > tr > th{
-    border:1px solid blue;
-}
-.table > tbody > tr > td{
-    border:1px solid blue;
-}
