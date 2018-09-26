@@ -7,50 +7,48 @@ var info = [];
 var max;
 var min;
 var inicio;
-function onClickDigital(){
-      if($("#digital").is(':checked')){
-          $("#libForm").append('<input type="file" name="file" class="file" id="file" required>');
-      }
-      else {
-          $("#file").remove();
-      }
-      }
-      
-function agregarLibro(){
+function onClickDigital() {
+    if ($("#digital").is(':checked')) {
+        $("#libForm").append('<input type="file" name="file" class="file" id="file" required>');
+    } else {
+        $("#file").remove();
+    }
+}
+
+function agregarLibro() {
     var dato = $("#imagenPDF").val();
     var num = $("#copias").val();
-       if($.isNumeric(num)){
-            if($("#fisico").prop('checked')||$("#digital").prop('checked')){
-                 //revisar imagen
-                 if (dato !== '') {
-                    var Extension = dato.substring(dato.lastIndexOf('.') + 1).toLowerCase();
-            //Es imagen
-                if (Extension === "png"|| Extension === "jpeg" || Extension === "jpg") {
-                    
+    if ($.isNumeric(num)) {
+        if ($("#fisico").prop('checked') || $("#digital").prop('checked')) {
+            //revisar imagen
+            if (dato !== '') {
+                var Extension = dato.substring(dato.lastIndexOf('.') + 1).toLowerCase();
+                //Es imagen
+                if (Extension === "png" || Extension === "jpeg" || Extension === "jpg") {
+
                     return true;
-                } 
-            //No es imagen
+                }
+                //No es imagen
                 else {
-                        alert("Por favor subir unicamente archivos tipo imagen ");
-                        return false;
-                    }
-                 }
-                return true;
+                    alert("Por favor subir unicamente archivos tipo imagen ");
+                    return false;
+                }
             }
-            //ningun check esta seleccionado
-            else{
-                alert("Debe seleccionar al menos un tipo de Libro, físico o digital");
-                return false;
-            }
-       }
-       else{
-           $("#copias").css("border-color","#d81a1a").css("border-width", "3px");
-           alert("La cantiad de copias debe ser un valor númerico");
-           return false;
-       }
-       
-   }
-   
+            return true;
+        }
+        //ningun check esta seleccionado
+        else {
+            alert("Debe seleccionar al menos un tipo de Libro, físico o digital");
+            return false;
+        }
+    } else {
+        $("#copias").css("border-color", "#d81a1a").css("border-width", "3px");
+        alert("La cantiad de copias debe ser un valor númerico");
+        return false;
+    }
+
+}
+
 $(document).ready(function getAsignaturas() {
     $.ajax({type: "GET",
         url: "GetAsignaturas",
@@ -114,14 +112,15 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.clasificacion + "</td>"));
     row.append($("<td>" + rowData.autor + "</td>"));
     row.append($("<td>" + rowData.titulo + "</td>"));
-    if(rowData.estado===1){
-    row.append($("<td>" + "bueno" + "</td>"));
-    }
-    if(rowData.estado===2){
-    row.append($("<td>" + "regular" + "</td>"));
-    }
-    if(rowData.estado===3){
-    row.append($("<td>" + "malo" + "</td>"));
+    if (rowData.estado === 1) {
+        row.append($("<td>" + "bueno" + "</td>"));
+    } else
+    if (rowData.estado === 2) {
+        row.append($("<td>" + "regular" + "</td>"));
+    } else
+
+    if (rowData.estado === 3) {
+        row.append($("<td>" + "malo" + "</td>"));
     }
     row.append($("<td>" + rowData.comentario + "</td>"));
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
