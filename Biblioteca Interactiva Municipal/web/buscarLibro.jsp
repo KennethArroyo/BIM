@@ -51,7 +51,6 @@
                                     <option value="asignatura">Asignatura</option>
                                     <option value="titulo">Título</option>
                                     <option value="autor">Autor</option>  
-                                    <option value="ident">ID</option>
                                 </select>
                             </label>
 
@@ -85,7 +84,7 @@
                         <h4 class="modal-title" id="myModalTitle">Modificar Libros
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false;" id="formModal">
+                        <form role="form" onsubmit="return false" id="formModal">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -163,7 +162,7 @@
                                     <div class="form-group">
                                         <input type="hidden" value="modificarLibro" id="libroAction"/>
                                         <button type="submit" onclick="modificarLibro()" class=" btn btn-success">Guardar</button>
-                                        <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
                                     </div>
                                 </div>
                             </div>

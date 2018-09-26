@@ -54,26 +54,22 @@ public class BuscarLibro extends HttpServlet {
             String accion = request.getParameter("accion");
             String input=request.getParameter("nombre");
             switch (accion) {
-                case "buscarLibroAutor":
-                    //ArrayList<Libro> q = new ArrayList<Libro>();                 
+                case "buscarLibroAutor":                 
                     q = Model.instance().buscarLibroAutor(input);
                     json = new Gson().toJson(q);
                     out.print(json);
                     break;
-                case "buscarLibroTitulo":
-                    //ArrayList<Libro> q = new ArrayList<Libro>();                 
+                case "buscarLibroTitulo":               
                     q = Model.instance().buscarLibroTitulo(input);
                     json = new Gson().toJson(q);
                     out.print(json);
                     break;
-                case "buscarLibroClasificacion":
-                    //ArrayList<Libro> q = new ArrayList<Libro>();                 
+                case "buscarLibroClasificacion":                
                     q = Model.instance().buscarLibroClasificacion(input);
                     json = new Gson().toJson(q);
                     out.print(json);
                     break;
-                case "buscarLibroAsignatura":
-                    //ArrayList<Libro> q = new ArrayList<Libro>();                 
+                case "buscarLibroAsignatura":                
                     q = Model.instance().buscarLibroAsignatura(input);
                     json = new Gson().toJson(q);
                     out.print(json);
@@ -94,7 +90,6 @@ public class BuscarLibro extends HttpServlet {
                    Integer fis= Integer.parseInt(request.getParameter("fisico"));
                    Integer dig= Integer.parseInt(request.getParameter("digital"));
                    Integer asi= Integer.parseInt(request.getParameter("asignatura"));
-                   //l=Model.instance().buscarLibroId(ident2);
                    l.setClasificacion(clas);
                    l.setTitulo(tit);
                    l.setAutor(aut);
@@ -107,8 +102,6 @@ public class BuscarLibro extends HttpServlet {
                    a.setId(asi);
                    l.setAsignatura(a);
                    Model.instance().modificarLibro(l);
-                   //json=new Gson().toJson(l);
-                   //out.print(json);
                    out.print("C~El libro fue modificado correctamente");
                    break;
                 default:
