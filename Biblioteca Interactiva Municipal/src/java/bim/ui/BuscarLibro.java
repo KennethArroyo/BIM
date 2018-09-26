@@ -33,7 +33,6 @@ import javax.servlet.http.Part;
  */
 @WebServlet(name = "BuscarLibro", urlPatterns = {"/BuscarLibro"})
 public class BuscarLibro extends HttpServlet {
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -85,8 +84,35 @@ public class BuscarLibro extends HttpServlet {
                     json=new Gson().toJson(l);
                     out.print(json);
                     break;
+                case "modificarLibro":
+                   String clas= request.getParameter("clasificacion");
+                   String tit= request.getParameter("titulo");
+                   String aut= request.getParameter("autor");
+                   String com= request.getParameter("comentario");
+                   Integer est= Integer.parseInt(request.getParameter("estado"));
+                   Integer cant= Integer.parseInt(request.getParameter("copias"));
+                   Integer fis= Integer.parseInt(request.getParameter("fisico"));
+                   Integer dig= Integer.parseInt(request.getParameter("digital"));
+                   Integer asi= Integer.parseInt(request.getParameter("asignatura"));
+                   //l=Model.instance().buscarLibroId(ident2);
+                   l.setClasificacion(clas);
+                   l.setTitulo(tit);
+                   l.setAutor(aut);
+                   l.setComentario(com);
+                   l.setEstado(est);
+                   l.setCantidad_copias(cant);
+                   l.setFisico(fis);
+                   l.setDigital(dig);
+                   Asignatura a= new Asignatura();
+                   a.setId(asi);
+                   l.setAsignatura(a);
+                   Model.instance().modificarLibro(l);
+                   //json=new Gson().toJson(l);
+                   //out.print(json);
+                   out.print("C~El libro fue modificado correctamente");
+                   break;
                 default:
-                    out.print("E~No se indico la acción que se desea realizare");
+                    out.print("E~No se indico la acción que se desea realizarse");
                     break;
 
             }

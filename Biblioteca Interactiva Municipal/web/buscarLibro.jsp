@@ -75,14 +75,17 @@
             <div class="table-responsive">
                 <table border="2" class="table" id="tablaLibros"></table>
             </div>
-            <div class="modal fade" id="myModalFormulario" role="dialog">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title" id="myModalTitle">Modificar Libros
-                        </div>
-                        <div class="modal-body" id="myModalMessage">
+
+        </div>
+        <div class="modal fade" id="myModalFormulario" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="myModalTitle">Modificar Libros
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        <form role="form" onsubmit="return false;" id="formModal">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -135,21 +138,23 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
-                                        <label class="form-check-label" for="fisico">Libro Físico</label>
-                                    </div>  
+                                        <label for="fisico"><input style="margin-left:0.5px" class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
+                                            Libro Físico</label>
+                                    </div> 
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
-                                        <label class="form-check-label" for="digital">Libro Digital</label>
+                                        <label for="digital"><input style="margin-left:0.5px" class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
+                                            Libro Digital</label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="comentario">Comentario corto</label>
-                                        <textarea class="form-control" maxlength="30" rows="2" id="comentario" name="comentario"></textarea>
-                                    </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="comentario">Comentario corto</label>
+                                    <textarea class="form-control" maxlength="30" rows="2" id="comentario" name="comentario"></textarea>
                                 </div>
                             </div>
                             <div class="row"> 
@@ -157,7 +162,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="hidden" value="modificarLibro" id="libroAction"/>
-                                        <button type="submit" class=" btn btn-success" id="enviar">Guardar</button>
+                                        <button type="submit" onclick="modificarLibro()" class=" btn btn-success">Guardar</button>
                                         <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                                     </div>
                                 </div>
@@ -168,13 +173,11 @@
                                     <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div> 
-
-
+        </div>
     </body> 
 
     <footer>

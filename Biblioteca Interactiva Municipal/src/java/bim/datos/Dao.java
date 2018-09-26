@@ -167,12 +167,10 @@ public class Dao {
         }
         return libro;
     }
-    
+       
     public Libro modificarLibro(Libro l)throws Exception{
-    String sql="update Libro l, Asignatura a"
-            + "set clasificacion='%s',titulo='%s',autor='%s',comentario='%s',estado=%d,cantidad_copias=%d,fisico=%d,digital=%d,asignatura_ID=%d"
-            + "where id=%d";
-    sql= String.format(sql,l.getClasificacion(),l.getTitulo(),l.getAutor(),l.getComentario(),l.getEstado(),l.getCantidad_copias(),l.getFisico(),l.getDigital(),l.getAsignatura().getId());
+    String sql="update Libro set clasificacion='%s',titulo='%s',autor='%s',comentario='%s',estado=%d,cantidad_copias=%d,fisico=%d,digital=%d,asignatura_ID=%d where clasificacion='%s'";
+    sql= String.format(sql,l.getClasificacion(),l.getTitulo(),l.getAutor(),l.getComentario(),l.getEstado(),l.getCantidad_copias(),l.getFisico(),l.getDigital(),l.getAsignatura().getId(),l.getClasificacion());
     db.executeQuery(sql);
     return buscarLibroId(l.getId());
     }

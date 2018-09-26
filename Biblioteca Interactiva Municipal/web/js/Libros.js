@@ -7,6 +7,7 @@ var info = [];
 var max;
 var min;
 var inicio;
+
 $(document).ready(function getAsignaturas(){
             $.ajax({type: "GET", 
                   url:"GetAsignaturas",
@@ -29,7 +30,7 @@ $(document).ready(function getAsignaturas(){
   }
   
 $("#cancelar").click(function () {
-        //limpiarForm();
+        limpiarForm();
         $("#myModalFormulario").modal("hide");
     });
 
@@ -115,13 +116,7 @@ function buscar(){
        window.alert("2-error");
    }
 }
-function consultarLibroId(idLibro){
-    
-}
 
-function deshabilitarLibro(idLibro){
-    
-}
 
 function  buscarLibroAutor(nombre) {
     //var name = document.getElementById("textoBuscar").value;
@@ -228,14 +223,73 @@ function buscarLibroId(idLibro){
                $("#autor").val(data.autor);
                $("#comentario").val(data.comentario);
                $("#estado").val(data.estado);
-               $("#copias").val(data.cantidad_copias);
-               $("#fisico").val(data.fisico);
-               $("#digital").val(data.digital);
-               //$("#asignatura").val(data.asignatura);    
+               $("#copias").val(data.cantidad_copias);               
+               if(data.fisico===1){
+                   $("#fisico").prop( 'checked', true );
+               }
+               else{
+                   $("#fisico").prop( 'checked', false );
+               }
+               if(data.digital===1){
+                   $("#digital").prop( 'checked', true );
+               }
+               else{
+                   $("#digital").prop( 'checked', false );
+               }
+
                buscarLibroAsignatura(data.asignatura); 
             
         },
         type: 'POST',
         dataType: "json"
     });
+}
+
+function modificarLibro(){
+    $.ajax({
+       url:'BuscarLibro',
+       data:{
+           accion:"modificarLibro",
+           clasificacion:$("#clasificacion").val(),
+               titulo:$("#titulo").val(),
+               autor:$("#autor").val(),
+               comentario:$("#comentario").val(),
+               estado:$("#estado").val(),
+               copias:$("#copias").val(),
+               fisico:$("#fisico").val(),
+               digital:$("#digital").val(),
+               asignatura:$("#asignatura").val()
+               
+       },
+       error: function () { //si existe un error en la respuesta del ajax
+            window.alert("1-error");
+        },
+        success:function(data){
+            var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "C~") { //correcto
+                    window.alert("se modifico el libro correcatamente");
+                    $("#myModalFormulario").modal("hide");
+                    //dibujarTabla(data);
+                } else {
+                    if (tipoRespuesta === "E~") { //error
+                        window.alert("2-error");
+                    } else {
+                        window.alert("3-error");
+                    }
+                }
+        },
+        type: 'POST'
+    });
+}
+function limpiarForm() {
+    //setea el focus del formulario
+    //se cambia la accion por agregarPersona
+    $("#libroAction").val("modificarLibro"); 
+
+    //esconde el div del mensaje
+    mostrarMensaje("hiddenDiv", "", "");
+
+    //Resetear el formulario
+    $('#forModal').trigger("reset");
 }
