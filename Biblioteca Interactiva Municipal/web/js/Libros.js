@@ -249,10 +249,10 @@ function buscarLibroId(idLibro) {
             dibujarTabla(data);
             $("#myModalFormulario").modal();
             //dibujarTabla(data);
-            $("#id").attr('readonly', 'readonly');
+            $("#clasificacion").attr('readonly', 'readonly');
             $("#libroAction").val("modificarLibro");
 
-            $("#id").val(data.idLibro);
+            //$("#id").val(data.idLibro);
             $("#clasificacion").val(data.clasificacion);
             $("#titulo").val(data.titulo);
             $("#autor").val(data.autor);
