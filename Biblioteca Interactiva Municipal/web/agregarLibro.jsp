@@ -48,7 +48,7 @@
                         <label for="copias">Cantidad de copias</label>
                         <input type="text" class="form-control" id="copias" name="copias">
                     </div><br>
-                     <div class="form-group">
+                    <div class="form-group">
                     <label for="imagenPDF">Portada</label>
                     <input type="file" name="imagenPDF" class="file" id="imagenPDF">
                     </div>
@@ -65,13 +65,13 @@
                         <label for="comentario">Comentario corto</label>
                         <textarea class="form-control" maxlength="30" rows="2" id="comentario" name="comentario"></textarea>
                     </div>
-
-                </form>
-                <br>
+                <div id="mi_div">    
                 <div class="form-group">
                 <input type="submit" class="btn btn-success" id="botonAgregar" form="libForm" value="Agregar">
                  <a href="principal.jsp" id="cancel" name="cancel" class="btn btn-danger">Cancelar</a>
                 </div>
+                </div>
+                </form>
                 <br>
             </div>    
         </div>  

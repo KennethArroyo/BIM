@@ -19,14 +19,15 @@
             });
             
                 function updateList(list){
-                    for (var i = 0; i <= list.length; i++) {
+                    for (var i = 0; i < list.length; i++) {
         $('#asignatura').append('<option value="' + list[i].id + '">' + list[i].nombre + '</option>');
     }
   }
   
   function onClickDigital(){
       if($("#digital").is(':checked')){
-          $("#libForm").append('<input type="file" name="file" class="file" id="file" required>');
+          $("#mi_div").before('<label for="file">PDF</label>&nbsp');
+          $("#mi_div").before('<input type="file" name="file" class="file" id="file" required><br>');
       }
       else {
           $("#file").remove();
@@ -48,7 +49,7 @@
                 } 
             //No es imagen
                 else {
-                        alert("Por favor subir unicamente archivos tipo imagen ");
+                        alert("Por favor subir en portada unicamente archivos tipo imagen ");
                         return false;
                     }
                  }
