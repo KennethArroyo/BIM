@@ -228,7 +228,6 @@ function  buscarLibroAsignatura(name) {
         },
         success: function (data) {
             dibujarTabla(data);
-
         },
         type: 'POST',
         dataType: "json"
@@ -246,7 +245,6 @@ function buscarLibroId(idLibro) {
             window.alert("1-error");
         },
         success: function (data) {
-            dibujarTabla(data);
             $("#myModalFormulario").modal();
             //dibujarTabla(data);
             $("#clasificacion").attr('readonly', 'readonly');
@@ -269,9 +267,8 @@ function buscarLibroId(idLibro) {
             } else {
                 $("#digital").prop('checked', false);
             }
-
             buscarLibroAsignatura(data.asignatura);
-
+            buscar();
         },
         type: 'POST',
         dataType: "json"
@@ -280,6 +277,7 @@ function buscarLibroId(idLibro) {
 function cancelar() {
     limpiarForm();
     $("#myModalFormulario").modal("hide");
+    //$("#tablaLibros").html("");
 }
 
 function modificarLibro() {
@@ -305,6 +303,7 @@ function modificarLibro() {
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "C~") { //correcto
+                buscar();
                 window.alert("se modifico el libro correcatamente");
                 $("#myModalFormulario").modal("hide");
             } else {
@@ -314,6 +313,7 @@ function modificarLibro() {
                     window.alert("3-error");
                 }
             }
+            //$("#tablaLibros").html("");
         },
         type: 'POST'
     });

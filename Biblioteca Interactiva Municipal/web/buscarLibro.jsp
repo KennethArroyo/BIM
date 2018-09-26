@@ -134,22 +134,19 @@
                             <br>
                             <input type="file" name="imagenPDF" class="file" id="imagenPDF">
                             <br>
-                            <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-check">
-                                        <label for="fisico"><input style="margin-left:0.5px" class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
+                                    <div class="form-group">
+                                        <label for="fisico"><input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
                                             Libro Físico</label>
                                     </div> 
                                 </div>
-                            </div>
-                            <div class="row">
+                            
                                 <div class="col-md-4">
-                                    <div class="form-check">
-                                        <label for="digital"><input style="margin-left:0.5px" class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
+                                    <div class="form-group">
+                                        <label for="digital"><input class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
                                             Libro Digital</label>
                                     </div>
                                 </div>
-                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="comentario">Comentario corto</label>
