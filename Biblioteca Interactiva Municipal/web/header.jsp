@@ -38,7 +38,6 @@
                                                         <ul class="dropdown_selection">
                                                             <li><a href="agregarLibro.jsp">Agregar Libro</a></li>
                                                             <li><a href="buscarLibro.jsp">Buscar Libro</a></li>
-                                                            <li><a href="">Habilitar/Deshabilitar Libro</a></li>
                                                         </ul>
                                                     </li>
                                                 <li><a href="">Préstamo</a></li>
@@ -69,7 +68,6 @@
                                     <ul class="menu_selection"> 
                                         <li><a href="agregarLibro.jsp"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
                                         <li><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
-                                        <li><a href=""><i aria-hidden="true"></i>Habilitar/Deshabilitar Libro</a></li>
                                     </ul>
                                 </li>
                             <li class="menu_item"><a href="">Prestamo</a></li>

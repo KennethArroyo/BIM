@@ -30,7 +30,7 @@ function agregarLibro() {
                 }
                 //No es imagen
                 else {
-                    alert("Por favor subir unicamente archivos tipo imagen ");
+                    alert("Por favor en portada subir unicamente archivos tipo imagen ");
                     return false;
                 }
             }
