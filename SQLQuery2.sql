@@ -16,8 +16,10 @@ comentario nvarchar(50),
 cantidad_copias int,
 fisico int,
 digital int,
-dir_Portada nvarchar(50),
-dir_PDF nvarchar(50),
+dir_Portada nvarchar(200),
+dir_PDF nvarchar(200),
 habilitado int,
 asignatura_ID int foreign key references Asignatura(id)
 )
+
+
