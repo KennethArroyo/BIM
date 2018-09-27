@@ -168,9 +168,9 @@ h6::selection
 	font-weight: 500;
 	color: #777777 !important;
 }
-.form-control
+.form-group, input, select
 {
-	color: #db5246;
+	color: black;
 }
 section
 {
@@ -961,7 +961,6 @@ display: block;
 #select{
     height: 40px;
     width: 250px;
-
 }
 
 #input{
