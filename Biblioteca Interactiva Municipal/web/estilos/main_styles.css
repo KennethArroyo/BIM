@@ -1064,12 +1064,18 @@ display: block;
 /*PROPIOS*/
 
 
-.ingresar-libro{
-    
+.ingresar-libro
+{ 
     padding-top: 200px;
 }
-.log {
+
+.log 
+{
     margin-left: 50px;
     align-content: center;
-    
+}
+
+thead 
+{
+    border-bottom:3px solid darkgray; 
 }
