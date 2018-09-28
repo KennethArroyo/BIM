@@ -995,8 +995,8 @@ display: block;
 ***********/
 
 .footer_nav_container
-{
-	height: 50px;
+{	
+    height: 50px;
 }
 .cr
 {
@@ -1075,7 +1075,12 @@ display: block;
     align-content: center;
 }
 
-thead 
+thead, tbody 
 {
     border-bottom:3px solid darkgray; 
+}
+
+tbody {
+    border-top: 3px solid darkgray; 
+    
 }

@@ -72,7 +72,7 @@
                 <table border="1" class="table" id="tablaLibros"></table>
             </div>--%>
             <div class="table-responsive">
-                <table border="2" class="table" id="tablaLibros"></table>
+                <table border="2" class="table" id="tablaLibros" style="   background-color: white;"></table>
             </div>
 
         </div>

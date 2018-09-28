@@ -87,7 +87,7 @@ public class Dao {
     public ArrayList<Libro> buscarLibroAutor(String autor)throws Exception{
         ArrayList<Libro> libros= new ArrayList<Libro>();
         try {
-        String sql="select * from Libro l, Asignatura a where l.autor = '%s' and l.asignatura_ID = a.id";
+        String sql="select * from Libro l, Asignatura a where l.autor like '%%%s%%' and l.asignatura_ID = a.id";
         sql = String.format(sql, autor);
         ResultSet rs = db.executeQuery(sql);
         while(rs.next()){
@@ -104,7 +104,7 @@ public class Dao {
     public ArrayList<Libro> buscarLibroTitulo(String titulo)throws Exception{
         ArrayList<Libro> libros= new ArrayList<Libro>();
         try {
-        String sql="select * from Libro l, Asignatura a where l.titulo = '%s' and l.asignatura_ID = a.id";
+        String sql="select * from Libro l, Asignatura a where l.titulo like '%%%s%%' and l.asignatura_ID = a.id";
         sql = String.format(sql, titulo);
         ResultSet rs = db.executeQuery(sql);
         while(rs.next()){
@@ -121,7 +121,7 @@ public class Dao {
     public ArrayList<Libro> buscarLibroClasificacion(String clasificacion)throws Exception{
         ArrayList<Libro> libros= new ArrayList<Libro>();
         try {
-        String sql="select * from Libro l, Asignatura a where l.clasificacion = '%s' and l.asignatura_ID = a.id";
+        String sql="select * from Libro l, Asignatura a where l.clasificacion like '%%%s%%' and l.asignatura_ID = a.id";
         sql = String.format(sql, clasificacion);
         ResultSet rs = db.executeQuery(sql);
         while(rs.next()){
@@ -138,7 +138,7 @@ public class Dao {
     public ArrayList<Libro> buscarLibroAsignatura(String asignatura)throws Exception{
         ArrayList<Libro> libros= new ArrayList<Libro>();
         try {
-        String sql="select * from Libro l, Asignatura a where l.asignatura_ID = a.id and a.nombre='%s'";
+        String sql="select * from Libro l, Asignatura a where l.asignatura_ID = a.id and a.nombre like '%%%s%%'";
         sql = String.format(sql, asignatura);
         ResultSet rs = db.executeQuery(sql);
         while(rs.next()){
@@ -169,8 +169,8 @@ public class Dao {
     }
        
     public Libro modificarLibro(Libro l)throws Exception{
-    String sql="update Libro set clasificacion='%s',titulo='%s',autor='%s',comentario='%s',estado=%d,cantidad_copias=%d,fisico=%d,digital=%d,asignatura_ID=%d where clasificacion='%s'";
-    sql= String.format(sql,l.getClasificacion(),l.getTitulo(),l.getAutor(),l.getComentario(),l.getEstado(),l.getCantidad_copias(),l.getFisico(),l.getDigital(),l.getAsignatura().getId(),l.getClasificacion());
+    String sql="update Libro set clasificacion='%s',titulo='%s',autor='%s',comentario='%s',estado=%d,cantidad_copias=%d, habilitado=%d, fisico=%d,digital=%d,asignatura_ID=%d where clasificacion='%s'";
+    sql= String.format(sql,l.getClasificacion(),l.getTitulo(),l.getAutor(),l.getComentario(),l.getEstado(),l.getCantidad_copias(), l.getHabilitado(), l.getFisico(),l.getDigital(),l.getAsignatura().getId(),l.getClasificacion());
     db.executeQuery(sql);
     return buscarLibroId(l.getId());
     }

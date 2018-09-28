@@ -99,6 +99,12 @@ public class BuscarLibro extends HttpServlet {
                     l.setCantidad_copias(cant);
                     l.setFisico(fis);
                     l.setDigital(dig);
+                    if(cant >= 1) {
+                        l.setHabilitado(1);
+                    }
+                    if(cant < 1) {
+                        l.setHabilitado(0);
+                    }
                     Asignatura a = new Asignatura();
                     a.setId(asi);
                     l.setAsignatura(a);

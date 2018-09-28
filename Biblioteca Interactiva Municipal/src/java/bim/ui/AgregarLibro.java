@@ -141,7 +141,13 @@ public class AgregarLibro extends HttpServlet {
             p.setAsignatura(asig);
             p.setComentario(comentario);
             p.setTitulo(titulo);
-            p.setHabilitado(1);
+            if(cant >= 1) {
+                p.setHabilitado(1);
+            }
+            if(cant < 1) {
+                p.setHabilitado(0);
+            }
+       
 
             Model.instance().agregarLibro(p);
             request.getRequestDispatcher("principal.jsp").forward(request, response);
