@@ -1075,12 +1075,13 @@ display: block;
     align-content: center;
 }
 
-thead, tbody 
-{
-    border-bottom:3px solid darkgray; 
+#tablaLibros{
+    background-color: white;
 }
 
-tbody {
-    border-top: 3px solid darkgray; 
-    
+#tablaLibros tr:nth-child(odd) {
+   background-color:#dddddd;
+   
 }
+
+

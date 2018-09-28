@@ -67,8 +67,8 @@
                     </div>
                 <div id="mi_div">    
                 <div class="form-group">
-                <input type="submit" class="btn btn-success" id="botonAgregar" form="libForm" value="Agregar">
-                 <a href="principal.jsp" id="cancel" name="cancel" class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-success" id="botonAgregar" form="libForm" >Agregar</button>
+                 <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                 </div>
                 </div>
                 </form>
@@ -79,6 +79,7 @@
     </body>
     
     <footer>
+        <br><br><br><br><br><br>
         <%@ include file="footer.jsp" %>
     </footer>  
 </html>

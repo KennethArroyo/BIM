@@ -76,7 +76,7 @@ function dibujarTabla(dataJson) {
     $("#tablaLibros").html("");
 
     //muestra el enzabezado de la tabla
-    var head = $("<thead />");
+    var head = $("<thead class='thead-dark'/>");
     var row = $("<tr />");
     head.append(row);
     $("#tablaLibros").append(head);
