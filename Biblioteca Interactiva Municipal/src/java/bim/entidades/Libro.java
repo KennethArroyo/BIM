@@ -107,6 +107,13 @@ public class Libro {
 
     public void setCantidad_copias(int cant_copias) {
         this.cantidad_copias = cant_copias;
+        if(cantidad_copias <= 1) {
+            this.setHabilitado(1);
+        }
+        else{
+            this.setHabilitado(0);
+        }
+    
     }
 
     public void setFisico(int fisico) {
