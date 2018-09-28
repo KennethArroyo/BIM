@@ -2,7 +2,7 @@ use BIM
 create table Usuario(
 id int primary key identity(1,1),
 tipo int not null,
-cedula nvarchar(15) unique not null,
+identificacion nvarchar(15) unique not null,
 nombre nvarchar(20) not null,
 apellidos nvarchar(22) not null,
 lugar_residencia nvarchar(30),
