@@ -1,6 +1,7 @@
 package bim.datos;
 import bim.entidades.Asignatura;
 import bim.entidades.Libro;
+import bim.entidades.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,10 +39,36 @@ public class Dao {
         o.setAsignatura(a);
         return o;
     }
+   
+   private Usuario usuario(ResultSet rs) throws Exception {
+       Usuario u = new Usuario();
+       u.setId(rs.getInt("id"));
+       u.setTipo(rs.getInt("tipo"));
+       u.setIdentificacion(rs.getString("identificacion"));
+       u.setNombre(rs.getString("nombre"));
+       u.setApellidos(rs.getString("apellidos"));
+       u.setLugar_residencia(rs.getString("lugar_residencia"));
+       u.setTelefono(rs.getString("telefono"));
+       u.setCorreo(rs.getString("correo"));
+       u.setContrasena(rs.getString("contrasena"));
+       u.setRef_trab_est(rs.getString("ref_trab_est"));
+       return u;
+   }
 
     public Asignatura buscarAsignatura(String nombre) {
         Asignatura n=new Asignatura();
         return n;
+    }
+    
+    public void agregarUsuario(Usuario u) throws Exception {
+        String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est)"
+                + "values(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s')";
+        sql = String.format(sql, u.getTipo(), u.getIdentificacion(), u.getNombre(), u.getApellidos(), u.getLugar_residencia(),
+                u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est());
+        int count = db.executeUpdate(sql);
+        if(count == 0) {
+            throw new Exception("Error registrando al usuario!");
+        }
     }
     
     public void agregarLibro(Libro p) throws Exception {

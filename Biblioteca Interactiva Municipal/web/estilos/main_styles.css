@@ -980,6 +980,9 @@ display: block;
 #libForm input{
     width: 250px;
 }
+#regUsuarios input{
+    width: 250px;
+}
 
 #libForm textarea{
     width: 250px;
@@ -1084,4 +1087,11 @@ display: block;
    
 }
 
+.field-icon {
+  float: left;
+  margin-left: 225px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
 
