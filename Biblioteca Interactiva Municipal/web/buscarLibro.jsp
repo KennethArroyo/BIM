@@ -79,9 +79,10 @@
         <div class="modal fade" id="myModalFormulario" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-header"> 
                         <h4 class="modal-title" id="myModalTitle">Modificar Libros
+                            <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
+                       
                     </div>
                     <div class="modal-body" id="myModalMessage">
                         <form role="form" onsubmit="return false" id="formModal">
