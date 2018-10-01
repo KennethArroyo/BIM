@@ -75,6 +75,7 @@ public class BuscarLibro extends HttpServlet {
                     json = new Gson().toJson(q);
                     out.print(json);
                     break;
+                    
                 case "buscarLibroId":
                     Integer ident = Integer.parseInt(request.getParameter("idLibro"));
                     l = Model.instance().buscarLibroId(ident);

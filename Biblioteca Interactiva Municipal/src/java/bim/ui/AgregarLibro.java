@@ -75,12 +75,12 @@ public class AgregarLibro extends HttpServlet {
             int digital;
             Part PartImagen;
             Asignatura asig = new Asignatura();
-            asig.setId(1);
             Libro p = new Libro();
             HttpSession s = request.getSession(true);
             String clasificacion = request.getParameter("clasificacion");
             String titulo = request.getParameter("titulo");
             int asignatura = Integer.parseInt(request.getParameter("asignatura"));
+            asig.setId(asignatura);
             int cant = Integer.parseInt(request.getParameter("copias"));
             int tamano = (int) request.getPart("imagenPDF").getSize();
                 if(tamano != 0){

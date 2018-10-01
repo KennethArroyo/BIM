@@ -1,6 +1,7 @@
 package bim.datos;
 import bim.entidades.Asignatura;
 import bim.entidades.Libro;
+import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,6 +54,17 @@ public class Dao {
        u.setContrasena(rs.getString("contrasena"));
        u.setRef_trab_est(rs.getString("ref_trab_est"));
        return u;
+   }
+   
+   private Prestamo prestamo(ResultSet rs)throws Exception{
+   Prestamo p=new Prestamo();
+   p.setId(rs.getInt("id"));
+   p.setNumero(rs.getInt("numero"));
+   p.setFecha_inicio(rs.getDate("fecha_inicio"));
+   p.setFecha_final(rs.getDate("fecha_final"));
+   p.setEstado_ID(rs.getInt("estado_ID"));
+   p.setCedula_ID(rs.getString("cedula_ID"));
+   return p;
    }
 
     public Asignatura buscarAsignatura(String nombre) {

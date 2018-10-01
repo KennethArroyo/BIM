@@ -227,7 +227,8 @@ function  buscarLibroAsignatura(name) {
             window.alert("1-error");
         },
         success: function (data) {
-            dibujarTabla(data);
+                
+                dibujarTabla(data);
         },
         type: 'POST',
         dataType: "json"
@@ -267,8 +268,9 @@ function buscarLibroId(idLibro) {
             } else {
                 $("#digital").prop('checked', false);
             }
-            buscarLibroAsignatura(data.asignatura);
-            buscar();
+            $("#asignatura option:selected").val(data.asignatura.nombre);
+            //buscarLibroAsignatura(data.asignatura);
+            //buscar();
         },
         type: 'POST',
         dataType: "json"
@@ -300,7 +302,6 @@ function modificarLibro() {
             window.alert("1-error");
         },
         success: function (data) {
-            var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "C~") { //correcto
                 buscar();
