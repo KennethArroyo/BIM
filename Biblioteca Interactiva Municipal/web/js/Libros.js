@@ -248,6 +248,7 @@ function buscarLibroId(idLibro) {
         success: function (data) {
             $("#myModalFormulario").modal();
             //dibujarTabla(data);
+            //buscarAsignaturaId(data.asignatura.id);
             $("#clasificacion").attr('readonly', 'readonly');
             $("#libroAction").val("modificarLibro");
 
@@ -268,8 +269,8 @@ function buscarLibroId(idLibro) {
             } else {
                 $("#digital").prop('checked', false);
             }
-            $("#asignatura option:selected").val(data.asignatura.nombre);
-            //buscarLibroAsignatura(data.asignatura);
+            //$("#asignatura").val(data.asignatura.nombre);
+            buscarLibroAsignatura(data.asignatura);
             //buscar();
         },
         type: 'POST',
@@ -304,9 +305,9 @@ function modificarLibro() {
         success: function (data) {
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "C~") { //correcto
-                buscar();
                 window.alert("se modifico el libro correcatamente");
                 $("#myModalFormulario").modal("hide");
+                buscar();
             } else {
                 if (tipoRespuesta === "E~") { //error
                     window.alert("2-error");
@@ -322,4 +323,22 @@ function modificarLibro() {
 function limpiarForm() {
     //Resetear el formulario
     $('#forModal').trigger("reset");
+}
+
+function buscarAsignaturaID(idAsignatura){
+    $.ajax({
+        url:'BuscarLibro',
+        data:{
+            accion:"buscarAsignaturaId",
+            idAs:idAsignatura
+        },
+        error:function(){
+            window.alert("1-error");
+        },
+        succes: function(data){
+          $("#asignatura").val(data.nombre);  
+        },
+      type: 'POST',
+        dataType: "json"  
+    });
 }

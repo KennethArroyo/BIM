@@ -63,4 +63,8 @@ public class Model {
     public Libro modificarLibro(Libro l)throws Exception{
     return dao.modificarLibro(l);
     }
+    
+    public Asignatura getAsigantura(int id)throws Exception{
+    return dao.getAsigantura(id);
+    }
 }

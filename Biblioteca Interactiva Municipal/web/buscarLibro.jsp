@@ -110,7 +110,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="asignatura">Asignatura</label>
-                                        <select class="form-control" id="asignatura" name="asignatura">
+                                        <select class="form-control" id="asignatura">
                                         </select>
                                     </div>
                                 </div>

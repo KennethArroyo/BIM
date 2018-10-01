@@ -40,7 +40,12 @@
                                                             <li><a href="buscarLibro.jsp">Buscar Libro</a></li>
                                                         </ul>
                                                     </li>
-                                                <li><a href="">Préstamo</a></li>
+                                                <li class="dropdown"><a href="">Préstamo<i class="fa fa-angle-down"></i></a>
+                                                    <ul class="dropdown_selection">
+                                                        <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
+                                                    </ul>
+                                                
+                                                </li>
                                                 <li><a href="">Actividades</a></li>
                                                 <li class="my_account_item"><a href="registroUsuario.jsp"><small class="fa fa-user-plus" ></small>&nbsp Registrarse</a></li>
                                                 <li><a href="#"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
