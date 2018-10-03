@@ -9,7 +9,8 @@ lugar_residencia nvarchar(30),
 telefono int,
 correo nvarchar(50) not null unique,
 contrasena nvarchar(15) not null,
-ref_trab_est nvarchar(30)
+ref_trab_est nvarchar(30),
+habilitado int not null  
 )
 create table Estado(
 id int primary key identity(1,1),
