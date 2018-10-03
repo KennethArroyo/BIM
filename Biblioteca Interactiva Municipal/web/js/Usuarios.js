@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+
 $(document).ready(function() {
     $("#show_hide_password a").on('click', function(event) {
         event.preventDefault();
@@ -47,3 +48,4 @@ function validatePassword(){
 
 password.onchange = validatePassword;
 confirm_password.onkeyup = validatePassword;
+

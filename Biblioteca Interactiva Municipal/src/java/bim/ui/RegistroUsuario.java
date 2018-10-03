@@ -8,13 +8,19 @@ package bim.ui;
 import bim.entidades.Usuario;
 import bim.logica.Model;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -106,14 +112,56 @@ public class RegistroUsuario extends HttpServlet {
             u.setContrasena(contrasena);
             u.setRef_trab_est(ref_trab_est);
             
-            Model.instance().registrarUsuario(u);
+            Model.instance().registrarUsuario(u);  
             
+            //Envio de correo de verificacion
+            String MAIL_SMTP_HOST = "smtp.gmail.com";
+            String MAIL_USERNAME = "bimsantodomingo@gmail.com";
+            String MAIL_PASSWORD = "bibliotecabim";
+         
+            Properties props = new Properties();
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.host", MAIL_SMTP_HOST);
+            props.put("mail.smtp.port", "587");
+
+            Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(MAIL_USERNAME, MAIL_PASSWORD);
+                    }
+                });
+
+            String link = "www.bim.com";
+
+            StringBuilder bodyText = new StringBuilder();
+            bodyText.append("<div>")
+                    .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
+                    .append("  Para verificar su cuenta ingrese el siguiente código: <br/>")
+                    .append("  Copie y pegue el siguiente texto en el campo de nueva contraseña en el formulario al que lo redirigue el enlace: ")
+                    .append("  <br/>")
+                    .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
+                    .append("  <a href=\"" + link + "\">" + link + "</a>")
+                    .append("  <br/><br/>")
+                    .append("  Gracias.<br/>")
+                    .append("  Biblioteca Isaac Felipe Azofeifa </br>")
+                    .append("  Municipalidad de Santo Domingo de Heredia </br>")
+                    .append("</div>");
+            
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(MAIL_USERNAME));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(correo));
+            message.setSubject("Verificacion de Cuenta - BIM");
+            message.setContent(bodyText.toString(), "text/html; charset=utf-8");
+            Transport.send(message);
+         
             
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         }
         catch (Exception e) {
             request.setAttribute("error", "Ocurrió un error");
-            request.getRequestDispatcher("Error.jsp").forward(request, response);
+            request.getRequestDispatcher("principal.jsp").forward(request, response);
         }
     }
 }
