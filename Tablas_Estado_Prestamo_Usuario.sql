@@ -10,7 +10,8 @@ telefono int,
 correo nvarchar(50) not null unique,
 contrasena nvarchar(15) not null,
 ref_trab_est nvarchar(30),
-habilitado int not null  
+habilitado int not null,
+cod_verificacion nvarchar(10)
 )
 create table Estado(
 id int primary key identity(1,1),
