@@ -21,9 +21,24 @@ public class Usuario {
     String contrasena;
     String ref_trab_est;
     int habilitado;
+    String cod_verificacion;
+    
+    public static String NUMEROS = "0123456789";
+    public static String MAYUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static String MINUSCULAS = "abcdefghijklmnopqrstuvwxyz";
+
 
     public Usuario() {
     }
+
+    public String getCod_verificacion() {
+        return cod_verificacion;
+    }
+
+    public void setCod_verificacion(String codverificacion) {
+        this.cod_verificacion = codverificacion;
+    }
+    
 
     public int getHabilitado() {
         return habilitado;
@@ -113,6 +128,31 @@ public class Usuario {
         this.ref_trab_est = ref_trab_est;
     }
     
-    
+  	public String getPinNumber() {
+		return generarCodigo(NUMEROS, 4);
+	}
+ 
+	public String getPassword() {
+		return getCodigo(8);
+	}
+ 
+	public String getCodigo(int length) {
+		return generarCodigo(NUMEROS + MAYUSCULAS + MINUSCULAS, length);
+	}
+ 
+	public String generarCodigo(String key, int length) {
+		String pswd = "";
+ 
+		for (int i = 0; i < length; i++) {
+			pswd+=(key.charAt((int)(Math.random() * key.length())));
+		}
+ 
+		return pswd;
+	}
+        
+        public void GenerarCodigoVerificacion() {
+            String codigo = generarCodigo(NUMEROS + MAYUSCULAS + MINUSCULAS, 10);
+            this.setCod_verificacion(codigo);
+        }
     
 }

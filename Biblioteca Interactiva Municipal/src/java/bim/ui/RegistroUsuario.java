@@ -26,7 +26,7 @@ import javax.mail.internet.MimeMessage;
  *
  * @author Kenneth
  */
-@WebServlet(name = "RegistroUsuario", urlPatterns = {"/RegistroUsuario", "/RegistrarUsuario"})
+@WebServlet(name = "RegistroUsuario", urlPatterns = {"/RegistroUsuario", "/RegistrarUsuario", "/VerificarCuenta"})
 public class RegistroUsuario extends HttpServlet {
 
     /**
@@ -44,6 +44,9 @@ public class RegistroUsuario extends HttpServlet {
         switch (request.getServletPath()) {
             case "/RegistrarUsuario":
                 this.registroUsuario(request, response);
+                break;
+            case "/VerificarCuenta":
+                this.verificarCuenta(request, response);
                 break;
         }
     }
@@ -111,6 +114,7 @@ public class RegistroUsuario extends HttpServlet {
             u.setContrasena(contrasena);
             u.setRef_trab_est(ref_trab_est);
             u.setHabilitado(0); // 0 = NO HABILITADO, 1 = HABILITADO
+            u.GenerarCodigoVerificacion();
             
             Model.instance().registrarUsuario(u);  
             
@@ -132,12 +136,12 @@ public class RegistroUsuario extends HttpServlet {
                     }
                 });
 
-            String link = "www.bim.com";
+            String link = "http://localhost:8083/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
 
             StringBuilder bodyText = new StringBuilder();
             bodyText.append("<div>")
                     .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
-                    .append("  Para verificar su cuenta ingrese el siguiente código: <br/>")
+                    .append("  Código para verificar su cuenta:"+ u.getCod_verificacion() +" <br/>")
                     .append("  Copie y pegue el siguiente texto en el campo de nueva contraseña en el formulario al que lo redirigue el enlace: ")
                     .append("  <br/>")
                     .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
@@ -164,4 +168,18 @@ public class RegistroUsuario extends HttpServlet {
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         }
     }
+    
+    
+    protected void verificarCuenta(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+             HttpSession s = request.getSession(true);
+             String correo = request.getParameter("correo");
+             String codigo = request.getParameter("codverificacion");
+        }
+        catch (Exception e) {
+            request.setAttribute("error", "Ocurrió un error");
+            request.getRequestDispatcher("principal.jsp").forward(request, response);
+        }
+    }
+        
 }
