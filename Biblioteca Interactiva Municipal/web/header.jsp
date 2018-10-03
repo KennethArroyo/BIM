@@ -40,7 +40,7 @@
                                                             <li><a href="buscarLibro.jsp">Buscar Libro</a></li>
                                                         </ul>
                                                     </li>
-                                                <li class="dropdown"><a href="">Préstamo<i class="fa fa-angle-down"></i></a>
+                                                <li class="dropdown"><a href="">Préstamos<i class="fa fa-angle-down"></i></a>
                                                     <ul class="dropdown_selection">
                                                         <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
                                                     </ul>

@@ -3,6 +3,7 @@ package bim.logica;
 import bim.datos.Dao;
 import bim.entidades.Asignatura;
 import bim.entidades.Libro;
+import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import java.util.ArrayList;
 
@@ -36,6 +37,10 @@ public class Model {
     }
     public void registrarUsuario(Usuario u) throws Exception {
         dao.agregarUsuario(u);
+    }
+    
+    public void agregarPrestamo(Prestamo p)throws Exception{
+    dao.agregarPrestamo(p);
     }
     
     public ArrayList<Asignatura> listarAsignaturas() throws Exception {

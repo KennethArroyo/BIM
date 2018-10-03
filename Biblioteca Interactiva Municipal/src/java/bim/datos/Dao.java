@@ -95,6 +95,16 @@ public class Dao {
             throw new Exception("Error ingresando el libro!");
         }
     }
+    
+    public void agregarPrestamo(Prestamo p)throws Exception{
+    String sql ="insert into Prestamo(numero,fecha_inicio,fecha_final,cedula_ID,estado_ID)"
+            + "values(%d,'%s','%s','%s',%d)";
+    sql=String.format(sql, p.getNumero(),p.getFecha_inicio(),p.getFecha_final(),p.getCedula_ID(),p.getEstado_ID());
+    int count =db.executeUpdate(sql);
+    if(count==0){
+    throw new Exception("Error crendo el nuevo prestamo");
+    }
+    }
 
     /* no funciona con las direcicones por ser tal largas, hablar con ronald y karolais
     public void agregarLibro(Libro p) throws Exception {
