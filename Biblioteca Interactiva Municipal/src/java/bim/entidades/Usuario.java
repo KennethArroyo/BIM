@@ -20,8 +20,17 @@ public class Usuario {
     String correo;
     String contrasena;
     String ref_trab_est;
+    int habilitado;
 
     public Usuario() {
+    }
+
+    public int getHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(int habilitado) {
+        this.habilitado = habilitado;
     }
 
     public int getId() {

@@ -75,10 +75,10 @@ public class Dao {
     }
 
     public void agregarUsuario(Usuario u) throws Exception {
-        String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est)"
-                + "values(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s')";
+        String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est, habilitado)"
+                + "values(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', %d)";
         sql = String.format(sql, u.getTipo(), u.getIdentificacion(), u.getNombre(), u.getApellidos(), u.getLugar_residencia(),
-                u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est());
+                u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est(), u.getHabilitado());
         int count = db.executeUpdate(sql);
         if (count == 0) {
             throw new Exception("Error registrando al usuario!");
