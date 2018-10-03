@@ -7,7 +7,9 @@ package bim.ui;
 
 import bim.entidades.Usuario;
 import bim.logica.Model;
+import com.google.gson.Gson;
 import java.io.IOException;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -141,22 +143,22 @@ public class RegistroUsuario extends HttpServlet {
             StringBuilder bodyText = new StringBuilder();
             bodyText.append("<div>")
                     .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
-                    .append("  Código para verificar su cuenta:"+ u.getCod_verificacion() +" <br/>")
-                    .append("  Copie y pegue el siguiente texto en el campo de nueva contraseña en el formulario al que lo redirigue el enlace: ")
+                    .append("  Código para verificar su cuenta:  " + u.getCod_verificacion() + " <br/>")
+                    .append("  Copie y pegue el siguiente texto en el campo de código de verificación en el formulario al que lo redirigue el enlace: ")
                     .append("  <br/>")
                     .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
                     .append("  <a href=\"" + link + "\">" + link + "</a>")
                     .append("  <br/><br/>")
                     .append("  Gracias.<br/>")
-                    .append("  Biblioteca Isaac Felipe Azofeifa </br>")
-                    .append("  Municipalidad de Santo Domingo de Heredia </br>")
+                    .append("  Biblioteca Isaac Felipe Azofeifa <br/>")
+                    .append("  Municipalidad de Santo Domingo de Heredia <br/>")
                     .append("</div>");
             
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(MAIL_USERNAME));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(correo));
-            message.setSubject("Verificacion de Cuenta - BIM");
+            message.setSubject("Verificación de Cuenta - BIM");
             message.setContent(bodyText.toString(), "text/html; charset=utf-8");
             Transport.send(message);
          
@@ -172,9 +174,21 @@ public class RegistroUsuario extends HttpServlet {
     
     protected void verificarCuenta(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-             HttpSession s = request.getSession(true);
-             String correo = request.getParameter("correo");
-             String codigo = request.getParameter("codverificacion");
+            Usuario u;
+            String json;
+            HttpSession s = request.getSession(true);
+            String correo = request.getParameter("correo");
+            String codigo = request.getParameter("cod_verificacion");
+            u = Model.instance().verificarCuenta(correo, codigo);
+            json = new Gson().toJson(u);
+            if(u != null) {
+                u.setHabilitado(1);
+                out.print("C~La cuenta ha sido verificada correctamente");
+            }
+            else {
+                out.print("C~Ha ocurrido un error verificando la cuenta");
+            }
+            
         }
         catch (Exception e) {
             request.setAttribute("error", "Ocurrió un error");

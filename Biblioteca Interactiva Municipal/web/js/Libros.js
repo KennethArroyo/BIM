@@ -305,7 +305,7 @@ function modificarLibro() {
         success: function (data) {
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "C~") { //correcto
-                window.alert("se modifico el libro correcatamente");
+                window.alert("Se modificó el libro correctamente");
                 $("#myModalFormulario").modal("hide");
                 buscar();
             } else {

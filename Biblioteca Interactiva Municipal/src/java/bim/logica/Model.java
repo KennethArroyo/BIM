@@ -43,6 +43,10 @@ public class Model {
     dao.agregarPrestamo(p);
     }
     
+    public Usuario verificarCuenta(String correo, String codigo) throws Exception {
+        return dao.verificarCuenta(correo, codigo);
+    }
+    
     public ArrayList<Asignatura> listarAsignaturas() throws Exception {
         return dao.listarAsignaturas();
     }

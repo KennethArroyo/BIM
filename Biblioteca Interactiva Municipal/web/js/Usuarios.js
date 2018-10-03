@@ -39,6 +39,38 @@ var password = document.getElementById("contrasena")
   , confirm_password = document.getElementById("verificacontrasena"),
           correo = document.getElementById("correo");
 
+function validarCuenta(correo, codigo) {
+    $.ajax({
+        url: "verificarCuenta",
+        data:{
+            correo: $("#correo").val(),
+            cod_verificacion: codigo
+        },
+        error: function() {
+            window.alert("Ha ocurrido un error");
+        },
+        success: function(data){
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta === "C~") { //correcto
+                window.alert("Se modificó el libro correctamente");
+                $("#myModalFormulario").modal("hide");
+                buscar();
+            } else {
+                if (tipoRespuesta === "E~") { //error
+                    window.alert("2-error");
+                } else {
+                    window.alert("3-error");
+                }
+            }
+        },
+        type: 'POST',
+        dataType: "json";
+        
+    });
+    
+}
+
+
 function validarClave(){
   if(password.value != confirm_password.value) {
     confirm_password.setCustomValidity("Las contraseñas no coinciden");

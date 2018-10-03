@@ -233,4 +233,21 @@ public class Dao {
         }
         return a;
     }
+    
+        public Usuario verificarCuenta(String correo, String cod_verificacion) throws Exception {
+        Usuario u = new Usuario();
+        try{
+            String sql = "select * from Usuario where correo = '%s' and cod_verificacion = '%s'";
+            sql = String.format(sql, correo, cod_verificacion);
+            ResultSet rs = db.executeQuery(sql);
+            rs.next();
+            u = usuario(rs); 
+            
+        }
+        catch (SQLException ex) {
+            String error = ex.getMessage();
+            error = "s";
+        }
+        return u;
+    }
 }
