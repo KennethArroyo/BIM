@@ -18,6 +18,15 @@ public class Prestamo {
     Date fecha_final;
     String cedula_ID;
     int estado_ID;
+
+    public int getLibro_ID() {
+        return libro_ID;
+    }
+
+    public void setLibro_ID(int libro_ID) {
+        this.libro_ID = libro_ID;
+    }
+    int libro_ID;
     
     public Prestamo() {
     }

@@ -3,6 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//$(function () {
+//    //Genera el datepicker
+//    $('#fechaInicio').datetimepicker({
+//        weekStart: 1,
+//        todayBtn: 1,
+//        autoclose: 1,
+//        todayHighlight: 1,
+//        startView: 2,
+//        minView: 2,
+//        forceParse: 0
+//    });
+//        
+//});
+
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaLibros").html("");
@@ -45,7 +59,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
     row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button></td>'));
-    
+
 }
 function buscar() {
     var tipo = $("#selectBuscar").val();
@@ -139,8 +153,8 @@ function  buscarLibroAsignatura(name) {
             window.alert("1-error");
         },
         success: function (data) {
-                
-                dibujarTabla(data);
+
+            dibujarTabla(data);
         },
         type: 'POST',
         dataType: "json"
@@ -159,36 +173,41 @@ function buscarLibroId(idLibro) {
         },
         success: function (data) {
             $("#myModalFormulario").modal();
-            //dibujarTabla(data);
-            //buscarAsignaturaId(data.asignatura.id);
-            $("#clasificacion").attr('readonly', 'readonly');
-            $("#libroAction").val("modificarLibro");
-
-            //$("#id").val(data.idLibro);
-            $("#clasificacion").val(data.clasificacion);
-            $("#titulo").val(data.titulo);
-            $("#autor").val(data.autor);
-            $("#comentario").val(data.comentario);
-            $("#estado").val(data.estado);
-            $("#copias").val(data.cantidad_copias);
-            if (data.fisico === 1) {
-                $("#fisico").prop('checked', true);
-            } else {
-                $("#fisico").prop('checked', false);
-            }
-            if (data.digital === 1) {
-                $("#digital").prop('checked', true);
-            } else {
-                $("#digital").prop('checked', false);
-            }
-            //$("#asignatura").val(data.asignatura.nombre);
-            buscarLibroAsignatura(data.asignatura);
-            //buscar();
+            $("#prestamoAction").val("modificarLibro");
         },
         type: 'POST',
         dataType: "json"
     });
 }
+
+function solicitarPrestamo() {
+    $.ajax({
+        url: 'CrearPrestamo',
+        data: {
+            accion: "solicitarPrestamo",
+            fechaInicio: $("#fechaIncio").data('date')
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            window.alert("1-error");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta === "C~") { //correcto
+                window.alert("se modifico el libro correcatamente");
+                $("#myModalFormulario").modal("hide");
+            } else {
+                if (tipoRespuesta === "E~") { //error
+                    window.alert("2-error");
+                } else {
+                    window.alert("3-error");
+                }
+            }
+        },
+        type: 'POST'
+    });
+}
+
+
 function cancelar() {
     limpiarForm();
     $("#myModalFormulario").modal("hide");
@@ -199,3 +218,4 @@ function limpiarForm() {
     //Resetear el formulario
     $('#forModal').trigger("reset");
 }
+
