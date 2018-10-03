@@ -36,9 +36,10 @@ $(document).ready(function() {
 });
 
 var password = document.getElementById("contrasena")
-  , confirm_password = document.getElementById("verificacontrasena");
+  , confirm_password = document.getElementById("verificacontrasena"),
+          correo = document.getElementById("correo");
 
-function validatePassword(){
+function validarClave(){
   if(password.value != confirm_password.value) {
     confirm_password.setCustomValidity("Las contraseñas no coinciden");
   } else {
@@ -46,6 +47,21 @@ function validatePassword(){
   }
 }
 
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
+function validarCorreo(email) 
+{
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+function validarFormatoCorreo(){
+    if(!validarCorreo(correo.value)) {
+        correo.setCustomValidity("El formato del correo es invalido");
+    }
+    else 
+        correo.setCustomValidity('');
+}
+
+correo.onkeyup = validarFormatoCorreo;
+password.onchange = validarClave;
+confirm_password.onkeyup = validarClave;
 

@@ -99,7 +99,6 @@ public class RegistroUsuario extends HttpServlet {
             String correo = request.getParameter("correo");
             String contrasena = request.getParameter("contrasena");
             String ref_trab_est = request.getParameter("ref_trab_est");
-            String habilitado;
             
             Usuario u =  new Usuario();
             u.setTipo(0);

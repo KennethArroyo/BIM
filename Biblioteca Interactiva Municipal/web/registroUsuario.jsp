@@ -42,12 +42,16 @@
                     <div class="form-group">
                         <label for="correo">Correo</label>
                         <input type="text" class="form-control" id="correo" name="correo" required>
+                        <p>Formato: ejemplo@dominio.com</p>
                     </div>                 
                     
                     <div class="form-group" id="show_hide_password">
                         <label for="contrasena">Contraseña</label>
-                        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                        
+                        <input type="password" class="form-control" id="contrasena" name="contrasena"  
+                        pattern="(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" required>
                         <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
+                        <p>Debe tener al menos una mayúscula, una minúscula y un número</p>
                     </div>
                     
                     <div class="form-group" id="show_hide_password-verify">
