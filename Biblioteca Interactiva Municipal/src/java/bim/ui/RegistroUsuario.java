@@ -143,7 +143,7 @@ public class RegistroUsuario extends HttpServlet {
             StringBuilder bodyText = new StringBuilder();
             bodyText.append("<div>")
                     .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
-                    .append("  Código para verificar su cuenta:  " + u.getCod_verificacion() + " <br/>")
+                    .append("  Código para verificar su cuenta:  <b>" + u.getCod_verificacion() + "</b> <br/>")
                     .append("  Copie y pegue el siguiente texto en el campo de código de verificación en el formulario al que lo redirigue el enlace: ")
                     .append("  <br/>")
                     .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
@@ -175,12 +175,11 @@ public class RegistroUsuario extends HttpServlet {
     protected void verificarCuenta(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Usuario u;
-            String json;
             HttpSession s = request.getSession(true);
             String correo = request.getParameter("correo");
             String codigo = request.getParameter("cod_verificacion");
             u = Model.instance().verificarCuenta(correo, codigo);
-            json = new Gson().toJson(u);
+            
             if(u != null) {
                 u.setHabilitado(1);
                 out.print("C~La cuenta ha sido verificada correctamente");

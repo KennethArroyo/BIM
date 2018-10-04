@@ -235,18 +235,20 @@ public class Dao {
     }
     
         public Usuario verificarCuenta(String correo, String cod_verificacion) throws Exception {
-        Usuario u = new Usuario();
+        Usuario u;
         try{
             String sql = "select * from Usuario where correo = '%s' and cod_verificacion = '%s'";
             sql = String.format(sql, correo, cod_verificacion);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
             u = usuario(rs); 
+            String sql1 = "update Usuario set habilitado = 1 where correo = '%s'";
+            sql1 = String.format(sql1, correo);
+            db.executeQuery(sql1);
             
         }
         catch (SQLException ex) {
-            String error = ex.getMessage();
-            error = "s";
+            return null;
         }
         return u;
     }

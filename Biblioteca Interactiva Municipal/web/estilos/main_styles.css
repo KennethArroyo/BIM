@@ -984,6 +984,11 @@ display: block;
     width: 250px;
 }
 
+#verificaUsuario input{
+    width: 250px;
+}
+
+
 #libForm textarea{
     width: 250px;
 }
