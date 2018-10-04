@@ -41,9 +41,9 @@ public class CrearPrestamo extends HttpServlet {
                     String fechatxtIni = request.getParameter("fechaInicio");
                     DateFormat formatNac = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date dateNac = formatNac.parse(fechatxtIni);
-                    p.setFecha_inicio(dateNac);
+                    p.setFecha_inicio((java.sql.Date) dateNac);
                     p.setNumero(1);
-                    p.setFecha_final(dateNac);
+                    p.setFecha_final((java.sql.Date) dateNac);
                     p.setCedula_ID("1");
                     p.setEstado_ID(1);
                     p.setLibro_ID(1);
