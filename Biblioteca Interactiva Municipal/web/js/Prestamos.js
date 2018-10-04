@@ -173,7 +173,7 @@ function buscarLibroId(idLibro) {
         },
         success: function (data) {
             $("#myModalFormulario").modal();
-            $("#prestamoAction").val("modificarLibro");
+            $("#prestamoAction").val("solicitarPrestamo");
         },
         type: 'POST',
         dataType: "json"
