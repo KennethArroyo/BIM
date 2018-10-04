@@ -65,7 +65,8 @@ public class Dao {
         p.setFecha_inicio(rs.getDate("fecha_inicio"));
         p.setFecha_final(rs.getDate("fecha_final"));
         p.setEstado_ID(rs.getInt("estado_ID"));
-        p.setCedula_ID(rs.getString("cedula_ID"));
+        p.setUsuario_ced(rs.getString("cedula_ID"));
+        p.setLibro_ID(rs.getInt("libro_ID"));
         return p;
     }
 
@@ -97,9 +98,9 @@ public class Dao {
     }
     
     public void agregarPrestamo(Prestamo p)throws Exception{
-    String sql ="insert into Prestamo(numero,fecha_inicio,fecha_final,cedula_ID,estado_ID)"
-            + "values(%d,'%s','%s','%s',%d)";
-    sql=String.format(sql, p.getNumero(),p.getFecha_inicio(),p.getFecha_final(),p.getCedula_ID(),p.getEstado_ID());
+    String sql ="insert into Prestamo(numero,fecha_inicio,fecha_final,usuario_ID,estado_ID,libro_ID)"
+            + "values(%d,'%s','%s','%s',%d,%d)";
+    sql=String.format(sql, p.getNumero(),p.getFecha_inicio(),p.getFecha_final(),p.getUsuario_ced(),p.getEstado_ID(),p.getLibro_ID());
     int count =db.executeUpdate(sql);
     if(count==0){
     throw new Exception("Error crendo el nuevo prestamo");

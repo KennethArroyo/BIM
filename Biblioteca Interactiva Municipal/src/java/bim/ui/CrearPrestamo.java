@@ -44,9 +44,9 @@ public class CrearPrestamo extends HttpServlet {
                     p.setFecha_inicio((java.sql.Date) dateNac);
                     p.setNumero(1);
                     p.setFecha_final((java.sql.Date) dateNac);
-                    p.setCedula_ID("1");
+                    p.setUsuario_ced("304830405");
                     p.setEstado_ID(1);
-                    p.setLibro_ID(1);
+                    p.setLibro_ID(5);
                     Model.instance().agregarPrestamo(p);
                     out.print("C~El libro fue modificado correctamente");
                     break;

@@ -16,7 +16,7 @@ public class Prestamo {
     int numero;
     Date fecha_inicio;
     Date fecha_final;
-    String cedula_ID;
+    String usuario_ced;
     int estado_ID;
 
     public int getLibro_ID() {
@@ -63,12 +63,12 @@ public class Prestamo {
         this.fecha_final = fecha_final;
     }
 
-    public String getCedula_ID() {
-        return cedula_ID;
+    public String getUsuario_ced() {
+        return usuario_ced;
     }
 
-    public void setCedula_ID(String cedula_ID) {
-        this.cedula_ID = cedula_ID;
+    public void setUsuario_ced(String usuario_ced) {
+        this.usuario_ced = usuario_ced;
     }
 
     public int getEstado_ID() {
