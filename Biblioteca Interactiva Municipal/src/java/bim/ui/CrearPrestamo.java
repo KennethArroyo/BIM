@@ -48,7 +48,6 @@ public class CrearPrestamo extends HttpServlet {
                     p.setUsuario_ced("304830405");
                     Integer ident = Integer.parseInt(request.getParameter("idLibro"));
                     Libro l = Model.instance().buscarLibroId(ident);
-                    //p.setEstado_ID(1);
                     p.setLibro_ID(l.getId());
                     Model.instance().agregarPrestamo(p);
                     out.print("C~El prestamo fue realizdo correctamente");

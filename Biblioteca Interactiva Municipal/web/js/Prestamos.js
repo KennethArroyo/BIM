@@ -174,6 +174,7 @@ function buscarLibroId(idLibro) {
         success: function (data) {
             $("#myModalFormulario").modal();
             $("#prestamoAction").val("solicitarPrestamo");
+            $("#idLibro").val(data.id);
         },
         type: 'POST',
         dataType: "json"

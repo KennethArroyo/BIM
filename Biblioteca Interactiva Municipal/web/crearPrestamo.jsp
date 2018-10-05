@@ -82,7 +82,7 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="hidden" id="idLibro">
+                                    <input type id="idLibro">
                                 </div>
                                 <div class="col-md-4">
                                     <input type="date" name="fechaInicio" id="fechaInicio">
