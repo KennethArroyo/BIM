@@ -62,8 +62,8 @@ public class Dao {
         Prestamo p = new Prestamo();
         p.setId(rs.getInt("id"));
         p.setNumero(rs.getInt("numero"));
-        p.setFecha_inicio(rs.getDate("fecha_inicio"));
-        p.setFecha_final(rs.getDate("fecha_final"));
+        p.setFecha_inicio(rs.getString("fecha_inicio"));
+        p.setFecha_final(rs.getString("fecha_final"));
         p.setEstado_ID(rs.getInt("estado_ID"));
         p.setUsuario_ced(rs.getString("cedula_ID"));
         p.setLibro_ID(rs.getInt("libro_ID"));

@@ -5,6 +5,7 @@
  */
 package bim.ui;
 
+import bim.entidades.Libro;
 import bim.entidades.Prestamo;
 import bim.logica.Model;
 import java.io.IOException;
@@ -31,7 +32,6 @@ public class CrearPrestamo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
         try {
             Prestamo p = new Prestamo();
             HttpSession session = request.getSession();
@@ -39,17 +39,19 @@ public class CrearPrestamo extends HttpServlet {
             switch(accion){
                 case "solicitarPrestamo":
                     String fechatxtIni = request.getParameter("fechaInicio");
-                    DateFormat formatNac = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                    Date dateNac = formatNac.parse(fechatxtIni);
-                    p.setFecha_inicio((java.sql.Date) dateNac);
+                    //DateFormat formatNac = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    //Date dateNac = formatNac.parse(fechatxtIni);
+                    //p.setFecha_inicio((java.sql.Date) dateNac);
+                    p.setFecha_inicio(fechatxtIni);
+                    p.setFecha_final(fechatxtIni);
                     p.setNumero(1);
-                    p.setFecha_final((java.sql.Date) dateNac);
                     p.setUsuario_ced("304830405");
-                    p.setEstado_ID(1);
-                    Integer libroID = Integer.parseInt(request.getParameter("idLibro"));
-                    p.setLibro_ID(libroID);
+                    Integer ident = Integer.parseInt(request.getParameter("idLibro"));
+                    Libro l = Model.instance().buscarLibroId(ident);
+                    //p.setEstado_ID(1);
+                    p.setLibro_ID(l.getId());
                     Model.instance().agregarPrestamo(p);
-                    out.print("C~El libro fue modificado correctamente");
+                    out.print("C~El prestamo fue realizdo correctamente");
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizarse");
@@ -57,6 +59,7 @@ public class CrearPrestamo extends HttpServlet {
                     
             }
         } catch (NumberFormatException e) {
+            String x= e.getMessage();
             out.print("E~" + e.getMessage());
         } catch (Exception e) {
             out.print("E~" + e.getMessage());

@@ -82,7 +82,10 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="datetime-local" name="fechaInicio" id="fechaInicio">
+                                    <input type="hidden" id="idLibro">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="date" name="fechaInicio" id="fechaInicio">
                                 </div>             
                             </div>
                             <div class="row"> 

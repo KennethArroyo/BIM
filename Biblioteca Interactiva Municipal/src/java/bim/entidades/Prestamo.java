@@ -14,8 +14,26 @@ import java.sql.Date;
 public class Prestamo {
     int id;
     int numero;
-    Date fecha_inicio;
-    Date fecha_final;
+    //Date fecha_inicio;
+    //Date fecha_final;
+    String fecha_inicio;
+    String fecha_final;
+
+    public String getFecha_inicio() {
+        return fecha_inicio;
+    }
+
+    public void setFecha_inicio(String fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
+    }
+
+    public String getFecha_final() {
+        return fecha_final;
+    }
+
+    public void setFecha_final(String fecha_final) {
+        this.fecha_final = fecha_final;
+    }
     String usuario_ced;
     int estado_ID;
 
@@ -47,21 +65,21 @@ public class Prestamo {
         this.numero = numero;
     }
 
-    public Date getFecha_inicio() {
-        return fecha_inicio;
-    }
-
-    public void setFecha_inicio(Date fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
-    }
-
-    public Date getFecha_final() {
-        return fecha_final;
-    }
-
-    public void setFecha_final(Date fecha_final) {
-        this.fecha_final = fecha_final;
-    }
+//    public Date getFecha_inicio() {
+//        return fecha_inicio;
+//    }
+//
+//    public void setFecha_inicio(Date fecha_inicio) {
+//        this.fecha_inicio = fecha_inicio;
+//    }
+//
+//    public Date getFecha_final() {
+//        return fecha_final;
+//    }
+//
+//    public void setFecha_final(Date fecha_final) {
+//        this.fecha_final = fecha_final;
+//    }
 
     public String getUsuario_ced() {
         return usuario_ced;

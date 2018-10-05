@@ -185,7 +185,8 @@ function solicitarPrestamo() {
         url: 'CrearPrestamo',
         data: {
             accion: "solicitarPrestamo",
-            fechaInicio: $("#fechaIncio").data('date')
+            fechaInicio: $("#fechaInicio").val(),
+            idLibro:$("#idLibro").val()
         },
         error: function () { //si existe un error en la respuesta del ajax
             window.alert("1-error");
@@ -193,7 +194,7 @@ function solicitarPrestamo() {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "C~") { //correcto
-                window.alert("se modifico el libro correcatamente");
+                window.alert("se realizo el prestamo correcatamente");
                 $("#myModalFormulario").modal("hide");
             } else {
                 if (tipoRespuesta === "E~") { //error
