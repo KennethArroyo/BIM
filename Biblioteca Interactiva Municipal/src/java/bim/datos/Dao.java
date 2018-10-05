@@ -65,7 +65,7 @@ public class Dao {
         p.setFecha_inicio(rs.getString("fecha_inicio"));
         p.setFecha_final(rs.getString("fecha_final"));
         p.setEstado_ID(rs.getInt("estado_ID"));
-        p.setUsuario_ced(rs.getString("cedula_ID"));
+        p.setUsuario_ID(rs.getInt("usuario_ID"));
         p.setLibro_ID(rs.getInt("libro_ID"));
         return p;
     }
@@ -100,26 +100,12 @@ public class Dao {
     public void agregarPrestamo(Prestamo p)throws Exception{
     String sql ="insert into Prestamo(numero,fecha_inicio,fecha_final,usuario_ID,estado_ID,libro_ID)"
             + "values(%d,'%s','%s','%s',%d,%d)";
-    sql=String.format(sql, p.getNumero(),p.getFecha_inicio(),p.getFecha_final(),p.getUsuario_ced(),p.getEstado_ID(),p.getLibro_ID());
+    sql=String.format(sql, p.getNumero(),p.getFecha_inicio(),p.getFecha_final(),p.getUsuario_ID(),p.getEstado_ID(),p.getLibro_ID());
     int count =db.executeUpdate(sql);
     if(count==0){
     throw new Exception("Error crendo el nuevo prestamo");
     }
     }
-
-    /* no funciona con las direcicones por ser tal largas, hablar con ronald y karolais
-    public void agregarLibro(Libro p) throws Exception {
-        String sql = "insert into Libro(clasificacion,titulo,autor,comentario,estado,cantidad_copias,dir_portada,dir_PDF,habilitado,fisico,digital,asignatura_ID) "
-                + "values('%s','%s','%s','%s',%d,%d,'%s','%s',%d,%d,%d,%d)"; 
-        sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getAutor(), p.getComentario(), p.getEstado(), p.getCantidad_copias(),
-                p.getDir_portada(),p.getDir_PDF(),p.getHabilitado(),p.getFisico(),p.getDigital(),p.getAsignatura().getId());
-        int count = db.executeUpdate(sql);
-        if(count == 0) {
-            throw new Exception("Error ingresando el libro!");
-        }
-    }
-    
-     */
     public ArrayList<Asignatura> listarAsignaturas() throws Exception {
         ArrayList<Asignatura> lista = new ArrayList<Asignatura>();
         try {
@@ -211,6 +197,21 @@ public class Dao {
             error = "s";
         }
         return libro;
+    }
+    
+    public Usuario buscarUsuarioCed(String ced) throws Exception{
+    Usuario u = new Usuario();
+    try {
+            String sql = "select* from Usuario where identificacion='%s'";
+            sql = String.format(sql, ced);
+            ResultSet rs = db.executeQuery(sql);
+            rs.next();
+            u = usuario(rs);
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            error = "s";
+        }
+    return u;
     }
 
     public Libro modificarLibro(Libro l) throws Exception {

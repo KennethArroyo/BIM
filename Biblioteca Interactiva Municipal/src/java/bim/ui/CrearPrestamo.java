@@ -7,6 +7,7 @@ package bim.ui;
 
 import bim.entidades.Libro;
 import bim.entidades.Prestamo;
+import bim.entidades.Usuario;
 import bim.logica.Model;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,19 +34,19 @@ public class CrearPrestamo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            Usuario u = new Usuario();
             Prestamo p = new Prestamo();
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             switch(accion){
                 case "solicitarPrestamo":
                     String fechatxtIni = request.getParameter("fechaInicio");
-                    //DateFormat formatNac = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                    //Date dateNac = formatNac.parse(fechatxtIni);
-                    //p.setFecha_inicio((java.sql.Date) dateNac);
                     p.setFecha_inicio(fechatxtIni);
                     p.setFecha_final(fechatxtIni);
-                    p.setNumero(1);
-                    p.setUsuario_ced("304830405");
+                    p.setNumero(3);
+                    p.setEstado_ID(1);
+                    u = Model.instance().getUsuarioCed("304830405");
+                    p.setUsuario_ID(u.getId());
                     Integer ident = Integer.parseInt(request.getParameter("idLibro"));
                     Libro l = Model.instance().buscarLibroId(ident);
                     p.setLibro_ID(l.getId());

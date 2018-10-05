@@ -76,4 +76,7 @@ public class Model {
     public Asignatura getAsigantura(int id)throws Exception{
     return dao.getAsigantura(id);
     }
+    public Usuario getUsuarioCed(String ced)throws Exception{
+    return dao.buscarUsuarioCed(ced);
+    }
 }
