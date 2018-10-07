@@ -49,6 +49,9 @@ public class CrearPrestamo extends HttpServlet {
                     p.setUsuario_ID(u.getId());
                     Integer ident = Integer.parseInt(request.getParameter("idLibro"));
                     Libro l = Model.instance().buscarLibroId(ident);
+                    if(l.getCantidad_copias()==0){
+                    
+                    }
                     p.setLibro_ID(l.getId());
                     Model.instance().agregarPrestamo(p);
                     out.print("C~El prestamo fue realizdo correctamente");

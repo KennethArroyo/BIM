@@ -166,7 +166,7 @@ function buscarLibroId(idLibro) {
         url: "BuscarLibro",
         data: {
             accion: "buscarLibroId",
-            idLibro: idLibro
+            idLibro: idLibro,
         },
         error: function () { //si existe un error en la respuesta del ajax
             window.alert("1-error");
@@ -175,6 +175,7 @@ function buscarLibroId(idLibro) {
             $("#myModalFormulario").modal();
             $("#prestamoAction").val("solicitarPrestamo");
             $("#idLibro").val(data.id);
+            $("#cantidad").val(data.cantidad_copias);
         },
         type: 'POST',
         dataType: "json"
@@ -182,6 +183,8 @@ function buscarLibroId(idLibro) {
 }
 
 function solicitarPrestamo() {
+    var num;
+    if($("#cantidad").val()>=2){ 
     $.ajax({
         url: 'CrearPrestamo',
         data: {
@@ -207,6 +210,10 @@ function solicitarPrestamo() {
         },
         type: 'POST'
     });
+    }
+    else{
+        window.alert("El libro no existe o solo hay una copia");
+    }
 }
 
 
