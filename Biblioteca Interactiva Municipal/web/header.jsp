@@ -43,6 +43,7 @@
                                                 <li class="dropdown"><a href="">Préstamos<i class="fa fa-angle-down"></i></a>
                                                     <ul class="dropdown_selection">
                                                         <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
+                                                        <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
                                                     </ul>
                                                 
                                                 </li>
@@ -75,7 +76,12 @@
                                         <li><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                                     </ul>
                                 </li>
-                            <li class="menu_item"><a href="">Prestamo</a></li>
+                            <li class="menu_item"><a href="">Prestamo</a>
+                            <ul class="dropdown_selection">
+                                <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
+                                <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
+                            </ul>
+                            </li>
                             <li class="menu_item"><a href="">Actividades</a></li>
                             <li class="menu_item"><a href="registroUsuario.jsp"><span class="fa fa-user-plus"></span>&nbsp Registrarse</a></li>
                             <li class="menu_item"><a href=""><span class="fa fa-sign-in"></span>&nbsp Iniciar Sesión</a></li>

@@ -166,7 +166,7 @@ function buscarLibroId(idLibro) {
         url: "BuscarLibro",
         data: {
             accion: "buscarLibroId",
-            idLibro: idLibro,
+            idLibro: idLibro
         },
         error: function () { //si existe un error en la respuesta del ajax
             window.alert("1-error");
