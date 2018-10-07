@@ -22,7 +22,7 @@ id int primary key identity(1,1),
 numero int not null unique,
 fecha_inicio date not null,
 fecha_final date not null,
-cedula_ID nvarchar(15) not null foreign key references Usuario(cedula),
+usuario_ID int foreign key references Usuario(id),
 libro_ID int foreign key references Libro(id),
 estado_ID int foreign key references Estado(id)   
 )
