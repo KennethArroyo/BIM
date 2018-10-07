@@ -216,38 +216,27 @@ function solicitarPrestamo() {
     }
 }
 
-function solicitarPrestamoUsuario() {
-    var num;
-    if($("#cantidad").val()>=2){ 
+function validar(){
+    var id = $("#cedUsuario").val();
     $.ajax({
-        url: 'CrearPrestamo',
+        url: "VerificarUs",
         data: {
-            accion: "solicitarPrestamo",
-            fechaInicio: $("#fechaInicio").val(),
-            idLibro:$("#idLibro").val()
+            id: id
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            window.alert("La cedula ingresada no existe");
+            return false;
         },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta === "C~") { //correcto
-                window.alert("se realizo el prestamo correcatamente");
-                $("#myModalFormulario").modal("hide");
-            } else {
-                if (tipoRespuesta === "E~") { //error
-                    window.alert("2-error");
-                } else {
-                    window.alert("3-error");
-                }
+        success: function (data) {
+            if($("#cantidad").val()<=1){
+                window.alert("El libro no existe o solo hay una copia");
+                return false;
             }
+            return true;
         },
-        type: 'POST'
+        type: 'POST',
+        dataType: "json"
     });
-    }
-    else{
-        window.alert("El libro no existe o solo hay una copia");
-    }
 }
 
 

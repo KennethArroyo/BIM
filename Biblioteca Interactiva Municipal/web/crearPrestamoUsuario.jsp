@@ -75,7 +75,7 @@
 
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false" id="formModal">
+                        <form action="CrearPrestamoUs" method="POST" onsubmit="return validar()">
                             <div class="row">
                                 <div class="col-md-4">
                                     <input type="hidden" id="idLibro">
@@ -99,8 +99,7 @@
                             <div class="row" style="margin-top: 10px;"> 
                                 <div class="col-md-4" style="margin-left: 250px;">
                                     <div class="form-group">
-                                        <input type="hidden" value="solicitarPrestamo" id="prestamoAction"/>
-                                         <button type="submit" onclick="solicitarPrestamo()" class=" btn btn-success">Solicitar</button>
+                                        <button type="submit" class=" btn btn-success">Solicitar</button>
                                         <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
                                     </div>
                                 </div>
