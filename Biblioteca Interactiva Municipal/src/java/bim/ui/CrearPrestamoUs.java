@@ -5,13 +5,19 @@
  */
 package bim.ui;
 
+import bim.entidades.Asignatura;
+import bim.logica.Model;
+import com.google.gson.Gson;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,6 +45,47 @@ public class CrearPrestamoUs extends HttpServlet {
             case "/VerificarUs":
                 this.verificarUsuario(request, response);
                 break;
+        }
+    }
+    
+      private void agregarPrestamo(HttpServletRequest request, HttpServletResponse response) {
+        
+        try {
+           String ced = request.getParameter("cedUsuario");
+            int cantidad = Model.instance().verificarUsuario(ced);
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            response.setContentType("application/json; charset=UTF-8");
+            if(cantidad==1){
+            out.write(gson.toJson(cantidad));
+            response.setStatus(200); // ok with content
+            }
+            else response.setStatus(401);
+        } catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
+        }
+    }
+    
+    private void verificarUsuario(HttpServletRequest request, HttpServletResponse response) {
+        try {
+           String ced = request.getParameter("cedUsuario");
+            int cantidad = Model.instance().verificarUsuario(ced);
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            response.setContentType("application/json; charset=UTF-8");
+            if(cantidad==1){
+            out.write(gson.toJson(cantidad));
+            response.setStatus(200); // ok with content
+            }
+            else response.setStatus(401);
+        } catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
         }
     }
 
@@ -81,10 +128,5 @@ public class CrearPrestamoUs extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void agregarPrestamo(HttpServletRequest request, HttpServletResponse response) {
-    }
-    
-    private void verificarUsuario(HttpServletRequest request, HttpServletResponse response) {
-    }
 
 }

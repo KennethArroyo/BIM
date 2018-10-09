@@ -42,8 +42,8 @@
                                                     </li>
                                                 <li class="dropdown"><a href="">Préstamos<i class="fa fa-angle-down"></i></a>
                                                     <ul class="dropdown_selection">
-                                                        <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
-                                                        <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
+                                                        <li><a href="crearPrestamo.jsp">Crear <br> Préstamo</a></li>
+                                                        <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo <br> Usuario</a></li>
                                                     </ul>
                                                 
                                                 </li>

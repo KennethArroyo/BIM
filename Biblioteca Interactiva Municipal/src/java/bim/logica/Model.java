@@ -79,4 +79,8 @@ public class Model {
     public Usuario getUsuarioCed(String ced)throws Exception{
     return dao.buscarUsuarioCed(ced);
     }
+
+    public int verificarUsuario(String ced) {
+        return dao.verificarUsuario(ced);
+    }
 }
