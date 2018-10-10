@@ -178,7 +178,7 @@ function buscarLibroId(idLibro) {
             $("#idLibro").val(data.id);
             $("#cantidad").val(data.cantidad_copias);
         }
-        else window.alert("El libro posee solo una copia, no puede ser retirado de la biblioteca");
+        else window.alert("El libro posee solo una copia, solo puede ser utilizado dentro de la biblioteca.");
         },
         type: 'POST',
         dataType: "json"
@@ -186,8 +186,7 @@ function buscarLibroId(idLibro) {
 }
 
 function solicitarPrestamo() {
-    var num;
-    if($("#cantidad").val()>=2){ 
+    var num; 
     $.ajax({
         url: 'CrearPrestamo',
         data: {
@@ -213,10 +212,6 @@ function solicitarPrestamo() {
         },
         type: 'POST'
     });
-    }
-    else{
-        window.alert("El libro no existe o solo hay una copia");
-    }
 }
 
 function validar(){
