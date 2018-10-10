@@ -13,7 +13,6 @@ import java.sql.Date;
  */
 public class Prestamo {
     int id;
-    int numero;
     String fecha_inicio;
     String fecha_final;
     int usuario_ID;
@@ -52,14 +51,6 @@ public class Prestamo {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
     }
 
     public int getUsuario_ID() {

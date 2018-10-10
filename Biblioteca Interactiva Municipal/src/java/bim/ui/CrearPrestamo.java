@@ -43,7 +43,6 @@ public class CrearPrestamo extends HttpServlet {
                     String fechatxtIni = request.getParameter("fechaInicio");
                     p.setFecha_inicio(fechatxtIni);
                     p.setFecha_final(fechatxtIni);
-                    p.setNumero(3);
                     p.setEstado_ID(1);
                     u = Model.instance().getUsuarioCed("304830405");
                     p.setUsuario_ID(u.getId());
