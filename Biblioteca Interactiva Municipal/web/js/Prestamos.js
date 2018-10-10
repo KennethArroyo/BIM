@@ -262,6 +262,7 @@ function validar(){
                 },
                 error: function () { //si existe un error en la respuesta del ajax
                     $("#myModalFormulario").modal("show");
+                    window.alert("la cedula ingresada existe perro");
                 },
                 success: function (data) {
 
