@@ -172,10 +172,13 @@ function buscarLibroId(idLibro) {
             window.alert("1-error");
         },
         success: function (data) {
+            if(data.cantidad_copias>1){
             $("#myModalFormulario").modal();
             $("#prestamoAction").val("solicitarPrestamo");
             $("#idLibro").val(data.id);
             $("#cantidad").val(data.cantidad_copias);
+        }
+        else window.alert("El libro posee solo una copia, no puede ser retirado de la biblioteca");
         },
         type: 'POST',
         dataType: "json"
@@ -249,7 +252,6 @@ function solicitarPrestamo() {
 
 function validar(){
     if($("#cedUsuario").val()!==""){
-        if($("#cantidad").val()>=2){
             var id = $("#cedUsuario").val();
             var libro = $("#idLibro").val();
             var fecha = $("#fechaInicio").val();
@@ -271,8 +273,7 @@ function validar(){
                 dataType: "json"
             });
     
-        }
-        else {window.alert("El libro no existe o solo hay una copia");}
+        
     }
     else{window.alert("Por favor ingresar una cedula");}
 }
