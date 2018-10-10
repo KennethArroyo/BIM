@@ -75,7 +75,7 @@
 
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false" id="formModal">
+                        <form role="form" onsubmit="return true" id="formModalUs">
                             <div class="row">
                                 <div class="col-md-4">
                                     <input type="hidden" id="idLibro">
@@ -87,19 +87,19 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="fechaInicio">Seleccione la fecha para realizar el préstamo:</label>
-                                    <input type="date" name="fechaInicio" id="fechaInicio">
+                                    <input type="date" name="fechaInicio" id="fechaInicio" required>
                                 </div> 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                     <label for="cedUsuario">Ingrese la cedula del usuario: <br></label>
-                                    <input type="text" name="cedUsuario" id="cedUsuario"> 
+                                    <input type="text" name="cedUsuario" id="cedUsuario" required> 
                                     </div>
                             </div> 
                             </div>
                             <div class="row" style="margin-top: 10px;"> 
                                 <div class="col-md-4" style="margin-left: 250px;">
                                     <div class="form-group">
-                                        <button onclick="validar()" class="btn btn-success">Solicitar</button>
+                                        <button type="submit" onclick="validar()" class="btn btn-success">Solicitar</button>
                                         <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
                                     </div>
                                 </div>

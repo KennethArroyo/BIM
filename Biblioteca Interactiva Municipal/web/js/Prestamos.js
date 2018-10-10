@@ -215,11 +215,41 @@ function solicitarPrestamo() {
         window.alert("El libro no existe o solo hay una copia");
     }
 }
+//$("#formModalUs").on("submit", function (event) {
+//    event.preventDefault();
+//    window.alert("hola");
+//    if($("#cedUsuario").val()!==""){
+//        if($("#cantidad").val()>=2){
+//            window.alert("pasa filtro");
+//            var id = $("#cedUsuario").val();
+//            var libro = $("#idLibro").val();
+//            var fecha = $("#fechaInicio").val();
+//            $.ajax({
+//                url: "CrearPrestamoUs",
+//                data: {
+//                    id: id,
+//                    libro: libro,
+//                    fecha: fecha
+//                },
+//                error: function () { //si existe un error en la respuesta del ajax
+//                    window.alert("La cedula ingresada no existe");
+//                    $("#myModalFormulario").modal("show");
+//                },
+//                success: function (data) {
+//                },
+//                type: 'POST',
+//                dataType: "json"
+//            });
+//    
+//        }
+//        else {window.alert("El libro no existe o solo hay una copia");}
+//    }
+//    else{window.alert("Por favor ingresar una cedula");}
+//});
 
 function validar(){
     if($("#cedUsuario").val()!==""){
         if($("#cantidad").val()>=2){
-            window.alert("pasa filtro");
             var id = $("#cedUsuario").val();
             var libro = $("#idLibro").val();
             var fecha = $("#fechaInicio").val();
@@ -231,7 +261,6 @@ function validar(){
                     fecha: fecha
                 },
                 error: function () { //si existe un error en la respuesta del ajax
-                    window.alert("La cedula ingresada no existe");
                     $("#myModalFormulario").modal("show");
                 },
                 success: function (data) {
