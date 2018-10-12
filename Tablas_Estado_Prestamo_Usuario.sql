@@ -1,4 +1,7 @@
 use BIM 
+drop table Prestamo
+drop table Estado
+drop table Usuario
 create table Usuario(
 id int primary key identity(1,1),
 tipo int not null,
