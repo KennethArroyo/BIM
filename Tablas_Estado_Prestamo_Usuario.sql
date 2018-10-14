@@ -1,4 +1,7 @@
 use BIM 
+drop table Prestamo
+drop table Estado
+drop table Usuario
 create table Usuario(
 id int primary key identity(1,1),
 tipo int not null,
@@ -19,7 +22,6 @@ estado_prestamo nvarchar(10) not null
 )
 create table Prestamo(
 id int primary key identity(1,1),
-numero int not null unique,
 fecha_inicio date not null,
 fecha_final date not null,
 usuario_ID int foreign key references Usuario(id),

@@ -268,8 +268,8 @@ function buscarLibroId(idLibro) {
             } else {
                 $("#digital").prop('checked', false);
             }
-            //$("#asignatura").val(data.asignatura.nombre);
-            buscarLibroAsignatura(data.asignatura);
+            $("select").val(data.asignatura.id);
+            //buscarLibroAsignatura(data.asignatura);
             //buscar();
         },
         type: 'POST',
