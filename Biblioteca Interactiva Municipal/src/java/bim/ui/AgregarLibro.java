@@ -29,7 +29,7 @@ import javax.servlet.http.Part;
  *
  * @author Sergio
  */
-@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas"})
+@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas","/AgregarAsignatura"})
 @MultipartConfig
 public class AgregarLibro extends HttpServlet {
 
@@ -51,6 +51,9 @@ public class AgregarLibro extends HttpServlet {
                 break;
             case "/GetAsignaturas":
                 this.buscarAsignatura(request, response);
+                break;
+            case "/AgregarAsignatura":
+                this.agregarAsignatura(request, response);
                 break;
         }
     }
@@ -157,6 +160,29 @@ public class AgregarLibro extends HttpServlet {
         }
     }
 
+    
+    private void buscarAsignatura(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            ArrayList<Asignatura> q = new ArrayList<Asignatura>();
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            q = Model.instance().listarAsignaturas();
+            response.setContentType("application/json; charset=UTF-8");
+            out.write(gson.toJson(q));
+            response.setStatus(200); // ok with content
+        } catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
+        }
+    }
+    
+    protected void agregarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    Asignatura asig = new Asignatura();
+    Model.instance().agregarAsignatura(request.getParameter("asignatura"));
+    request.getRequestDispatcher("principal.jsp").forward(request, response);
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -195,22 +221,5 @@ public class AgregarLibro extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void buscarAsignatura(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            ArrayList<Asignatura> q = new ArrayList<Asignatura>();
-            BufferedReader reader = request.getReader();
-            PrintWriter out = response.getWriter();
-            HttpSession s = request.getSession(true);
-            Gson gson = new Gson();
-            q = Model.instance().listarAsignaturas();
-            response.setContentType("application/json; charset=UTF-8");
-            out.write(gson.toJson(q));
-            response.setStatus(200); // ok with content
-        } catch (Exception e) {
-            String text = e.getMessage();
-            response.setStatus(401); //Bad request
-        }
-    }
 
 }

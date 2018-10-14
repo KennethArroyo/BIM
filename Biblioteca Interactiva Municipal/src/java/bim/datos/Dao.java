@@ -268,4 +268,14 @@ public class Dao {
         }
         return cantidad;
     }
+
+    public void agregarAsignatura(String asig) throws Exception {
+        String sql = "insert into Asignatura(nombre)"
+                + "values('%s')";
+        sql = String.format(sql, asig);
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Error ingresando la Asignatura");
+        }
+    }
 }

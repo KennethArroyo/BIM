@@ -37,13 +37,14 @@
                                                     <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
                                                         <ul class="dropdown_selection">
                                                             <li><a href="agregarLibro.jsp">Agregar Libro</a></li>
+                                                            <li><a href="agregarAsignatura.jsp"><i aria-hidden="true"></i>Agregar Asignatura</a></li>
                                                             <li><a href="buscarLibro.jsp">Buscar Libro</a></li>
                                                         </ul>
                                                     </li>
                                                 <li class="dropdown"><a href="">Préstamos<i class="fa fa-angle-down"></i></a>
                                                     <ul class="dropdown_selection">
-                                                        <li><a href="crearPrestamo.jsp">Crear <br> Préstamo</a></li>
-                                                        <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo <br> Usuario</a></li>
+                                                        <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
+                                                        <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
                                                     </ul>
                                                 
                                                 </li>
@@ -73,13 +74,14 @@
                                 <li class="menu_item has-children"><a href="#"> Libros <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                                     <ul class="menu_selection"> 
                                         <li><a href="agregarLibro.jsp"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
+                                        <li><a href="agregarAsignatura.jsp"><i aria-hidden="true"></i>Agregar Asignatura</a></li>
                                         <li><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                                     </ul>
                                 </li>
-                            <li class="menu_item"><a href="">Prestamo</a>
-                            <ul class="dropdown_selection">
-                                <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
-                                <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
+                            <li class="menu_item has-children"><a href="#">Prestamo <i class="fa fa-angle-down"></i></a>
+                            <ul class="menu_selection">
+                                <li><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
+                                <li><a href="crearPrestamoUsuario.jsp"><i aria-hidden="true"></i>Crear Préstamo Usuario</a></li>
                             </ul>
                             </li>
                             <li class="menu_item"><a href="">Actividades</a></li>

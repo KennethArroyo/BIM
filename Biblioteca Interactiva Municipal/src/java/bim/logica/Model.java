@@ -83,4 +83,8 @@ public class Model {
     public int verificarUsuario(String ced) {
         return dao.verificarUsuario(ced);
     }
+
+    public void agregarAsignatura(String asig) {
+        dao.agregarAsignatura(asig);
+    }
 }
