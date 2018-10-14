@@ -224,10 +224,9 @@ function  buscarLibroAsignatura(name) {
             nombre: name
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            window.alert("Error de ajax");
         },
         success: function (data) {
-                
                 dibujarTabla(data);
         },
         type: 'POST',
@@ -325,20 +324,20 @@ function limpiarForm() {
     $('#forModal').trigger("reset");
 }
 
-function buscarAsignaturaID(idAsignatura){
+function buscarAsignaturaID(idAsignatura) {
     $.ajax({
-        url:'BuscarLibro',
-        data:{
-            accion:"buscarAsignaturaId",
-            idAs:idAsignatura
+        url: 'BuscarLibro',
+        data: {
+            accion: "buscarAsignaturaId",
+            idAs: idAsignatura
         },
-        error:function(){
+        error: function () {
             window.alert("1-error");
         },
-        succes: function(data){
-          $("#asignatura").val(data.nombre);  
+        succes: function (data) {
+            $("#asignatura").val(data.nombre);
         },
-      type: 'POST',
-        dataType: "json"  
+        type: 'POST',
+        dataType: "json"
     });
 }
