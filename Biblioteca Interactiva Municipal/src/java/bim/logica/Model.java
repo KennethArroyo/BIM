@@ -84,7 +84,7 @@ public class Model {
         return dao.verificarUsuario(ced);
     }
 
-    public void agregarAsignatura(String asig) {
+    public void agregarAsignatura(String asig) throws Exception{
         dao.agregarAsignatura(asig);
     }
 }

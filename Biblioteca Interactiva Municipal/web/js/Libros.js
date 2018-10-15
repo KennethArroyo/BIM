@@ -3,10 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var info = [];
-var max;
-var min;
-var inicio;
 function onClickDigital() {
     if ($("#digital").is(':checked')) {
         $("#libForm").append('<input type="file" name="file" class="file" id="file" required>');
@@ -283,6 +279,8 @@ function cancelar() {
 }
 
 function modificarLibro() {
+    var num = $("#copias").val();
+    if($.isNumeric(num)){
     $.ajax({
         url: 'BuscarLibro',
         data: {
@@ -299,7 +297,7 @@ function modificarLibro() {
 
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            window.alert("error de ajax, contacte con el administrador");
         },
         success: function (data) {
             var tipoRespuesta = data.substring(0, 2);
@@ -309,15 +307,18 @@ function modificarLibro() {
                 buscar();
             } else {
                 if (tipoRespuesta === "E~") { //error
-                    window.alert("2-error");
-                } else {
-                    window.alert("3-error");
+                    window.alert("No se pudo modificar el libro");
                 }
             }
             //$("#tablaLibros").html("");
         },
         type: 'POST'
     });
+    }
+    else
+    { 
+        window.alert("La cantidad de copias debe ser un valor numerico");
+    }
 }
 function limpiarForm() {
     //Resetear el formulario

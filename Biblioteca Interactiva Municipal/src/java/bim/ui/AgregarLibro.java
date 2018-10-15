@@ -16,6 +16,8 @@ import java.io.Reader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +45,7 @@ public class AgregarLibro extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
 
         switch (request.getServletPath()) {
             case "/AgregarLibro":
@@ -178,7 +180,7 @@ public class AgregarLibro extends HttpServlet {
         }
     }
     
-    protected void agregarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void agregarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{
     Asignatura asig = new Asignatura();
     Model.instance().agregarAsignatura(request.getParameter("asignatura"));
     request.getRequestDispatcher("principal.jsp").forward(request, response);
@@ -195,7 +197,11 @@ public class AgregarLibro extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AgregarLibro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -209,7 +215,11 @@ public class AgregarLibro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AgregarLibro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
