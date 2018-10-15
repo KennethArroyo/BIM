@@ -18,6 +18,7 @@ public class Prestamo {
     int usuario_ID;
     int estado_ID;
     int libro_ID;
+
     
     public String getFecha_inicio() {
         return fecha_inicio;

@@ -219,19 +219,20 @@ function validar(){
             var id = $("#cedUsuario").val();
             var libro = $("#idLibro").val();
             var fecha = $("#fechaInicio").val();
+            prestamo = {
+                    usuario_ID: id,
+                    libro_ID: libro,
+                    fecha_inicio: fecha
+                };
             $.ajax({
                 url: "CrearPrestamoUs",
-                data: {
-                    id: id,
-                    libro: libro,
-                    fecha: fecha
-                },
+                data: JSON.stringify(prestamo),
                 error: function () { //si existe un error en la respuesta del ajax
                     $("#myModalFormulario").modal("show");
                     window.alert("la cedula ingresada no existe");
                 },
                 success: function (data) {
-
+                    window.alert("Prestamo solicitado satisfactoriamente");
                 },
                 type: 'POST',
                 dataType: "json"

@@ -208,7 +208,7 @@ public class Dao {
             u = usuario(rs);
         } catch (SQLException ex) {
             String error = ex.getMessage();
-            error = "s";
+            throw ex;
         }
     return u;
     }

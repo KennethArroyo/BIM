@@ -6,12 +6,17 @@
 package bim.ui;
 
 import bim.entidades.Asignatura;
+import bim.entidades.Prestamo;
+import bim.entidades.Usuario;
 import bim.logica.Model;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,18 +56,26 @@ public class CrearPrestamoUs extends HttpServlet {
       private void agregarPrestamo(HttpServletRequest request, HttpServletResponse response) {
         
         try {
-           String ced = request.getParameter("cedUsuario");
-            int cantidad = Model.instance().verificarUsuario(ced);
             BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
             HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             response.setContentType("application/json; charset=UTF-8");
-            if(cantidad==1){
-            out.write(gson.toJson(cantidad));
+            Prestamo prestamo = gson.fromJson(reader, Prestamo.class);
+            Usuario us = Model.instance().getUsuarioCed(String.valueOf(prestamo.getUsuario_ID()));
+            prestamo.setUsuario_ID(us.getId());
+            Calendar calendar = Calendar.getInstance();
+            String fechatxtIni = prestamo.getFecha_inicio();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = format.parse(fechatxtIni);
+            calendar.setTime(date); // Configuramos la fecha que se recibe
+            calendar.add(Calendar.DAY_OF_YEAR, 8); // numero de días a añadir, o restar en caso de días<0
+            Date fecha_dev = calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
+            String dev = format.format(fecha_dev);
+            prestamo.setFecha_final(dev);
+            prestamo.setEstado_ID(1);
+            Model.instance().agregarPrestamo(prestamo);
             response.setStatus(200); // ok with content
-            }
-            else response.setStatus(401);
         } catch (Exception e) {
             String text = e.getMessage();
             response.setStatus(401); //Bad request
