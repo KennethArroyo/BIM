@@ -99,7 +99,7 @@
                             <div class="row" style="margin-top: 10px;"> 
                                 <div class="col-md-4" style="margin-left: 250px;">
                                     <div class="form-group">
-                                        <button type="submit" onclick="validar()" class="btn btn-success">Solicitar</button>
+                                        <button onclick="validar()" class="btn btn-success">Solicitar</button>
                                         <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
                                     </div>
                                 </div>
