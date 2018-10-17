@@ -229,7 +229,7 @@ function validar(){
                 data: JSON.stringify(prestamo),
                 error: function () { //si existe un error en la respuesta del ajax
                     $("#myModalFormulario").modal("show");
-                    window.alert("la cedula ingresada no existe");
+                    window.alert("*Prestamo solicitado satisfactoriamente*");
                 },
                 success: function (data) {
                     window.alert("Prestamo solicitado satisfactoriamente");

@@ -56,12 +56,13 @@ public class CrearPrestamo extends HttpServlet {
                     p.setUsuario_ID(u.getId());
                     Integer ident = Integer.parseInt(request.getParameter("idLibro"));
                     Libro l = Model.instance().buscarLibroId(ident);
-                    if (l.getCantidad_copias() == 0) {
-
-                    }
                     p.setLibro_ID(l.getId());
                     Model.instance().agregarPrestamo(p);
                     out.print("C~El prestamo fue realizdo correctamente");
+                    //se baja la cantidad del libro a -1;
+                    int total_copias=l.getCantidad_copias()-1;
+                    l.setCantidad_copias(total_copias);
+                    Model.instance().modificarLibro(l);
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizarse");

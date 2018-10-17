@@ -118,7 +118,7 @@
                                     <div class="form-group">
                                         <label for="estado">Estado</label>
                                         <select class="form-control" id="estado"name="estado">
-                                            <option value="1">Bueno</option>
+                                            <option value="1" selected="selected">Bueno</option>
                                             <option value="2">Regular</option>
                                             <option value="3">Malo</option>
                                         </select>
