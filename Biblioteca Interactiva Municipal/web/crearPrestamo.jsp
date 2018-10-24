@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <label style="color: red">La fecha de devolución sera 8 días después a la fecha elegida</label>
+                                        <label style="color: red;">&nbsp; La fecha de devolución sera 8 días después a la fecha elegida</label>
                                     </div>
                                     <div class="col-lg-6">
                                     <label for="libro" >Libro elegido:</label>
