@@ -85,6 +85,15 @@
                                 <div class="col-md-4">
                                     <input type="hidden" id="cantidad">
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label style="color: red">La fecha de devolución sera 8 días después a la fecha elegida</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                    <label for="libro" >Libro elegido:</label>
+                                    <input type="disabled" id="libro" name="libro">
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <input type="date" name="fechaInicio" id="fechaInicio">
                                 </div>             

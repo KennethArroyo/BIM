@@ -23,7 +23,8 @@
                 <form action="AgregarAsignatura" method="POST" id="asigForm" class="log">
                     <div class="form-group" style="width: 300px">
                         <label for="asignatura">Asignatura</label>
-                        <input type="text" class="form-control" id="asignatura" name="asignatura" required>
+                        <input type="text" class="form-control" id="asignatura" name="asignatura" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+    oninput="this.setCustomValidity('')">
                     </div>
                 <div id="mi_div">    
                 <div class="form-group">

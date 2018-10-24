@@ -16,8 +16,12 @@
 //    });
 //        
 //});
-
-function dibujarTabla(dataJson) {
+    $(document).ready(function setDate(){
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("fechaInicio")[0].setAttribute('min', today);
+        });
+        
+        function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaLibros").html("");
 
@@ -177,6 +181,8 @@ function buscarLibroId(idLibro) {
             $("#prestamoAction").val("solicitarPrestamo");
             $("#idLibro").val(data.id);
             $("#cantidad").val(data.cantidad_copias);
+            $("#libro").val(data.titulo);
+            $("#libro").prop('disabled', true);
         }
         else window.alert("El libro posee solo una copia, solo puede ser utilizado dentro de la biblioteca.");
         },

@@ -86,6 +86,15 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
+                                <label style="color: red;">La fecha de devolución sera 8 días después a la fecha elegida</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="libro" >Libro elegido para prestamo:</label>
+                                    <input type="disabled" id="libro" name="libro">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-lg-6">
                                     <label for="fechaInicio">Seleccione la fecha para realizar el préstamo:</label>
                                     <input type="date" name="fechaInicio" id="fechaInicio" required>
                                 </div> 

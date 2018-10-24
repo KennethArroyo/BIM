@@ -16,17 +16,20 @@
                 <form onsubmit="return agregarLibro()" action="AgregarLibro" method="POST" enctype="multipart/form-data" id="libForm" class="log">
                     <div class="form-group">
                         <label for="clasificacion">Clasificación</label>
-                        <input type="text" class="form-control" id="clasificacion" name="clasificacion" required>
+                        <input type="text" class="form-control" id="clasificacion" name="clasificacion" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+    oninput="this.setCustomValidity('')">
                     </div>
 
                     <div class="form-group">
                         <label for="titulo">Titulo</label>
-                        <input type="text" class="form-control" id="titulo" name="titulo" required>
+                        <input type="text" class="form-control" id="titulo" name="titulo" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+    oninput="this.setCustomValidity('')">
                     </div>
 
                     <div class="form-group">
                         <label for="autor">Autor</label>
-                        <input type="text" class="form-control" id="autor"name="autor" required>
+                        <input type="text" class="form-control" id="autor"name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+    oninput="this.setCustomValidity('')">
                     </div>
 
                     <div class="form-group">
