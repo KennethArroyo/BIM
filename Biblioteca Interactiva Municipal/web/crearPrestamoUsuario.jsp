@@ -72,7 +72,6 @@
                     <div class="modal-header"> 
                         <h4 class="modal-title" id="myModalTitle">Crear Préstamo
                             <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
-
                     </div>
                     <div class="modal-body" id="myModalMessage">
                         <form role="form" onsubmit="return true" id="formModalUs">
@@ -87,10 +86,11 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                 <label style="color: red;">La fecha de devolución sera 8 días después a la fecha elegida</label>
+                                
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="libro" >Libro elegido para prestamo:</label>
-                                    <input type="disabled" id="libro" name="libro">
+                                    <input style="border:none" type="disabled" id="libro" name="libro">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
@@ -101,7 +101,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                     <label for="cedUsuario">Ingrese la cedula del usuario: <br></label>
-                                    <input type="text" name="cedUsuario" id="cedUsuario" required> 
+                                    <input type="text" name="cedUsuario" id="cedUsuario" required>
+                                    
                                     </div>
                             </div> 
                             </div>

@@ -6,6 +6,7 @@
 package bim.ui;
 
 import bim.entidades.Asignatura;
+import bim.entidades.Libro;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import bim.logica.Model;
@@ -28,7 +29,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sergio
  */
-@WebServlet(name = "CrearPrestamoUs", urlPatterns = {"/CrearPrestamoUs","/VerificarUs"})
+@WebServlet(name = "CrearPrestamoUs", urlPatterns = {"/CrearPrestamoUs", "/VerificarUs"})
 public class CrearPrestamoUs extends HttpServlet {
 
     /**
@@ -52,9 +53,9 @@ public class CrearPrestamoUs extends HttpServlet {
                 break;
         }
     }
-    
-      private void agregarPrestamo(HttpServletRequest request, HttpServletResponse response) {
-        
+
+    private void agregarPrestamo(HttpServletRequest request, HttpServletResponse response) {
+
         try {
             BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
@@ -75,27 +76,34 @@ public class CrearPrestamoUs extends HttpServlet {
             prestamo.setFecha_final(dev);
             prestamo.setEstado_ID(1);
             Model.instance().agregarPrestamo(prestamo);
+            //se baja la cantidad del libro a -1
+            Libro l = Model.instance().buscarLibroId(prestamo.getLibro_ID());
+            int total_copias = l.getCantidad_copias() - 1;
+            l.setCantidad_copias(total_copias);
+            Model.instance().modificarLibro(l);
+
             response.setStatus(200); // ok with content
         } catch (Exception e) {
             String text = e.getMessage();
             response.setStatus(401); //Bad request
         }
     }
-    
+
     private void verificarUsuario(HttpServletRequest request, HttpServletResponse response) {
         try {
-           String ced = request.getParameter("cedUsuario");
+            String ced = request.getParameter("cedUsuario");
             int cantidad = Model.instance().verificarUsuario(ced);
             BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
             HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             response.setContentType("application/json; charset=UTF-8");
-            if(cantidad==1){
-            out.write(gson.toJson(cantidad));
-            response.setStatus(200); // ok with content
+            if (cantidad == 1) {
+                out.write(gson.toJson(cantidad));
+                response.setStatus(200); // ok with content
+            } else {
+                response.setStatus(401);
             }
-            else response.setStatus(401);
         } catch (Exception e) {
             String text = e.getMessage();
             response.setStatus(401); //Bad request
@@ -140,6 +148,5 @@ public class CrearPrestamoUs extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }

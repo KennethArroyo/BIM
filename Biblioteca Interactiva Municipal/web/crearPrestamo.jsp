@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                     <label for="libro" >Libro elegido:</label>
-                                    <input type="disabled" id="libro" name="libro">
+                                    <input type="disabled" style="border:none" id="libro" name="libro">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -110,12 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group height25" >
-                                <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                    <strong id="mesajeResultNeg">Info!</strong> 
-                                    <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
-                                </div>
-                            </div>
+                       
                         </form>
                     </div>
                 </div>
