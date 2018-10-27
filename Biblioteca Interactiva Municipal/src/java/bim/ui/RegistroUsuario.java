@@ -8,7 +8,9 @@ package bim.ui;
 import bim.entidades.Usuario;
 import bim.logica.Model;
 import com.google.gson.Gson;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +30,7 @@ import javax.mail.internet.MimeMessage;
  *
  * @author Kenneth
  */
-@WebServlet(name = "RegistroUsuario", urlPatterns = {"/RegistroUsuario", "/RegistrarUsuario", "/VerificarCuenta"})
+@WebServlet(name = "RegistroUsuario", urlPatterns = {"/RegistroUsuario", "/RegistrarUsuario", "/VerificarCuenta", "/BuscarUsuario"})
 public class RegistroUsuario extends HttpServlet {
 
     /**
@@ -49,6 +51,9 @@ public class RegistroUsuario extends HttpServlet {
                 break;
             case "/VerificarCuenta":
                 this.verificarCuenta(request, response);
+                break;
+            case "/BuscarUsuario":
+                this.buscarUsuario(request, response);
                 break;
         }
     }
@@ -194,5 +199,21 @@ public class RegistroUsuario extends HttpServlet {
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         }
     }
-        
+    
+    protected void buscarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            Usuario us = new Usuario();
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            us = Model.instance().getUsuarioCed(request.getParameter("id"));
+            response.setContentType("application/json; charset=UTF-8");
+            out.write(gson.toJson(us));
+            response.setStatus(200); // ok with content
+        } catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
+        }
+    }
 }

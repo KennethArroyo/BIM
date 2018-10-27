@@ -16,10 +16,40 @@
 //    });
 //        
 //});
-    $(document).ready(function setDate(){
+    $(document).ready(function inicializar(){
         var today = new Date().toISOString().split('T')[0];
         document.getElementsByName("fechaInicio")[0].setAttribute('min', today);
+        //$("#myModalFormulario").modal({"backdrop": "static"});
         });
+        
+    function validarCed(){
+            var us_id = $("#cedUsuario").val();
+            $.ajax({
+                url: "BuscarUsuario",
+                data: {
+                    id: us_id
+                },
+
+                error: function () { //si existe un error en la respuesta del ajax
+                    $("#userLabel").remove();
+                    $("#user").remove();
+                    $("#VerUsuario").append('<label for="'+"user"+'" id="userLabel">Usuario:</label>'+
+                                    '<input type="disabled" id="user" name="user">');
+                    $("#user").val("El usuario no existe");
+                    return false;
+                },
+                success: function (data) {
+                    $("#userLabel").remove();
+                    $("#user").remove();
+                    $("#VerUsuario").append('<label for="'+"user"+'" id="userLabel" >Usuario:</label>'+
+                                    '<input type="disabled" id="user" name="user">');
+                    $("#user").val(data.nombre+" "+data.apellidos);
+                    return false;
+                },
+                type: 'POST',
+                dataType: "json"
+            });
+    }
         
         function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
