@@ -91,11 +91,11 @@
                                     </div>
                                     <div class="col-lg-6">
                                     <label for="libro" >Libro elegido:</label>
-                                    <input type="disabled" style="border:none" id="libro" name="libro">
+                                    <input class="form-control" type="disabled" style="border:none" id="libro" name="libro">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="date" name="fechaInicio" id="fechaInicio">
+                                    <input class="form-control" type="date" name="fechaInicio" id="fechaInicio">
                                 </div>             
                             </div>
                             <div class="row"> 

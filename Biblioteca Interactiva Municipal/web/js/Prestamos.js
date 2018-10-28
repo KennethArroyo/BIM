@@ -34,7 +34,7 @@
                     $("#userLabel").remove();
                     $("#user").remove();
                     $("#VerUsuario").append('<label for="'+"user"+'" id="userLabel">Usuario:</label>'+
-                                    '<input type="disabled" id="user" name="user">');
+                                    '<input class="form-control" type="disabled" id="user" name="user">');
                     $("#user").val("El usuario no existe");
                     return false;
                 },
@@ -42,7 +42,7 @@
                     $("#userLabel").remove();
                     $("#user").remove();
                     $("#VerUsuario").append('<label for="'+"user"+'" id="userLabel" >Usuario:</label>'+
-                                    '<input type="disabled" id="user" name="user">');
+                                    '<input class="form-control" type="disabled" id="user" name="user">');
                     $("#user").val(data.nombre+" "+data.apellidos);
                     return false;
                 },
@@ -92,8 +92,15 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.comentario + "</td>"));
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button></td>'));
+    if(rowData.cantidad_copias === 1){
+        window.alert("entra");
+        row.append($('<td><button type="button" class="btn btn-info disabled">' + 'Solicitar Préstamo' + '</button></td>'));
+    }
+    else{
+        window.alert("entra 2");
+        row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button></td>'));
 
+    }
 }
 function buscar() {
     var tipo = $("#selectBuscar").val();
@@ -282,6 +289,8 @@ function validar(){
 
 function cancelar() {
     limpiarForm();
+    $("#userLabel").remove();
+    $("#user").remove();
     $("#myModalFormulario").modal("hide");
     //$("#tablaLibros").html("");
 }

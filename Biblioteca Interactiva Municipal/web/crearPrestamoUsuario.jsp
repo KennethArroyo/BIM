@@ -91,28 +91,28 @@
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-lg-6">
                                     <label for="fechaInicio">Seleccione la fecha para realizar el préstamo:</label>
-                                    <input type="date" name="fechaInicio" id="fechaInicio" required>
+                                    <input class="form-control" type="date" name="fechaInicio" id="fechaInicio" required>
                                 </div> 
                                 <div class="col-lg-6">
                                     <label for="libro" >Libro elegido para prestamo:</label>
-                                    <input type="disabled" id="libro" name="libro">
+                                    <input class="form-control" type="disabled" id="libro" name="libro">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                     <label for="cedUsuario">Ingrese la cedula del usuario: <br></label>
-                                    <input type="text" name="cedUsuario" id="cedUsuario" required>
+                                    <input class="form-control" type="text" name="cedUsuario" id="cedUsuario" required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4" id="VerUsuario">
+                                    <div class="col-lg-10" id="VerUsuario">
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div style="margin-left: 15px;">
-                                <input type="button" onclick="return validarCed()" value="Verificar usuario" class="btn btn-info btn-sm">
+                                <input class="form-control" type="button" onclick="return validarCed()" value="Verificar usuario" class="btn btn-info btn-sm">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;"> 
