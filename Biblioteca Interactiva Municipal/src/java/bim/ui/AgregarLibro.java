@@ -185,6 +185,7 @@ public class AgregarLibro extends HttpServlet {
     Model.instance().agregarAsignatura(request.getParameter("asignatura"));
     request.getRequestDispatcher("principal.jsp").forward(request, response);
     }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
