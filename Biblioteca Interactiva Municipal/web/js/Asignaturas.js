@@ -5,8 +5,13 @@
  */
 
 
-$(document).ready(function getAsignaturas(){
-            $.ajax({type: "GET", 
+$(document).ready(function getAsignaturas(){  
+            buscar();
+            });
+
+
+function buscar(){
+    $.ajax({type: "GET", 
                   url:"GetAsignaturas",
                   success: 
                     function(obj){
@@ -15,10 +20,8 @@ $(document).ready(function getAsignaturas(){
                   error: function(status){
                          window.alert("Ha ocurrido un error con la lista de asignaturas");
                     }                    
-                });   
-            });
-
-
+                }); 
+}
 
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
@@ -29,11 +32,9 @@ function dibujarTabla(dataJson) {
     var row = $("<tr />");
     head.append(row);
     $("#tablaAsignaturas").append(head);
-    //row.append($("<th>ID<b></b></th>"));
     row.append($("<th>NOMBRE<b></b></th>"));
     row.append($("<th>EDITAR<b></b></th>"));
     row.append($("<th>ELIMINAR<b></b></th>"));
-    //row.append($("<th>HAB/DESHAB<b></b></th>"));
 
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
@@ -48,9 +49,24 @@ function dibujarFila(rowData) {
     var row = $("<tr/>");
     $("#tablaAsignaturas").append(row);
     row.append($("<td>" + rowData.nombre + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-info" onclick="ModificarAsig(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="EliminarAsig(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-info" onclick="modificarAsig(' + rowData.id + ',' + rowData.nombre + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + rowData.id + ',' + rowData.nombre + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
 
     //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
+}
 
+function modificarAsig(id, nombre){
+    actualizar = {id:id,nombre:nombre};
+    $.ajax({type: "POST", 
+            url:"ModificarAsig",
+            dataType: "json",
+            data: actualziar,
+            success: 
+              function(){
+                actualizarTabla(actualizar);
+              },
+            error: function(status){
+                   window.alert("Ha ocurrido un error al modificar asignatura");
+            }
+    });
 }

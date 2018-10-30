@@ -31,7 +31,7 @@ import javax.servlet.http.Part;
  *
  * @author Sergio
  */
-@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas","/AgregarAsignatura"})
+@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas","/AgregarAsignatura","/ModificarAsig"})
 @MultipartConfig
 public class AgregarLibro extends HttpServlet {
 
@@ -56,6 +56,12 @@ public class AgregarLibro extends HttpServlet {
                 break;
             case "/AgregarAsignatura":
                 this.agregarAsignatura(request, response);
+                break;
+            case "/ModificarAsig":
+                this.ModificarAsignatura(request, response);
+                break;
+            case "/EliminarAsig":
+                this.EliminarAsignatura(request, response);
                 break;
         }
     }
@@ -184,6 +190,25 @@ public class AgregarLibro extends HttpServlet {
     Asignatura asig = new Asignatura();
     Model.instance().agregarAsignatura(request.getParameter("asignatura"));
     request.getRequestDispatcher("principal.jsp").forward(request, response);
+    }
+    
+    
+    protected void ModificarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{
+         try {
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            Model.instance().modificarAsignatura(Integer.parseInt(request.getParameter("id")),request.getParameter("nombre"));
+            response.setStatus(200); // ok with content
+        } catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
+        }
+    }
+    
+    protected void EliminarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{
+    
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

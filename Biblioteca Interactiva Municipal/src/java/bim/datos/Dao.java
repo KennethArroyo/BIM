@@ -278,4 +278,10 @@ public class Dao {
             throw new Exception("Error ingresando la Asignatura");
         }
     }
+
+    public void modificarAsignatura(int id, String nombre) {
+        String sql = "update Asignatura set nombre='%s' where id=%d";
+        sql = String.format(sql, id, nombre);
+        db.executeQuery(sql);
+    }
 }

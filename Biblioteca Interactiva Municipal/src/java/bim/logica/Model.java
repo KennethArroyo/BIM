@@ -87,4 +87,8 @@ public class Model {
     public void agregarAsignatura(String asig) throws Exception{
         dao.agregarAsignatura(asig);
     }
+
+    public void modificarAsignatura(int id,String nombre) {
+        dao.modificarAsignatura(id,nombre);
+    }
 }
