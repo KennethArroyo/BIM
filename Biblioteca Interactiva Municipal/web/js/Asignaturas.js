@@ -22,7 +22,7 @@ $(document).ready(function getAsignaturas(){
 
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
-    $("#tablaLibros").html("");
+    $("#tablaAsignaturas").html("");
 
     //muestra el enzabezado de la tabla
     var head = $("<thead class='thead-dark'/>");

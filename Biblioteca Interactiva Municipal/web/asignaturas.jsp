@@ -9,6 +9,9 @@
 <html>
     <head>    
         <%@ include file="librerias.jsp" %>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src="js/modals.js" type="text/javascript"></script>
         <script src="js/Asignaturas.js" type="text/javascript"></script>
         <title>Asignaturas</title>
     </head>
@@ -35,12 +38,10 @@
                 </div>
                 </form>
                 <br>
+                <div class="table-responsive">
+                    <table border="2" class="table table-striped" id="tablaAsignaturas"></table>
+                </div>
             </div>
-            
-            <div class="table-responsive">
-                <table border="2" class="table table-striped" id="tablaAsignaturas"></table>
-            </div>
-
         </div>
         <div class="modal fade" id="myModalAsignatura" role="dialog">
             <div class="modal-dialog modal-lg">
