@@ -47,7 +47,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header"> 
-                        <h4 class="modal-title" id="myModalTitle">Modificar Libros
+                        <h4 class="modal-title" id="myModalTitle">Modificar Asignatura
                             <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
                        
                     </div>
@@ -60,12 +60,17 @@
                                         <input type="text" class="form-control" id="nombre" name="nombre" required>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" id="AsigId" name="AsigId">
+                                    </div>
+                                </div>
                             </div>
                             <div class="row"> 
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <button type="submit" onclick="modificarAsignatura()" class=" btn btn-success">Guardar</button>
+                                        <button type="submit" onclick="modificarAsig()" class=" btn btn-success">Guardar</button>
                                         <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
                                     </div>
                                 </div>

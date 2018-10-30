@@ -200,6 +200,8 @@ public class AgregarLibro extends HttpServlet {
             HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             Model.instance().modificarAsignatura(Integer.parseInt(request.getParameter("id")),request.getParameter("nombre"));
+            response.setContentType("application/json; charset=UTF-8");
+            out.write(gson.toJson("correcto")); 
             response.setStatus(200); // ok with content
         } catch (Exception e) {
             String text = e.getMessage();

@@ -281,7 +281,7 @@ public class Dao {
 
     public void modificarAsignatura(int id, String nombre) {
         String sql = "update Asignatura set nombre='%s' where id=%d";
-        sql = String.format(sql, id, nombre);
+        sql = String.format(sql, nombre, id);
         db.executeQuery(sql);
     }
 }

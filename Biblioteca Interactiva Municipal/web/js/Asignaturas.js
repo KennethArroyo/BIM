@@ -46,27 +46,46 @@ function dibujarFila(rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de un libro
 
-    var row = $("<tr/>");
+    var row = $('<tr id='+rowData.id+'/>');
     $("#tablaAsignaturas").append(row);
-    row.append($("<td>" + rowData.nombre + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-info" onclick="modificarAsig(' + rowData.id + ',' + rowData.nombre + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + rowData.id + ',' + rowData.nombre + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
-
+    row.append($('<td>' + rowData.nombre + '</td>'));
+    row.append($('<td><button type="button" class="btn btn-info" onclick="levantarModal(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
     //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 }
 
-function modificarAsig(id, nombre){
-    actualizar = {id:id,nombre:nombre};
+function levantarModal(id, nombre){
+    $("#myModalAsignatura").modal();
+    $("#nombre").val(nombre);
+    $("#AsigId").val(id);
+}
+
+function modificarAsig(){
+    var asig_id = $("#AsigId").val();
+    var asig_nom = $("#nombre").val();
+    var datos = {id:asig_id,nombre:asig_nom};
     $.ajax({type: "POST", 
             url:"ModificarAsig",
             dataType: "json",
-            data: actualziar,
+            data: datos,
             success: 
-              function(){
-                actualizarTabla(actualizar);
+              function(status){ 
+                actualizarTabla(datos);
               },
             error: function(status){
                    window.alert("Ha ocurrido un error al modificar asignatura");
+                   $("#myModalAsignatura").modal("hide");
             }
     });
+}
+
+function actualizarTabla(datos){
+    var row = document.getElementById(datos.id);
+    row.parentNode.removeChild(row);
+    var tr =$('<tr id='+datos.id+'/>');
+	tr.html("<td>"+datos.nombre+"</td>"+
+				'<td><button type="button" class="btn btn-info" onclick="levantarModal(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'+
+				'<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
+	$("#tablaAsignaturas").prepend(tr);
+        $("#myModalAsignatura").modal("hide");
 }
