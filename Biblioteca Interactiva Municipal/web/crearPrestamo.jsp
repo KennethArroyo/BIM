@@ -75,9 +75,17 @@
                     <div class="modal-body" id="myModalMessage">
                         <form role="form" onsubmit="return false" id="formModal">
                             <div class="row">
+                                <div class="col-lg-6">
+                                    <label style="color: red;">&nbsp; La fecha de devolución sera 8 días después a la fecha elegida</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="libro" >Libro elegido:</label>
+                                    <input class="form-control" type="disabled" style="border:none" id="libro" name="libro">
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-4">
                                     <label for="fechaInicio">Seleccione la fecha para realizar el préstamo:</label>
-
                                 </div>
                                 <div class="col-md-4">
                                     <input type="hidden" id="idLibro">
@@ -85,32 +93,24 @@
                                 <div class="col-md-4">
                                     <input type="hidden" id="cantidad">
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label style="color: red;">&nbsp; La fecha de devolución sera 8 días después a la fecha elegida</label>
-                                    </div>
-                                    <div class="col-lg-6">
-                                    <label for="libro" >Libro elegido:</label>
-                                    <input class="form-control" type="disabled" style="border:none" id="libro" name="libro">
-                                    </div>
-                                </div>
+
                                 <div class="col-md-4">
                                     <input class="form-control" type="date" name="fechaInicio" id="fechaInicio">
                                 </div>             
                             </div>
                             <div class="row"> 
                                 <div class="col-md-4">
-                                   
+
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="hidden" value="solicitarPrestamo" id="prestamoAction"/>
-                                         <button type="submit" onclick="solicitarPrestamo()" class=" btn btn-success">Solicitar</button>
+                                        <button type="submit" onclick="solicitarPrestamo()" class=" btn btn-success">Solicitar</button>
                                         <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
                                     </div>
                                 </div>
                             </div>
-                       
+
                         </form>
                     </div>
                 </div>

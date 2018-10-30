@@ -164,12 +164,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group height25" >
-                                <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                    <strong id="mesajeResultNeg">Info!</strong> 
-                                    <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>

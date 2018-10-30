@@ -93,11 +93,9 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
     if(rowData.cantidad_copias === 1){
-        window.alert("entra");
         row.append($('<td><button type="button" class="btn btn-info disabled">' + 'Solicitar Préstamo' + '</button></td>'));
     }
     else{
-        window.alert("entra 2");
         row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button></td>'));
 
     }
