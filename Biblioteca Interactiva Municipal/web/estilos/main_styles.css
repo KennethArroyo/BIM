@@ -1092,6 +1092,14 @@ display: block;
    
 }
 
+#tablaAsignaturas{
+    background-color: white;
+}
+
+#tablaAsignaturas tr:nth-child(odd) {
+   background-color:#dddddd;
+}
+
 .field-icon {
   float: left;
   margin-left: 225px;

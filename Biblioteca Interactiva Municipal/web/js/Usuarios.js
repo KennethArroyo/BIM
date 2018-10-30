@@ -37,7 +37,8 @@ $(document).ready(function() {
 
 var password = document.getElementById("contrasena")
   , confirm_password = document.getElementById("verificacontrasena"),
-          correo = document.getElementById("correo");
+          correo = document.getElementById("correo"),
+          identificacion = document.getElementById("identificacion");
 
 function validarClave(){
   if(password.value != confirm_password.value) {
@@ -53,6 +54,21 @@ function validarCorreo(email)
     return re.test(email);
 }
 
+function validarIdentificacionNac(identificacion) {
+    var re = /[0-9]{9}/;
+}
+
+function validarIdentificacionExt(identificacion) {
+    var re = /[0-9]{12}/;
+}
+
+
+function validarFormatoIdentificacion() {
+    if(!validarIdentificacionNac(identificaion.value) || !validarIdentificacionExt(identificaion.value)){
+        identificacion.setCustomValidity("El formato de la Identificación es invalida")
+    }
+}
+
 function validarFormatoCorreo(){
     if(!validarCorreo(correo.value)) {
         correo.setCustomValidity("El formato del correo es invalido");
@@ -60,6 +76,14 @@ function validarFormatoCorreo(){
     else 
         correo.setCustomValidity('');
 }
+
+$(document).ready(function() {  
+   $(".dropdown-menu a")[0].click();
+});
+
+    $(".dropdown-menu a ").click(function(){
+                $(this).parents(".input-group").find('.btn').text($(this).text());
+            });
 
 correo.onkeyup = validarFormatoCorreo;
 password.onchange = validarClave;

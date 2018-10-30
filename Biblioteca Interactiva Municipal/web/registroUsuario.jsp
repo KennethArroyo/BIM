@@ -14,19 +14,32 @@
                 <h2  style="align-content: center;">Registro de Usuarios</h2>
                 <br>
                 <form action="RegistrarUsuario" method="POST" id="regUsuarios">
+                    
                     <div class="form-group">
                         <label for="identificacion">Identificación</label>
-                        <input type="text" class="form-control" id="identificacion" name="identificacion" required>
+                            <div class="input-group" style="width: 10px;">
+                            <div class="input-group-prepend">
+                              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"></button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" data="Nacional">Nacional</a>
+                                <a class="dropdown-item" data="Extranjero">Extranjero</a>
+                              </div>
+                            </div>
+                            <input type="text" class="form-control" id="identificacion" name="identificacion" pattern="([0-9]{9,12})"required>
+                            
+                        </div>
+                        <p>Formato Nacional(9 Digitos): 0-0000-0000 <br> Formato Extranjero(12 Digitos): 0000-0000-0000</p>
                     </div>
+
 
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" required>
                     </div>
 
                     <div class="form-group">
                         <label for="Apellidos">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" required>
                     </div>
                     
                     <div class="form-group">
@@ -36,7 +49,8 @@
                     
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" required>
+                        <input type="text" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}" required>
+                        <p>Formato: 0000-0000</p>
                     </div>
                     
                     <div class="form-group">
@@ -49,9 +63,9 @@
                         <label for="contrasena">Contraseña</label>
                         
                         <input type="password" class="form-control" id="contrasena" name="contrasena"  
-                        pattern="(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" required>
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
                         <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
-                        <p>Debe tener al menos una mayúscula, una minúscula y un número</p>
+                        <p>Debe tener al menos una mayúscula, una minúscula, un número y debe contener como mínimo 8 caracteres</p>
                     </div>
                     
                     <div class="form-group" id="show_hide_password-verify">
