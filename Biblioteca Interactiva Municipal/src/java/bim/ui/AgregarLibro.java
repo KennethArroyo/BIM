@@ -189,7 +189,7 @@ public class AgregarLibro extends HttpServlet {
     protected void agregarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{
     Asignatura asig = new Asignatura();
     Model.instance().agregarAsignatura(request.getParameter("asignatura"));
-    request.getRequestDispatcher("principal.jsp").forward(request, response);
+    request.getRequestDispatcher("asignaturas.jsp").forward(request, response);
     }
     
     

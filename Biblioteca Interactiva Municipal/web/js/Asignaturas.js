@@ -9,10 +9,6 @@ $(document).ready(function getAsignaturas(){
             buscar();
             });
 
-function agregarNueva(){
-    
-    
-}
 
 function buscar(){
     $.ajax({type: "GET", 
