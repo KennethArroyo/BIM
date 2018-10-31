@@ -9,6 +9,10 @@ $(document).ready(function getAsignaturas(){
             buscar();
             });
 
+function agregarNueva(){
+    
+    
+}
 
 function buscar(){
     $.ajax({type: "GET", 
@@ -50,7 +54,7 @@ function dibujarFila(rowData) {
     $("#tablaAsignaturas").append(row);
     row.append($('<td>' + rowData.nombre + '</td>'));
     row.append($('<td><button type="button" class="btn btn-info" onclick="levantarModal(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
     //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 }
 
@@ -79,13 +83,40 @@ function modificarAsig(){
     });
 }
 
-function actualizarTabla(datos){
+function eliminarAsig(id){
+    if(confirm("¿Seguro que desea eliminar la Asignatura?")){
+    var datos = {id:id};
+    $.ajax({type: "POST", 
+            url:"EliminarAsig",
+            dataType: "json",
+            data: datos,
+            success: 
+              function(status){ 
+                eliminarFila(datos);
+              },
+            error: function(status){
+                   window.alert("Ha ocurrido un error al modificar asignatura");
+                   $("#myModalAsignatura").modal("hide");
+            }
+    });
+    }
+}
+
+function eliminarFila(datos){
     var row = document.getElementById(datos.id);
     row.parentNode.removeChild(row);
-    var tr =$('<tr id='+datos.id+'/>');
+}
+
+function agregarFila(datos){
+var tr =$('<tr id='+datos.id+'/>');
 	tr.html("<td>"+datos.nombre+"</td>"+
 				'<td><button type="button" class="btn btn-info" onclick="levantarModal(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'+
 				'<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
-	$("#tablaAsignaturas").prepend(tr);
-        $("#myModalAsignatura").modal("hide");
+	$("#tablaAsignaturas").append(tr);    
+}
+
+function actualizarTabla(datos){
+    eliminarFila(datos);
+    agregarFila(datos);
+    $("#myModalAsignatura").modal("hide");
 }

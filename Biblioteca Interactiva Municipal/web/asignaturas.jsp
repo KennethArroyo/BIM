@@ -21,11 +21,11 @@
         
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
             
-            <div class="container" style="width: 450px; align-self: center">
+            <div class="container col-sm-3 col-md-4" style="align-self: center">
                 <h3  style="align-content: center;">Agregar Asignatura</h3>
                 <br>
                 <form action="AgregarAsignatura" method="POST" id="asigForm" class="log">
-                    <div class="form-group" style="width: 300px">
+                    <div class="form-group" col-sm-3 col-md-4>
                         <label for="asignatura">Asignatura</label>
                         <input type="text" class="form-control" id="asignatura" name="asignatura" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
     oninput="this.setCustomValidity('')">
