@@ -91,7 +91,7 @@ function eliminarAsig(id){
                 eliminarFila(datos);
               },
             error: function(status){
-                   window.alert("Ha ocurrido un error al modificar asignatura");
+                   window.alert("Esta asignatura no se puede eliminar debido a que esta ligada a otros libros");
                    $("#myModalAsignatura").modal("hide");
             }
     });

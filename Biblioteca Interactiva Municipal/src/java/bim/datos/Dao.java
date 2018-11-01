@@ -282,6 +282,15 @@ public class Dao {
     public void modificarAsignatura(int id, String nombre) {
         String sql = "update Asignatura set nombre='%s' where id=%d";
         sql = String.format(sql, nombre, id);
-        db.executeQuery(sql);
+        db.executeUpdate(sql);
+    }
+
+    public void eliminarAsignatura(int id) throws Exception {
+            String sql = "delete from Asignatura where id=%d";
+            sql = String.format(sql, id);
+            int resultado = db.executeUpdate(sql);
+                if(resultado == 0){
+                    throw new Exception("Error ingresando la Asignatura");
+                }
     }
 }

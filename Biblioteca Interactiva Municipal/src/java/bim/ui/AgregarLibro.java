@@ -31,7 +31,7 @@ import javax.servlet.http.Part;
  *
  * @author Sergio
  */
-@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas","/AgregarAsignatura","/ModificarAsig"})
+@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas","/AgregarAsignatura","/ModificarAsig","/EliminarAsig"})
 @MultipartConfig
 public class AgregarLibro extends HttpServlet {
 
@@ -210,7 +210,19 @@ public class AgregarLibro extends HttpServlet {
     }
     
     protected void EliminarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{
-    
+        try {
+                BufferedReader reader = request.getReader();
+                PrintWriter out = response.getWriter();
+                HttpSession s = request.getSession(true);
+                Gson gson = new Gson();
+                Model.instance().eliminarAsignatura(Integer.parseInt(request.getParameter("id")));
+                response.setContentType("application/json; charset=UTF-8");
+                out.write(gson.toJson("correcto")); 
+                response.setStatus(200); // ok with content
+            } catch (Exception e) {
+                String text = e.getMessage();
+                response.setStatus(401); //Bad request
+            }
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -91,4 +91,8 @@ public class Model {
     public void modificarAsignatura(int id,String nombre) {
         dao.modificarAsignatura(id,nombre);
     }
+
+    public void eliminarAsignatura(int id) {
+        dao.eliminarAsignatura(id);
+    }
 }
