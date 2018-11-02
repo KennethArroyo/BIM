@@ -3,6 +3,8 @@
 <html>
     <head>    
         <%@ include file="librerias.jsp" %>
+        <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
+        <script src="js/sweetalert2.js" type="text/javascript"></script>
         <title>Agregar libro</title>
     </head>
     

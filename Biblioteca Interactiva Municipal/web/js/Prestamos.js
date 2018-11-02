@@ -16,42 +16,42 @@
 //    });
 //        
 //});
-    $(document).ready(function inicializar(){
-        var today = new Date().toISOString().split('T')[0];
-        document.getElementsByName("fechaInicio")[0].setAttribute('min', today);
-        //$("#myModalFormulario").modal({"backdrop": "static"});
-        });
-        
-    function validarCed(){
-            var us_id = $("#cedUsuario").val();
-            $.ajax({
-                url: "BuscarUsuario",
-                data: {
-                    id: us_id
-                },
+$(document).ready(function inicializar() {
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("fechaInicio")[0].setAttribute('min', today);
+    //$("#myModalFormulario").modal({"backdrop": "static"});
+});
 
-                error: function () { //si existe un error en la respuesta del ajax
-                    $("#userLabel").remove();
-                    $("#user").remove();
-                    $("#VerUsuario").append('<label for="'+"user"+'" id="userLabel">Usuario:</label>'+
-                                    '<input class="form-control" type="disabled" id="user" name="user">');
-                    $("#user").val("El usuario no existe");
-                    return false;
-                },
-                success: function (data) {
-                    $("#userLabel").remove();
-                    $("#user").remove();
-                    $("#VerUsuario").append('<label for="'+"user"+'" id="userLabel" >Usuario:</label>'+
-                                    '<input class="form-control" type="disabled" id="user" name="user">');
-                    $("#user").val(data.nombre+" "+data.apellidos);
-                    return false;
-                },
-                type: 'POST',
-                dataType: "json"
-            });
-    }
-        
-        function dibujarTabla(dataJson) {
+function validarCed() {
+    var us_id = $("#cedUsuario").val();
+    $.ajax({
+        url: "BuscarUsuario",
+        data: {
+            id: us_id
+        },
+
+        error: function () { //si existe un error en la respuesta del ajax
+            $("#userLabel").remove();
+            $("#user").remove();
+            $("#VerUsuario").append('<label for="' + "user" + '" id="userLabel">Usuario:</label>' +
+                    '<input class="form-control" type="disabled" id="user" name="user">');
+            $("#user").val("El usuario no existe");
+            return false;
+        },
+        success: function (data) {
+            $("#userLabel").remove();
+            $("#user").remove();
+            $("#VerUsuario").append('<label for="' + "user" + '" id="userLabel" >Usuario:</label>' +
+                    '<input class="form-control" type="disabled" id="user" name="user">');
+            $("#user").val(data.nombre + " " + data.apellidos);
+            return false;
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaLibros").html("");
 
@@ -92,10 +92,9 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.comentario + "</td>"));
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
-    if(rowData.cantidad_copias === 1){
+    if (rowData.cantidad_copias === 1) {
         row.append($('<td><button type="button" class="btn btn-info disabled">' + 'Solicitar Préstamo' + '</button></td>'));
-    }
-    else{
+    } else {
         row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button></td>'));
 
     }
@@ -211,15 +210,15 @@ function buscarLibroId(idLibro) {
             window.alert("1-error");
         },
         success: function (data) {
-            if(data.cantidad_copias>1){
-            $("#myModalFormulario").modal();
-            $("#prestamoAction").val("solicitarPrestamo");
-            $("#idLibro").val(data.id);
-            $("#cantidad").val(data.cantidad_copias);
-            $("#libro").val(data.titulo);
-            $("#libro").prop('disabled', true);
-        }
-        else window.alert("El libro posee solo una copia, solo puede ser utilizado dentro de la biblioteca.");
+            if (data.cantidad_copias > 1) {
+                $("#myModalFormulario").modal();
+                $("#prestamoAction").val("solicitarPrestamo");
+                $("#idLibro").val(data.id);
+                $("#cantidad").val(data.cantidad_copias);
+                $("#libro").val(data.titulo);
+                $("#libro").prop('disabled', true);
+            } else
+                window.alert("El libro posee solo una copia, solo puede ser utilizado dentro de la biblioteca.");
         },
         type: 'POST',
         dataType: "json"
@@ -227,13 +226,13 @@ function buscarLibroId(idLibro) {
 }
 
 function solicitarPrestamo() {
-    var num; 
+    var num;
     $.ajax({
         url: 'CrearPrestamo',
         data: {
             accion: "solicitarPrestamo",
             fechaInicio: $("#fechaInicio").val(),
-            idLibro:$("#idLibro").val()
+            idLibro: $("#idLibro").val()
         },
         error: function () { //si existe un error en la respuesta del ajax
             window.alert("1-error");
@@ -255,33 +254,34 @@ function solicitarPrestamo() {
     });
 }
 
-function validar(){
-    if($("#cedUsuario").val()!==""){
-            var id = $("#cedUsuario").val();
-            var libro = $("#idLibro").val();
-            var fecha = $("#fechaInicio").val();
-            prestamo = {
-                    usuario_ID: id,
-                    libro_ID: libro,
-                    fecha_inicio: fecha
-                };
-            $.ajax({
-                url: "CrearPrestamoUs",
-                data: JSON.stringify(prestamo),
-                error: function () { //si existe un error en la respuesta del ajax
-                    $("#myModalFormulario").modal("show");
-                    window.alert("*Prestamo solicitado satisfactoriamente*");
-                },
-                success: function (data) {
-                    window.alert("Prestamo solicitado satisfactoriamente");
-                },
-                type: 'POST',
-                dataType: "json"
-            });
-    
-        
+function validar() {
+    if ($("#cedUsuario").val() !== "") {
+        var id = $("#cedUsuario").val();
+        var libro = $("#idLibro").val();
+        var fecha = $("#fechaInicio").val();
+        prestamo = {
+            usuario_ID: id,
+            libro_ID: libro,
+            fecha_inicio: fecha
+        };
+        $.ajax({
+            url: "CrearPrestamoUs",
+            data: JSON.stringify(prestamo),
+            error: function () { //si existe un error en la respuesta del ajax
+                $("#myModalFormulario").modal("show");
+                window.alert("*Prestamo solicitado satisfactoriamente*");
+            },
+            success: function (data) {
+                window.alert("Prestamo solicitado satisfactoriamente");
+            },
+            type: 'POST',
+            dataType: "json"
+        });
+
+
+    } else {
+        window.alert("Por favor ingresar una cedula");
     }
-    else{window.alert("Por favor ingresar una cedula");}
 }
 
 
@@ -297,4 +297,3 @@ function limpiarForm() {
     //Resetear el formulario
     $('#forModal').trigger("reset");
 }
-

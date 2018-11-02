@@ -92,7 +92,7 @@ public class Model {
         dao.modificarAsignatura(id,nombre);
     }
 
-    public void eliminarAsignatura(int id) {
+    public void eliminarAsignatura(int id) throws Exception {
         dao.eliminarAsignatura(id);
     }
 }
