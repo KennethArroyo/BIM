@@ -30,8 +30,11 @@ function dibujarTabla(dataJson) {
     //muestra el enzabezado de la tabla
     var head = $("<thead class='thead-dark'/>");
     var row = $("<tr />");
+    var row2 = $("<tr />");
+    head.append(row2);
     head.append(row);
     $("#tablaAsignaturas").append(head);
+    row2.append($('<th colspan="3">Asignaturas existentes en el sistema<b></b></th>'));
     row.append($("<th>NOMBRE<b></b></th>"));
     row.append($("<th>EDITAR<b></b></th>"));
     row.append($("<th>ELIMINAR<b></b></th>"));

@@ -26,7 +26,6 @@
                 <br>
                 <form action="AgregarAsignatura" method="POST" id="asigForm" class="log">
                     <div class="form-group" col-sm-3 col-md-4>
-                        <label for="asignatura">Asignatura</label>
                         <input type="text" class="form-control" id="asignatura" name="asignatura" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
     oninput="this.setCustomValidity('')">
                     </div>
@@ -39,7 +38,8 @@
                 </form>
                 <br>
                 <div class="table-responsive">
-                    <table border="2" class="table table-striped" id="tablaAsignaturas"></table>
+                    <table border="2" class="table table-striped" id="tablaAsignaturas">
+                    </table>
                 </div>
             </div>
         </div>
