@@ -11,7 +11,10 @@
 <html>
     <head>
         <title>Buscar Libro</title>
-        <%@include file="librerias.jsp"%>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="js/Libros.js" type="text/javascript"></script>
+        <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src="js/modals.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -76,7 +79,7 @@
                     <div class="modal-header"> 
                         <h4 class="modal-title" id="myModalTitle">Modificar Libros
                             <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
-                       
+
                     </div>
                     <div class="modal-body" id="myModalMessage">
                         <form role="form" onsubmit="return false" id="formModal">
@@ -129,19 +132,19 @@
                             <br>
                             <input type="file" name="imagenPDF" class="file" id="imagenPDF">
                             <br>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="fisico"><input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
-                                            Libro Físico</label>
-                                    </div> 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fisico"><input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
+                                        Libro Físico</label>
+                                </div> 
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="digital"><input class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
+                                        Libro Digital</label>
                                 </div>
-                            
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="digital"><input class="form-check-input" type="checkbox" id="digital" name="digital" value="1" onclick="onClickDigital()">
-                                            Libro Digital</label>
-                                    </div>
-                                </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="comentario">Comentario corto</label>
