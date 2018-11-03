@@ -148,9 +148,7 @@ function buscar() {
     } else
     if (tipo === "ident") {
         buscarLibroId(name);
-    } else {
-        window.alert("2-error");
-    }
+    } 
 }
 
 
@@ -265,8 +263,6 @@ function buscarLibroId(idLibro) {
                 $("#digital").prop('checked', false);
             }
             $("select").val(data.asignatura.id);
-            //buscarLibroAsignatura(data.asignatura);
-            //buscar();
         },
         type: 'POST',
         dataType: "json"
@@ -279,6 +275,18 @@ function cancelar() {
 }
 
 function modificarLibro() {
+    if($("#fisico").prop('checked')){
+       $("#fisico").val(1); 
+    }
+    else{
+        $("#fisico").val(0);
+    }
+    if($("#digital").prop('checked')){
+       $("#digital").val(1); 
+    }
+    else{
+        $("#digital").val(0);
+    }   
     var num = $("#copias").val();
     if($.isNumeric(num)){
     $.ajax({
