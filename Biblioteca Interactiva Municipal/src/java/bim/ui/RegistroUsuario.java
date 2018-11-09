@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Properties;
 import javax.mail.Message;
+import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -143,7 +144,7 @@ public class RegistroUsuario extends HttpServlet {
                     }
                 });
 
-            String link = "http://localhost:8080/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
+            String link = "http://localhost:8087/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
 
             StringBuilder bodyText = new StringBuilder();
             bodyText.append("<div>")
