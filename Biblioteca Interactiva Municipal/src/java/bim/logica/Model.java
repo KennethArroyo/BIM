@@ -2,6 +2,7 @@ package bim.logica;
 
 import bim.datos.Dao;
 import bim.entidades.Asignatura;
+import bim.entidades.Autor;
 import bim.entidades.Libro;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
@@ -94,5 +95,9 @@ public class Model {
 
     public void eliminarAsignatura(int id) throws Exception {
         dao.eliminarAsignatura(id);
+    }
+
+    public ArrayList<Autor> listarAutores() throws Exception {
+        return dao.listarAutores();
     }
 }

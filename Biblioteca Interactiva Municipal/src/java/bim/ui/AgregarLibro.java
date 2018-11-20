@@ -2,6 +2,7 @@ package bim.ui;
 
 import com.google.gson.Gson;
 import bim.entidades.Asignatura;
+import bim.entidades.Autor;
 import bim.entidades.Libro;
 import bim.logica.Model;
 import java.io.BufferedReader;
@@ -31,7 +32,8 @@ import javax.servlet.http.Part;
  *
  * @author Sergio
  */
-@WebServlet(name = "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas","/AgregarAsignatura","/ModificarAsig","/EliminarAsig"})
+@WebServlet(name =  "AgregarLibro", urlPatterns = {"/AgregarLibro", "/GetAsignaturas", "/GetAsigAutor", 
+                    "/AgregarAsignatura","/ModificarAsig","/EliminarAsig"})
 @MultipartConfig
 public class AgregarLibro extends HttpServlet {
 
@@ -53,6 +55,9 @@ public class AgregarLibro extends HttpServlet {
                 break;
             case "/GetAsignaturas":
                 this.buscarAsignatura(request, response);
+                break;
+            case "/GetAsigAutor":
+                this.buscarAsigAutor(request, response);
                 break;
             case "/AgregarAsignatura":
                 this.agregarAsignatura(request, response);
@@ -179,6 +184,28 @@ public class AgregarLibro extends HttpServlet {
             q = Model.instance().listarAsignaturas();
             response.setContentType("application/json; charset=UTF-8");
             out.write(gson.toJson(q));
+            response.setStatus(200); // ok with content
+        } catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
+        }
+    }
+    
+    private void buscarAsigAutor(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            ArrayList<Asignatura> asig = new ArrayList<Asignatura>();
+            ArrayList<Autor> autor = new ArrayList<Autor>();
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            asig = Model.instance().listarAsignaturas();
+            autor = Model.instance().listarAutores();
+            response.setContentType("application/json; charset=UTF-8");
+            String json1 = new Gson().toJson(asig); 
+            String json2 = new Gson().toJson(autor); 
+            String bothJson = "["+json1+","+json2+"]";
+            out.write(bothJson);
             response.setStatus(200); // ok with content
         } catch (Exception e) {
             String text = e.getMessage();

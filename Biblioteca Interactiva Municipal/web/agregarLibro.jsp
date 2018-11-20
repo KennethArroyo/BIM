@@ -16,7 +16,7 @@
             <div class="container col-lg-8 " style="align-self: center">
                 <h2  style="align-content: center;">Agregar Libros</h2>
                 <br>
-                <form onsubmit="return agregarLibro()" action="AgregarLibro" method="POST" enctype="multipart/form-data" id="libForm" class="log">
+                <form onsubmit="return agregarLibro()" autocomplete="off" action="AgregarLibro" method="POST" enctype="multipart/form-data" id="libForm" class="log">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
@@ -36,11 +36,13 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
+                                <div class="autocomplete">
                                 <label for="autor">Autor (obligatorio)</label>
-                                <input type="text" class="form-control" id="autor"name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
                                 oninput="this.setCustomValidity('')">
                                 <button type="submit" style="background-color:rgba(255,255,255,0.0); border:none;" 
                                 id="agregarAut" onclick="showResults();"><img src="imagenes/add.png" /></button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">

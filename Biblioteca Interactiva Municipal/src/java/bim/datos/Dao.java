@@ -1,6 +1,7 @@
 package bim.datos;
 
 import bim.entidades.Asignatura;
+import bim.entidades.Autor;
 import bim.entidades.Libro;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
@@ -21,6 +22,13 @@ public class Dao {
         p.setId(rs.getInt("id"));
         p.setNombre(rs.getString("nombre"));
         return p;
+    }
+    
+    private Autor autor(ResultSet rs) throws Exception {
+        Autor aut = new Autor();
+        aut.setId(rs.getInt("id"));
+        aut.setNombre(rs.getString("nombre"));
+        return aut;
     }
 
     private Libro libro(ResultSet rs) throws Exception {
@@ -292,5 +300,19 @@ public class Dao {
                 if(resultado == 0){
                     throw new Exception("Error ingresando la Asignatura");
                 }
+    }
+
+    public ArrayList<Autor> listarAutores() throws Exception {
+       ArrayList<Autor> lista = new ArrayList<Autor>();
+        try {
+            String sql = "select nombre from Autor";
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                lista.add(autor(rs));
+            }
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+        }
+        return lista;
     }
 }
