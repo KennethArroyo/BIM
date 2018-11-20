@@ -125,8 +125,8 @@ public class AgregarLibro extends HttpServlet {
                 Part partPDF = request.getPart("file"); // Retrieves <input type="file" name="file">
                 String nombrePDF = Paths.get(partPDF.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
                 //String path = getServletContext().getRealPath("/");
-                OutputStream salida2 = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Libros/" + nombrePDF));
-                String caminoPDF = Paths.get(getServletContext().getRealPath("/") + "Portadas/", nombrePDF).toString();
+                OutputStream salida2 = new FileOutputStream(new File(getServletContext().getRealPath("/") + "PDF/" + nombrePDF));
+                String caminoPDF = Paths.get(getServletContext().getRealPath("/") + "PDF/", nombrePDF).toString();
                 p.setDir_PDF(caminoPDF);
                 InputStream contenido = partPDF.getInputStream();
                 int leido = 0;

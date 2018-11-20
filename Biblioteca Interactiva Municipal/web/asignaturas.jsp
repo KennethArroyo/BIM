@@ -21,7 +21,7 @@
         
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
             
-            <div class="container col-sm-3 col-md-4" style="align-self: center">
+            <div class="container col-md-4" style="align-self: center">
                 <h3  style="align-content: center;">Agregar Asignatura</h3>
                 <br>
                 <form action="AgregarAsignatura" method="POST" id="asigForm" class="log">

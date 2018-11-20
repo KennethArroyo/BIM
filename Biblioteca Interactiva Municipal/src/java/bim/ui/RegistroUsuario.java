@@ -144,7 +144,7 @@ public class RegistroUsuario extends HttpServlet {
                     }
                 });
 
-            String link = "http://localhost:8087/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
+            String link = "http://localhost:8080/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
 
             StringBuilder bodyText = new StringBuilder();
             bodyText.append("<div>")
@@ -172,6 +172,7 @@ public class RegistroUsuario extends HttpServlet {
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         }
         catch (Exception e) {
+            String msh = e.getMessage();
             request.setAttribute("error", "Ocurrió un error");
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         }
