@@ -305,7 +305,7 @@ public class Dao {
     public ArrayList<Autor> listarAutores() throws Exception {
        ArrayList<Autor> lista = new ArrayList<Autor>();
         try {
-            String sql = "select nombre from Autor";
+            String sql = "select * from Autor";
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 lista.add(autor(rs));
