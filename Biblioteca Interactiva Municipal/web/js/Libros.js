@@ -83,14 +83,8 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>ESTADO</b></th>"));
     row.append($("<th><b>COMENTARIO</b></th>"));
     row.append($("<th>CANTIDAD COPIAS<b></b></th>"));
-//    row.append($("<th>FISICO<b></b></th>"));
-//    row.append($("<th>DIGITAL<b></b></th>"));
-//    row.append($("<th>DIR PORTADA<b></b></th>"));
-//    row.append($("<th><b>DIR PDF</th>"));
-//    row.append($("<th>HABILITADO<b></b></th>"));
     row.append($("<th>ASIGNATURA<b></b></th>"));
     row.append($("<th>EDITAR<b></b></th>"));
-    //row.append($("<th>HAB/DESHAB<b></b></th>"));
 
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
@@ -120,15 +114,9 @@ function dibujarFila(rowData) {
     }
     row.append($("<td>" + rowData.comentario + "</td>"));
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
-//    row.append($("<td>" + rowData.fisico + "</td>"));
-//    row.append($("<td>" + rowData.digital + "</td>"));
-//    row.append($("<td>" + rowData.dir_portada + "</td>"));
-//    row.append($("<td>" + rowData.dir_PDF + "</td>"));
-//    row.append($("<td>" + rowData.habilitado + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
     row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-    //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
-
+   
 }
 
 function buscar() {
@@ -287,9 +275,11 @@ function modificarLibro() {
     else{
         $("#digital").val(0);
     }   
+    
     var num = $("#copias").val();
     if($.isNumeric(num)){
-    $.ajax({
+    if(validar()){
+        $.ajax({
         url: 'BuscarLibro',
         data: {
             accion: "modificarLibro",
@@ -325,7 +315,15 @@ function modificarLibro() {
     }
     else
     { 
+        //swal("Debe de digitar los campos del formulario que se encuentran vacíos");
+        window.alert("Debe de digitar los campos del formulario que se encuentran vacíos");
+    }
+}
+else
+    { 
+        //swal("La cantidad de copias debe ser un valor numerico");
         window.alert("La cantidad de copias debe ser un valor numerico");
+        
     }
 }
 function limpiarForm() {
@@ -349,4 +347,35 @@ function buscarAsignaturaID(idAsignatura) {
         type: 'POST',
         dataType: "json"
     });
+}
+function validar() {
+    var validacion = true;
+
+    //Elimina estilo de error en los css
+    //notese que es sobre el grupo que contienen el input
+    //$("#groupId").removeClass("has-error");
+    //$("#groupNombre").removeClass("has-error");
+    //$("#groupApellidos").removeClass("has-error");
+    //$("#groupFechaNacimiento").removeClass("has-error");
+    //$("#groupFechaVencimiento").removeClass("has-error");
+    //$("#groupTipoLicencia").removeClass("has-error");
+  //  $("#groupEstado").removeClass("has-error");
+//    $("#groupEsClienteTransportista").removeClass("has-error");
+
+    //valida cada uno de los campos del formulario
+    //Nota: Solo si fueron digitados
+    if ($("#titulo").val() === "") {
+        //$("#groupId").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#autor").val() === "") {
+        //$("#groupNombre").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#estado").val() === "") {
+        //$("#groupApellidos").addClass("has-error");
+        validacion = false;
+    }
+
+    return validacion;
 }
