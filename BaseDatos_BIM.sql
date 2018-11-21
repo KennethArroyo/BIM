@@ -34,7 +34,6 @@ CREATE TABLE Libro(
 id int primary key identity(1,1),
 clasificacion nvarchar(15) NOT NULL UNIQUE,
 titulo nvarchar(50),
-autor nvarchar(50),
 estado int,
 comentario nvarchar(50),
 cantidad_copias int,
@@ -44,6 +43,25 @@ dir_Portada nvarchar(200),
 dir_PDF nvarchar(200),
 habilitado int,
 asignatura_ID int foreign key references Asignatura(id)
+)
+
+--Tabla Autores
+--pk: id asignado automáticamente, cada vez que se crea un nuevo préstamo
+--libro_ID: llave foránea asociada a la tabla Libro
+--autor_ID: llave foránea asociada a la tabla Autor
+CREATE TABLE Autor(
+id int primary key identity(1,1),
+nombre nvarchar(50) NOT NULL
+)
+
+--Tabla Libro_Autor
+--pk: id asignado automáticamente, cada vez que se crea un nuevo préstamo
+--libro_ID: llave foránea asociada a la tabla Libro
+--autor_ID: llave foránea asociada a la tabla Autor
+CREATE TABLE Libro_Autor(
+libro_ID int foreign key references Libro(id),
+autor_ID int foreign key references Autor(id),
+constraint pk_libro_autor primary key( libro_ID, autor_ID )
 )
 
 --Tabla Estado del préstamo
