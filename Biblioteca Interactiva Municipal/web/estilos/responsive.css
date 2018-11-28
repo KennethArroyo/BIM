@@ -24,7 +24,9 @@
 
 @media only screen and (max-width: 1600px)
 {
-	
+	  .footer_main_container{
+        margin-top: 200px;
+    }
 }
 
 /************
@@ -33,7 +35,9 @@
 
 @media only screen and (max-width: 1540px)
 {
-
+  .footer_main_container{
+        margin-top: 200px;
+    }
 }
 
 /************
@@ -42,7 +46,9 @@
 
 @media only screen and (max-width: 1380px)
 {
-
+  .footer_main_container{
+        margin-top: 200px;
+    }
 }
 
 /************
@@ -51,7 +57,9 @@
 
 @media only screen and (max-width: 1280px)
 {
-
+    .footer_main_container{
+        margin-top: 200px;
+    }
 }
 
 /************
@@ -119,16 +127,24 @@
 		width: 100%;
 		padding-right: 15px;
 	}
-	.footer_nav_container
+        .footer_nav_container
 	{
-		height: auto;
-		margin-top: 65px;
+		margin-top: 700px;
+                heigth: 50px;
+	}
+	.cr
+	{
+		margin-top: -700px;
+	}
+	.footer_nav
+	{
+		margin-bottom: 20px;
+                width: 100%;
 	}
 	.footer_social
 	{
-		height: auto;
 		margin-top: 20px;
-		margin-bottom: 65px;
+		margin-bottom: 40px;
 	}
 }
 
@@ -147,6 +163,26 @@
         {
             margin-left: -5px;
         }
+        
+        .footer_nav_container
+	{
+		margin-top: 650px;
+                heigth: 50px;
+	}
+	.cr
+	{
+		margin-top: -600px;
+	}
+	.footer_nav
+	{
+		margin-bottom: 20px;
+	}
+	.footer_social
+	{
+		margin-top: 5px;
+		margin-bottom: 30px;
+	}
+
 }
 
 /************
@@ -158,6 +194,25 @@
 	.hamburger_container
 	{
 		margin-left: 400px;
+	}
+        
+                .footer_nav_container
+	{
+		margin-top: 675px;
+                heigth: 50px;
+	}
+	.cr
+	{
+		margin-top: -600px;
+	}
+	.footer_nav
+	{
+		margin-bottom: 20px;
+	}
+	.footer_social
+	{
+		margin-top: 5px;
+		margin-bottom: 30px;
 	}
 }
 
@@ -171,6 +226,25 @@
 	{
 		margin-left: 350px;
 	}
+                .footer_nav_container
+	{
+		margin-top: 700px;
+                heigth: 50px;
+	}
+	.cr
+	{
+		margin-top: -600px;
+	}
+	.footer_nav
+	{
+		margin-bottom: 20px;
+	}
+	.footer_social
+	{
+		margin-top: 5px;
+		margin-bottom: 30px;
+	}
+        
 }
 
 /************
@@ -195,6 +269,25 @@
 		margin-bottom: 30px;
 		height: 210px;
 	}
+        
+                .footer_nav_container
+	{
+		margin-top: 650px;
+                heigth: 50px;
+	}
+	.cr
+	{
+		margin-top: -600px;
+	}
+	.footer_nav
+	{
+		margin-bottom: 20px;
+	}
+	.footer_social
+	{
+		margin-top: 5px;
+		margin-bottom: 30px;
+	}
 }
 
 /************
@@ -212,16 +305,24 @@
 	{
 		margin-left: 220px;
 	}
+        .footer_nav_container
+	{
+		margin-top: 650px;
+                heigth: 50px;
+	}
 	.cr
 	{
-		display: block;
-		margin-right: 0px;
-		margin-bottom: 30px;
-		font-size: 13px;
+		margin-top: -600px;
 	}
 	.footer_nav
 	{
 		margin-bottom: 20px;
+	}
+	.footer_social
+	{
+		margin-top: 5px;
+		margin-bottom: 30px;
+	}margin-bottom: 20px;
 	}
 	.footer_nav li
 	{
@@ -244,6 +345,35 @@
 	{
 		margin-left: 150px;
 	}
+        
+	.footer_nav li
+	{
+		display: block;
+		margin-right: 0px;
+	}
+	.footer_nav li a
+	{
+		font-size: 13px;
+	}
+        
+        .footer_nav_container
+	{
+		margin-top: 650px;
+                heigth: 50px;
+	}
+	.cr
+	{
+		margin-top: -600px;
+	}
+	.footer_nav
+	{
+		margin-bottom: 20px;
+	}
+	.footer_social
+	{
+		margin-top: 5px;
+		margin-bottom: 30px;
+	}
 }
 
 /************
@@ -255,6 +385,39 @@
         .hamburger_container
 	{
 		margin-left: 130px;
+	}
+        
+        	.footer_nav
+	{
+		margin-bottom: -50px;
+	}
+	.footer_nav li
+	{
+		display: block;
+		margin-right: 0px;
+	}
+	.footer_nav li a
+	{
+		font-size: 13px;
+	}
+        
+        .footer_nav_container
+	{
+		margin-top: 650px;
+                heigth: 50px;
+	}
+	.cr
+	{
+		margin-top: -600px;
+	}
+	.footer_nav
+	{
+		margin-bottom: 20px;
+	}
+	.footer_social
+	{
+		margin-top: 5px;
+		margin-bottom: 30px;
 	}
 }
 
@@ -337,11 +500,12 @@
 	}
 	.footer_nav_container
 	{
-		margin-top: 35px;
+		margin-top: 850px;
+                heigth: 50px;
 	}
 	.cr
 	{
-		margin-bottom: 20px;
+		margin-top: -800px;
 	}
 	.footer_nav
 	{
@@ -373,7 +537,7 @@
         
         .footer_nav_container
 	{
-                height: 150px;
+                height: 450px;
 		margin-top: 200px;
 	}
 	.cr
@@ -382,12 +546,12 @@
 	}
 	.footer_nav
 	{
-		margin-top: -250px;
+		margin-top: 350px;
                 height: 50px;
 	}
 	.footer_social
 	{
-		margin-top: 0px;
+		margin-top: 170px;
                 margin-left: -5px;
 	}
 

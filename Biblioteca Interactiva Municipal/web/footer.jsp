@@ -12,6 +12,7 @@
     
     <!-- Footer -->
 	<footer class="footer">
+            <div class="footer_main_container">
 		<div class="container">
                             <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
 				<ul class="footer_nav">
@@ -28,7 +29,7 @@
                             <div class="footer_nav_container">
                                 <div class="cr">Copyright © 2018 Centro de Tecnologías de la Información, Municipalidad de Santo Domingo de Heredia</div>
                             </div>
-		</div>
+		</div></div>
 	</footer>
 
 </html>
