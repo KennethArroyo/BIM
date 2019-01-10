@@ -318,14 +318,27 @@ public class Dao {
     public ArrayList<Autor> buscarUltimosAutores() throws Exception {
         ArrayList<Autor> autores = new ArrayList<Autor>();
         try{
-            String sql="select * from Autor desc limit 5";
+            String sql="select top 5 id, nombre from Autor order by id desc";
             ResultSet rs = db.executeQuery(sql);
             while(rs.next()){
             Autor autor1 =autor(rs);
             autores.add(autor1);
             }
         }
-        catch(SQLException ex){}
+        catch(SQLException ex){
+        String s = ex.getMessage();
+        ex.getMessage();
+        }
         return autores;
+    }
+
+    public void agregarAutor(String autor) throws Exception {
+        String sql = "insert into Autor(nombre)"
+                + "values('%s')";
+        sql = String.format(sql, autor);
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Error ingresando el autor");
+        }
     }
 }

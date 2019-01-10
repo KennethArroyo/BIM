@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sergio
  */
-@WebServlet(name = "Autores", urlPatterns = {"/AgregarAutor","/ModificarAutor","/EliminarAutor"})
+@WebServlet(name = "Autores", urlPatterns = {"/AgregarAutor","/ModificarAutor","/EliminarAutor", "/BuscarAutor", "/BuscarAutores"})
 public class Autores extends HttpServlet {
 
     /**
@@ -98,7 +98,10 @@ public class Autores extends HttpServlet {
     }// </editor-fold>
 
     
-    private void agregarAutor(HttpServletRequest request, HttpServletResponse response) {
+    private void agregarAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         Asignatura asig = new Asignatura();
+        Model.instance().agregarAutor(request.getParameter("autor"));
+        request.getRequestDispatcher("autores.jsp").forward(request, response);
     }
     
     private void buscarAutor(HttpServletRequest request, HttpServletResponse response) {

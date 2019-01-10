@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="hidden" class="form-control" id="AsigId" name="AsigId">
+                                        <input type="hidden" class="form-control" id="AutorId" name="AutorId">
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <button type="submit" onclick="modificarAsig()" class=" btn btn-success">Guardar</button>
+                                        <button type="submit" onclick="modificarAutor()" class=" btn btn-success">Guardar</button>
                                         <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
                                     </div>
                                 </div>

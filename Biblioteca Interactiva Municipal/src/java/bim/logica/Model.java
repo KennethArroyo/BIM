@@ -101,7 +101,11 @@ public class Model {
         return dao.listarAutores();
     }
 
-    public ArrayList<Autor> buscarUltimosAutores() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Autor> buscarUltimosAutores() throws Exception {
+        return dao.buscarUltimosAutores();
+    }
+
+    public void agregarAutor(String autor) {
+        dao.agregarAutor(autor);
     }
 }

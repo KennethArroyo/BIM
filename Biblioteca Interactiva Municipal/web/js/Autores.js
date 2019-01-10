@@ -12,7 +12,7 @@ $(document).ready(function getAutores(){
 //buscara los ultimos 5 autores agregados
 function buscar(){
     $.ajax({type: "GET", 
-                  url:"GetAutores",
+                  url:"BuscarAutores",
                   success: 
                     function(obj){
                       dibujarTabla(obj);
@@ -34,7 +34,7 @@ function dibujarTabla(dataJson) {
     head.append(row2);
     head.append(row);
     $("#tablaAutores").append(head);
-    row2.append($('<th colspan="3">Asignaturas existentes en el sistema<b></b></th>'));
+    row2.append($('<th colspan="3">Últimos 5 autores agregados<b></b></th>'));
     row.append($("<th>NOMBRE<b></b></th>"));
     row.append($("<th>EDITAR<b></b></th>"));
     row.append($("<th>ELIMINAR<b></b></th>"));
@@ -53,7 +53,7 @@ function dibujarFila(rowData) {
     $("#tablaAutores").append(row);
     row.append($('<td>' + rowData.nombre + '</td>'));
     row.append($('<td><button type="button" class="btn btn-info" onclick="levantarModal(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAutor(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
     //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 }
 
@@ -63,12 +63,12 @@ function levantarModal(id, nombre){
     $("#AsigId").val(id);
 }
 
-function modificarAsig(){
-    var asig_id = $("#AsigId").val();
+function modificarAutor(){
+    var asig_id = $("#AutorId").val();
     var asig_nom = $("#nombre").val();
     var datos = {id:asig_id,nombre:asig_nom};
     $.ajax({type: "POST", 
-            url:"ModificarAsig",
+            url:"ModificarAutor",
             dataType: "json",
             data: datos,
             success: 
@@ -77,7 +77,7 @@ function modificarAsig(){
               },
             error: function(status){
                    window.alert("Ha ocurrido un error al modificar asignatura");
-                   $("#myModalAsignatura").modal("hide");
+                   $("#myModalAutor").modal("hide");
             }
     });
 }
@@ -86,7 +86,7 @@ function eliminarAsig(id){
     if(confirm("¿Seguro que desea eliminar la Asignatura?")){
     var datos = {id:id};
     $.ajax({type: "POST", 
-            url:"EliminarAsig",
+            url:"EliminarAutor",
             dataType: "json",
             data: datos,
             success: 
@@ -95,7 +95,7 @@ function eliminarAsig(id){
               },
             error: function(status){
                    window.alert("Esta asignatura no se puede eliminar debido a que esta ligada a otros libros");
-                   $("#myModalAsignatura").modal("hide");
+                   $("#myModalAutor").modal("hide");
             }
     });
     }
