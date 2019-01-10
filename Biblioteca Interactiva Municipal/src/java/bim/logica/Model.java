@@ -100,4 +100,8 @@ public class Model {
     public ArrayList<Autor> listarAutores() throws Exception {
         return dao.listarAutores();
     }
+
+    public ArrayList<Autor> buscarUltimosAutores() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

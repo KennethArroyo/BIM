@@ -315,4 +315,17 @@ public class Dao {
         }
         return lista;
     }
+    public ArrayList<Autor> buscarUltimosAutores() throws Exception {
+        ArrayList<Autor> autores = new ArrayList<Autor>();
+        try{
+            String sql="select * from Autor desc limit 5";
+            ResultSet rs = db.executeQuery(sql);
+            while(rs.next()){
+            Autor autor1 =autor(rs);
+            autores.add(autor1);
+            }
+        }
+        catch(SQLException ex){}
+        return autores;
+    }
 }

@@ -39,6 +39,7 @@
                                                             <li><a href="agregarLibro.jsp">Agregar<br>Libro</a></li>
                                                             <li><a href="buscarLibro.jsp">Buscar Libro</a></li>
                                                             <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
+                                                            <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
                                                         </ul>
                                                     </li>
                                                 <li class="dropdown"><a href="">Préstamos<i class="fa fa-angle-down"></i></a>
@@ -76,6 +77,7 @@
                                         <li><a href="agregarLibro.jsp"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
                                         <li><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                                         <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
+                                        <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
                                     </ul>
                                 </li>
                             <li class="menu_item has-children"><a href="#">Prestamo <i class="fa fa-angle-down"></i></a>

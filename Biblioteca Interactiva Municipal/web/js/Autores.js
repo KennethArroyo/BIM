@@ -5,27 +5,27 @@
  */
 
 
-$(document).ready(function getAsignaturas(){  
+$(document).ready(function getAutores(){  
             buscar();
             });
 
-
+//buscara los ultimos 5 autores agregados
 function buscar(){
     $.ajax({type: "GET", 
-                  url:"GetAsignaturas",
+                  url:"GetAutores",
                   success: 
                     function(obj){
                       dibujarTabla(obj);
                     },
                   error: function(status){
-                         window.alert("Ha ocurrido un error con la lista de asignaturas");
+                         window.alert("Ha ocurrido un error con la lista de autores");
                     }                    
                 }); 
 }
 
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
-    $("#tablaAsignaturas").html("");
+    $("#tablaAutores").html("");
 
     //muestra el enzabezado de la tabla
     var head = $("<thead class='thead-dark'/>");
@@ -33,7 +33,7 @@ function dibujarTabla(dataJson) {
     var row2 = $("<tr />");
     head.append(row2);
     head.append(row);
-    $("#tablaAsignaturas").append(head);
+    $("#tablaAutores").append(head);
     row2.append($('<th colspan="3">Asignaturas existentes en el sistema<b></b></th>'));
     row.append($("<th>NOMBRE<b></b></th>"));
     row.append($("<th>EDITAR<b></b></th>"));
@@ -50,7 +50,7 @@ function dibujarFila(rowData) {
     //de un libro
 
     var row = $('<tr id='+rowData.id+'/>');
-    $("#tablaAsignaturas").append(row);
+    $("#tablaAutores").append(row);
     row.append($('<td>' + rowData.nombre + '</td>'));
     row.append($('<td><button type="button" class="btn btn-info" onclick="levantarModal(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
     row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
@@ -58,7 +58,7 @@ function dibujarFila(rowData) {
 }
 
 function levantarModal(id, nombre){
-    $("#myModalAsignatura").modal();
+    $("#myModalAutor").modal();
     $("#nombre").val(nombre);
     $("#AsigId").val(id);
 }

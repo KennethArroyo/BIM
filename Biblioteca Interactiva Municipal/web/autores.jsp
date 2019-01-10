@@ -22,32 +22,32 @@
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
             
             <div class="container col-md-4" style="align-self: center">
-                <h3  style="align-content: center;">Agregar Asignatura</h3>
+                <h3  style="align-content: center;">Agregar Autores</h3>
                 <br>
-                <form action="AgregarAsignatura" method="POST" id="asigForm" class="log">
+                <form action="AgregarAutor" method="POST" id="autorForm" class="log">
                     <div class="form-group" col-sm-3 col-md-4>
-                        <input type="text" class="form-control" id="asignatura" name="asignatura" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                        <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
     oninput="this.setCustomValidity('')">
                     </div>
                 <div id="mi_div">    
                 <div class="form-group">
-                <button type="submit" class="btn btn-success" id="botonAgregar" >Agregar</button>
+                <button type="submit" class="btn btn-success" id="botonAgregar">Agregar</button>
                  <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                 </div>
                 </div>
                 </form>
                 <br>
                 <div class="table-responsive">
-                    <table border="2" class="table table-striped" id="tablaAsignaturas">
+                    <table border="2" class="table table-striped" id="tablaAutores">
                     </table>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="myModalAsignatura" role="dialog">
+        <div class="modal fade" id="myModalAutor" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header"> 
-                        <h4 class="modal-title" id="myModalTitle">Modificar Asignatura
+                        <h4 class="modal-title" id="myModalTitle">Modificar Autor
                             <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
                        
                     </div>
@@ -78,7 +78,7 @@
                             <div class="form-group height25" >
                                 <div class="alert alert-success hiddenDiv" id="mesajeResult">
                                     <strong id="mesajeResultNeg">Info!</strong> 
-                                    <span id="mesajeResultText">En esta pantalla puede modificar una asignatura.</span>
+                                    <span id="mesajeResultText">En esta pantalla puede modificar un autor.</span>
                                 </div>
                             </div>
                         </form>
