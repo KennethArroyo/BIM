@@ -40,8 +40,6 @@
                                 <label for="autor">Autor (obligatorio)</label>
                                 <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
                                 oninput="this.setCustomValidity('')">
-                                <button type="submit" style="background-color:rgba(255,255,255,0.0); border:none;" 
-                                id="agregarAut" onclick="showResults();"><img src="imagenes/add.png" /></button>
                                 </div>
                             </div>
                         </div>
@@ -49,8 +47,6 @@
                             <div class="form-group">
                                 <label for="autor">Autor (opcional)</label>
                                 <input type="text" class="form-control" id="autor2" name="autor2">
-                                <button type="submit" style="background-color:rgba(255,255,255,0.0); border:none;" 
-                                id="agregarAut" onclick="showResults();"><img src="imagenes/add.png" /></button>
                             </div>
                         </div>
                     </div>
@@ -59,16 +55,21 @@
                             <div class="form-group">
                                 <label for="autor">Autor (opcional)</label>
                                 <input type="text" class="form-control" id="autor3" name="autor3">
-                                <button type="submit" style="background-color:rgba(255,255,255,0.0); border:none;" 
-                                id="agregarAut" onclick="showResults();"><img src="imagenes/add.png" /></button>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="autor">Autor (opcional)</label>
                                 <input type="text" class="form-control" id="autor4" name="autor4">
-                                <button type="submit" style="background-color:rgba(255,255,255,0.0); border:none;" 
-                                id="agregarAut" onclick="showResults();"><img src="imagenes/add.png" /></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                               <label for="agregarAut">Agregar mas autores</label><br>
+                               <button type="button" style="background-color:rgba(255,250,255,0.0); border:none;" 
+                               id="agregarAut" onclick="showResults();"><img src="imagenes/add.png" /></button>
                             </div>
                         </div>
                     </div>

@@ -16,6 +16,9 @@
                       var asig=obj[0], autores=obj[1];
                       updateList(asig);
                       autocomplete(document.getElementById("autor"), autores);
+                      autocomplete(document.getElementById("autor2"), autores);
+                      autocomplete(document.getElementById("autor3"), autores);
+                      autocomplete(document.getElementById("autor4"), autores);
                        //$('#asignatura').reset();
                     },
                   error: function(status){
@@ -65,7 +68,7 @@
           /*execute a function when someone clicks on the item value (DIV element):*/
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
-              inp.value = this.getElementsById("autor")[0].value;
+              inp.value = this.getElementsByTagName("input")[0].value;
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists(inp);
