@@ -341,4 +341,19 @@ public class Dao {
             throw new Exception("Error ingresando el autor");
         }
     }
+
+    public void modificarAutor(int id, String nombre) {
+        String sql = "update Autor set nombre='%s' where id=%d";
+        sql = String.format(sql, nombre, id);
+        db.executeUpdate(sql);
+    }
+
+    public void eliminarAutor(int id) throws Exception {
+        String sql = "delete from Autor where id=%d";
+            sql = String.format(sql, id);
+            int resultado = db.executeUpdate(sql);
+                if(resultado == 0){
+                    throw new Exception("Error ingresando la Asignatura");
+                }
+    }
 }

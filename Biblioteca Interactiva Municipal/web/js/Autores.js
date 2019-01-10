@@ -60,7 +60,7 @@ function dibujarFila(rowData) {
 function levantarModal(id, nombre){
     $("#myModalAutor").modal();
     $("#nombre").val(nombre);
-    $("#AsigId").val(id);
+    $("#AutorId").val(id);
 }
 
 function modificarAutor(){
@@ -74,16 +74,17 @@ function modificarAutor(){
             success: 
               function(status){ 
                 actualizarTabla(datos);
+                $("#myModalAutor").modal("hide");
               },
             error: function(status){
-                   window.alert("Ha ocurrido un error al modificar asignatura");
+                   window.alert("Ha ocurrido un error al modificar el autor");
                    $("#myModalAutor").modal("hide");
             }
     });
 }
 
-function eliminarAsig(id){
-    if(confirm("¿Seguro que desea eliminar la Asignatura?")){
+function eliminarAutor(id){
+    if(confirm("¿Seguro que desea eliminar el Autor?")){
     var datos = {id:id};
     $.ajax({type: "POST", 
             url:"EliminarAutor",
@@ -94,7 +95,7 @@ function eliminarAsig(id){
                 eliminarFila(datos);
               },
             error: function(status){
-                   window.alert("Esta asignatura no se puede eliminar debido a que esta ligada a otros libros");
+                   window.alert("Esta autor no se puede eliminar debido a que esta ligado a otros libros");
                    $("#myModalAutor").modal("hide");
             }
     });
@@ -110,8 +111,8 @@ function agregarFila(datos){
 var tr =$('<tr id='+datos.id+'/>');
 	tr.html("<td>"+datos.nombre+"</td>"+
 				'<td><button type="button" class="btn btn-info" onclick="levantarModal(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'+
-				'<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
-	$("#tablaAsignaturas").append(tr);    
+				'<td><button type="button" class="btn btn-danger" onclick="eliminarAutor(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
+	$("#tablaAutores").append(tr);    
 }
 
 function actualizarTabla(datos){

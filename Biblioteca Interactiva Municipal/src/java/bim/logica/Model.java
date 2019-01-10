@@ -105,7 +105,15 @@ public class Model {
         return dao.buscarUltimosAutores();
     }
 
-    public void agregarAutor(String autor) {
+    public void agregarAutor(String autor) throws Exception {
         dao.agregarAutor(autor);
+    }
+
+    public void modificarAutor(int id, String nombre) {
+        dao.modificarAutor(id,nombre);
+    }
+
+    public void eliminarAutor(int id) {
+        dao.eliminarAutor(id);
     }
 }

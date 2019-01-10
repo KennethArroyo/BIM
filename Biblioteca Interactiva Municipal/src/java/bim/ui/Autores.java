@@ -13,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +39,7 @@ public class Autores extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         switch (request.getServletPath()) {
             case "/AgregarAutor":
@@ -70,7 +72,11 @@ public class Autores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Autores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -84,7 +90,11 @@ public class Autores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Autores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -98,7 +108,7 @@ public class Autores extends HttpServlet {
     }// </editor-fold>
 
     
-    private void agregarAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void agregarAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
          Asignatura asig = new Asignatura();
         Model.instance().agregarAutor(request.getParameter("autor"));
         request.getRequestDispatcher("autores.jsp").forward(request, response);
@@ -139,9 +149,35 @@ public class Autores extends HttpServlet {
     }
 
     private void modificarAutor(HttpServletRequest request, HttpServletResponse response) {
+         try {
+            BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            Model.instance().modificarAutor(Integer.parseInt(request.getParameter("id")),request.getParameter("nombre"));
+            response.setContentType("application/json; charset=UTF-8");
+            out.write(gson.toJson("correcto")); 
+            response.setStatus(200); // ok with content
+        } catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
+        }
     }
 
     private void eliminarAutor(HttpServletRequest request, HttpServletResponse response) {
+         try {
+                BufferedReader reader = request.getReader();
+                PrintWriter out = response.getWriter();
+                HttpSession s = request.getSession(true);
+                Gson gson = new Gson();
+                Model.instance().eliminarAutor(Integer.parseInt(request.getParameter("id")));
+                response.setContentType("application/json; charset=UTF-8");
+                out.write(gson.toJson("correcto")); 
+                response.setStatus(200); // ok with content
+            } catch (Exception e) {
+                String text = e.getMessage();
+                response.setStatus(401); //Bad request
+            }
     }
 
 }
