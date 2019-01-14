@@ -17,6 +17,7 @@ import java.io.Reader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -84,10 +85,29 @@ public class AgregarLibro extends HttpServlet {
             return 0;
         }
     }
-
+    
+    protected ArrayList<String> revisarAutores(HttpServletRequest request){
+        String[] parametros = request.getParameterValues("autor");
+        ArrayList<String> autores = new ArrayList<>();
+        for(String autor : parametros){
+            if(!autor.isEmpty()){
+                autores.add(autor);
+            }
+        }
+        return autores;
+    }
+    
+    protected void guardarAutorLibro(HttpServletRequest request){
+        ArrayList<String> autores = revisarAutores(request);
+        ArrayList<Autor> datos;
+        datos = Model.instance().obtenerAutoresId(autores);
+        
+    }
+    
     protected void agregarLibro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int fisico;
+            ArrayList<String> autores = new ArrayList<>();
             int digital;
             Part PartImagen;
             Asignatura asig = new Asignatura();
@@ -146,12 +166,9 @@ public class AgregarLibro extends HttpServlet {
             }
             
             String estado = request.getParameter("estado");
-            String autor = request.getParameter("autor");
             String comentario = request.getParameter("comentario");
-
             
             p.setClasificacion(clasificacion);
-            p.setAutor(autor);
             p.setCantidad_copias(cant);
             p.setEstado(convert(estado));
             p.setAsignatura(asig);
@@ -166,6 +183,7 @@ public class AgregarLibro extends HttpServlet {
        
 
             Model.instance().agregarLibro(p);
+            guardarAutorLibro(request);
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         } catch (Exception e) {
             request.setAttribute("error", "Ocurrió un error");

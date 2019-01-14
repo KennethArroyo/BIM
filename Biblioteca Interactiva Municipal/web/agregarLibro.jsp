@@ -46,7 +46,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="autor">Autor (opcional)</label>
-                                <input type="text" class="form-control" id="autor2" name="autor2">
+                                <input type="text" class="form-control" id="autor2" name="autor">
                             </div>
                         </div>
                     </div>
@@ -54,13 +54,13 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="autor">Autor (opcional)</label>
-                                <input type="text" class="form-control" id="autor3" name="autor3">
+                                <input type="text" class="form-control" id="autor3" name="autor">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="autor">Autor (opcional)</label>
-                                <input type="text" class="form-control" id="autor4" name="autor4">
+                                <input type="text" class="form-control" id="autor4" name="autor">
                             </div>
                         </div>
                     </div>

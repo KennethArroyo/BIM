@@ -113,7 +113,11 @@ public class Model {
         dao.modificarAutor(id,nombre);
     }
 
-    public void eliminarAutor(int id) {
+    public void eliminarAutor(int id) throws Exception {
         dao.eliminarAutor(id);
+    }
+
+    public ArrayList<Autor> obtenerAutoresId(ArrayList<String> autores) {
+        return dao.obtenerAutoresId(autores);
     }
 }

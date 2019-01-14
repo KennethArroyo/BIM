@@ -142,7 +142,17 @@
       }
       }
       
-      function agregarLibro(){
+    function RevisarAutores(){
+        var autores = [];
+        $( "name[value='autor']" ).each(function(index){
+            if($(this).text() !== ''){
+                autores.push($(this).text());
+            }
+        }));
+        return autores;
+    }
+      
+    function agregarLibro(){
     var dato = $("#imagenPDF").val();
     var num = $("#copias").val();
        if($.isNumeric(num)){

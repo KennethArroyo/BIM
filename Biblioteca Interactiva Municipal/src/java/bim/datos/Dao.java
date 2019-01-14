@@ -356,4 +356,8 @@ public class Dao {
                     throw new Exception("Error ingresando la Asignatura");
                 }
     }
+
+    public ArrayList<Autor> obtenerAutoresId(ArrayList<String> autores) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
