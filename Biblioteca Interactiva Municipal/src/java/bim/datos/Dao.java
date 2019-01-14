@@ -30,25 +30,37 @@ public class Dao {
         aut.setNombre(rs.getString("nombre"));
         return aut;
     }
+    
+    private Autor autorID(ResultSet rs) throws Exception {
+        Autor aut = new Autor();
+        aut.setId(rs.getInt("id"));
+        return aut;
+    }
+    
+    private Libro libroID(ResultSet rs) throws Exception {
+        Libro lib = new Libro();
+        lib.setId(rs.getInt("id"));
+        return lib;
+    }
 
     private Libro libro(ResultSet rs) throws Exception {
-        Libro o = new Libro();
+        Libro lib = new Libro();
         Asignatura a = new Asignatura();
         a = asignatura(rs);
-        o.setId(rs.getInt("ID"));
-        o.setClasificacion(rs.getString("Clasificacion"));
-        o.setAutor(rs.getString("Autor"));
-        o.setTitulo(rs.getString("Titulo"));
-        o.setEstado(rs.getInt("Estado"));
-        o.setComentario(rs.getString("Comentario"));
-        o.setCantidad_copias(rs.getInt("Cantidad_copias"));
-        o.setFisico(rs.getInt("Fisico"));
-        o.setDigital(rs.getInt("Digital"));
-        o.setDir_portada(rs.getString("Dir_portada"));
-        o.setDir_PDF(rs.getString("Dir_PDF"));
+        lib.setId(rs.getInt("ID"));
+        lib.setClasificacion(rs.getString("Clasificacion"));
+        lib.setAutor(rs.getString("Autor"));
+        lib.setTitulo(rs.getString("Titulo"));
+        lib.setEstado(rs.getInt("Estado"));
+        lib.setComentario(rs.getString("Comentario"));
+        lib.setCantidad_copias(rs.getInt("Cantidad_copias"));
+        lib.setFisico(rs.getInt("Fisico"));
+        lib.setDigital(rs.getInt("Digital"));
+        lib.setDir_portada(rs.getString("Dir_portada"));
+        lib.setDir_PDF(rs.getString("Dir_PDF"));
         a.setId(rs.getInt("Asignatura_ID"));
-        o.setAsignatura(a);
-        return o;
+        lib.setAsignatura(a);
+        return lib;
     }
 
     private Usuario usuario(ResultSet rs) throws Exception {
@@ -357,7 +369,46 @@ public class Dao {
                 }
     }
 
-    public ArrayList<Autor> obtenerAutoresId(ArrayList<String> autores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Autor> obtenerAutoresId(ArrayList<String> autores) throws Exception {
+        ArrayList<Autor> lista = new ArrayList<>();
+        try {
+            for(int i = 0;i<autores.size();i++){
+                String sql = "select id from Autor where nombre = '%s'";
+                sql = String.format(sql, autores.get(i));
+                ResultSet rs = db.executeQuery(sql);
+                while (rs.next()) {
+                    lista.add(autorID(rs));
+                }
+            }
+        } 
+        catch (SQLException ex) {
+            String error = ex.getMessage();
+        }
+        return lista;
+        
+    }
+
+    public void guardarAutorLibro(ArrayList<Autor> datos, String titulo) throws Exception {
+        Libro lib = new Libro();
+        try {
+            String sql = "select id from Libro where titulo = '%s'";
+            sql = String.format(sql, titulo);
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                lib = libroID(rs);
+            }
+        }
+        catch (SQLException ex) {
+            String error = ex.getMessage();
+        }
+            for(int i = 0;i<datos.size();i++){
+                String sql = "insert into Libro_Autor(libro_ID,autor_ID)"
+                + "values(%d,%d)";
+                sql = String.format(sql,lib.getId(),datos.get(i));
+                int count = db.executeUpdate(sql);
+                if (count == 0) {
+                    throw new Exception("Error ingresando los datos");
+                }
+            }
     }
 }

@@ -117,7 +117,11 @@ public class Model {
         dao.eliminarAutor(id);
     }
 
-    public ArrayList<Autor> obtenerAutoresId(ArrayList<String> autores) {
+    public ArrayList<Autor> obtenerAutoresId(ArrayList<String> autores) throws Exception {
         return dao.obtenerAutoresId(autores);
+    }
+
+    public void guardarAutorLibro(ArrayList<Autor> datos, String titulo) {
+        dao.guardarAutorLibro(datos, titulo);
     }
 }

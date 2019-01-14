@@ -97,11 +97,11 @@ public class AgregarLibro extends HttpServlet {
         return autores;
     }
     
-    protected void guardarAutorLibro(HttpServletRequest request){
+    protected void guardarAutorLibro(HttpServletRequest request, String titulo){
         ArrayList<String> autores = revisarAutores(request);
         ArrayList<Autor> datos;
         datos = Model.instance().obtenerAutoresId(autores);
-        
+        Model.instance().guardarAutorLibro(datos,titulo);
     }
     
     protected void agregarLibro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -183,7 +183,7 @@ public class AgregarLibro extends HttpServlet {
        
 
             Model.instance().agregarLibro(p);
-            guardarAutorLibro(request);
+            guardarAutorLibro(request,titulo);
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         } catch (Exception e) {
             request.setAttribute("error", "Ocurrió un error");
