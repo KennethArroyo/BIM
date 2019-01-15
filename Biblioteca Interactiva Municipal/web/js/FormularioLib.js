@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
  //agregarLibro.jsp
+ var numeracion = 5;
+ var autores = null;
     $(document).ready(function getAsignaturas(){
-        var autores = null;
             $.ajax({type: "GET", 
                   url:"GetAsigAutor",
                   success: 
@@ -13,7 +14,8 @@
                         document.addEventListener("click", function (e) {
                         closeAllLists(e.target);
                         });
-                      var asig=obj[0], autores=obj[1];
+                      var asig=obj[0]; 
+                      autores=obj[1];
                       updateList(asig);
                       autocomplete(document.getElementById("autor"), autores);
                       autocomplete(document.getElementById("autor2"), autores);
@@ -131,6 +133,19 @@
   }
 }
 
+  function removeElem(tag,atr,val){
+    var els = document.getElementsByTagName(tag);
+    val = val.toLowerCase();
+        for (var i = 0; i<els.length; i++) {
+            var elem=els[i];
+            if(elem.getAttribute(atr)){
+                if ( elem.getAttribute(atr).toString().toLowerCase()===val){
+                    elem.remove();
+                    return;
+                }
+            }
+        }
+    }
   
   function onClickDigital(){
       if($("#digital").is(':checked')){
@@ -138,9 +153,10 @@
           $("#mi_div").before('<input type="file" name="file" class="file" id="file" required><br>');
       }
       else {
+          removeElem('label','for','file');
           $("#file").remove();
       }
-      }
+    }
       
 //    function RevisarAutores(){
 //        var autores2 = [];
@@ -154,7 +170,10 @@
       
       
     function agregarCampoAutor(){
-       $("#autores").after('<div class="row"><div class="col-lg-4"><div class="form-group"><label for="autor">Autor (opcional)</label><input type="text" class="form-control" id="autorExtra" name="autor"></div></div></div>');
+        var nombre = "autor"+numeracion.toString();
+        numeracion += 1;
+       $("#autores").after('<div class="row"><div class="col-lg-4"><div class="form-group"><label for="autor">Autor (opcional)</label><input type="text" class="form-control" id="'+nombre+'" name="autor"></div></div></div>');
+       autocomplete(document.getElementById(nombre), autores);
     }
     function agregarLibro(){
     var dato = $("#imagenPDF").val();
