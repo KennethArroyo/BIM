@@ -35,6 +35,11 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
+                            <label>¡Por favor registre primero los autores del libro!</label>
+                        </div>
+                     </div>
+                    <div class="row">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <div class="autocomplete">
                                 <label for="autor">Autor (obligatorio)</label>
@@ -64,11 +69,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="autores">
                         <div class="col-lg-4">
                             <div class="form-group">
                                <label for="agregarAut">Agregar mas autores</label><br>
-                               <button type="button" style="background-color:rgba(255,250,255,0.0); border:none;" 
+                               <button type="button" onclick="agregarCampoAutor()" style="background-color:rgba(255,250,255,0.0); border:none;" 
                                id="agregarAut" onclick="showResults();"><img src="imagenes/add.png" /></button>
                             </div>
                         </div>

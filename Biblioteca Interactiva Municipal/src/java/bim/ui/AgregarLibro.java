@@ -134,6 +134,9 @@ public class AgregarLibro extends HttpServlet {
                     }
                     salida.close();
                 }
+                else{
+                p.setDir_portada("");
+                }
             
             String[] listaF = request.getParameterValues("fisico");
             if (listaF != null) {

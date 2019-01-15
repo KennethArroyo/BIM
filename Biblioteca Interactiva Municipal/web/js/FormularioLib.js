@@ -152,6 +152,10 @@
 //        return autores;
 //    }
       
+      
+    function agregarCampoAutor(){
+       $("#autores").after('<div class="row"><div class="col-lg-4"><div class="form-group"><label for="autor">Autor (opcional)</label><input type="text" class="form-control" id="autorExtra" name="autor"></div></div></div>');
+    }
     function agregarLibro(){
     var dato = $("#imagenPDF").val();
     var num = $("#copias").val();
