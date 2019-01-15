@@ -142,15 +142,15 @@
       }
       }
       
-    function RevisarAutores(){
-        var autores = [];
-        $( "name[value='autor']" ).each(function(index){
-            if($(this).text() !== ''){
-                autores.push($(this).text());
-            }
-        }));
-        return autores;
-    }
+//    function RevisarAutores(){
+//        var autores2 = [];
+//        $( "name[value='autor']" ).each(function(index){
+//            if($(this).text() !== ''){
+//                autores.push($(this).text());
+//            }
+//        }));
+//        return autores;
+//    }
       
     function agregarLibro(){
     var dato = $("#imagenPDF").val();

@@ -106,9 +106,9 @@ public class Dao {
     }
 
     public void agregarLibro(Libro p) throws Exception {
-        String sql = "insert into Libro(clasificacion,titulo,autor,comentario,estado,cantidad_copias,habilitado,fisico,digital,asignatura_ID) "
-                + "values('%s','%s','%s','%s',%d,%d,%d,%d,%d,%d)";
-        sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getAutor(), p.getComentario(), p.getEstado(), p.getCantidad_copias(),
+        String sql = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,habilitado,fisico,digital,asignatura_ID) "
+                + "values('%s','%s','%s',%d,%d,%d,%d,%d,%d)";
+        sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getComentario(), p.getEstado(), p.getCantidad_copias(),
                 p.getHabilitado(), p.getFisico(), p.getDigital(), p.getAsignatura().getId());
         int count = db.executeUpdate(sql);
         if (count == 0) {
@@ -404,7 +404,7 @@ public class Dao {
             for(int i = 0;i<datos.size();i++){
                 String sql = "insert into Libro_Autor(libro_ID,autor_ID)"
                 + "values(%d,%d)";
-                sql = String.format(sql,lib.getId(),datos.get(i));
+                sql = String.format(sql,lib.getId(),datos.get(i).getId());
                 int count = db.executeUpdate(sql);
                 if (count == 0) {
                     throw new Exception("Error ingresando los datos");

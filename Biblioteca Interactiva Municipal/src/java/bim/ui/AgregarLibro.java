@@ -186,6 +186,7 @@ public class AgregarLibro extends HttpServlet {
             guardarAutorLibro(request,titulo);
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         } catch (Exception e) {
+            String msg = e.getMessage();
             request.setAttribute("error", "Ocurrió un error");
             request.getRequestDispatcher("Error.jsp").forward(request, response);
         }
