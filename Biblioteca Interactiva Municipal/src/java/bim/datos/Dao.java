@@ -49,7 +49,7 @@ public class Dao {
         a = asignatura(rs);
         lib.setId(rs.getInt("ID"));
         lib.setClasificacion(rs.getString("Clasificacion"));
-        lib.setAutor(rs.getString("Autor"));
+        //lib.setAutor(rs.getString("Autor")); en la buena teoria ya no existe este atrbuto
         lib.setTitulo(rs.getString("Titulo"));
         lib.setEstado(rs.getInt("Estado"));
         lib.setComentario(rs.getString("Comentario"));

@@ -121,7 +121,7 @@ public class Model {
         return dao.obtenerAutoresId(autores);
     }
 
-    public void guardarAutorLibro(ArrayList<Autor> datos, String titulo) {
+    public void guardarAutorLibro(ArrayList<Autor> datos, String titulo) throws Exception {
         dao.guardarAutorLibro(datos, titulo);
     }
 }

@@ -97,7 +97,7 @@ public class AgregarLibro extends HttpServlet {
         return autores;
     }
     
-    protected void guardarAutorLibro(HttpServletRequest request, String titulo){
+    protected void guardarAutorLibro(HttpServletRequest request, String titulo) throws Exception{
         ArrayList<String> autores = revisarAutores(request);
         ArrayList<Autor> datos;
         datos = Model.instance().obtenerAutoresId(autores);
