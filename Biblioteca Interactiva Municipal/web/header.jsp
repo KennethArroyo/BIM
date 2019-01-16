@@ -50,6 +50,8 @@
                                                 
                                                 </li>
                                                 <li><a href="">Actividades</a></li>
+                                                <li><a href="homeVisitante.jsp">prueba usuario visitante</a></li>
+                                                
                                                 <li class="my_account_item"><a href="registroUsuario.jsp"><small class="fa fa-user-plus" ></small>&nbsp Registrarse</a></li>
                                                 <li><a href="inicioSesion.jsp"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
                                             </ul>
