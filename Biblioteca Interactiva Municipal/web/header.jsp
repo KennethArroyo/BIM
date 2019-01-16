@@ -51,7 +51,7 @@
                                                 </li>
                                                 <li><a href="">Actividades</a></li>
                                                 <li class="my_account_item"><a href="registroUsuario.jsp"><small class="fa fa-user-plus" ></small>&nbsp Registrarse</a></li>
-                                                <li><a href="#"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
+                                                <li><a href="inicioSesion.jsp"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
                                             </ul>
                                             <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
                                                 <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
@@ -92,5 +92,6 @@
                         </ul>
                 </div>
         </div>
+        
     </body>
 </html>
