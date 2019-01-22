@@ -21,10 +21,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-24">
-                            <div class="logo_container">
-                                <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
-                            </div>
-                            <nav class="navbar">
+                            <div class="administrador">
+                                <div class="logo_container">
+                                    <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
+                                </div>
+                                <nav class="navbar">
                                 <ul class="navbar_menu">
                                     <li><a href="principal.jsp">Inicio</a></li>                           
                                     <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                               
@@ -38,10 +39,57 @@
                                         </ul>
                                     </li>                                  
                                 </ul>
-                                <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
-                                    <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
+                                    <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
+                                        <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="anonimo">
+                                <div class="logo_container">
+                                    <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
                                 </div>
-                            </nav>
+                                <nav class="navbar">
+                                <ul class="navbar_menu">
+                                    <li><a href="principal.jsp">Inicio</a></li>                           
+                                    <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                               
+                                    <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>                                                                                                                     
+                                    <li><a href="">Actividades</a></li>
+                                    <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown_selection">
+                                            <li><a href="">Libros descargados</a></li>
+                                            <li><a href="">Mis préstamos</a></li>
+                                            <li><a href="">Editar mi perfil</a></li>
+                                        </ul>
+                                    </li>                                  
+                                </ul>
+                                    <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
+                                        <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="usuario">
+                                <div class="logo_container">
+                                    <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
+                                </div>
+                                <nav class="navbar">
+                                <ul class="navbar_menu">
+                                    <li><a href="principal.jsp">Inicio</a></li>                           
+                                    <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                               
+                                    <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>                                                                                                                     
+                                    <li><a href="">Actividades</a></li>
+                                    <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown_selection">
+                                            <li><a href="">Libros descargados</a></li>
+                                            <li><a href="">Mis préstamos</a></li>
+                                            <li><a href="">Editar mi perfil</a></li>
+                                        </ul>
+                                    </li>                                  
+                                </ul>
+                                    <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
+                                        <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
+                                    </div>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>

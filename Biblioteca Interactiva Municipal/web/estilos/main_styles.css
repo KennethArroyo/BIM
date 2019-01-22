@@ -1159,5 +1159,9 @@ input[type=submit] {
   z-index: 2;
 }
 
+div.administrador, div.usuario, div.administradorR, div.usuarioR{
+display: none;
+}
+
 
 
