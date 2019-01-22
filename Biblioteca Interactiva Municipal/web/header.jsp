@@ -14,6 +14,8 @@
 <html>
     <head>
         <%@ include file="librerias.jsp" %>
+        <script src="js/Sesion.js" type="text/javascript"></script>
+        <script src="js/Header.js" type="text/javascript"></script>
     </head>
     <body>
     <!-- Header -->
@@ -164,7 +166,7 @@
                         <a class="menu_name" href="principal.jsp">Biblioteca Interactiva Municipal</a><br>
                             <ul class="menu_top_nav">
                                 <li class="menu_item"><a href="principal.jsp" >Inicio</a></li>
-                                <li><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>     
+                                <li class="menu_item"><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>     
                                 <li class="menu_item"><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
                                 <li class="menu_item"><a href="">Actividades</a></li>
                                 <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->

@@ -15,6 +15,7 @@
         <script src="js/modals.js" type="text/javascript"></script>
         <link href="estilos/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/Sesion.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
@@ -28,7 +29,7 @@
                         <h2 style="align-content: center;"><center>Iniciar Sesión</center></h2>
                     </div>
                     <br/>
-                    <form role="form" onsubmit="return iniciar();" id="formLogin" method="POST">
+                    <form role="form" id="formLogin" method="POST">
                         <div class="form-group" id="groupUsuario">
                             <label for="cedula">Identificación</label>
                             <input type="text" class="form-control" id="usuario" autofocus="true" placeholder="Identificación">
@@ -40,7 +41,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="enviar">Ingresar</button>
+                            <button type="submit" class="btn btn-success" onclick="iniciar()" id="enviar">Ingresar</button>
                             <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                         </div>
 

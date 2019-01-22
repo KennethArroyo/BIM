@@ -4,23 +4,21 @@
  * and open the template in the editor.
  */
 
-var usuario = null;
+/* global usuarioFina*/
+var usuarioFinal = null;
+
 function iniciar(){
-    $.ajax({type: "POST", 
+    var usuario = $("#usuario").val();
+    var contrasena = $("#contrasena").val();
+    var datos = {usuario:usuario,contrasena:contrasena};
+    $.ajax({type: "GET", 
             url:"Iniciar",
+            data:datos,
             success: 
               function(obj){
-                usuario = obj;
-                $("div.anonimo").hide();
-                $("div.anonimoR").hide();
-                if(obj.tipo===1){
-                    $("div.usuario").show();
-                    $("div.usuarioR").show();
-                }
-                if(obj.tipo===2){
-                    $("div.administrador").show();
-                    $("div.administradorR").show();
-                }
+                usuarioFinal = obj;
+                sessionStorage.setItem("usuario", JSON.stringify(usuarioFinal));
+                window.location="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
               },
             error: function(status){
                    window.alert("El usuario o la contraseña son inválidos");

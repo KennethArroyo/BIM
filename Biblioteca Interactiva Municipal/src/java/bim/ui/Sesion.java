@@ -95,7 +95,6 @@ public class Sesion extends HttpServlet {
             String usuario = request.getParameter("usuario");
             String contrasena = request.getParameter("contrasena");
             Usuario us = Model.instance().buscarUsRegistrado(usuario,contrasena);
-            s.setAttribute("Usuario", us);
             out.write(gson.toJson(us));
             response.setStatus(200); // ok with content
         }
