@@ -221,7 +221,7 @@ public class Dao {
     public Usuario buscarUsuarioCed(String ced) throws Exception{
     Usuario u = new Usuario();
     try {
-            String sql = "select* from Usuario where identificacion='%s'";
+            String sql = "select * from Usuario where identificacion='%s'";
             sql = String.format(sql, ced);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
@@ -410,5 +410,20 @@ public class Dao {
                     throw new Exception("Error ingresando los datos");
                 }
             }
+    }
+
+    public Usuario buscarUsRegistrado(String usuario, String contrasena) throws SQLException, Exception {
+        Usuario u = new Usuario();
+    try {
+            String sql = "select * from Usuario where identificacion='%s' and contrasena='%s'";
+            sql = String.format(sql, usuario,contrasena);
+            ResultSet rs = db.executeQuery(sql);
+            rs.next();
+            u = usuario(rs);
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    return u;
     }
 }

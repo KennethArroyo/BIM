@@ -124,4 +124,8 @@ public class Model {
     public void guardarAutorLibro(ArrayList<Autor> datos, String titulo) throws Exception {
         dao.guardarAutorLibro(datos, titulo);
     }
+
+    public Usuario buscarUsRegistrado(String usuario, String contrasena) {
+        return dao.buscarUsRegistrado(usuario, contrasena);
+    }
 }

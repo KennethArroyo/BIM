@@ -28,10 +28,10 @@
                         <h2 style="align-content: center;"><center>Iniciar Sesión</center></h2>
                     </div>
                     <br/>
-                    <form role="form" onsubmit="return false;" id="formLogin">
-                        <div class="form-group" id="groupUsario">
-                            <label for="cedula">Usuario:</label>
-                            <input type="text" class="form-control" id="usuario" autofocus="true" placeholder="Usuario">
+                    <form role="form" onsubmit="return iniciar();" id="formLogin" method="POST">
+                        <div class="form-group" id="groupUsuario">
+                            <label for="cedula">Identificación</label>
+                            <input type="text" class="form-control" id="usuario" autofocus="true" placeholder="Identificación">
                         </div>
 
                         <div class="form-group" id="groupPassword">
@@ -40,7 +40,6 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="hidden" value="agregarPersona" id="personasAction"/>
                             <button type="submit" class="btn btn-success" id="enviar">Ingresar</button>
                             <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                         </div>
