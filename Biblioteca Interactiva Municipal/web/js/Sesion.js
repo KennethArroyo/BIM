@@ -25,3 +25,22 @@ function iniciar(){
               }                    
           }); 
 }
+
+function cerrar(){
+    var user = JSON.parse(sessionStorage.getItem("usuario"));
+            if(user !== null){
+                if(user.tipo===0){
+                    $(".usuario").hide();
+                    $(".usuarioR").hide();
+                }
+                if(user.tipo===1){
+                    $(".administrador").hide();
+                    $(".administradorR").hide();
+                }
+                $(".anonimo").show();
+                $(".anonimoR").show();
+                sessionStorage.clear();
+                window.location="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
+            }
+    
+}

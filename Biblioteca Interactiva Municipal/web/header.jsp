@@ -62,6 +62,7 @@
                                                         <li><a href="">Editar mi perfil</a></li>
                                                     </ul>
                                                 </li>
+                                                 <li><a href="javascript:cerrar();">Cerrar sesion</a></li>
                                             </ul>
                                                 <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
                                                     <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
@@ -103,7 +104,8 @@
                                                         <li><a href="">Mis préstamos</a></li>
                                                         <li><a href="">Editar mi perfil</a></li>
                                                     </ul>
-                                                </li>                                  
+                                                </li>
+                                                <li><a href="javascript:cerrar();">Cerrar sesion</a></li>
                                             </ul>
                                                 <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
                                                     <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
@@ -148,6 +150,7 @@
                                             <li><a href=""><i aria-hidden="true"></i>Autores</a></li>
                                         </ul>
                                 </li>
+                                <li class="menu_item"><a href="javascript:cerra();" >Cerrar Sesion</a></li>
                             </ul>
                     </div>
                     
@@ -177,6 +180,7 @@
                                             <li><a href=""><i aria-hidden="true"></i>Autores</a></li>
                                         </ul>
                                 </li>
+                                <li class="menu_item"><a href="javascript:cerrar();" >Cerrar Sesion</a></li>
                             </ul>
                     </div>
                 </div>
