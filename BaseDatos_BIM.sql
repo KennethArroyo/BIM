@@ -48,6 +48,7 @@ use BIM
 --asignatura_ID int foreign key references Asignatura(id)
 --)
 
+<<<<<<< HEAD
 ------Tabla Autores
 ------pk: id asignado automáticamente, cada vez que se crea un nuevo préstamo
 ------libro_ID: llave foránea asociada a la tabla Libro
@@ -56,6 +57,16 @@ use BIM
 --id int primary key identity(1,1),
 --nombre nvarchar(50) NOT NULL UNIQUE
 --)
+=======
+--Tabla Autores
+--pk: id asignado automáticamente, cada vez que se crea un nuevo préstamo
+--libro_ID: llave foránea asociada a la tabla Libro
+--autor_ID: llave foránea asociada a la tabla Autor
+CREATE TABLE Autor(
+id int primary key identity(1,1),
+nombre nvarchar(50) NOT NULL UNIQUE
+)
+>>>>>>> 51a394471eca0de08efbcdcbc20ee54fdfd9e5a3
 
 ------Tabla Libro_Autor
 ------pk: id asignado automáticamente, cada vez que se crea un nuevo préstamo

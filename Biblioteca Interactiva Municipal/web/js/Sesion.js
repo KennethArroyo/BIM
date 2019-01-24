@@ -11,7 +11,7 @@ function iniciar(){
     var usuario = $("#usuario").val();
     var contrasena = $("#contrasena").val();
     var datos = {usuario:usuario,contrasena:contrasena};
-    $.ajax({type: "GET", 
+    $.ajax({type: "POST", 
             url:"Iniciar",
             data:datos,
             success: 
@@ -39,7 +39,7 @@ function cerrar(){
                 }
                 $(".anonimo").show();
                 $(".anonimoR").show();
-                sessionStorage.clear();
+                sessionStorage.removeItem("usuario");
                 window.location="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
             }
     

@@ -23,6 +23,23 @@ function buscar(){
                 }); 
 }
 
+function agregarAutor(){
+    var aut_nom = $("#autor").val();
+    var datos = {nombre:aut_nom};
+    $.ajax({type: "POST", 
+            url:"AgregarAutor",
+            dataType: "json",
+            data: datos,
+            success: 
+              function(status){ 
+                window.alert("Autor agregado satisfactoriamente");
+              },
+            error: function(status){
+                   window.alert("Error: Es posible que ya el autor se encuentre registrado");
+            }
+    });
+}
+
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaAutores").html("");
@@ -82,6 +99,7 @@ function modificarAutor(){
             }
     });
 }
+
 
 function eliminarAutor(id){
     if(confirm("¿Seguro que desea eliminar el Autor?")){
