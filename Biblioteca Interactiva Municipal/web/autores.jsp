@@ -24,7 +24,7 @@
             <div class="container col-md-4" style="align-self: center">
                 <h3  style="align-content: center;">Agregar Autores</h3>
                 <br>
-                <form onsubmit="return false" method="POST" id="autorForm" class="log">
+                <form onsubmit="return false" id="autorForm" class="log">
                     <div class="form-group" col-sm-3 col-md-4>
                         <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
     oninput="this.setCustomValidity('')">

@@ -39,7 +39,7 @@ function cerrar(){
                 }
                 $(".anonimo").show();
                 $(".anonimoR").show();
-                sessionStorage.clear();
+                sessionStorage.removeItem("usuario");
                 window.location="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
             }
     
