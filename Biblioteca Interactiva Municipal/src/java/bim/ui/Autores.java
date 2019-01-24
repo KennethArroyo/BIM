@@ -115,7 +115,7 @@ public class Autores extends HttpServlet {
             Gson gson = new Gson();
             Asignatura asig = new Asignatura();
             response.setContentType("application/json; charset=UTF-8");
-            String autor = request.getParameter("autor");
+            String autor = request.getParameter("nombre");
             Model.instance().agregarAutor(autor);
             response.setStatus(200); // ok with content
         }

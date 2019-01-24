@@ -11,13 +11,14 @@ function iniciar(){
     var usuario = $("#usuario").val();
     var contrasena = $("#contrasena").val();
     var datos = {usuario:usuario,contrasena:contrasena};
-    $.ajax({type: "GET", 
+    $.ajax({type: "POST", 
             url:"Iniciar",
             data:datos,
             success: 
               function(obj){
                 usuarioFinal = obj;
                 sessionStorage.setItem("usuario", JSON.stringify(usuarioFinal));
+                window.alert("entra");
                 window.location="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
               },
             error: function(status){

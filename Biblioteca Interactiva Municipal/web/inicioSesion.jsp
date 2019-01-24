@@ -29,7 +29,7 @@
                         <h2 style="align-content: center;"><center>Iniciar Sesión</center></h2>
                     </div>
                     <br/>
-                    <form role="form" id="formLogin" method="POST">
+                    <form onsubmit="return true" role="form" id="formLogin" method="POST">
                         <div class="form-group" id="groupUsuario">
                             <label for="cedula">Identificación</label>
                             <input type="text" class="form-control" id="usuario" autofocus="true" placeholder="Identificación">
