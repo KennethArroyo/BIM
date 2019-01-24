@@ -109,9 +109,20 @@ public class Autores extends HttpServlet {
 
     
     private void agregarAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
-         Asignatura asig = new Asignatura();
-        Model.instance().agregarAutor(request.getParameter("autor"));
-        request.getRequestDispatcher("autores.jsp").forward(request, response);
+        try{
+            BufferedReader reader = request.getReader();
+            HttpSession s = request.getSession(true);
+            Gson gson = new Gson();
+            Asignatura asig = new Asignatura();
+            response.setContentType("application/json; charset=UTF-8");
+            String autor = request.getParameter("autor");
+            Model.instance().agregarAutor(autor);
+            response.setStatus(200); // ok with content
+        }
+        catch(Exception e){
+            String ms = e.getMessage();
+            response.setStatus(401); //Bad request    
+        }
     }
     
     private void buscarAutor(HttpServletRequest request, HttpServletResponse response) {

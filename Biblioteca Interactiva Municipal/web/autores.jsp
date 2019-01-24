@@ -24,14 +24,14 @@
             <div class="container col-md-4" style="align-self: center">
                 <h3  style="align-content: center;">Agregar Autores</h3>
                 <br>
-                <form action="AgregarAutor" method="POST" id="autorForm" class="log">
+                <form onsubmit="return false" method="POST" id="autorForm" class="log">
                     <div class="form-group" col-sm-3 col-md-4>
                         <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
     oninput="this.setCustomValidity('')">
                     </div>
                 <div id="mi_div">    
                 <div class="form-group">
-                <button type="submit" class="btn btn-success" id="botonAgregar">Agregar</button>
+                <button type="submit" onclick="agregarAutor()" class="btn btn-success" id="botonAgregar">Agregar</button>
                  <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                 </div>
                 </div>
