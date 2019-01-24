@@ -51,7 +51,7 @@ asignatura_ID int foreign key references Asignatura(id)
 --autor_ID: llave foránea asociada a la tabla Autor
 CREATE TABLE Autor(
 id int primary key identity(1,1),
-nombre nvarchar(50) NOT NULL
+nombre nvarchar(50) NOT NULL UNIQUE
 )
 
 --Tabla Libro_Autor
