@@ -44,6 +44,9 @@ function agregarLibro() {
     }
 
 }
+//$(document).ready(function(){
+//    $("#tablaLibros").DataTable();
+//    });
 
 $(document).ready(function getAsignaturas() {
     $.ajax({type: "GET",
@@ -70,10 +73,9 @@ function updateList(list) {
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaLibros").html("");
-
     //muestra el enzabezado de la tabla
-    var head = $("<thead class='thead-dark'/>");
-    var row = $("<tr />");
+    var head = $("<thead/>");
+    var row = $("<tr/>");
     head.append(row);
     $("#tablaLibros").append(head);
     //row.append($("<th>ID<b></b></th>"));

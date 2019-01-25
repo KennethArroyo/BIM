@@ -11,10 +11,43 @@
 <html>
     <head>
         <title>Buscar Libro</title>
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+         <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
         <script src="js/Libros.js" type="text/javascript"></script>
-        <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <!--<link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>-->     
         <script src="js/modals.js" type="text/javascript"></script>
+        <!--FILES DATATABLE-->
+        <link href="DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.foundation.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.foundation.min.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.jqueryui.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.semanticui.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/dataTables.semanticui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/datatables.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/datatables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+        <link href="DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        
+        <script src="DataTables-1.10.18/js/dataTables.bootstrap.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.foundation.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.foundation.min.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.jqueryui.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.jqueryui.min.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.semanticui.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/dataTables.semanticui.min.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/datatables.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/datatables.min.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/jquery-3.3.1.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <!--FIN-->
     </head>
 
     <body>
@@ -69,7 +102,7 @@
                 <table border="1" class="table" id="tablaLibros"></table>
             </div>--%>
             <div class="table-responsive">
-                <table border="2" class="display" id="tablaLibros"></table>
+                <table class="table table-striped" id="tablaLibros"></table>
             </div>
 
         </div>
