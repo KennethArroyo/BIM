@@ -18,7 +18,8 @@ function iniciar(){
               function(obj){
                 usuarioFinal = obj;
                 sessionStorage.setItem("usuario", JSON.stringify(usuarioFinal));
-                window.location="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
+                window.location.href="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
+                window.alert("sesion iniciada");
               },
             error: function(status){
                    window.alert("El usuario o la contraseña son inválidos");
@@ -40,7 +41,7 @@ function cerrar(){
                 $(".anonimo").show();
                 $(".anonimoR").show();
                 sessionStorage.removeItem("usuario");
-                window.location="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
+                window.location.href="http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp";
             }
     
 }
