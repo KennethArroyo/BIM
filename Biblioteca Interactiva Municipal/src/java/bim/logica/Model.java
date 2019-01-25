@@ -125,7 +125,7 @@ public class Model {
         dao.guardarAutorLibro(datos, titulo);
     }
 
-    public Usuario buscarUsRegistrado(String usuario, String contrasena) {
+    public Usuario buscarUsRegistrado(String usuario, String contrasena) throws Exception {
         return dao.buscarUsRegistrado(usuario, contrasena);
     }
 }
