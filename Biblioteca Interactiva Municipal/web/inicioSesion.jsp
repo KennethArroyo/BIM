@@ -48,7 +48,7 @@
                         <div class="form-group height25" >
                             <div class="alert alert-success hiddenDiv" id="mesajeResult">
                                 <strong id="mesajeResultNeg">Info!</strong> 
-                                <span id="mesajeResultText">Digite su usuario y contraseña para Iniciar Sesión</span>
+                                <span id="mesajeResultText">Digite su identificación y contraseña para Iniciar Sesión</span>
                             </div>
                         </div>
                     </form>

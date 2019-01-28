@@ -87,7 +87,6 @@ function dibujarTabla(dataJson) {
     row.append($("<th>CANTIDAD COPIAS<b></b></th>"));
     row.append($("<th>ASIGNATURA<b></b></th>"));
     row.append($("<th>EDITAR<b></b></th>"));
-
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
         dibujarFila(dataJson[i]);
@@ -118,7 +117,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
     row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-   
+    
 }
 
 function buscar() {
