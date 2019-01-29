@@ -13,7 +13,7 @@
         <title>Buscar Libro</title>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="js/Libros.js" type="text/javascript"></script>
-        <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>  
+        <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/modals.js" type="text/javascript"></script>
     </head>
 

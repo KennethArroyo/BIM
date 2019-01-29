@@ -3,6 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$(function () {
+    $("#tablaLibros").html("");
+    //muestra el enzabezado de la tabla
+    var head = $("<thead class='thead-dark'/>");
+    var head = $("<thead/>");
+    var row = $("<tr/>");
+    head.append(row);
+    $("#tablaLibros").append(head);
+    //row.append($("<th>ID<b></b></th>"));
+    row.append($("<th>CLASIFICACION<b></b></th>"));
+    row.append($("<th><b>AUTOR</b></th>"));
+    row.append($("<th><b>TITULO</b></th>"));
+    row.append($("<th><b>ESTADO</b></th>"));
+    row.append($("<th><b>COMENTARIO</b></th>"));
+    row.append($("<th>CANTIDAD COPIAS<b></b></th>"));
+    row.append($("<th>ASIGNATURA<b></b></th>"));
+    row.append($("<th>EDITAR<b></b></th>"));
+});
+
 function onClickDigital() {
     if ($("#digital").is(':checked')) {
         $("#libForm").append('<input type="file" name="file" class="file" id="file" required>');
@@ -48,6 +67,28 @@ function agregarLibro() {
 //    $("#tablaLibros").DataTable();
 //    });
 
+$(document).ready(function () {
+    buscarTodosLibros();
+});
+
+function buscarTodosLibros() {
+    $.ajax({
+        url: 'BuscarLibro',
+        data: {
+            accion: "buscarTodos"
+        },
+        error: function () {
+            window.alert("error - contacte con el administrador");
+        },
+        success: function (data) {
+            dibujarTabla(data);
+        },
+        type: 'POST',
+        dataType: "json"
+
+    });
+}
+
 $(document).ready(function getAsignaturas() {
     $.ajax({type: "GET",
         url: "GetAsignaturas",
@@ -74,19 +115,20 @@ function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaLibros").html("");
     //muestra el enzabezado de la tabla
+    var head = $("<thead class='thead-dark'/>");
     var head = $("<thead/>");
     var row = $("<tr/>");
     head.append(row);
     $("#tablaLibros").append(head);
     //row.append($("<th>ID<b></b></th>"));
-    row.append($("<th>CLASIFICACION<b></b></th>"));
+    row.append($("<th><b>CLASIFICACION</b></th>"));
     row.append($("<th><b>AUTOR</b></th>"));
     row.append($("<th><b>TITULO</b></th>"));
     row.append($("<th><b>ESTADO</b></th>"));
     row.append($("<th><b>COMENTARIO</b></th>"));
-    row.append($("<th>CANTIDAD COPIAS<b></b></th>"));
-    row.append($("<th>ASIGNATURA<b></b></th>"));
-    row.append($("<th>EDITAR<b></b></th>"));
+    row.append($("<th><b>CANTIDAD COPIAS</b></th>"));
+    row.append($("<th><b>ASIGNATURA</b></th>"));
+    row.append($("<th><b>EDITAR</b></th>"));
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
         dibujarFila(dataJson[i]);
@@ -117,7 +159,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.cantidad_copias + "</td>"));
     row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
     row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-    
+
 }
 
 function buscar() {
@@ -137,7 +179,7 @@ function buscar() {
     } else
     if (tipo === "ident") {
         buscarLibroId(name);
-    } 
+    }
 }
 
 
@@ -210,7 +252,7 @@ function  buscarLibroAsignatura(name) {
             window.alert("Error de ajax");
         },
         success: function (data) {
-                dibujarTabla(data);
+            dibujarTabla(data);
         },
         type: 'POST',
         dataType: "json"
@@ -264,67 +306,63 @@ function cancelar() {
 }
 
 function modificarLibro() {
-    if($("#fisico").prop('checked')){
-       $("#fisico").val(1); 
-    }
-    else{
+    if ($("#fisico").prop('checked')) {
+        $("#fisico").val(1);
+    } else {
         $("#fisico").val(0);
     }
-    if($("#digital").prop('checked')){
-       $("#digital").val(1); 
-    }
-    else{
+    if ($("#digital").prop('checked')) {
+        $("#digital").val(1);
+    } else {
         $("#digital").val(0);
-    }   
-    
-    var num = $("#copias").val();
-    if($.isNumeric(num)){
-    if(validar()){
-        $.ajax({
-        url: 'BuscarLibro',
-        data: {
-            accion: "modificarLibro",
-            clasificacion: $("#clasificacion").val(),
-            titulo: $("#titulo").val(),
-            autor: $("#autor").val(),
-            comentario: $("#comentario").val(),
-            estado: $("#estado").val(),
-            copias: $("#copias").val(),
-            fisico: $("#fisico").val(),
-            digital: $("#digital").val(),
-            asignatura: $("#asignatura").val()
+    }
 
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            window.alert("error de ajax, contacte con el administrador");
-        },
-        success: function (data) {
-            var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta === "C~") { //correcto
-                window.alert("Se modificó el libro correctamente");
-                $("#myModalFormulario").modal("hide");
-                buscar();
-            } else {
-                if (tipoRespuesta === "E~") { //error
-                    window.alert("No se pudo modificar el libro");
-                }
-            }
-            //$("#tablaLibros").html("");
-        },
-        type: 'POST'
-    });
-    }
-    else
-    { 
-        //swal("Debe de digitar los campos del formulario que se encuentran vacíos");
-        window.alert("Debe de digitar los campos del formulario que se encuentran vacíos");
-    }
-}
-else
-    { 
+    var num = $("#copias").val();
+    if ($.isNumeric(num)) {
+        if (validar()) {
+            $.ajax({
+                url: 'BuscarLibro',
+                data: {
+                    accion: "modificarLibro",
+                    clasificacion: $("#clasificacion").val(),
+                    titulo: $("#titulo").val(),
+                    autor: $("#autor").val(),
+                    comentario: $("#comentario").val(),
+                    estado: $("#estado").val(),
+                    copias: $("#copias").val(),
+                    fisico: $("#fisico").val(),
+                    digital: $("#digital").val(),
+                    asignatura: $("#asignatura").val()
+
+                },
+                error: function () { //si existe un error en la respuesta del ajax
+                    window.alert("error de ajax, contacte con el administrador");
+                },
+                success: function (data) {
+                    var tipoRespuesta = data.substring(0, 2);
+                    if (tipoRespuesta === "C~") { //correcto
+                        window.alert("Se modificó el libro correctamente");
+                        $("#myModalFormulario").modal("hide");
+                        buscar();
+                    } else {
+                        if (tipoRespuesta === "E~") { //error
+                            window.alert("No se pudo modificar el libro");
+                        }
+                    }
+                    //$("#tablaLibros").html("");
+                },
+                type: 'POST'
+            });
+        } else
+        {
+            //swal("Debe de digitar los campos del formulario que se encuentran vacíos");
+            window.alert("Debe de digitar los campos del formulario que se encuentran vacíos");
+        }
+    } else
+    {
         //swal("La cantidad de copias debe ser un valor numerico");
         window.alert("La cantidad de copias debe ser un valor numerico");
-        
+
     }
 }
 function limpiarForm() {
@@ -360,7 +398,7 @@ function validar() {
     //$("#groupFechaNacimiento").removeClass("has-error");
     //$("#groupFechaVencimiento").removeClass("has-error");
     //$("#groupTipoLicencia").removeClass("has-error");
-  //  $("#groupEstado").removeClass("has-error");
+    //  $("#groupEstado").removeClass("has-error");
 //    $("#groupEsClienteTransportista").removeClass("has-error");
 
     //valida cada uno de los campos del formulario

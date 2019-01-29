@@ -138,7 +138,22 @@ public class Dao {
         }
         return lista;
     }
-
+    public ArrayList<Libro> buscarTodosLibros()throws Exception{
+    ArrayList<Libro> libros = new ArrayList<Libro>();
+    
+    try{
+        String sql = "select * from Libro l, Asignatura a where l.asignatura_ID = a.id";
+        sql = String.format(sql);
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+        libros.add(libro(rs));
+        }
+    }catch(SQLException ex){
+        String error=ex.getMessage();
+        error="s";
+    }
+    return libros;
+    }
     public ArrayList<Libro> buscarLibroAutor(String autor) throws Exception {
         ArrayList<Libro> libros = new ArrayList<Libro>();
         try {

@@ -55,6 +55,11 @@ public class BuscarLibro extends HttpServlet {
             String accion = request.getParameter("accion");
             String input = request.getParameter("nombre");
             switch (accion) {
+                case "buscarTodos":
+                    q = Model.instance().buscarTodosLibros();
+                    json=new Gson().toJson(q);
+                    out.print(json);
+                    break;
                 case "buscarLibroAutor":
                     q = Model.instance().buscarLibroAutor(input);
                     json = new Gson().toJson(q);
