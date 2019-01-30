@@ -27,6 +27,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author Kenneth
@@ -98,6 +102,24 @@ public class RegistroUsuario extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
+    private static String bytesToHex(byte[] hash) {
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if (hex.length() == 1)
+                hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+    
+    public static String HashJavaMessageDigest(final String conUs) throws NoSuchAlgorithmException {
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        final byte[] encodedhash = digest.digest(conUs.getBytes(StandardCharsets.UTF_8));
+        return bytesToHex(encodedhash);
+    }
+    
+    
     protected void registroUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession s = request.getSession(true);
@@ -110,7 +132,7 @@ public class RegistroUsuario extends HttpServlet {
             String correo = request.getParameter("correo");
             String contrasena = request.getParameter("contrasena");
             String ref_trab_est = request.getParameter("ref_trab_est");
-            
+            String hash = HashJavaMessageDigest(contrasena);
             Usuario u =  new Usuario();
             u.setTipo(0);
             u.setIdentificacion(identificacion);
@@ -119,7 +141,7 @@ public class RegistroUsuario extends HttpServlet {
             u.setLugar_residencia(lugar_residencia);
             u.setTelefono(telefono);
             u.setCorreo(correo);
-            u.setContrasena(contrasena);
+            u.setContrasena(hash);
             u.setRef_trab_est(ref_trab_est);
             u.setHabilitado(0); // 0 = NO HABILITADO, 1 = HABILITADO
             u.GenerarCodigoVerificacion();
@@ -201,7 +223,6 @@ public class RegistroUsuario extends HttpServlet {
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         }
     }
-    
     protected void buscarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Usuario us = new Usuario();
