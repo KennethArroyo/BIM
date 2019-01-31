@@ -15,6 +15,7 @@
                 <br>
                 <form action="VerificarCuenta" method="POST" id="verificaUsuario">
                     <div class="form-group">
+                        <h4 style="color:red;">Favor revisar su correo electrónico para obtener el código de verificación</h4>
                         <label for="correo">Correo a Verificar </label>
                         <input type="text" class="form-control" id="correo" name="correo" required>
                         <p>Formato: ejemplo@dominio.com</p>

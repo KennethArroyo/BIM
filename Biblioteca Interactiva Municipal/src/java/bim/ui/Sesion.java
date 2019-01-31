@@ -117,6 +117,10 @@ public class Sesion extends HttpServlet {
             String contrasena = request.getParameter("contrasena");
             String hash = HashJavaMessageDigest(contrasena);
             Usuario us = Model.instance().buscarUsRegistrado(usuario,hash);
+            if(us.getHabilitado()==0){
+                request.setAttribute("error", "Este usuario aun no ingresa el codigo de verificacion enviado al correo");
+                request.getRequestDispatcher("verificarCuenta.jsp").forward(request, response);
+            }
             out.write(gson.toJson(us));
             response.setStatus(200); // ok with content
         }
