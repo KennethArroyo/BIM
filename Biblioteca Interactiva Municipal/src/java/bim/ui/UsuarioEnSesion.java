@@ -42,10 +42,10 @@ public class UsuarioEnSesion extends HttpServlet {
             String json;
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
-            String input = request.getParameter("nombre");
+            String input = request.getParameter("identificacion");
             switch (accion) {
                 case "/EditarUsuario":
-                    json = new Gson().toJson(buscarUsuario(request, response));
+                    json = new Gson().toJson(buscarUsuario(request, response,"304830405"));
                     out.print(json);
                     break;
                 default:
@@ -59,7 +59,7 @@ public class UsuarioEnSesion extends HttpServlet {
         }
     }
 
-    protected Usuario buscarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected Usuario buscarUsuario(HttpServletRequest request, HttpServletResponse response, String id) throws ServletException, IOException {
         Usuario us = new Usuario();
         try {
 
@@ -67,7 +67,7 @@ public class UsuarioEnSesion extends HttpServlet {
             PrintWriter out = response.getWriter();
             HttpSession s = request.getSession(true);
             Gson gson = new Gson();
-            us = Model.instance().getUsuarioCed(request.getParameter("id"));
+            us = Model.instance().getUsuarioCed(id);
             response.setContentType("application/json; charset=UTF-8");
             out.write(gson.toJson(us));
             response.setStatus(200); // ok with content

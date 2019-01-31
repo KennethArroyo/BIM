@@ -69,7 +69,7 @@
                                         <li><a href="">Actividades</a></li>
                                         <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
-                                                <li><a href="editarUsuario.jsp">Editar mi perfil</a></li>
+                                                <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
                                                 
                                             </ul>
                                         </li>

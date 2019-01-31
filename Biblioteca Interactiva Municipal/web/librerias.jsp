@@ -12,6 +12,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="BIM Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="estilos/bootstrap4/popper.js"></script>
+        <script src="estilos/bootstrap4/bootstrap.min.js"></script>
+        <script src="complementos/Isotope/isotope.pkgd.min.js"></script>
+        <script src="complementos/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+        <script src="complementos/easing/easing.js"></script>
+        <script src="js/custom.js"></script>
+        <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+        <script src="js/sweetalert2.js" type="text/javascript"></script>
         <link rel="stylesheet" type="text/css" href="estilos/bootstrap4/bootstrap.min.css">
         <link href="complementos/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="complementos/OwlCarousel2-2.2.1/owl.carousel.css">
@@ -26,18 +37,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="estilos/bootstrap4/popper.js"></script>
-        <script src="estilos/bootstrap4/bootstrap.min.js"></script>
-        <script src="complementos/Isotope/isotope.pkgd.min.js"></script>
-        <script src="complementos/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-        <script src="complementos/easing/easing.js"></script>
-        <script src="js/custom.js"></script>
-        <script type="text/javascript" src="js/addons/datatables.min.js"></script>
-        
-        <script src="js/sweetalert2.js" type="text/javascript"></script>
         <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
     </head>
 </html>
