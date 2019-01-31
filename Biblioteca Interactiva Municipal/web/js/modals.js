@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+$( document ).ready(function() {
+    $('#modalInfo').modal();
+});
 
 function mostrarModal(idDiv ,titulo, mensaje){
      $("#"+idDiv+"Title").html(titulo);

@@ -11,6 +11,9 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,6 +88,24 @@ public class Sesion extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    private static String bytesToHex(byte[] hash) {
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if (hex.length() == 1)
+                hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+    
+    public static String HashJavaMessageDigest(final String conUs) throws NoSuchAlgorithmException {
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        final byte[] encodedhash = digest.digest(conUs.getBytes(StandardCharsets.UTF_8));
+        return bytesToHex(encodedhash);
+    }
+    
     private void iniciaSesion(HttpServletRequest request, HttpServletResponse response) {
         try{
             HttpSession s = request.getSession(true);
@@ -94,7 +115,12 @@ public class Sesion extends HttpServlet {
             response.setContentType("application/json; charset=UTF-8");
             String usuario = request.getParameter("usuario");
             String contrasena = request.getParameter("contrasena");
-            Usuario us = Model.instance().buscarUsRegistrado(usuario,contrasena);
+            String hash = HashJavaMessageDigest(contrasena);
+            Usuario us = Model.instance().buscarUsRegistrado(usuario,hash);
+            if(us.getHabilitado()==0){
+                request.setAttribute("error", "Este usuario aun no ingresa el codigo de verificacion enviado al correo");
+                request.getRequestDispatcher("verificarCuenta.jsp").forward(request, response);
+            }
             out.write(gson.toJson(us));
             response.setStatus(200); // ok with content
         }
