@@ -16,15 +16,15 @@ function iniciar(){
             data:datos,
             success: 
               function(obj){
-                window.alert("llega");
                 usuarioFinal = obj;
                 sessionStorage.setItem("usuario", JSON.stringify(usuarioFinal));
                 window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp");
               },
-            error: function(status, error){
-                window.alert(error);
-                    if(error==="habilitar")
+            error: function(status){
+                    if(status.status===405){
                         window.alert("Este usuario debe ser verificado, favor revisar su correo");
+                        window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
+                    }
                     else
                         window.alert("El usuario o la contraseña son inválidos");
               }                    

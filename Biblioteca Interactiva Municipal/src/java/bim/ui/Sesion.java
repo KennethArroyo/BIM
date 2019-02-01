@@ -107,7 +107,7 @@ public class Sesion extends HttpServlet {
     }
     
     private void iniciaSesion(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String error = "";
+        int error = 401;
         try{
             HttpSession s = request.getSession(true);
             BufferedReader reader = request.getReader();
@@ -120,15 +120,15 @@ public class Sesion extends HttpServlet {
             Usuario us = Model.instance().buscarUsRegistrado(usuario,hash);
             if(us.getHabilitado()==0){
                 //response.sendError(0);
+                error = 405;
                 throw new Exception();
             }
             out.write(gson.toJson(us));
             response.setStatus(200); // ok with content
         }
         catch(Exception e) {
-            String text = e.getMessage();
-            response.setStatus(401); //Bad request
-            response.getWriter().write(error);
+            String msj = e.getMessage();
+            response.sendError(error);
         }
     }
 
