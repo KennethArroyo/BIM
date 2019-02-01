@@ -119,7 +119,7 @@ public class Sesion extends HttpServlet {
             String hash = HashJavaMessageDigest(contrasena);
             Usuario us = Model.instance().buscarUsRegistrado(usuario,hash);
             if(us.getHabilitado()==0){
-                response.sendError(0);
+                //response.sendError(0);
                 throw new Exception();
             }
             out.write(gson.toJson(us));
@@ -128,6 +128,7 @@ public class Sesion extends HttpServlet {
         catch(Exception e) {
             String text = e.getMessage();
             response.setStatus(401); //Bad request
+            response.getWriter().write(error);
         }
     }
 
