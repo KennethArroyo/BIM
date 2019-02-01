@@ -106,7 +106,8 @@ public class Sesion extends HttpServlet {
         return bytesToHex(encodedhash);
     }
     
-    private void iniciaSesion(HttpServletRequest request, HttpServletResponse response) {
+    private void iniciaSesion(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String error = "";
         try{
             HttpSession s = request.getSession(true);
             BufferedReader reader = request.getReader();
@@ -118,15 +119,15 @@ public class Sesion extends HttpServlet {
             String hash = HashJavaMessageDigest(contrasena);
             Usuario us = Model.instance().buscarUsRegistrado(usuario,hash);
             if(us.getHabilitado()==0){
-                request.setAttribute("error", "Este usuario aun no ingresa el codigo de verificacion enviado al correo");
-                request.getRequestDispatcher("verificarCuenta.jsp").forward(request, response);
+                response.sendError(0);
+                throw new Exception();
             }
             out.write(gson.toJson(us));
             response.setStatus(200); // ok with content
         }
         catch(Exception e) {
             String text = e.getMessage();
-            response.setStatus(401); //Bad request        }
+            response.setStatus(401); //Bad request
         }
     }
 

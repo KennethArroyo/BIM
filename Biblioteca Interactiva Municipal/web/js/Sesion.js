@@ -20,8 +20,11 @@ function iniciar(){
                 sessionStorage.setItem("usuario", JSON.stringify(usuarioFinal));
                 window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp");
               },
-            error: function(status){
-                   window.alert("El usuario o la contraseña son inválidos");
+            error: function(status, error){
+                    if(error===0)
+                        window.alert("Este usuario debe ser verificado, favor revisar su correo");
+                    else
+                        window.alert("El usuario o la contraseña son inválidos");
               }                    
           }); 
 }
