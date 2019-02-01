@@ -43,9 +43,11 @@ public class UsuarioEnSesion extends HttpServlet {
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             String input = request.getParameter("identificacion");
+            Usuario u;
             switch (accion) {
-                case "/EditarUsuario":
-                    json = new Gson().toJson(buscarUsuario(request, response,"304830405"));
+                case "EditarUsuario":
+                    u = Model.instance().getUsuarioCed("304830405");
+                    json = new Gson().toJson(u);
                     out.print(json);
                     break;
                 default:

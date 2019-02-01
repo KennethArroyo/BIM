@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    buscarUsuarioEnSesion();
+   buscarUsuarioEnSesion();
 });
 
 
@@ -10,12 +10,9 @@ function buscarUsuarioEnSesion() {
             accion: "EditarUsuario"
         },
         error: function () {
-            window.alert("error al buscar el usuario");
+            window.alert("error al obtener los datos del usuario");
         },
         success: function (data) {
-            $("#identificacion".atrr('readonly', 'readonly'));
-            $("#correo".atrr('readonly', 'readonly'));
-
             $("#identificacion").val(data.identificacion);
             $("#nombre").val(data.nombre);
             $("#apellidos").val(data.apellidos);
@@ -28,61 +25,7 @@ function buscarUsuarioEnSesion() {
         dataType: "json"
     });
 }
-function consultarUsuarioById(idUsuario) {
-    $.ajax({
-        url: 'UsuarioServlet',
-        data: {
-            accion: "consultarUsuarioById",
-            idUsuario: idUsuario
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            ocultarModal("myModal");
-            swal('Error', 'Se presento un error, contactar al administrador', 'error');
-            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administrador");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            // se oculta el mensaje de espera
-            ocultarModal("myModal");
-            limpiarForm();
-            //se muestra el formulario
-            $("#myModalFormulario").modal();
 
-            //************************************************************************
-            //carga información del usuario en el formulario
-            //************************************************************************
-            //se indicar que la cédula es solo readOnly
-            $("#idUsuario").attr('readonly', 'readonly');
-
-            //se modificar el hidden que indicar el tipo de accion que se esta realizando
-            $("#usuarioAction").val("modificarUsuario");
-
-            //se carga la información en el formulario
-            $("#nombre").val(data.nombre);
-            $("#apellidos").val(data.apellidos);
-
-            //carga de fecha
-            var fechaNac = new Date(data.fechaNacimiento);
-            var fechaTxtNac = fechaNac.getDate() + "/" + (fechaNac.getMonth() + 1) + "/" + fechaNac.getFullYear();
-            $("#fechaNacimiento").data({date: fechaTxtNac});
-            $("#fechaNacimientoTxt").val(fechaTxtNac);
-
-            $("#direccion").val(data.direccion);
-            $("#telefono").val(data.telefonoTrabajo);
-            $("#correo").val(data.correoElectronico);
-            $("#idUsuario").val(data.idUsuario);
-            $("#contrasena").val(data.contrasena);
-            $("#tipoUsuario").val(data.tipoUsuario);
-            $("#idUltUsuario").val(data.ultimoUsuario);
-
-            var fechaNac2 = new Date(data.ultimaFecha);
-            var fechaTxtNac2 = fechaNac2.getDate() + "/" + (fechaNac2.getMonth() + 1) + "/" + fechaNac2.getFullYear();
-            $("#ultFechModif").data({date: fechaTxtNac2});
-            $("#ultFechModifTxt").val(fechaTxtNac2);
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
 
 $(document).ready(function () {
     $("#show_hide_password a").on('click', function (event) {
