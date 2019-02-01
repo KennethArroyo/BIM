@@ -32,12 +32,14 @@
                     <form onsubmit="return false" role="form" id="formLogin" method="POST">
                         <div class="form-group" id="groupUsuario">
                             <label for="cedula">Identificación</label>
-                            <input type="text" class="form-control" id="usuario" autofocus="true" placeholder="Identificación">
+                            <input type="text" class="form-control" id="usuario" autofocus="true" placeholder="Identificación" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                oninput="this.setCustomValidity('')">
                         </div>
 
                         <div class="form-group" id="groupPassword">
                             <label for="nombre">Contraseña:</label>
-                            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" >
+                            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                oninput="this.setCustomValidity('')">
                         </div>
 
                         <div class="form-group">

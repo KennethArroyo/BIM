@@ -73,7 +73,7 @@ public class Dao {
         u.setLugar_residencia(rs.getString("lugar_residencia"));
         u.setTelefono(rs.getString("telefono"));
         u.setCorreo(rs.getString("correo"));
-        //u.setHabilitado(rs.getInt("habilitado"));
+        u.setHabilitado(rs.getInt("habilitado"));
         u.setRef_trab_est(rs.getString("ref_trab_est"));
         return u;
     }

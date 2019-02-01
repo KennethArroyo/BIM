@@ -57,7 +57,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                oninput="this.setCustomValidity('')">
                                     </div>
                                 </div>
                                 <div class="col-md-4">

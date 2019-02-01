@@ -15,16 +15,18 @@
                 <br>
                 <form action="VerificarCuenta" method="POST" id="verificaUsuario">
                     <div class="form-group">
-                        <h4 style="color:red;">Favor revisar su correo electrónico para obtener el código de verificación</h4>
+                        <h6 style="color:red;">Favor revisar su correo electrónico para obtener el código de verificación.</h6>
                         <label for="correo">Correo a Verificar </label>
-                        <input type="text" class="form-control" id="correo" name="correo" required>
+                        <input type="text" class="form-control" id="correo" name="correo" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                oninput="this.setCustomValidity('')">
                         <p>Formato: ejemplo@dominio.com</p>
 
                     </div>
                     
                     <div class="form-group">
                         <label for="cod_verificacion">Código de Verificación </label>
-                        <input type="text" class="form-control" id="cod_verificacion" name="cod_verificacion" required>
+                        <input type="text" class="form-control" id="cod_verificacion" name="cod_verificacion" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                oninput="this.setCustomValidity('')">
                     </div>
                     
                 <div id="mi_div">    
