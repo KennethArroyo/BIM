@@ -29,7 +29,7 @@
                             <input type="text" class="form-control" id="identificacion" name="identificacion" pattern="([0-9]{9,12})"required>
                             
                         </div>
-                        <p>Formato Nacional(9 Digitos): 0-0000-0000 <br> Formato Extranjero(12 Digitos): 0000-0000-0000</p>
+                        <p>Formato Nacional(9 Digitos): 000000000 <br> Formato Extranjero(12 Digitos): 000000000000</p>
                     </div>
 
 
@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
                         <input type="text" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}" required>
-                        <p>Formato: 0000-0000</p>
+                        <p>Formato: 00000000</p>
                     </div>
                     
                     <div class="form-group">
