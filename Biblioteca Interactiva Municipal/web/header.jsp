@@ -89,7 +89,7 @@
                                     <ul class="navbar_menu">
                                         <li><a href="principal.jsp">Inicio</a></li>                           
                                         <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                                                    
-                                        <li><a href="EditarUsuario.jsp">Actividades</a></li>      
+                                        <li><a href="">Actividades</a></li>      
                                         <li class="my_account_item"><a href="registroUsuario.jsp"><small class="fa fa-user-plus" ></small>&nbsp Registrarse</a></li>
                                         <li><a href="inicioSesion.jsp"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
                                     </ul>
@@ -113,7 +113,7 @@
                                             <ul class="dropdown_selection">
                                                 <li><a href="">Libros descargados</a></li>
                                                 <li><a href="">Mis préstamos</a></li>
-                                                <li><a href="">Editar mi perfil</a></li>
+                                                <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="javascript:cerrar();">Cerrar sesion</a></li>
