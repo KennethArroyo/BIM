@@ -1172,6 +1172,12 @@ a {
   font-weight: 400;
 }
 
+button.btn-link {
+  color: #57b0cc;
+  text-decoration: none;
+  font-weight: 400;
+}
+
 h2 {
   text-align: center;
   font-size: 16px;

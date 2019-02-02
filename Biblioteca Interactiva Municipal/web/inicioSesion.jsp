@@ -43,7 +43,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <a href="recuperarContrasena.jsp">¿Olvidó su contraseña?</a>
+                            <button class="btn btn-link" onclick="levantarModal()">¿Olvidó su contraseña?</button>
                         </div>
 
                         <div class="form-group">
@@ -63,6 +63,45 @@
             </div>
         </div>
         </div>
+        <div class="modal fade" id="myModalRecuperar" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <h4 class="modal-title" id="myModalTitle">Recuperar contraseña
+                            <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
+                       
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        <form role="form" onsubmit="return false" id="formModal">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="correo">Correo</label>
+                                        <input type="text" class="form-control" id="correo" name="correo" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                oninput="this.setCustomValidity('')">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row"> 
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="submit" onclick="enviarCorreo()" class=" btn btn-success">Enviar</button>
+                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group height25" >
+                                <div class="alert alert-success hiddenDiv" id="mesajeResult">
+                                    <strong id="mesajeResultNeg">Info!</strong> 
+                                    <span id="mesajeResultText">En esta pantalla puede ingresar su correo para enviar una contraseña temporal</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
         <footer>
             <%@ include file="footer.jsp" %>
         </footer>

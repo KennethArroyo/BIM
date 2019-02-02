@@ -34,6 +34,12 @@ function iniciar(){
       else{}
 }
 
+function levantarModal(id, nombre){
+    $("#myModalRecuperar").modal();
+    $("#nombre").val(nombre);
+    $("#AutorId").val(id);
+}
+
 function cerrar(){
     var user = JSON.parse(sessionStorage.getItem("usuario"));
             if(user !== null){
