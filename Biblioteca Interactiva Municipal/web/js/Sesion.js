@@ -58,3 +58,7 @@ function cerrar(){
             }
     
 }
+
+function cancelar(){
+    $("#myModalRecuperar").modal("hide");
+}

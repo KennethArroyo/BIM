@@ -138,3 +138,7 @@ function actualizarTabla(datos){
     agregarFila(datos);
     $("#myModalAsignatura").modal("hide");
 }
+
+function cancelar(){
+    $("#myModalAutor").modal("hide");
+}
