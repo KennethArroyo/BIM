@@ -1,5 +1,5 @@
 $(document).ready(function () {
-   buscarUsuarioEnSesion();
+    buscarUsuarioEnSesion();
 });
 
 
@@ -19,6 +19,8 @@ function buscarUsuarioEnSesion() {
             $("#lugar_residencia").val(data.lugar_residencia);
             $("#telefono").val(data.telefono);
             $("#correo").val(data.correo);
+//            $("#contrasena").val(data.contrasena);
+            //$("#verificacontrasena").val(data.contrasena);
             $("#ref_trab_est").val(data.ref_trab_est);
         },
         type: 'POST',

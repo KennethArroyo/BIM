@@ -11,6 +11,12 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.util.Arrays;
+import java.util.Base64;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +53,8 @@ public class UsuarioEnSesion extends HttpServlet {
             switch (accion) {
                 case "EditarUsuario":
                     u = Model.instance().getUsuarioCed("304830405");
+//                    String x = Desencriptar(u.getContrasena());
+//                    u.setContrasena(x);
                     json = new Gson().toJson(u);
                     out.print(json);
                     break;
@@ -60,25 +68,10 @@ public class UsuarioEnSesion extends HttpServlet {
             out.print("E~" + e.getMessage());
         }
     }
+    
 
-    protected Usuario buscarUsuario(HttpServletRequest request, HttpServletResponse response, String id) throws ServletException, IOException {
-        Usuario us = new Usuario();
-        try {
 
-            BufferedReader reader = request.getReader();
-            PrintWriter out = response.getWriter();
-            HttpSession s = request.getSession(true);
-            Gson gson = new Gson();
-            us = Model.instance().getUsuarioCed(id);
-            response.setContentType("application/json; charset=UTF-8");
-            out.write(gson.toJson(us));
-            response.setStatus(200); // ok with content
-        } catch (Exception e) {
-            String text = e.getMessage();
-            response.setStatus(401); //Bad request
-        }
-        return us;
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
