@@ -11,6 +11,7 @@ function iniciar(){
     var usuario = $("#usuario").val();
     var contrasena = $("#contrasena").val();
     var datos = {usuario:usuario,contrasena:contrasena};
+    if(usuario.length !== 0 && contrasena.length !==0 ){
     $.ajax({type: "POST", 
             url:"Iniciar",
             data:datos,
@@ -29,6 +30,8 @@ function iniciar(){
                         window.alert("El usuario o la contraseña son inválidos");
               }                    
           }); 
+      }
+      else{}
 }
 
 function cerrar(){
