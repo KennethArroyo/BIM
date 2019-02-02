@@ -39,32 +39,28 @@
 
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" >
                     </div>
 
                     <div class="form-group">
                         <label for="Apellidos">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" required>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*">
                     </div>
 
                     <div class="form-group">
                         <label for="lugar_residencia">Lugar de Residencia</label>
-                        <input type="text" class="form-control" id="lugar_residencia" name="lugar_residencia" required>
+                        <input type="text" class="form-control" id="lugar_residencia" name="lugar_residencia">
                     </div>
 
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}" required>
+                        <input type="text" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}">
                         <p>Formato: 0000-0000</p>
-                    </div>
+                    </div>                
 
-                    <div class="form-group">
-                        <label for="correo">Correo</label>
-                        <input type="text" class="form-control" id="correo" name="correo" required>
-                        <p>Formato: ejemplo@dominio.com</p>
-                    </div>                 
+                    <%-- Contrasena mejor hacerlo por aparte, y ningun campo tienen que ser required
 
-                    <div class="form-group" id="show_hide_password">
+                        <div class="form-group" id="show_hide_password">
                         <label for="contrasena">Contraseña</label>
 
                         <input type="password" class="form-control" id="contrasena" name="contrasena"  
@@ -77,7 +73,7 @@
                         <label for="verificacontrasena">Repetir Contraseña</label>
                         <input type="password" class="form-control" id="verificacontrasena" name="verificacontrasena" required>
                         <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
-                    </div>
+                    </div>--%>
 
                     <div class="form-group">
                         <label for="ref_trab_est">Referencia Lugar de Trabajo/Estudio</label>
