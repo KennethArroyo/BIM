@@ -36,11 +36,10 @@
                                 oninput="this.setCustomValidity('')">
                         </div>
 
-                        <div class="form-group" id="groupPassword">
+                        <div class="form-group" id="show_hide_password-verify">
                             <label for="nombre">Contraseña:</label>
                             <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
                                 oninput="this.setCustomValidity('')">
-                            <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
                         </div>
 
                         <div class="form-group">
