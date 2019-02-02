@@ -41,6 +41,10 @@
                             <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
                                 oninput="this.setCustomValidity('')">
                         </div>
+                        
+                        <div class="form-group">
+                            <a href="recuperarContrasena.jsp">¿Olvidó su contraseña?</a>
+                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-success" onclick="iniciar()" id="enviar">Ingresar</button>
