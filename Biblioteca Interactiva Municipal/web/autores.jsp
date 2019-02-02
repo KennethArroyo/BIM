@@ -48,7 +48,9 @@
                 <div class="modal-content">
                     <div class="modal-header"> 
                         <h4 class="modal-title" id="myModalTitle">Modificar Autor
-                            <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                        
                     </div>
                     <div class="modal-body" id="myModalMessage">
