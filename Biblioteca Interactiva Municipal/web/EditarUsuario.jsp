@@ -20,7 +20,7 @@
             <div class="container" style="background-image:url(imagenes/bg.jpg)">
                 <h2  style="align-content: center;">Editar mis datos personales</h2>
                 <br>
-                <form id="regUsuarios">
+                <form role="form" id="regUsuarios" onsubmit="return false;">
                     <div class="form-group">
                         <label for="identificacion">Identificación</label>
                         <div class="input-group" style="width: 10px;">
@@ -83,7 +83,7 @@
 
                     <div id="mi_div">    
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="botonEditar" form="regUsuarios" >Guardar cambios</button>
+                            <button type="submit" class="btn btn-success" onclick="modificarUsuario()"  >Guardar cambios</button>
                             <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                         </div>
                     </div>

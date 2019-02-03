@@ -51,6 +51,11 @@ public class UsuarioAdmin extends HttpServlet {
                     json = new Gson().toJson(u);
                     out.print(json);
                     break;
+                case "EditarUsuario":
+                    this.modificarUsuario(request, response);
+                    out.print("C~U");
+                    break;
+                    
                 default:
                     out.print("E~No se indico la acción que se desea realizarse");
                     break;
@@ -63,7 +68,34 @@ public class UsuarioAdmin extends HttpServlet {
     }
     
 
-
+protected void modificarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    try{
+        
+        Usuario u = new Usuario();
+        
+        String identificacion = request.getParameter("identificacion");
+        String nombre = request.getParameter("nombre");
+        String apellidos = request.getParameter("apellidos");
+        String lugar_residencia = request.getParameter("lugar_residencia");
+        String telefono = request.getParameter("telefono");
+        String ref_trab_est = request.getParameter("ref_trab_est");
+        
+        u.setIdentificacion(identificacion);
+        u.setNombre(nombre);
+        u.setApellidos(apellidos);
+        u.setLugar_residencia(lugar_residencia);
+        u.setTelefono(telefono);
+        u.setRef_trab_est(ref_trab_est);
+        
+        Model.instance().modificarUsuario(u);
+        
+    
+    }catch (Exception e) {
+            String msg = e.getMessage();
+            request.setAttribute("error", "Ocurrió un error");
+            request.getRequestDispatcher("Error.jsp").forward(request, response);
+        }
+}
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

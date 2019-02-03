@@ -460,7 +460,7 @@ public class Dao {
     }
     
     public void modificarUsuario(Usuario u)throws Exception{
-    String sql = "update Usuario set nombre='%s', apellidos='%s', lugar_residencia='%s', telefono=%d, ref_trab_est='%s' where identificacion='%s'";
+    String sql = "update Usuario set nombre='%s', apellidos='%s', lugar_residencia='%s', telefono='%s', ref_trab_est='%s' where identificacion='%s'";
     sql = String.format(sql, u.getNombre(),u.getApellidos(),u.getLugar_residencia(),u.getTelefono(),u.getRef_trab_est(),u.getIdentificacion());
     db.executeQuery(sql);
     }

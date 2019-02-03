@@ -19,7 +19,7 @@ function buscarUsuarioEnSesion() {
             $("#apellidos").val(data.apellidos);
             $("#lugar_residencia").val(data.lugar_residencia);
             $("#telefono").val(data.telefono);
-            $("#correo").val(data.correo);
+            //$("#correo").val(data.correo);
 //            $("#contrasena").val(data.contrasena);
             //$("#verificacontrasena").val(data.contrasena);
             $("#ref_trab_est").val(data.ref_trab_est);
@@ -29,55 +29,39 @@ function buscarUsuarioEnSesion() {
     });
 }
 
-
-$(document).ready(function () {
-    $("#show_hide_password a").on('click', function (event) {
-        event.preventDefault();
-        if ($('#show_hide_password input').attr("type") == "text") {
-            $('#show_hide_password input').attr('type', 'password');
-            $('#show_hide_password i').addClass("fa-eye-slash");
-            $('#show_hide_password i').removeClass("fa-eye");
-        } else if ($('#show_hide_password input').attr("type") == "password") {
-            $('#show_hide_password input').attr('type', 'text');
-            $('#show_hide_password i').removeClass("fa-eye-slash");
-            $('#show_hide_password i').addClass("fa-eye");
-        }
+function modificarUsuario(){
+    $.ajax({
+       url:'UsuarioEnSesion',
+       data:{
+           accion: "EditarUsuario",
+           identificacion: $("#identificacion").val(),
+           nombre: $("#nombre").val(),
+           apellidos:$("#apellidos").val(),
+           lugar_residencia:$("#lugar_residencia").val(),
+           telefono:$("#telefono").val(),
+           ref_trab_est:$("#ref_trab_est").val()           
+       },
+       error:function(){
+           window.alert("error al modificar el usuario");
+       },
+       success: function(data){
+           var tipoRespuesta = data.substring(0,2);
+           if (tipoRespuesta === "C~") { //correcto
+                        window.alert("Se modificó el usuario correctamente");
+                    } else {
+                        if (tipoRespuesta === "E~") { //error
+                            window.alert("No se pudo modificar el usuario");
+                        }
+                    }
+       },
+       type: 'POST'
     });
-});
-
-$(document).ready(function () {
-    $("#show_hide_password-verify a").on('click', function (event) {
-        event.preventDefault();
-        if ($('#show_hide_password-verify input').attr("type") == "text") {
-            $('#show_hide_password-verify input').attr('type', 'password');
-            $('#show_hide_password-verify i').addClass("fa-eye-slash");
-            $('#show_hide_password-verify i').removeClass("fa-eye");
-        } else if ($('#show_hide_password-verify input').attr("type") == "password") {
-            $('#show_hide_password-verify input').attr('type', 'text');
-            $('#show_hide_password-verify i').removeClass("fa-eye-slash");
-            $('#show_hide_password-verify i').addClass("fa-eye");
-        }
-    });
-});
-
-var password = document.getElementById("contrasena")
-        , confirm_password = document.getElementById("verificacontrasena"),
-        correo = document.getElementById("correo"),
-        identificacion = document.getElementById("identificacion");
-
-function validarClave() {
-    if (password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Las contraseñas no coinciden");
-    } else {
-        confirm_password.setCustomValidity('');
-    }
+    
 }
 
-function validarCorreo(email)
-{
-    var re = /\S+@\S+\.\S+/;
-    return re.test(email);
-}
+
+
+
 
 function validarIdentificacionNac(identificacion) {
     var re = /[0-9]{9}/;
@@ -94,12 +78,6 @@ function validarFormatoIdentificacion() {
     }
 }
 
-function validarFormatoCorreo() {
-    if (!validarCorreo(correo.value)) {
-        correo.setCustomValidity("El formato del correo es invalido");
-    } else
-        correo.setCustomValidity('');
-}
 
 $(document).ready(function () {
     $(".dropdown-menu a")[0].click();
@@ -109,7 +87,4 @@ $(".dropdown-menu a ").click(function () {
     $(this).parents(".input-group").find('.btn').text($(this).text());
 });
 
-correo.onkeyup = validarFormatoCorreo;
-password.onchange = validarClave;
-confirm_password.onkeyup = validarClave;
 
