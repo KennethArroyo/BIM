@@ -441,4 +441,30 @@ public class Dao {
         }
     return u;
     }
+    
+    public ArrayList<Usuario> buscarTodosUsuarios()throws Exception{
+    ArrayList<Usuario> usuarios = new ArrayList<>();
+    try{
+        String sql = "select * from Usuario";
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                usuarios.add(usuario(rs));
+            }
+    
+    }catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    
+    return usuarios;
+    }
+    
+    public void modificarUsuario(Usuario u)throws Exception{
+    String sql = "update Usuario set nombre='%s', apellidos='%s', lugar_residencia='%s', telefono=%d, ref_trab_est='%s' where identificacion='%s'";
+    sql = String.format(sql, u.getNombre(),u.getApellidos(),u.getLugar_residencia(),u.getTelefono(),u.getRef_trab_est(),u.getIdentificacion());
+    db.executeQuery(sql);
+    }
+    
+    
 }
+

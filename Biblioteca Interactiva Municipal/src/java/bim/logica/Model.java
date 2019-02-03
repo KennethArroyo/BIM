@@ -131,4 +131,12 @@ public class Model {
     public Usuario buscarUsRegistrado(String usuario, String contrasena) throws Exception {
         return dao.buscarUsRegistrado(usuario, contrasena);
     }
+    
+    public ArrayList<Usuario> buscarTodosUsuarios()throws Exception{
+    return dao.buscarTodosUsuarios();
+    }
+    
+    public void modificarUsuario(Usuario u) throws Exception{
+    dao.modificarUsuario(u);
+    }
 }

@@ -7,12 +7,13 @@ function buscarUsuarioEnSesion() {
     $.ajax({
         url: 'UsuarioEnSesion',
         data: {
-            accion: "EditarUsuario"
+            accion: "BuscarUsuario"
         },
         error: function () {
             window.alert("error al obtener los datos del usuario");
         },
         success: function (data) {
+            $("#correo").attr('readonly', 'readonly');
             $("#identificacion").val(data.identificacion);
             $("#nombre").val(data.nombre);
             $("#apellidos").val(data.apellidos);

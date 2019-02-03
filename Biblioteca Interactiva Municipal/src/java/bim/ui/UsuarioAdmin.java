@@ -8,15 +8,8 @@ package bim.ui;
 import bim.entidades.Usuario;
 import bim.logica.Model;
 import com.google.gson.Gson;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
-import java.util.Arrays;
-import java.util.Base64;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +22,7 @@ import javax.servlet.http.HttpSession;
  * @author esteban
  */
 @WebServlet(name = "UsuarioEnSesion", urlPatterns = {"/UsuarioEnSesion"})
-public class UsuarioEnSesion extends HttpServlet {
+public class UsuarioAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,7 +44,7 @@ public class UsuarioEnSesion extends HttpServlet {
             String input = request.getParameter("identificacion");
             Usuario u;
             switch (accion) {
-                case "EditarUsuario":
+                case "BuscarUsuario":
                     u = Model.instance().getUsuarioCed("304830405");
 //                    String x = Desencriptar(u.getContrasena());
 //                    u.setContrasena(x);

@@ -31,7 +31,7 @@
                                     <a class="dropdown-item" data="Extranjero">Extranjero</a>
                                 </div>
                             </div>
-                            <input type="text" class="form-control" id="identificacion" name="identificacion" pattern="([0-9]{9,12})"required>
+                            <input type="text" class="form-control" id="identificacion" name="identificacion" pattern="([0-9]{9,12})"required readonly>
 
                         </div>
                         <p>Formato Nacional(9 Digitos): 0-0000-0000 <br> Formato Extranjero(12 Digitos): 0000-0000-0000</p>
@@ -83,7 +83,7 @@
 
                     <div id="mi_div">    
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="botonRegistrar" form="regUsuarios" >Guardar cambios</button>
+                            <button type="submit" class="btn btn-success" id="botonEditar" form="regUsuarios" >Guardar cambios</button>
                             <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                         </div>
                     </div>
