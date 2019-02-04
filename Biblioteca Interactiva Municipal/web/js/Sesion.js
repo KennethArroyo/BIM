@@ -31,7 +31,9 @@ function iniciar(){
               }                    
           }); 
       }
-      else{}
+      else{
+          return false;
+      }
 }
 
 function levantarModal(id, nombre){

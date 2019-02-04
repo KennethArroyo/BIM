@@ -83,6 +83,7 @@ public class Dao {
         u.setTipo(rs.getInt("tipo"));
         u.setIdentificacion(rs.getString("identificacion"));
         u.setCorreo(rs.getString("correo"));
+        u.setHabilitado(rs.getInt("habilitado"));
         return u;
     }
 
