@@ -77,6 +77,15 @@ public class Dao {
         u.setRef_trab_est(rs.getString("ref_trab_est"));
         return u;
     }
+    
+    private Usuario usuarioSesion(ResultSet rs) throws Exception {
+        Usuario u = new Usuario();
+        u.setTipo(rs.getInt("tipo"));
+        u.setIdentificacion(rs.getString("identificacion"));
+        u.setCorreo(rs.getString("correo"));
+        return u;
+    }
+
 
     private Prestamo prestamo(ResultSet rs) throws Exception {
         Prestamo p = new Prestamo();
@@ -434,7 +443,7 @@ public class Dao {
             sql = String.format(sql, usuario,contrasena);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
-            u = usuario(rs);
+            u = usuarioSesion(rs);
         } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;
