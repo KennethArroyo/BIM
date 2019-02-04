@@ -4,10 +4,12 @@ $(document).ready(function () {
 
 
 function buscarUsuarioEnSesion() {
+    var user = JSON.parse(sessionStorage.getItem("usuario"));
     $.ajax({
-        url: 'UsuarioEnSesion',
+        url: 'ModificarUsuario',
         data: {
-            accion: "BuscarUsuario"
+            accion: "BuscarUsuario",
+            id: user.identificacion
         },
         error: function () {
             window.alert("error al obtener los datos del usuario");
@@ -31,7 +33,7 @@ function buscarUsuarioEnSesion() {
 
 function modificarUsuario(){
     $.ajax({
-       url:'UsuarioEnSesion',
+       url:'ModificarUsuario',
        data:{
            accion: "EditarUsuario",
            identificacion: $("#identificacion").val(),
