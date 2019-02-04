@@ -41,14 +41,14 @@
                             <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
                                 oninput="this.setCustomValidity('')">
                         </div>
-                        
-                        <div class="form-group">
-                            <button class="btn btn-link" onclick="levantarModal()">¿Olvidó su contraseña?</button>
-                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-success" onclick="iniciar()" id="enviar">Ingresar</button>
                             <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button class="btn btn-link" onclick="levantarModal()">¿Olvidó su contraseña?</button>
                         </div>
 
                         <div class="form-group height25" >
@@ -73,7 +73,7 @@
                             </button>
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false" id="formModal">
+                        <form role="form" id="formModal">
                                     <div class="form-group">
                                         <label for="correo">Correo</label>
                                         <input type="text" class="form-control" id="correo" name="correo" required>
