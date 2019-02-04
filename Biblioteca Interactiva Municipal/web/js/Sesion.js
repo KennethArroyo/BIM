@@ -36,8 +36,6 @@ function iniciar(){
 
 function levantarModal(id, nombre){
     $("#myModalRecuperar").modal();
-    $("#nombre").val(nombre);
-    $("#AutorId").val(id);
 }
 
 function cerrar(){
