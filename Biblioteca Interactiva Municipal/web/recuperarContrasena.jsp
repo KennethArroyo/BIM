@@ -13,7 +13,6 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="js/Sesion.js" type="text/javascript"></script>
         <script src="js/CambioClave.js" type="text/javascript"></script>
     </head>
     <body>
@@ -41,16 +40,14 @@
                 <label for="contrasena">Contraseña</label>
 
                 <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" style="width:70%; margin-left:15%;" name="contrasena"  
-                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
-                    oninput="this.setCustomValidity('')">
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
                 <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
                 <p>Debe tener al menos una mayúscula, una minúscula, un número y debe contener como mínimo 8 caracteres</p>
             </div>
 
             <div class="form-group" id="show_hide_password-verify">
                 <label for="verificacontrasena">Repetir Contraseña</label>
-                <input type="password" class="form-control" id="verificacontrasena" placeholder="Contraseña" style="width:70%; margin-left:15%;" name="verificacontrasena" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
-                    oninput="this.setCustomValidity('')">
+                <input type="password" class="form-control" id="verificacontrasena" placeholder="Contraseña" style="width:70%; margin-left:15%;" name="verificacontrasena" required>
                 <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
             </div>
 

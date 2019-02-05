@@ -79,25 +79,6 @@ function enviarCorreo(){
       }
 }
 
-function cambiarClave(){
-    var temporal = $("#temporal").val();
-    var contrasena = $("#contrasena").val();
-    var datos = {temporal:temporal,contrasena:contrasena }; 
-    $.ajax({type: "POST", 
-            url:"Cambiar",
-            data:datos,
-            success: 
-              function(obj){
-                window.alert("Su contraseña ha sido modificada con éxito");
-                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/inicioSesion.jsp");
-              },
-            error: function(status){
-                        window.alert("Ha ocurrido un error al cambiar su contraseña");
-              }                    
-          }); 
-    
-}
-
 function cancelar(){
     $("#myModalRecuperar").modal("hide");
 }

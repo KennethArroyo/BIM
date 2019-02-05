@@ -8,16 +8,17 @@
 $(document).ready(function() {
     $("#show_hide_password a").on('click', function(event) {
         event.preventDefault();
-        if($('#show_hide_password input').attr("type") == "text"){
+        if($('#show_hide_password input').attr("type") === "text"){
             $('#show_hide_password input').attr('type', 'password');
             $('#show_hide_password i').addClass( "fa-eye-slash" );
             $('#show_hide_password i').removeClass( "fa-eye" );
-        }else if($('#show_hide_password input').attr("type") == "password"){
+        }else if($('#show_hide_password input').attr("type") === "password"){
             $('#show_hide_password input').attr('type', 'text');
             $('#show_hide_password i').removeClass( "fa-eye-slash" );
             $('#show_hide_password i').addClass( "fa-eye" );
         }
     });
+     $("#contrasena, #verificacontrasena").keyup(validarClave);
 });
 
 $(document).ready(function() {
@@ -34,16 +35,32 @@ $(document).ready(function() {
         }
     });
 });
-
-var password = document.getElementById("contrasena")
-  , confirm_password = document.getElementById("verificacontrasena");
   
   function validarClave(){
-  if(password.value !== confirm_password.value) {
-    confirm_password.setCustomValidity("Las contraseñas no coinciden");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
+    var password = document.getElementById("contrasena");
+    var confirm_password = document.getElementById("verificacontrasena");
+    if(password.value !== confirm_password.value) {
+      confirm_password.setCustomValidity("Las contraseñas no coinciden");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
 }
-password.onchange = validarClave;
-confirm_password.onkeyup = validarClave;
+
+function cambiarClave(){
+    var temporal = $("#temporal").val();
+    var contrasena = $("#contrasena").val();
+    var datos = {temporal:temporal,contrasena:contrasena }; 
+    $.ajax({type: "POST", 
+            url:"Cambiar",
+            data:datos,
+            success: 
+              function(obj){
+                window.alert("Su contraseña ha sido modificada con éxito");
+                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/inicioSesion.jsp");
+              },
+            error: function(status){
+                        window.alert("Ha ocurrido un error al cambiar su contraseña");
+              }                    
+          }); 
+    
+}
