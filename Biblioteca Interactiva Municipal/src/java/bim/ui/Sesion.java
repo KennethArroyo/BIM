@@ -50,7 +50,7 @@ public class Sesion extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, MessagingException {
+            throws ServletException, IOException, MessagingException, Exception {
         switch(request.getServletPath()){
                 case "/Iniciar":
                     this.iniciaSesion(request, response);
@@ -77,6 +77,8 @@ public class Sesion extends HttpServlet {
             processRequest(request, response);
         } catch (MessagingException ex) {
             Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -94,6 +96,8 @@ public class Sesion extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (MessagingException ex) {
+            Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -168,7 +172,7 @@ public class Sesion extends HttpServlet {
 		return pswd;
 	}
 
-    private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, IOException {
+    private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, IOException, Exception {
             
         String temporal = generarCodigo();
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());

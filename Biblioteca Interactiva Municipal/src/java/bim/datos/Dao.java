@@ -5,6 +5,7 @@ import bim.entidades.Autor;
 import bim.entidades.Libro;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -268,7 +269,7 @@ public class Dao {
             sql = String.format(sql, correo);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
-            id = rs.getInt("Cuenta");
+            id = rs.getInt("id");
         } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;
@@ -495,8 +496,23 @@ public class Dao {
     db.executeQuery(sql);
     }
 
-    public void registrarTemporal(Timestamp timestamp, String temporal, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void registrarTemporal(Timestamp timestamp, String temporal, int id) throws Exception {
+        String insertTableSQL = "INSERT INTO Claves_Temporales"
+		+ "(id, fecha, usuario_ID) VALUES"
+		+ "(?,?,?)";
+        PreparedStatement preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement.setString(1, temporal);
+        preparedStatement.setTimestamp(2, timestamp);
+        preparedStatement.setInt(3, id);
+        preparedStatement .executeUpdate();
+        
+//        String sql ="insert into Prestamo(fecha_inicio,fecha_final,usuario_ID,estado_ID,libro_ID)"
+//                + "values('%s','%s','%s',%d,%d)";
+//        sql=String.format(sql,p.getFecha_inicio(),p.getFecha_final(),p.getUsuario_ID(),p.getEstado_ID(),p.getLibro_ID());
+//        int count =db.executeUpdate(sql);
+//        if(count==0){
+//            throw new Exception("Error crendo el nuevo prestamo");
+//        }
     }
     
     
