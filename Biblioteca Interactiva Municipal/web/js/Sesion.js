@@ -64,23 +64,39 @@ function enviarCorreo(){
     if(correo.length !== 0){
     var datos = {correo:correoUs}; 
     $.ajax({type: "POST", 
+            url:"SolicitudCambiar",
+            data:datos,
+            success: 
+              function(obj){
+                window.alert("Se ha enviado un código temporal a su correo electrónico \n\
+                                necesario para cambiar su contraseña");
+                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
+              },
+            error: function(status){
+                        window.alert("Ha ocurrido un error al enviar el código temporal");
+              }                    
+          }); 
+      }
+}
+
+function cambiarClave(){
+    var temporal = $("#temporal").val();
+    var contrasena = $("#temporal").val();
+    var contrasena = $("#temporal").val();
+    var datos = {correo:correoUs}; 
+    $.ajax({type: "POST", 
             url:"Cambiar",
             data:datos,
             success: 
               function(obj){
-                window.alert("Se ha enviado una contraseña temporal a su correo electrónico");
-                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
+                window.alert("Su contraseña ha sido modificada con éxito");
+                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/inicioSesion.jsp");
               },
             error: function(status){
-                    if(status.status===405){
-                        window.alert("Este usuario debe ser verificado, favor revisar su correo");
-                        window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
-                    }
-                    else
-                        window.alert("El usuario o la contraseña son inválidos");
+                        window.alert("Ha ocurrido un error al cambiar su contraseña");
               }                    
           }); 
-      }
+    
 }
 
 function cancelar(){

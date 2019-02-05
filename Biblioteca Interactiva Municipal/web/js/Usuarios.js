@@ -23,11 +23,11 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#show_hide_password-verify a").on('click', function(event) {
         event.preventDefault();
-        if($('#show_hide_password-verify input').attr("type") == "text"){
+        if($('#show_hide_password-verify input').attr("type") === "text"){
             $('#show_hide_password-verify input').attr('type', 'password');
             $('#show_hide_password-verify i').addClass( "fa-eye-slash" );
             $('#show_hide_password-verify i').removeClass( "fa-eye" );
-        }else if($('#show_hide_password-verify input').attr("type") == "password"){
+        }else if($('#show_hide_password-verify input').attr("type") === "password"){
             $('#show_hide_password-verify input').attr('type', 'text');
             $('#show_hide_password-verify i').removeClass( "fa-eye-slash" );
             $('#show_hide_password-verify i').addClass( "fa-eye" );
@@ -41,7 +41,7 @@ var password = document.getElementById("contrasena")
           identificacion = document.getElementById("identificacion");
 
 function validarClave(){
-  if(password.value != confirm_password.value) {
+  if(password.value !== confirm_password.value) {
     confirm_password.setCustomValidity("Las contraseñas no coinciden");
   } else {
     confirm_password.setCustomValidity('');

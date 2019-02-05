@@ -37,7 +37,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sergio
  */
-@WebServlet(name = "Sesion", urlPatterns = {"/Sesion", "/Iniciar", "/Cerrar", "/Cambiar"})
+@WebServlet(name = "Sesion", urlPatterns = {"/Sesion", "/Iniciar", "/Cerrar", "/SolicitudCambiar", "/Cambiar"})
 public class Sesion extends HttpServlet {
 
     /**
@@ -54,6 +54,9 @@ public class Sesion extends HttpServlet {
         switch(request.getServletPath()){
                 case "/Iniciar":
                     this.iniciaSesion(request, response);
+                    break;
+                case "/SolicitudCambiar":
+                    this.enviarCodigo(request, response);
                     break;
                 case "/Cambiar":
                     this.cambiarContrasena(request, response);
@@ -172,7 +175,7 @@ public class Sesion extends HttpServlet {
 		return pswd;
 	}
 
-    private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, IOException, Exception {
+    private void enviarCodigo(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, IOException, Exception {
             
         String temporal = generarCodigo();
         temporal = HashJavaMessageDigest(temporal);
@@ -226,5 +229,9 @@ public class Sesion extends HttpServlet {
         message.setSubject("Cambio de contraseña - BIM");
         message.setContent(bodyText.toString(), "text/html; charset=utf-8");
         Transport.send(message);
+    }
+
+    private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
