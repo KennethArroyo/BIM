@@ -37,7 +37,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sergio
  */
-@WebServlet(name = "Sesion", urlPatterns = {"/Sesion", "/Iniciar", "/Cerrar", "/Cambio"})
+@WebServlet(name = "Sesion", urlPatterns = {"/Sesion", "/Iniciar", "/Cerrar", "/Cambiar"})
 public class Sesion extends HttpServlet {
 
     /**
@@ -55,7 +55,7 @@ public class Sesion extends HttpServlet {
                 case "/Iniciar":
                     this.iniciaSesion(request, response);
                     break;
-                case "/Cambio":
+                case "/Cambiar":
                     this.cambiarContrasena(request, response);
                     break;
             }
@@ -164,7 +164,7 @@ public class Sesion extends HttpServlet {
                 String letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String pswd = "";
  
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i <= 2; i++) {
 			pswd+=(nums.charAt((int)(Math.random() * nums.length())));
                         pswd+=(letras.charAt((int)(Math.random() * letras.length())));
 		}
@@ -175,6 +175,7 @@ public class Sesion extends HttpServlet {
     private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, IOException, Exception {
             
         String temporal = generarCodigo();
+        temporal = HashJavaMessageDigest(temporal);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         BufferedReader reader = request.getReader();
         Gson gson = new Gson();
