@@ -7,6 +7,7 @@ import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class Dao {
@@ -258,6 +259,22 @@ public class Dao {
         }
     return u;
     }
+    
+    public int buscarIdUsuarioCorreo(String correo) throws Exception{
+    Usuario u = new Usuario();
+    int id = 0;
+    try {
+            String sql = "select id from Usuario where correo='%s'";
+            sql = String.format(sql, correo);
+            ResultSet rs = db.executeQuery(sql);
+            rs.next();
+            id = rs.getInt("Cuenta");
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    return id;
+    }
 
     public Libro modificarLibro(Libro l) throws Exception {
         String sql = "update Libro set clasificacion='%s',titulo='%s',autor='%s',comentario='%s',estado=%d,cantidad_copias=%d, habilitado=%d, fisico=%d,digital=%d,asignatura_ID=%d where clasificacion='%s'";
@@ -470,10 +487,16 @@ public class Dao {
     return usuarios;
     }
     
+    
+    
     public void modificarUsuario(Usuario u)throws Exception{
     String sql = "update Usuario set nombre='%s', apellidos='%s', lugar_residencia='%s', telefono='%s', ref_trab_est='%s' where identificacion='%s'";
     sql = String.format(sql, u.getNombre(),u.getApellidos(),u.getLugar_residencia(),u.getTelefono(),u.getRef_trab_est(),u.getIdentificacion());
     db.executeQuery(sql);
+    }
+
+    public void registrarTemporal(Timestamp timestamp, String temporal, int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

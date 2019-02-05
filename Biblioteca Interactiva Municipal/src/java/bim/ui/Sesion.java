@@ -16,6 +16,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -48,7 +50,7 @@ public class Sesion extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, MessagingException {
         switch(request.getServletPath()){
                 case "/Iniciar":
                     this.iniciaSesion(request, response);
@@ -71,7 +73,11 @@ public class Sesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -85,7 +91,11 @@ public class Sesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -162,12 +172,13 @@ public class Sesion extends HttpServlet {
             
         String temporal = generarCodigo();
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        Model.instance().registrarTemporal(timestamp,temporal,request.getParameter("id"));
         BufferedReader reader = request.getReader();
         Gson gson = new Gson();
-        String correo = request.getParameter("correo");
         response.setContentType("application/json; charset=UTF-8");
-        String autor = request.getParameter("nombre");
+        
+        String correo = request.getParameter("correo");
+        int id = Model.instance().buscarIdUsuarioCorreo(correo);
+        Model.instance().registrarTemporal(timestamp,temporal,id);
         
         //Email
         String MAIL_SMTP_HOST = "smtp.gmail.com";

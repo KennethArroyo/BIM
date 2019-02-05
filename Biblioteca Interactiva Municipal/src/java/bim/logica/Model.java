@@ -6,6 +6,7 @@ import bim.entidades.Autor;
 import bim.entidades.Libro;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 
@@ -138,5 +139,13 @@ public class Model {
     
     public void modificarUsuario(Usuario u) throws Exception{
     dao.modificarUsuario(u);
+    }
+
+    public int buscarIdUsuarioCorreo(String correo) throws Exception {
+        return dao.buscarIdUsuarioCorreo(correo);
+    }
+
+    public void registrarTemporal(Timestamp timestamp, String temporal, int id) {
+        dao.registrarTemporal(timestamp, temporal, id);
     }
 }
