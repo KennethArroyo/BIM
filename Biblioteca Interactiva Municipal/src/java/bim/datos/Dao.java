@@ -80,6 +80,7 @@ public class Dao {
     
     private Usuario usuarioSesion(ResultSet rs) throws Exception {
         Usuario u = new Usuario();
+        u.setId(rs.getInt("id"));
         u.setTipo(rs.getInt("tipo"));
         u.setIdentificacion(rs.getString("identificacion"));
         u.setCorreo(rs.getString("correo"));

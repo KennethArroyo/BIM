@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -143,15 +144,32 @@ public class Sesion extends HttpServlet {
 
     private void cierraSesion(HttpServletRequest request, HttpServletResponse response) {
     }
+    
+    private String generarCodigo() {
+                String nums = "0123456789";
+                String letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String pswd = "";
+ 
+		for (int i = 0; i < 2; i++) {
+			pswd+=(nums.charAt((int)(Math.random() * nums.length())));
+                        pswd+=(letras.charAt((int)(Math.random() * letras.length())));
+		}
+ 
+		return pswd;
+	}
 
     private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, IOException {
             
+        String temporal = generarCodigo();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Model.instance().registrarTemporal(timestamp,temporal,request.getParameter("id"));
         BufferedReader reader = request.getReader();
         Gson gson = new Gson();
         String correo = request.getParameter("correo");
-
         response.setContentType("application/json; charset=UTF-8");
         String autor = request.getParameter("nombre");
+        
+        //Email
         String MAIL_SMTP_HOST = "smtp.gmail.com";
         String MAIL_USERNAME = "bimsantodomingo@gmail.com";
         String MAIL_PASSWORD = "bibliotecabim";
@@ -174,8 +192,8 @@ public class Sesion extends HttpServlet {
         StringBuilder bodyText = new StringBuilder();
         bodyText.append("<div>")
                 .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
-                .append("  Código para verificar su cuenta:  <b>" + u.getCod_verificacion() + "</b> <br/>")
-                .append("  Copie y pegue el siguiente texto en el campo de código de verificación en el formulario al que lo redirigue el enlace: ")
+                .append("  Su contrasena temporal es:  <b>" + temporal + "</b> <br/>")
+                .append("  Copie y pegue el siguiente texto en el campo de contraseña temporal en el formulario al que lo redirigue el enlace: ")
                 .append("  <br/>")
                 .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
                 .append("  <a href=\"" + link + "\">" + link + "</a>")
@@ -189,7 +207,7 @@ public class Sesion extends HttpServlet {
         message.setFrom(new InternetAddress(MAIL_USERNAME));
         message.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse(correo));
-        message.setSubject("Verificación de Cuenta - BIM");
+        message.setSubject("Cambio de contraseña - BIM");
         message.setContent(bodyText.toString(), "text/html; charset=utf-8");
         Transport.send(message);
     }

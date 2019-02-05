@@ -60,17 +60,16 @@ function cerrar(){
 }
 
 function enviarCorreo(){
-    var user = JSON.parse(sessionStorage.getItem("usuario"));
-    var correo = $("#correo").val();
+    var correoUs = $("#correo").val();
     if(correo.length !== 0){
+    var datos = {correo:correoUs}; 
     $.ajax({type: "POST", 
-            url:"Iniciar",
+            url:"Cambiar",
             data:datos,
             success: 
               function(obj){
-                usuarioFinal = obj;
-                sessionStorage.setItem("usuario", JSON.stringify(usuarioFinal));
-                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp");
+                window.alert("Se ha enviado una contraseña temporal a su correo electrónico");
+                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
               },
             error: function(status){
                     if(status.status===405){
