@@ -493,7 +493,7 @@ public class Dao {
     public void modificarUsuario(Usuario u)throws Exception{
     String sql = "update Usuario set nombre='%s', apellidos='%s', lugar_residencia='%s', telefono='%s', ref_trab_est='%s' where identificacion='%s'";
     sql = String.format(sql, u.getNombre(),u.getApellidos(),u.getLugar_residencia(),u.getTelefono(),u.getRef_trab_est(),u.getIdentificacion());
-    db.executeQuery(sql);
+    db.executeUpdate(sql);
     }
 
     public void registrarTemporal(Timestamp timestamp, String temporal, int id) throws Exception {
@@ -504,15 +504,38 @@ public class Dao {
         preparedStatement.setString(1, temporal);
         preparedStatement.setTimestamp(2, timestamp);
         preparedStatement.setInt(3, id);
-        preparedStatement .executeUpdate();
-        
-//        String sql ="insert into Prestamo(fecha_inicio,fecha_final,usuario_ID,estado_ID,libro_ID)"
-//                + "values('%s','%s','%s',%d,%d)";
-//        sql=String.format(sql,p.getFecha_inicio(),p.getFecha_final(),p.getUsuario_ID(),p.getEstado_ID(),p.getLibro_ID());
-//        int count =db.executeUpdate(sql);
-//        if(count==0){
-//            throw new Exception("Error crendo el nuevo prestamo");
-//        }
+        preparedStatement.executeUpdate();
+    }
+
+    public int buscarUsuarioTemporal(String temporal) throws SQLException {
+        try {
+            String insertTableSQL = "select usuario_ID from Claves_Temporales where id = ?";
+            PreparedStatement preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+            preparedStatement.setString(1, temporal);
+            ResultSet rs = preparedStatement.executeQuery();
+            rs.next();
+            String sql = "delete from Claves_Temporales where id = ?";
+            PreparedStatement preparedStatement2 = db.getConnection().prepareStatement(sql);
+            preparedStatement2.setString(1, temporal);
+            preparedStatement.executeUpdate();
+            return rs.getInt("usuario_ID");
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    }
+
+    public void modificarClaveUsuario(int id, String contrasena) throws SQLException {
+        try{
+        String insertTableSQL = "update Usuario set contrasena = ? where id = ?";
+        PreparedStatement preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement.setString(1, contrasena);
+        preparedStatement.setInt(2, id);
+        preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
     }
     
     

@@ -180,9 +180,6 @@ public class Sesion extends HttpServlet {
         String temporal = generarCodigo();
         temporal = HashJavaMessageDigest(temporal);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        BufferedReader reader = request.getReader();
-        Gson gson = new Gson();
-        response.setContentType("application/json; charset=UTF-8");
         
         String correo = request.getParameter("correo");
         int id = Model.instance().buscarIdUsuarioCorreo(correo);
@@ -231,7 +228,10 @@ public class Sesion extends HttpServlet {
         Transport.send(message);
     }
 
-    private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) {
-        
+    private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
+        String temporal = HashJavaMessageDigest(request.getParameter("temporal"));
+        String contrasena = HashJavaMessageDigest(request.getParameter("contrasena"));
+        Usuario u = new Usuario();
+        Model.instance().cambiarClaveTemporal(temporal, contrasena);
     }
 }

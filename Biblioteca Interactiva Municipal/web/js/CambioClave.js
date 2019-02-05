@@ -41,12 +41,15 @@ $(document).ready(function() {
     var confirm_password = document.getElementById("verificacontrasena");
     if(password.value !== confirm_password.value) {
       confirm_password.setCustomValidity("Las contraseñas no coinciden");
+      return false;
     } else {
       confirm_password.setCustomValidity('');
+      return true;
     }
 }
 
 function cambiarClave(){
+    if(validarClave()){
     var temporal = $("#temporal").val();
     var contrasena = $("#contrasena").val();
     var datos = {temporal:temporal,contrasena:contrasena }; 
@@ -62,5 +65,5 @@ function cambiarClave(){
                         window.alert("Ha ocurrido un error al cambiar su contraseña");
               }                    
           }); 
-    
+      }
 }

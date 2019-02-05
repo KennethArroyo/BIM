@@ -145,7 +145,13 @@ public class Model {
         return dao.buscarIdUsuarioCorreo(correo);
     }
 
-    public void registrarTemporal(Timestamp timestamp, String temporal, int id) {
+    public void registrarTemporal(Timestamp timestamp, String temporal, int id) throws Exception {
         dao.registrarTemporal(timestamp, temporal, id);
+    }
+
+    public void cambiarClaveTemporal(String temporal, String contrasena) {
+        int id = dao.buscarUsuarioTemporal(temporal);
+        dao.modificarClaveUsuario(id, contrasena);
+        //dao.eliminarTemporal(temporal);
     }
 }
