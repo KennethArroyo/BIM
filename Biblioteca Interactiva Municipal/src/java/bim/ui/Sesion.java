@@ -14,6 +14,15 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +34,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sergio
  */
-@WebServlet(name = "Sesion", urlPatterns = {"/Sesion", "/Iniciar", "/Cerrar"})
+@WebServlet(name = "Sesion", urlPatterns = {"/Sesion", "/Iniciar", "/Cerrar", "/Cambio"})
 public class Sesion extends HttpServlet {
 
     /**
@@ -43,8 +52,8 @@ public class Sesion extends HttpServlet {
                 case "/Iniciar":
                     this.iniciaSesion(request, response);
                     break;
-                case "/Cerrar":
-                    this.cierraSesion(request, response);
+                case "/Cambio":
+                    this.cambiarContrasena(request, response);
                     break;
             }
     }
@@ -135,4 +144,53 @@ public class Sesion extends HttpServlet {
     private void cierraSesion(HttpServletRequest request, HttpServletResponse response) {
     }
 
+    private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, IOException {
+            
+        BufferedReader reader = request.getReader();
+        Gson gson = new Gson();
+        String correo = request.getParameter("correo");
+
+        response.setContentType("application/json; charset=UTF-8");
+        String autor = request.getParameter("nombre");
+        String MAIL_SMTP_HOST = "smtp.gmail.com";
+        String MAIL_USERNAME = "bimsantodomingo@gmail.com";
+        String MAIL_PASSWORD = "bibliotecabim";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", MAIL_SMTP_HOST);
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+            new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(MAIL_USERNAME, MAIL_PASSWORD);
+                }
+            });
+
+        String link = "http://localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp";
+
+        StringBuilder bodyText = new StringBuilder();
+        bodyText.append("<div>")
+                .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
+                .append("  Código para verificar su cuenta:  <b>" + u.getCod_verificacion() + "</b> <br/>")
+                .append("  Copie y pegue el siguiente texto en el campo de código de verificación en el formulario al que lo redirigue el enlace: ")
+                .append("  <br/>")
+                .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
+                .append("  <a href=\"" + link + "\">" + link + "</a>")
+                .append("  <br/><br/>")
+                .append("  Gracias.<br/>")
+                .append("  Biblioteca Isaac Felipe Azofeifa <br/>")
+                .append("  Municipalidad de Santo Domingo de Heredia <br/>")
+                .append("</div>");
+
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(MAIL_USERNAME));
+        message.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse(correo));
+        message.setSubject("Verificación de Cuenta - BIM");
+        message.setContent(bodyText.toString(), "text/html; charset=utf-8");
+        Transport.send(message);
+    }
 }
