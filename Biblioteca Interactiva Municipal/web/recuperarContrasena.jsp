@@ -14,7 +14,7 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="js/Sesion.js" type="text/javascript"></script>
-        <script src="js/Usuarios.js" type="text/javascript"></script>
+        <script src="js/CambioClave.js" type="text/javascript"></script>
     </head>
     <body>
         <%@ include file="header.jsp" %>

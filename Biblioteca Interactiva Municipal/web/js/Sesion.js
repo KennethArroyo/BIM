@@ -81,9 +81,8 @@ function enviarCorreo(){
 
 function cambiarClave(){
     var temporal = $("#temporal").val();
-    var contrasena = $("#temporal").val();
-    var contrasena = $("#temporal").val();
-    var datos = {correo:correoUs}; 
+    var contrasena = $("#contrasena").val();
+    var datos = {temporal:temporal,contrasena:contrasena }; 
     $.ajax({type: "POST", 
             url:"Cambiar",
             data:datos,

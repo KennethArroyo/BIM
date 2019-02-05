@@ -232,6 +232,6 @@ public class Sesion extends HttpServlet {
     }
 
     private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 }
