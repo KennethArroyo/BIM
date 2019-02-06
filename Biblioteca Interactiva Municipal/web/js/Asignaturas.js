@@ -12,13 +12,14 @@ $(document).ready(function getAsignaturas(){
 
 function buscar(){
     $.ajax({type: "GET", 
-                  url:"GetAsignaturas",
+                  url:"GetAsignaturasD",
                   success: 
                     function(obj){
                       dibujarTabla(obj);
                     },
                   error: function(status){
-                         window.alert("Ha ocurrido un error con la lista de asignaturas");
+                         //window.alert("Ha ocurrido un error con la lista de asignaturas");
+                         swal('Error', 'Ha ocurrido un error con la lista de asignaturas', 'error');
                     }                    
                 }); 
 }
