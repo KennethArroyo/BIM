@@ -208,8 +208,8 @@ public class Sesion extends HttpServlet {
         StringBuilder bodyText = new StringBuilder();
         bodyText.append("<div>")
                 .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
-                .append("  Su contrasena temporal es:  <b>" + temporal + "</b> <br/>")
-                .append("  Copie y pegue el siguiente texto en el campo de contraseña temporal en el formulario al que lo redirigue el enlace: ")
+                .append("  Su codigo temporal es:  <b>" + temporal + "</b> <br/>")
+                .append("  Copie y pegue el siguiente texto en el campo de código temporal en el formulario al que lo redirigue el enlace: ")
                 .append("  <br/>")
                 .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
                 .append("  <a href=\"" + link + "\">" + link + "</a>")

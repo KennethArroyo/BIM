@@ -517,20 +517,25 @@ public class Dao {
 
     public void actualizarUsuarioTemporal(String temporal, String contrasena) throws SQLException {
         PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement2 = null;
         try {
             String insertTableSQL = "update Usuario set contrasena = ? where id = (select usuario_ID from Claves_Temporales where id = ?)";
             preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
             preparedStatement.setString(1, contrasena);
             preparedStatement.setString(2, temporal);
             preparedStatement.executeUpdate();
+            
             String sql = "delete from Claves_Temporales where id = ?";
-            PreparedStatement preparedStatement2 = db.getConnection().prepareStatement(sql);
+            preparedStatement2 = db.getConnection().prepareStatement(sql);
             preparedStatement2.setString(1, temporal);
-            preparedStatement.executeUpdate();
+            preparedStatement2.executeUpdate();
+            
             preparedStatement.close();
+            preparedStatement2.close();
         } catch (SQLException ex) {
             String error = ex.getMessage();
             preparedStatement.close();
+            preparedStatement2.close();
             throw ex;
         }
     }    
