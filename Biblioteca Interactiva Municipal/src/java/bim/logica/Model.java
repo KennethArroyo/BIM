@@ -6,6 +6,7 @@ import bim.entidades.Autor;
 import bim.entidades.Libro;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -149,9 +150,7 @@ public class Model {
         dao.registrarTemporal(timestamp, temporal, id);
     }
 
-    public void cambiarClaveTemporal(String temporal, String contrasena) {
-        int id = dao.buscarUsuarioTemporal(temporal);
-        dao.modificarClaveUsuario(id, contrasena);
-        //dao.eliminarTemporal(temporal);
+    public void cambiarClaveTemporal(String temporal, String contrasena) throws SQLException {
+        dao.actualizarUsuarioTemporal(temporal, contrasena);
     }
 }

@@ -497,47 +497,43 @@ public class Dao {
     }
 
     public void registrarTemporal(Timestamp timestamp, String temporal, int id) throws Exception {
+        PreparedStatement preparedStatement = null;
+        try{
         String insertTableSQL = "INSERT INTO Claves_Temporales"
 		+ "(id, fecha, usuario_ID) VALUES"
 		+ "(?,?,?)";
-        PreparedStatement preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
         preparedStatement.setString(1, temporal);
         preparedStatement.setTimestamp(2, timestamp);
         preparedStatement.setInt(3, id);
         preparedStatement.executeUpdate();
+        preparedStatement.close();
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            preparedStatement.close();
+            throw ex;
+        }
     }
 
-    public int buscarUsuarioTemporal(String temporal) throws SQLException {
+    public void actualizarUsuarioTemporal(String temporal, String contrasena) throws SQLException {
+        PreparedStatement preparedStatement = null;
         try {
-            String insertTableSQL = "select usuario_ID from Claves_Temporales where id = ?";
-            PreparedStatement preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-            preparedStatement.setString(1, temporal);
-            ResultSet rs = preparedStatement.executeQuery();
-            rs.next();
+            String insertTableSQL = "update Usuario set contrasena = ? where id = (select usuario_ID from Claves_Temporales where id = ?)";
+            preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+            preparedStatement.setString(1, contrasena);
+            preparedStatement.setString(2, temporal);
+            preparedStatement.executeUpdate();
             String sql = "delete from Claves_Temporales where id = ?";
             PreparedStatement preparedStatement2 = db.getConnection().prepareStatement(sql);
             preparedStatement2.setString(1, temporal);
             preparedStatement.executeUpdate();
-            return rs.getInt("usuario_ID");
+            preparedStatement.close();
         } catch (SQLException ex) {
             String error = ex.getMessage();
+            preparedStatement.close();
             throw ex;
         }
-    }
-
-    public void modificarClaveUsuario(int id, String contrasena) throws SQLException {
-        try{
-        String insertTableSQL = "update Usuario set contrasena = ? where id = ?";
-        PreparedStatement preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-        preparedStatement.setString(1, contrasena);
-        preparedStatement.setInt(2, id);
-        preparedStatement.executeUpdate();
-        } catch (SQLException ex) {
-            String error = ex.getMessage();
-            throw ex;
-        }
-    }
-    
+    }    
     
 }
 
