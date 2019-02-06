@@ -1202,6 +1202,10 @@ h2 {
   margin-top: 15%;
 }
 
+#fa fa-eye-slash field-icon{
+    align-self:
+}
+
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
