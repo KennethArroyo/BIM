@@ -189,7 +189,6 @@ public class RegistroUsuario extends HttpServlet {
             message.setSubject("Verificación de Cuenta - BIM");
             message.setContent(bodyText.toString(), "text/html; charset=utf-8");
             Transport.send(message);
-         
             
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         }

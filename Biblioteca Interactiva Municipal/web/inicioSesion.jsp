@@ -73,7 +73,7 @@
                             </button>
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" id="formModal">
+                        <form role="form" onsubmit="return false" id="formModal">
                                     <div class="form-group">
                                         <label for="correo">Correo</label>
                                         <input type="text" class="form-control" id="correo" name="correo">

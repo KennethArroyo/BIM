@@ -14,6 +14,7 @@ function iniciar(){
     if(usuario.length !== 0 && contrasena.length !==0 ){
     $.ajax({type: "POST", 
             url:"Iniciar",
+            dataType: "json",
             data:datos,
             success: 
               function(obj){
@@ -63,18 +64,18 @@ function enviarCorreo(){
     var correoUs = $("#correo").val();
     if(correo.length !== 0){
     var datos = {correo:correoUs}; 
-    $.ajax({type: "POST", 
+    $.ajax({type: "POST",
             url:"SolicitudCambiar",
             data:datos,
             success: 
               function(obj){
-                window.alert("Se ha enviado un código temporal a su correo electrónico \n\
+               window.alert("Se ha enviado un código temporal a su correo electrónico \n\
                                 necesario para cambiar su contraseña");
                 window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
               },
             error: function(status){
                         window.alert("Ha ocurrido un error al enviar el código temporal");
-              }                    
+              },
           }); 
       }
 }

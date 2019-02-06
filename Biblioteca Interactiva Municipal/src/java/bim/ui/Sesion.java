@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
+import javax.mail.Service;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
@@ -176,14 +177,14 @@ public class Sesion extends HttpServlet {
 	}
 
     private void enviarCodigo(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, IOException, Exception {
-            
+        try{
         String temporal = generarCodigo();
-        temporal = HashJavaMessageDigest(temporal);
+        String temporal2 = HashJavaMessageDigest(temporal);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         
         String correo = request.getParameter("correo");
         int id = Model.instance().buscarIdUsuarioCorreo(correo);
-        Model.instance().registrarTemporal(timestamp,temporal,id);
+        Model.instance().registrarTemporal(timestamp,temporal2,id);
         
         //Email
         String MAIL_SMTP_HOST = "smtp.gmail.com";
@@ -204,7 +205,6 @@ public class Sesion extends HttpServlet {
             });
 
         String link = "http://localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp";
-
         StringBuilder bodyText = new StringBuilder();
         bodyText.append("<div>")
                 .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
@@ -226,12 +226,23 @@ public class Sesion extends HttpServlet {
         message.setSubject("Cambio de contraseña - BIM");
         message.setContent(bodyText.toString(), "text/html; charset=utf-8");
         Transport.send(message);
+        response.setStatus(200); // ok with content
+        }
+        catch(Exception e){
+        String msg = e.getMessage();
+        response.setStatus(401);
+        }
     }
 
     private void cambiarContrasena(HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
-        String temporal = HashJavaMessageDigest(request.getParameter("temporal"));
-        String contrasena = HashJavaMessageDigest(request.getParameter("contrasena"));
-        Usuario u = new Usuario();
-        Model.instance().cambiarClaveTemporal(temporal, contrasena);
+        try{
+            String temporal = HashJavaMessageDigest(request.getParameter("temporal"));
+            String contrasena = HashJavaMessageDigest(request.getParameter("contrasena"));
+            Usuario u = new Usuario();
+            Model.instance().cambiarClaveTemporal(temporal, contrasena);
+        }
+        catch(Exception e){
+        response.setStatus(401);
+        }
     }
 }
