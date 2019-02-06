@@ -41,14 +41,14 @@
 
                 <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" style="width:70%; margin-left:15%;" name="contrasena"  
                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
-                <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
+                <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"  style="margin-left:75%;"></i></a>
                 <p>Debe tener al menos una mayúscula, una minúscula, un número y debe contener como mínimo 8 caracteres</p>
             </div>
 
             <div class="form-group" id="show_hide_password-verify">
                 <label for="verificacontrasena">Repetir Contraseña</label>
                 <input type="password" class="form-control" id="verificacontrasena" placeholder="Contraseña" style="width:70%; margin-left:15%;" name="verificacontrasena" required>
-                <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
+                <a><i class="fa fa-eye-slash field-icon" aria-hidden="true" style="margin-left:75%;"></i></a>
             </div>
 
             <div class="form-group">
