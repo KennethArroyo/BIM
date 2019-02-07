@@ -40,7 +40,7 @@ var t = $('#mydata').DataTable({
             accion: "buscarTodos"
         },
         error: function () {
-            window.alert("error - contacte con el administrador");
+           swal('Error', 'Ajax-Error, Contacte con el administrador', 'error');
         },
         success: function (data) {
             dibujarTabla(data);
@@ -92,7 +92,7 @@ function agregarLibro() {
                 }
                 //No es imagen
                 else {
-                    alert("Por favor en portada subir unicamente archivos tipo imagen ");
+                    swal("Por favor en portada subir unicamente archivos tipo imagen");
                     return false;
                 }
             }
@@ -100,12 +100,12 @@ function agregarLibro() {
         }
         //ningun check esta seleccionado
         else {
-            alert("Debe seleccionar al menos un tipo de Libro, físico o digital");
+            swal("Debe seleccionar al menos un tipo de Libro, físico o digital");
             return false;
         }
     } else {
         $("#copias").css("border-color", "#d81a1a").css("border-width", "3px");
-        alert("La cantiad de copias debe ser un valor númerico");
+        swal("La cantiad de copias debe ser un valor númerico");
         return false;
     }
 
@@ -124,7 +124,7 @@ $(document).ready(function getAsignaturas() {
                     $('#asignatura').reset();
                 },
         error: function (status) {
-            window.alert("Error");
+            swal('Error', 'Ajax-Error, Contacte con el administrador', 'error');
         }
     });
 });
@@ -172,17 +172,17 @@ function modificarLibro() {
 
                 },
                 error: function () { //si existe un error en la respuesta del ajax
-                    window.alert("error de ajax, contacte con el administrador");
+                    swal('Error', 'Ajax-Error, Contacte con el administrador', 'error');
                 },
                 success: function (data) {
                     var tipoRespuesta = data.substring(0, 2);
                     if (tipoRespuesta === "C~") { //correcto
-                        window.alert("Se modificó el libro correctamente");
+                        swal("Listo!", "Se modifico el libro correctamente", "success");
                         $("#myModalFormulario").modal("hide");
                         buscar();
                     } else {
                         if (tipoRespuesta === "E~") { //error
-                            window.alert("No se pudo modificar el libro");
+                            swal('Error', 'No se pudo modificar el libro', 'error');
                         }
                     }
                     //$("#tablaLibros").html("");
@@ -191,13 +191,13 @@ function modificarLibro() {
             });
         } else
         {
-            //swal("Debe de digitar los campos del formulario que se encuentran vacíos");
-            window.alert("Debe de digitar los campos del formulario que se encuentran vacíos");
+            swal("Debe de digitar los campos del formulario que se encuentran vacíos");
+            
         }
     } else
     {
-        //swal("La cantidad de copias debe ser un valor numerico");
-        window.alert("La cantidad de copias debe ser un valor numerico");
+        swal("La cantidad de copias debe ser un valor numerico");
+        
 
     }
 }
@@ -215,7 +215,7 @@ function  buscarLibroAutor(nombre) {
         },
 
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            swal('Error', 'Ajax-Error, Contacte con el administrador', 'error');
         },
         success: function (data) {
             dibujarTabla(data);
@@ -234,7 +234,7 @@ function  buscarLibroClasificacion(name) {
             nombre: name
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            swal('Error', 'Ajax-Error, Contacte con el administrador', 'error');
         },
         success: function (data) {
             dibujarTabla(data);
@@ -253,7 +253,7 @@ function  buscarLibroTitulo(name) {
             nombre: name
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            swal('Error', 'Ajax-Error, Contacte con el administrador', 'error');
         },
         success: function (data) {
             dibujarTabla(data);
@@ -272,7 +272,7 @@ function  buscarLibroAsignatura(name) {
             nombre: name
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("Error de ajax");
+            swal('Error', 'Ajax-Error, Contacte con el administrador', 'error');
         },
         success: function (data) {
             dibujarTabla(data);
@@ -290,7 +290,7 @@ function buscarLibroId(idLibro) {
             idLibro: idLibro
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            swal('Error', 'Ajax-Error, Contacte con el administrador', 'error');
         },
         success: function (data) {
             $("#myModalFormulario").modal();

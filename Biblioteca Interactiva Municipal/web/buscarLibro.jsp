@@ -11,6 +11,7 @@
 <html>
     <head>
         <title>Buscar Libro</title>
+        <a href="librerias.jsp"></a>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="js/Libros.js" type="text/javascript"></script>
         <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
