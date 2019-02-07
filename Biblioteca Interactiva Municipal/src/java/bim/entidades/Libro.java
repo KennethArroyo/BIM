@@ -1,6 +1,7 @@
 package bim.entidades;
 
 import bim.entidades.Asignatura;
+import java.util.ArrayList;
 
 /**
  *
@@ -10,7 +11,7 @@ public class Libro {
 
     int id;
     String clasificacion;
-    String autor;
+    ArrayList<Autor> autores;
     String titulo;
     int estado;
     String comentario;
@@ -41,8 +42,8 @@ public class Libro {
         return clasificacion;
     }
 
-    public String getAutor() {
-        return autor;
+    public ArrayList<Autor> getAutor() {
+        return autores;
     }
 
     public String getTitulo() {
@@ -89,8 +90,8 @@ public class Libro {
         this.clasificacion = clasificacion;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setAutor(ArrayList<Autor> autor) {
+        this.autores = autor;
     }
 
     public void setTitulo(String titulo) {

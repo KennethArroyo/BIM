@@ -93,7 +93,7 @@ public class BuscarLibro extends HttpServlet {
                 case "modificarLibro":
                     String clas = request.getParameter("clasificacion");
                     String tit = request.getParameter("titulo");
-                    String aut = request.getParameter("autor");
+                    //String aut = request.getParameter("autor");
                     String com = request.getParameter("comentario");
                     Integer est = Integer.parseInt(request.getParameter("estado"));
                     Integer cant = Integer.parseInt(request.getParameter("copias"));
@@ -102,7 +102,7 @@ public class BuscarLibro extends HttpServlet {
                     Integer asi = Integer.parseInt(request.getParameter("asignatura"));
                     l.setClasificacion(clas);
                     l.setTitulo(tit);
-                    l.setAutor(aut);
+                    //l.setAutor(aut);
                     l.setComentario(com);
                     l.setEstado(est);
                     l.setCantidad_copias(cant);
