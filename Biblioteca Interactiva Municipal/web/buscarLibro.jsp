@@ -18,61 +18,42 @@
     </head>
 
     <body>
-        <%@include file="header.jsp"%>
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Modal Buscar</h4>
-                    </div>
-                    <div class="modal-body" id="myModalMessage">
-                        <p>This is a small modal.</p>
-                    </div>
-                </div>
-            </div>
+    <%@include file="header.jsp"%>
+                    
+        <div class="container" style="margin-top:150px; ">
+        <h2  style="align-content: center;">Buscar Libros</h2><br><br>
+        <table class="table table-striped table-bordered table-hover" id="mydata">
+            
+        <thead>
+         <tr>
+              <th class="th-sm">Clasificación
+              </th>
+              <th class="th-sm">Autor
+              </th>
+              <th class="th-sm">Título
+              </th>
+              <th class="th-sm">Estado del Libro
+              </th>
+              <th class="th-sm">Comentario
+              </th>
+              <th class="th-sm">Cantidad de Copias
+              </th>
+              <th class="th-sm">Asignatura
+              </th>
+              <th class="th-sm"> Editar
+              </th>
+            </tr>
+        </thead>
+
+        <tfoot>
+        </tfoot>
+
+        <tbody>
+        </tbody>
+        </table>
         </div>
-        <!--Fondo de Pantalla-->
-        <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"> 
-
-            <div class="container">
-                <h2>Buscar Libros</h2>
-                <br>
-                <div class="container">
-                    <form role="form" onsubmit="return false;">
-                        <div class="form-group">
-
-                            <label for="selectBuscar">Buscar Por:
-                                <select class="form-control" id="selectBuscar">
-                                    <option value="clasificacion" selected="selected">Clasificación</option>
-                                    <option value="asignatura">Asignatura</option>
-                                    <option value="titulo">Título</option>
-                                    <option value="autor">Autor</option>  
-                                </select>
-                            </label>
-
-
-                            <br><br>
-                            <div class="input-group" id="search-bar">
-                                <input type="text" class="form-control" id="textobuscar" placeholder="Buscar" >
-                                <div class="input-group-btn">
-                                    <button  class="btn btn-default" onclick="buscar()" ><i class="fa fa-search" id="buscar"></i></button>
-                                </div>
-                            </div>
-                            <br>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-            <%--<div class="container" >
-                <table border="1" class="table" id="tablaLibros"></table>
-            </div>--%>
-            <div class="table-responsive">
-                <table class="table table-striped" id="tablaLibros"></table>
-            </div>
-        </div>
-        <div class="modal fade" id="myModalFormulario" role="dialog">
+    
+            <div class="modal fade" id="myModalFormulario" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header"> 
@@ -164,10 +145,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </body> 
+        </div>    
+    
+        </body>
 
-    <footer>
-        <%@include file="footer.jsp"%>
-    </footer>
-</html>
+            <footer>
+                <%@include file="footer.jsp"%>
+            </footer>
+        </html>
