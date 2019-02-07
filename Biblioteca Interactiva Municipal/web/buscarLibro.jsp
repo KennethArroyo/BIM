@@ -20,8 +20,8 @@
     <body>
     <%@include file="header.jsp"%>
                     
-        <div class="container" style="margin-top:300px; ">
-        <h1>Data Table</h1>
+        <div class="container" style="margin-top:150px; ">
+        <h2  style="align-content: center;">Buscar Libros</h2><br><br>
         <table class="table table-striped table-bordered table-hover" id="mydata">
             
         <thead>
