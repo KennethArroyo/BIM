@@ -58,11 +58,11 @@ function cambiarClave(){
             data:datos,
             success: 
               function(obj){
-                window.alert("Su contraseña ha sido modificada con éxito");
+                swal("Listo","Su contraseña ha sido modificada con éxito","success");
                 window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/inicioSesion.jsp");
               },
             error: function(status){
-                        window.alert("Ha ocurrido un error al cambiar su contraseña");
+                        swal("Error","Ha ocurrido un problema al cambiar su contraseña","error");
               }                    
           }); 
       }

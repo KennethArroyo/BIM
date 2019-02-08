@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
+$(document).ready(function () {
+    swal("Info","Una vez registrado, se le enviará a su correo un código para verificar su cuenta","info");
+});
 $(document).ready(function() {
     $("#show_hide_password a").on('click', function(event) {
         event.preventDefault();
@@ -33,6 +34,7 @@ $(document).ready(function() {
             $('#show_hide_password-verify i').addClass( "fa-eye" );
         }
     });
+    
 });
 
 var password = document.getElementById("contrasena")

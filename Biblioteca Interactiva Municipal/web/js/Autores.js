@@ -94,7 +94,7 @@ function modificarAutor() {
                     $("#myModalAutor").modal("hide");
                 },
         error: function (status) {
-            window.alert("Ha ocurrido un error al modificar el autor");
+            swal("Error","Ha ocurrido un error al modificar el autor","error");
             $("#myModalAutor").modal("hide");
         }
     });
@@ -123,7 +123,7 @@ function eliminarAutor(id) {
                                     swal("Listo!", "El autor ha sido eliminado", "success");
                                 },
                         error: function (status) {
-                            window.alert("Info", "Esta autor no se puede eliminar debido a que esta ligado a otros libros", "info");
+                            swal("Info", "Esta autor no se puede eliminar debido a que esta ligado a algunos libros", "info");
                             $("#myModalAutor").modal("hide");
                         }
                     });

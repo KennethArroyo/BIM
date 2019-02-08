@@ -24,8 +24,8 @@
                        //$('#asignatura').reset();
                     },
                   error: function(status){
-                         window.alert("Error al listar Asignaturas");
-                         //swal('Error al listar las Asignaturas', '', 'error');
+                         
+                         swal('Error al listar las Asignaturas', '', 'error');
                   }                    
                 });   
             }        
@@ -190,8 +190,8 @@
                 } 
             //No es imagen
                 else {
-                        //swal("Por favor subir en portada unicamente archivos tipo imagen ");
-                        alert("Por favor subir en portada unicamente archivos tipo imagen ");
+                        swal("Info","Por favor subir en portada unicamente archivos tipo imagen","info");
+                       
                           return false;
                     }
                  }
@@ -199,15 +199,15 @@
             }
             //ningun check esta seleccionado
             else{
-                //swal("Debe seleccionar al menos un tipo de Libro, físico o digital");
-                alert("Debe seleccionar al menos un tipo de Libro, físico o digital");
+                swal("Info","Debe seleccionar al menos un tipo de Libro, físico o digital","info");
+                
                 return false;
             }
        }
        else{
            $("#copias").css("border-color","#d81a1a").css("border-width", "3px");
-           //swal("La cantiad de copias debe ser un valor númerico");
-           alert("La cantiad de copias debe ser un valor númerico");
+           
+           swal("Info","La cantiad de copias debe ser un valor númerico","info");
            return false;
        }
        

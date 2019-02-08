@@ -19,7 +19,7 @@ function buscar() {
                 },
         error: function (status) {
             //window.alert("Ha ocurrido un error con la lista de asignaturas");
-            swal('Error', 'Ha ocurrido un error con la lista de asignaturas', 'error');
+            swal("Error", "Ha ocurrido un error con la lista de asignaturas", "error");
         }
     });
 }
@@ -78,7 +78,7 @@ function modificarAsig() {
                     actualizarTabla(datos);
                 },
         error: function (status) {
-            window.alert("Ha ocurrido un error al modificar asignatura");
+            swal("Error","Ha ocurrido un problema al modificar la asignatura","error");
             $("#myModalAsignatura").modal("hide");
         }
     });
@@ -108,7 +108,7 @@ function eliminarAsig(id) {
                                     swal("Listo!", "La asignatura ha sido eliminada", "success");
                                 },
                         error: function (status) {
-                            swal("Esta asignatura no se puede eliminar debido a que esta ligada a otros libros");
+                            swal("Info","Esta asignatura no se puede eliminar debido a que esta ligada a otros libros","info");
                             //window.alert("Esta asignatura no se puede eliminar debido a que esta ligada a otros libros");
                             $("#myModalAsignatura").modal("hide");
                         }
