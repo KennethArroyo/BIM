@@ -5,38 +5,38 @@
  */
 
 
-$(document).ready(function getAutores(){  
-            buscar();
-            });
+$(document).ready(function getAutores() {
+    buscar();
+});
 
 //buscara los ultimos 5 autores agregados
-function buscar(){
-    $.ajax({type: "GET", 
-                  url:"BuscarAutores",
-                  success: 
-                    function(obj){
-                      dibujarTabla(obj);
-                    },
-                  error: function(status){
-                         window.alert("Ha ocurrido un error con la lista de autores");
-                    }                    
-                }); 
+function buscar() {
+    $.ajax({type: "GET",
+        url: "BuscarAutores",
+        success:
+                function (obj) {
+                    dibujarTabla(obj);
+                },
+        error: function (status) {
+            swal('Error', 'Ha ocurrido un error con la lista de autores', 'error');
+        }
+    });
 }
 
-function agregarAutor(){
+function agregarAutor() {
     var aut_nom = $("#autor").val();
-    var datos = {nombre:aut_nom};
-    $.ajax({type: "POST", 
-            url:"AgregarAutor",
-            dataType: "json",
-            data: datos,
-            success: 
-              function(status){ 
-                window.alert("Autor agregado satisfactoriamente");
-              },
-            error: function(status){
-                   window.alert("Error: Es posible que ya el autor se encuentre registrado");
-            }
+    var datos = {nombre: aut_nom};
+    $.ajax({type: "POST",
+        url: "AgregarAutor",
+        dataType: "json",
+        data: datos,
+        success:
+                function (status) {
+                    swal("Listo!", "El autor ha sido agregado", "success");
+                },
+        error: function (status) {
+            swal("Error!", "Es posble que el autor ya este agregado", "error");
+        }
     });
 }
 
@@ -66,7 +66,7 @@ function dibujarFila(rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de un libro
 
-    var row = $('<tr id='+rowData.id+'/>');
+    var row = $('<tr id=' + rowData.id + '/>');
     $("#tablaAutores").append(row);
     row.append($('<td>' + rowData.nombre + '</td>'));
     row.append($('<td><button type="button" class="btn btn-info" onclick="levantarModal(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
@@ -74,71 +74,84 @@ function dibujarFila(rowData) {
     //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 }
 
-function levantarModal(id, nombre){
+function levantarModal(id, nombre) {
     $("#myModalAutor").modal();
     $("#nombre").val(nombre);
     $("#AutorId").val(id);
 }
 
-function modificarAutor(){
+function modificarAutor() {
     var asig_id = $("#AutorId").val();
     var asig_nom = $("#nombre").val();
-    var datos = {id:asig_id,nombre:asig_nom};
-    $.ajax({type: "POST", 
-            url:"ModificarAutor",
-            dataType: "json",
-            data: datos,
-            success: 
-              function(status){ 
-                actualizarTabla(datos);
-                $("#myModalAutor").modal("hide");
-              },
-            error: function(status){
-                   window.alert("Ha ocurrido un error al modificar el autor");
-                   $("#myModalAutor").modal("hide");
-            }
+    var datos = {id: asig_id, nombre: asig_nom};
+    $.ajax({type: "POST",
+        url: "ModificarAutor",
+        dataType: "json",
+        data: datos,
+        success:
+                function (status) {
+                    actualizarTabla(datos);
+                    $("#myModalAutor").modal("hide");
+                },
+        error: function (status) {
+            window.alert("Ha ocurrido un error al modificar el autor");
+            $("#myModalAutor").modal("hide");
+        }
     });
 }
 
 
-function eliminarAutor(id){
-    if(confirm("¿Seguro que desea eliminar el Autor?")){
-    var datos = {id:id};
-    $.ajax({type: "POST", 
-            url:"EliminarAutor",
-            dataType: "json",
-            data: datos,
-            success: 
-              function(status){ 
-                eliminarFila(datos);
-              },
-            error: function(status){
-                   window.alert("Esta autor no se puede eliminar debido a que esta ligado a otros libros");
-                   $("#myModalAutor").modal("hide");
-            }
-    });
-    }
+function eliminarAutor(id) {
+    swal({
+        title: "Está seguro?",
+        text: "Una vez eliminado no podrá volver a utilizarla",
+        type: "warning",
+        showConfirmButton: true,
+        showCancelButton: true
+    })
+            .then((willDelete) => {
+
+                if (willDelete) {
+                    var datos = {id: id};
+                    $.ajax({type: "POST",
+                        url: "EliminarAutor",
+                        dataType: "json",
+                        data: datos,
+                        success:
+                                function (status) {
+                                    eliminarFila(datos);
+                                    swal("Listo!", "El autor ha sido eliminado", "success");
+                                },
+                        error: function (status) {
+                            window.alert("Info", "Esta autor no se puede eliminar debido a que esta ligado a otros libros", "info");
+                            $("#myModalAutor").modal("hide");
+                        }
+                    });
+                } else {
+                    swal("Cancelado");
+                }
+            });
 }
 
-function eliminarFila(datos){
+function eliminarFila(datos) {
     var row = document.getElementById(datos.id);
     row.parentNode.removeChild(row);
 }
 
-function agregarFila(datos){
-var tr =$('<tr id='+datos.id+'/>');
-	tr.html("<td>"+datos.nombre+"</td>"+
-				'<td><button type="button" class="btn btn-info" onclick="levantarModal(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'+
-				'<td><button type="button" class="btn btn-danger" onclick="eliminarAutor(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
-	$("#tablaAutores").append(tr);    
+function agregarFila(datos) {
+    var tr = $('<tr id=' + datos.id + '/>');
+    tr.html("<td>" + datos.nombre + "</td>" +
+            '<td><button type="button" class="btn btn-info" onclick="levantarModal(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>' +
+            '<td><button type="button" class="btn btn-danger" onclick="eliminarAutor(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
+    $("#tablaAutores").append(tr);
 }
 
-function actualizarTabla(datos){
+function actualizarTabla(datos) {
     eliminarFila(datos);
     agregarFila(datos);
     $("#myModalAsignatura").modal("hide");
 }
 
-function cancelar(){
+function cancelar() {
     $("#myModalAutor").modal("hide");
 }
