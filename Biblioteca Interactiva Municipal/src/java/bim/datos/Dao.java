@@ -152,23 +152,20 @@ public class Dao {
         return lista;
     }
     public ArrayList<Libro> buscarTodosLibros()throws Exception{
-        PreparedStatement preparedStatement = null;
-        ArrayList<Libro> libros = new ArrayList<Libro>();
-        try{
-        String insertTableSQL = "select * from Libro l, Asignatura a, Autor t, Libro_Autor la"
-                + "where l.asignatura_ID = a.id";
-        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-        ResultSet rs = preparedStatement.executeQuery();while (rs.next()) {
-                libros.add(libro(rs));
-            }
-        preparedStatement.close();
-        } catch (SQLException ex) {
-            String error = ex.getMessage();
-            preparedStatement.close();
-            throw ex;
+    ArrayList<Libro> libros = new ArrayList<Libro>();
+    
+    try{
+        String sql = "select * from Libro l, Asignatura a where l.asignatura_ID = a.id";
+        sql = String.format(sql);
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+        libros.add(libro(rs));
         }
-        
-        return libros;
+    }catch(SQLException ex){
+        String error=ex.getMessage();
+        error="s";
+    }
+    return libros;
     }
     public ArrayList<Libro> buscarLibroAutor(String autor) throws Exception {
         ArrayList<Libro> libros = new ArrayList<Libro>();
@@ -542,7 +539,6 @@ public class Dao {
             throw ex;
         }
     }    
-  
     
 }
 
