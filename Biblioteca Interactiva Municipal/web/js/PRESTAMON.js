@@ -3,19 +3,72 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//$(function () {
-//    //Genera el datepicker
-//    $('#fechaInicio').datetimepicker({
-//        weekStart: 1,
-//        todayBtn: 1,
-//        autoclose: 1,
-//        todayHighlight: 1,
-//        startView: 2,
-//        minView: 2,
-//        forceParse: 0
-//    });
-//        
-//});
+
+
+$(document).ready(function(){
+var t = $('#mydata').DataTable({
+        "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ libros",
+        "sZeroRecords":   "No se encontraron libros",
+        "sEmptyTable":    "Ningún libro disponible en esta tabla",
+        "sInfo":          "Mostrando _END_ libro(s) de un total de _TOTAL_ libro(s)",
+        "sInfoEmpty":     "No hay libros disponibles",
+        "sInfoFiltered":  "",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+});
+    buscarTodosLibros();
+    
+    function buscarTodosLibros() {
+    $.ajax({
+        url: 'BuscarLibro',
+        data: {
+            accion: "buscarTodos"
+        },
+        error: function () {
+           swal("Error", "No se pudieron cargar los libros", "error");
+        },
+        success: function (data) {
+            dibujarTabla(data);
+        },
+        type: 'POST',
+        dataType: "json"
+
+    });
+}    
+    
+function dibujarTabla(dataJson) {
+    t.clear().draw();
+    for (var i = 0; i < dataJson.length; i++) {
+        dibujarFila(dataJson[i]);
+    }
+}
+
+function dibujarFila(rowData) {
+    var est;
+    if(rowData.estado===1){est="Bueno";}
+    else if(rowData.estado===2){est="Regular";}
+    else if(rowData.estado===3){est="Malo";}
+    t.row.add([rowData.clasificacion, 'ARREGLAR AUTORES', rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button>']).draw();
+
+}
+});
+
 $(document).ready(function inicializar() {
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("fechaInicio")[0].setAttribute('min', today);
@@ -34,7 +87,7 @@ function validarCed() {
             $("#userLabel").remove();
             $("#user").remove();
             $("#VerUsuario").append('<label for="' + "user" + '" id="userLabel">Usuario:</label>' +
-                    '<input class="form-control" type="disabled" id="user" name="user">');
+                    '<input class="form-control" disabled="disabled" id="user" name="user">');
             $("#user").val("El usuario no existe");
             return false;
         },
@@ -42,7 +95,7 @@ function validarCed() {
             $("#userLabel").remove();
             $("#user").remove();
             $("#VerUsuario").append('<label for="' + "user" + '" id="userLabel" >Usuario:</label>' +
-                    '<input class="form-control" type="disabled" id="user" name="user">');
+                    '<input class="form-control" disabled="disabled" id="user" name="user">');
             $("#user").val(data.nombre + " " + data.apellidos);
             return false;
         },
@@ -51,76 +104,14 @@ function validarCed() {
     });
 }
 
-function dibujarTabla(dataJson) {
-    //limpia la información que tiene la tabla
-    $("#tablaLibros").html("");
 
-    //muestra el enzabezado de la tabla
-    var head = $("<thead class='thead-dark'/>");
-    var row = $("<tr />");
-    head.append(row);
-    $("#tablaLibros").append(head);
-    row.append($("<th>CLASIFICACION<b></b></th>"));
-    row.append($("<th><b>AUTOR</b></th>"));
-    row.append($("<th><b>TITULO</b></th>"));
-    row.append($("<th><b>ESTADO</b></th>"));
-    row.append($("<th><b>COMENTARIO</b></th>"));
-    row.append($("<th>CANTIDAD COPIAS<b></b></th>"));
-    row.append($("<th>ASIGNATURA<b></b></th>"));
-    row.append($("<th>PRÉSTAMO<b></b></th>"));
-    for (var i = 0; i < dataJson.length; i++) {
-        dibujarFila(dataJson[i]);
-    }
-}
-
-function dibujarFila(rowData) {
-    var row = $("<tr/>");
-    $("#tablaLibros").append(row);
-    row.append($("<td>" + rowData.clasificacion + "</td>"));
-    row.append($("<td>" + rowData.autor + "</td>"));
-    row.append($("<td>" + rowData.titulo + "</td>"));
-    if (rowData.estado === 1) {
-        row.append($("<td>" + "bueno" + "</td>"));
-    } else
-    if (rowData.estado === 2) {
-        row.append($("<td>" + "regular" + "</td>"));
-    } else
-
-    if (rowData.estado === 3) {
-        row.append($("<td>" + "malo" + "</td>"));
-    }
-    row.append($("<td>" + rowData.comentario + "</td>"));
-    row.append($("<td>" + rowData.cantidad_copias + "</td>"));
-    row.append($("<td>" + rowData.asignatura.nombre + "</td>"));
-    if (rowData.cantidad_copias === 1) {
-        row.append($('<td><button type="button" class="btn btn-info disabled">' + 'Solicitar Préstamo' + '</button></td>'));
+function onClickDigital() {
+    if ($("#digital").is(':checked')) {
+        $("#libForm").append('<input type="file" name="file" class="file" id="file" required>');
     } else {
-        row.append($('<td><button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button></td>'));
-
+        $("#file").remove();
     }
 }
-function buscar() {
-    var tipo = $("#selectBuscar").val();
-    var name = $("#textobuscar").val();
-    if (tipo === "autor") {
-        buscarLibroAutor(name);
-    } else
-    if (tipo === "titulo") {
-        buscarLibroTitulo(name);
-    } else
-    if (tipo === "clasificacion") {
-        buscarLibroClasificacion(name);
-    } else
-    if (tipo === "asignatura") {
-        buscarLibroAsignatura(name);
-    } else
-    if (tipo === "ident") {
-        buscarLibroId(name);
-    } else {
-        window.alert("2-error");
-    }
-}
-
 
 function  buscarLibroAutor(nombre) {
     $.ajax({
@@ -240,7 +231,7 @@ function solicitarPrestamo() {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "C~") { //correcto
-                window.alert("Se Realizó el Préstamo Correctamente");
+                window.alert("se realizo el prestamo correcatamente");
                 $("#myModalFormulario").modal("hide");
             } else {
                 if (tipoRespuesta === "E~") { //error
