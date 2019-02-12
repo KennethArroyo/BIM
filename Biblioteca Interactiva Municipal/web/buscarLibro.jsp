@@ -77,12 +77,6 @@
                                         <input type="text" class="form-control" id="titulo" name="titulo" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="autor">Autor</label>
-                                        <input type="text" class="form-control" id="autor"name="autor" required>
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">

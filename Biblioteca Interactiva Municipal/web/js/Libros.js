@@ -179,7 +179,7 @@ function modificarLibro() {
                     if (tipoRespuesta === "C~") { //correcto
                         swal("Listo!", "Se modifico el libro correctamente", "success");
                         $("#myModalFormulario").modal("hide");
-                        buscar();
+                        buscarTodosLibros();
                     } else {
                         if (tipoRespuesta === "E~") { //error
                             swal("Error", "No se pudo modificar el libro", "error");
