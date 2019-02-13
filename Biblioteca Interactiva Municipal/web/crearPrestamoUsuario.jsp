@@ -13,7 +13,7 @@
     <head>
         <title>Préstamo</title>
         <%@include file="librerias.jsp"%>
-        <script src="js/PRESTAMON.js" type="text/javascript"></script>
+        <script src="js/Prestamos.js" type="text/javascript"></script>
         <script src="js/modals.js" type="text/javascript"></script>
         <link href="estilos/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-ui.min.js" type="text/javascript"></script>

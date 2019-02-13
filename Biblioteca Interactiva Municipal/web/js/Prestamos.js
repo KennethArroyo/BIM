@@ -67,7 +67,7 @@ function dibujarFila(rowData) {
     if(rowData.estado===1){est="Bueno";}
     else if(rowData.estado===2){est="Regular";}
     else if(rowData.estado===3){est="Malo";}
-    t.row.add([rowData.clasificacion, 'ARREGLAR AUTORES', rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
+    t.row.add([rowData.clasificacion, 'ARREGLAR AUTORES', rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button>']).draw();
 
 }
 }
