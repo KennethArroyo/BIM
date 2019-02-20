@@ -1,4 +1,4 @@
-<%-- 
+0<%-- 
     Document   : header
     Created on : Sep 14, 2018, 11:31:12 PM
     Author     : Kenneth
@@ -55,7 +55,7 @@
                                         <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="agregarLibro.jsp">Agregar<br>Libro</a></li>
-                                                <li><a href="buscarLibro.jsp">Buscar Libro</a></li>
+                                                <li><a href="buscarLibroAdmin.jsp">Buscar Libro</a></li>
                                                 <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
                                                 <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
                                             </ul>
@@ -64,6 +64,12 @@
                                             <ul class="dropdown_selection">
                                                 <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
                                                 <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
+                                            </ul>
+
+                                        </li>
+                                        <li class="dropdown"><a href="">Usuarios<i class="fa fa-angle-down"></i></a>
+                                            <ul class="dropdown_selection">
+                                                <li><a href="buscarUsuarios.jsp">Buscar Usuarios</a></li>
                                             </ul>
 
                                         </li>
@@ -89,7 +95,7 @@
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
                                         <li><a href="principal.jsp">Inicio</a></li>                           
-                                        <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                                                    
+                                        <li><a href="buscarLibroUsuario.jsp">Buscar Libro</a></li>                                                                                                                    
                                         <li><a href="">Actividades</a></li>      
                                         <li class="my_account_item"><a href="registroUsuario.jsp"><small class="fa fa-user-plus" ></small>&nbsp Registrarse</a></li>
                                         <li><a href="inicioSesion.jsp"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
@@ -107,7 +113,7 @@
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
                                         <li><a href="principal.jsp">Inicio</a></li>                           
-                                        <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                               
+                                        <li><a href="buscarLibroUsuario.jsp">Buscar Libro</a></li>                                                                                               
                                         <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>                                                                                                                     
                                         <li><a href="">Actividades</a></li>
                                         <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
@@ -143,7 +149,7 @@
                         <li class="menu_item has-children"><a href=""> Libros <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                             <ul class="menu_selection"> 
                                 <li><a href="agregarLibro.jsp"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
-                                <li><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
+                                <li><a href="buscarLibroAdmin.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                                 <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
                                 <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
                             </ul>
@@ -152,6 +158,11 @@
                             <ul class="menu_selection">
                                 <li><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
                                 <li><a href="crearPrestamoUsuario.jsp"><i aria-hidden="true"></i>Crear Préstamo Usuario</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu_item has-children"><a href="#">Usuarios <i class="fa fa-angle-down"></i></a>
+                            <ul class="menu_selection">
+                                <li><a href="buscarUsuarios.jsp"><i aria-hidden="true"></i>Buscar Usuarios</a></li>
                             </ul>
                         </li>
                         <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
@@ -170,7 +181,7 @@
                     <a class="menu_name" href="principal.jsp">Biblioteca Interactiva Municipal</a><br>
                     <ul class="menu_top_nav">
                         <li class="menu_item"><a href="principal.jsp" >Inicio</a></li>
-                        <li class="menu_item"><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
+                        <li class="menu_item"><a href="buscarLibroUsuario.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
                         <li class="menu_item"><a href="">Actividades</a></li>
                         <li class="menu_item"><a href="registroUsuario.jsp"><span class="fa fa-user-plus"></span>&nbsp Registrarse</a></li>
                         <li class="menu_item"><a href="inicioSesion.jsp"><span class="fa fa-sign-in"></span>&nbsp Iniciar Sesión</a></li>
@@ -181,7 +192,7 @@
                     <a class="menu_name" href="principal.jsp">Biblioteca Interactiva Municipal</a><br>
                     <ul class="menu_top_nav">
                         <li class="menu_item"><a href="principal.jsp" >Inicio</a></li>
-                        <li class="menu_item"><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>     
+                        <li class="menu_item"><a href="buscarLibroUsuario.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>     
                         <li class="menu_item"><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
                         <li class="menu_item"><a href="">Actividades</a></li>
                         <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->

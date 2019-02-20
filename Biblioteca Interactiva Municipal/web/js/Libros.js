@@ -6,10 +6,75 @@
 
 $(document).ready(function(){
     inicializar();
+    inicializar1();
 });
 
 function inicializar(){
         var t = $('#mydata').DataTable({
+        "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ libros",
+        "sZeroRecords":   "No se encontraron libros",
+        "sEmptyTable":    "Ningún libro disponible en esta tabla",
+        "sInfo":          "Mostrando _END_ libro(s) de un total de _TOTAL_ libro(s)",
+        "sInfoEmpty":     "No hay libros disponibles",
+        "sInfoFiltered":  "",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+}); 
+    buscarTodosLibros();
+    
+    function buscarTodosLibros() {
+    $.ajax({
+        url: 'BuscarLibro',
+        data: {
+            accion: "buscarTodos"
+        },
+        error: function () {
+           swal("Error", "No se pudieron cargar los libros", "error");
+        },
+        success: function (data) {
+            dibujarTabla(data);
+        },
+        type: 'POST',
+        dataType: "json"
+
+    });
+}  
+    
+function dibujarTabla(dataJson) {
+    t.clear().draw();
+    for (var i = 0; i < dataJson.length; i++) {
+        dibujarFila(dataJson[i]);
+    }
+}
+
+function dibujarFila(rowData) {
+    var est;
+    if(rowData.estado===1){est="Bueno";}
+    else if(rowData.estado===2){est="Regular";}
+    else if(rowData.estado===3){est="Malo";}
+    t.row.add([rowData.clasificacion, 'ARREGLAR AUTORES', rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
+
+}
+}
+
+function inicializar1(){
+        var t = $('#mydataUsuario').DataTable({
         "language": {
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ libros",
