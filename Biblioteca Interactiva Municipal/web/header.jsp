@@ -119,7 +119,7 @@
                                         <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="">Libros descargados</a></li>
-                                                <li><a href="">Mis préstamos</a></li>
+                                                <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
                                             </ul>
                                         </li>
