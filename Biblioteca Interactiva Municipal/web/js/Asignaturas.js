@@ -5,12 +5,50 @@
  */
 
 
-$(document).ready(function getAsignaturas() {
-   buscar();
+$(document).ready(function() {
+   inicializar();
 });
 
 
-function buscar() {
+function inicializar(){
+        var t = $('#mydata').DataTable({
+//                dom: 'Bfrtip',
+//        buttons: [
+//            {
+//                text: 'Agregar Asignatura',
+//                action: function ( e, dt, node, config ) {
+//                    $("#myModalAsignatura").modal();
+//                }
+//            }
+//        ],  
+        "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ asignaturas",
+        "sZeroRecords":   "No se encontraron asignaturas",
+        "sEmptyTable":    "Ninguna asignatura disponible en esta tabla",
+        "sInfo":          "Mostrando _END_ asignatura(s) de un total de _TOTAL_ asignatura(s)",
+        "sInfoEmpty":     "No hay asignaturas disponibles",
+        "sInfoFiltered":  "",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+}); 
+    buscar();
+    
+    function buscar() {
     $.ajax({type: "GET",
         url: "GetAsignaturas",
         success:
@@ -22,40 +60,18 @@ function buscar() {
             swal("Error", "Ha ocurrido un error con la lista de asignaturas", "error");
         }
     });
-}
-
+    }
+      
 function dibujarTabla(dataJson) {
-    //limpia la información que tiene la tabla
-    $("#tablaAsignaturas").html("");
-
-    //muestra el enzabezado de la tabla
-    var head = $("<thead class='thead-dark'/>");
-    var row = $("<tr />");
-    var row2 = $("<tr />");
-    head.append(row2);
-    head.append(row);
-    $("#tablaAsignaturas").append(head);
-    row2.append($('<th colspan="3">Asignaturas existentes en el sistema<b></b></th>'));
-    row.append($("<th>NOMBRE<b></b></th>"));
-    row.append($("<th>EDITAR<b></b></th>"));
-    row.append($("<th>ELIMINAR<b></b></th>"));
-
-    //carga la tabla con el json devuelto
+    t.clear().draw();
     for (var i = 0; i < dataJson.length; i++) {
         dibujarFila(dataJson[i]);
     }
 }
 
 function dibujarFila(rowData) {
-    //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
-    //de un libro
-
-    var row = $('<tr id=' + rowData.id + '/>');
-    $("#tablaAsignaturas").append(row);
-    row.append($('<td>' + rowData.nombre + '</td>'));
-    row.append($('<td><button type="button" class="btn btn-info" onclick="levantarModal(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
-    //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
+    t.row.add([rowData.nombre, '<button type="button" class="btn btn-danger" onclick="eliminarAsig('+rowData.id+');">'+ '<img src="imagenes/delete.png"/>' + '</button>']).draw();
+}
 }
 
 function levantarModal(id, nombre) {
@@ -75,7 +91,7 @@ function modificarAsig() {
         success:
                 function (status) {
 
-                    actualizarTabla(datos);
+                    inicializar();
                 },
         error: function (status) {
             swal("Error","Ha ocurrido un problema al modificar la asignatura","error");
@@ -104,8 +120,9 @@ function eliminarAsig(id) {
                         data: datos,
                         success:
                                 function (status) {
-                                    eliminarFila(datos);
                                     swal("Listo!", "La asignatura ha sido eliminada", "success");
+                                    $("#mydata").DataTable().destroy();
+                                    inicializar();
                                 },
                         error: function (status) {
                             swal("Info","Esta asignatura no se puede eliminar debido a que esta ligada a otros libros","info");
@@ -124,20 +141,6 @@ function eliminarAsig(id) {
 function eliminarFila(datos) {
     var row = document.getElementById(datos.id);
     row.parentNode.removeChild(row);
-}
-
-function agregarFila(datos) {
-    var tr = $('<tr id=' + datos.id + '/>');
-    tr.html("<td>" + datos.nombre + "</td>" +
-            '<td><button type="button" class="btn btn-info" onclick="levantarModal(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>' +
-            '<td><button type="button" class="btn btn-danger" onclick="eliminarAsig(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
-    $("#tablaAsignaturas").append(tr);
-}
-
-function actualizarTabla(datos) {
-    eliminarFila(datos);
-    agregarFila(datos);
-    $("#myModalAsignatura").modal("hide");
 }
 
 function cancelar() {
