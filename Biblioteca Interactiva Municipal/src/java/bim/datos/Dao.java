@@ -52,6 +52,9 @@ public class Dao {
         lib.setId(rs.getInt("ID"));
         lib.setClasificacion(rs.getString("Clasificacion"));
         //lib.setAutor(rs.getString("Autor")); en la buena teoria ya no existe este atrbuto
+        for(int i = 0; i < rs.getFetchSize();i++){
+            
+        }
         lib.setTitulo(rs.getString("Titulo"));
         lib.setEstado(rs.getInt("Estado"));
         lib.setComentario(rs.getString("Comentario"));
@@ -101,6 +104,7 @@ public class Dao {
         p.setLibro_ID(rs.getInt("libro_ID"));
         return p;
     }
+ 
 
     public Asignatura buscarAsignatura(String nombre) {
         Asignatura n = new Asignatura();
@@ -120,7 +124,7 @@ public class Dao {
 
     public void agregarLibro(Libro p) throws Exception {
         String sql = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID) "
-                + "values('%s','%s','%s',%d,%d,%d,%d,%d,%d)";
+                + "values('%s','%s','%s',%d,%d,'%s','%s',%d,%d,%d,%d)";
         sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getComentario(), p.getEstado(), p.getCantidad_copias(),
                 p.getDir_portada(),p.getDir_PDF(),p.getHabilitado(), p.getFisico(), p.getDigital(), p.getAsignatura().getId());
         int count = db.executeUpdate(sql);
@@ -138,6 +142,21 @@ public class Dao {
     throw new Exception("Error crendo el nuevo prestamo");
     }
     }
+    
+    public ArrayList<Autor> listarAutoresLibro() throws Exception {
+        ArrayList<Autor> lista = new ArrayList<Autor>();
+        try {
+            String sql = "select * from Autor where ";
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                lista.add(autor(rs));
+            }
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+        }
+        return lista;
+    }
+    
     public ArrayList<Asignatura> listarAsignaturas() throws Exception {
         ArrayList<Asignatura> lista = new ArrayList<Asignatura>();
         try {
