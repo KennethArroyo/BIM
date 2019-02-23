@@ -18,14 +18,27 @@ public class Libro {
     int cantidad_copias;
     int fisico;
     int digital;
+    int cuenta_autores;
     String dir_portada;
     String dir_PDF;
     Asignatura asignatura;
     int habilitado;
 
     public Libro() {
+        autores = new ArrayList<Autor>();
     }
 
+    public int getCuentaAutores() {
+        return cuenta_autores;
+    }
+
+    public void setCuentaAutores(int cuenta_autores) {
+        this.cuenta_autores = cuenta_autores;
+    }
+
+    public void setAutor(Autor e){
+        autores.add(e);
+    }
     public int getHabilitado() {
         return habilitado;
     }
@@ -88,10 +101,6 @@ public class Libro {
 
     public void setClasificacion(String clasificacion) {
         this.clasificacion = clasificacion;
-    }
-
-    public void setAutor(ArrayList<Autor> autor) {
-        this.autores = autor;
     }
 
     public void setTitulo(String titulo) {

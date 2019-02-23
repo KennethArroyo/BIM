@@ -8,40 +8,43 @@ import bim.entidades.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class Dao {
 
     RelDataBase db;
+    int id_auxiliar;
 
     public Dao() {
         db = new RelDataBase();
+        id_auxiliar = 0;
     }
 
     private Asignatura asignatura(ResultSet rs) throws Exception {
         Asignatura p = new Asignatura();
-        p.setId(rs.getInt("id"));
+        p.setId(rs.getInt("asignatura_id"));
         p.setNombre(rs.getString("nombre"));
         return p;
     }
     
     private Autor autor(ResultSet rs) throws Exception {
         Autor aut = new Autor();
-        aut.setId(rs.getInt("id"));
-        aut.setNombre(rs.getString("nombre"));
+        aut.setId(rs.getInt("autor_id"));
+        aut.setNombre(rs.getString("nombre_autor"));
         return aut;
     }
     
     private Autor autorID(ResultSet rs) throws Exception {
         Autor aut = new Autor();
-        aut.setId(rs.getInt("id"));
+        aut.setId(rs.getInt("autor_id"));
         return aut;
     }
     
     private Libro libroID(ResultSet rs) throws Exception {
         Libro lib = new Libro();
-        lib.setId(rs.getInt("id"));
+        lib.setId(rs.getInt("libro_id"));
         return lib;
     }
 
@@ -49,14 +52,12 @@ public class Dao {
         Libro lib = new Libro();
         Asignatura a = new Asignatura();
         a = asignatura(rs);
-        lib.setId(rs.getInt("ID"));
+        int id = rs.getInt("libro_id");
+        lib.setId(id);
         lib.setClasificacion(rs.getString("Clasificacion"));
-        //lib.setAutor(rs.getString("Autor")); en la buena teoria ya no existe este atrbuto
-        for(int i = 0; i < rs.getFetchSize();i++){
-            
-        }
         lib.setTitulo(rs.getString("Titulo"));
         lib.setEstado(rs.getInt("Estado"));
+        lib.setCuentaAutores(rs.getInt("cuenta_autores"));
         lib.setComentario(rs.getString("Comentario"));
         lib.setCantidad_copias(rs.getInt("Cantidad_copias"));
         lib.setFisico(rs.getInt("Fisico"));
@@ -65,6 +66,9 @@ public class Dao {
         lib.setDir_PDF(rs.getString("Dir_PDF"));
         a.setId(rs.getInt("Asignatura_ID"));
         lib.setAsignatura(a);
+        Autor at = new Autor();
+        at = autor(rs);
+        lib.setAutor(at);
         return lib;
     }
 
@@ -113,7 +117,7 @@ public class Dao {
 
     public void agregarUsuario(Usuario u) throws Exception {
         String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
-                + "values(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', %d,'%s')";
+                + "values(%d, '%s', '%s', '%s', '%s', %s, '%s', '%s','%s', %d, '%s')";
         sql = String.format(sql, u.getTipo(), u.getIdentificacion(), u.getNombre(), u.getApellidos(), u.getLugar_residencia(),
                 u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est(), u.getHabilitado(), u.getCod_verificacion());
         int count = db.executeUpdate(sql);
@@ -172,13 +176,28 @@ public class Dao {
     }
     public ArrayList<Libro> buscarTodosLibros()throws Exception{
     ArrayList<Libro> libros = new ArrayList<Libro>();
-    
+    Libro l = new Libro();
+    Autor a = new Autor();
+    int id;
     try{
-        String sql = "select * from Libro l, Asignatura a where l.asignatura_ID = a.id";
+        String sql = "select * from Asignatura a,Libro l, Autor e, Libro_Autor r "
+                + "where l.asignatura_ID = a.asignatura_id and (l.libro_id = r.libro_ID and e.autor_id = r.autor_ID)";
         sql = String.format(sql);
-        ResultSet rs = db.executeQuery(sql);
+        //ResultSet rs = db.executeQuery(sql);
+        Statement stmt = db.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = stmt.executeQuery (sql); 
         while(rs.next()){
-        libros.add(libro(rs));
+            int cuenta = rs.getInt("cuenta_autores");
+            l = libro(rs);
+            id_auxiliar = l.getId();
+            while(cuenta != 0){
+                cuenta--;
+                a = autor(rs);
+                l.setAutor(a);
+                rs.next();
+            }
+            rs.previous();
+            libros.add(l);
         }
     }catch(SQLException ex){
         String error=ex.getMessage();
@@ -189,7 +208,7 @@ public class Dao {
     public ArrayList<Libro> buscarLibroAutor(String autor) throws Exception {
         ArrayList<Libro> libros = new ArrayList<Libro>();
         try {
-            String sql = "select * from Libro l, Asignatura a where l.autor like '%%%s%%' and l.asignatura_ID = a.id";
+            String sql = "select * from Libro l, Asignatura a where l.autor like '%%%s%%' and l.asignatura_ID = a.asignatura_id";
             sql = String.format(sql, autor);
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
@@ -205,7 +224,7 @@ public class Dao {
     public ArrayList<Libro> buscarLibroTitulo(String titulo) throws Exception {
         ArrayList<Libro> libros = new ArrayList<Libro>();
         try {
-            String sql = "select * from Libro l, Asignatura a where l.titulo like '%%%s%%' and l.asignatura_ID = a.id";
+            String sql = "select * from Libro l, Asignatura a where l.titulo like '%%%s%%' and l.asignatura_ID = a.asignatura_id";
             sql = String.format(sql, titulo);
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
@@ -221,7 +240,7 @@ public class Dao {
     public ArrayList<Libro> buscarLibroClasificacion(String clasificacion) throws Exception {
         ArrayList<Libro> libros = new ArrayList<Libro>();
         try {
-            String sql = "select * from Libro l, Asignatura a where l.clasificacion like '%%%s%%' and l.asignatura_ID = a.id";
+            String sql = "select * from Libro l, Asignatura a where l.clasificacion like '%%%s%%' and l.asignatura_ID = a.asignatura_id";
             sql = String.format(sql, clasificacion);
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
@@ -253,7 +272,7 @@ public class Dao {
     public Libro buscarLibroId(int id) throws Exception {
         Libro libro = new Libro();
         try {
-            String sql = "select * from Libro l, Asignatura a where l.id=%d and l.asignatura_ID = a.id";
+            String sql = "select * from Libro l, Asignatura a where l.id=%d and l.asignatura_ID = a.asignatura_id";
             sql = String.format(sql, id);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
@@ -306,7 +325,7 @@ public class Dao {
     public Asignatura getAsigantura(int id) throws Exception {
         Asignatura a = new Asignatura();
         try {
-            String sql = "select * from Asignatura where id=%d ";
+            String sql = "select * from Asignatura where asignatura_id=%d ";
             sql = String.format(sql, id);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
@@ -363,13 +382,13 @@ public class Dao {
     }
 
     public void modificarAsignatura(int id, String nombre) {
-        String sql = "update Asignatura set nombre='%s' where id=%d";
+        String sql = "update Asignatura set nombre='%s' where asignatura_id=%d";
         sql = String.format(sql, nombre, id);
         db.executeUpdate(sql);
     }
 
     public void eliminarAsignatura(int id) throws Exception {
-            String sql = "delete from Asignatura where id=%d";
+            String sql = "delete from Asignatura where asignatura_id=%d";
             sql = String.format(sql, id);
             int resultado = db.executeUpdate(sql);
                 if(resultado == 0){
@@ -393,7 +412,7 @@ public class Dao {
     public ArrayList<Autor> buscarUltimosAutores() throws Exception {
         ArrayList<Autor> autores = new ArrayList<Autor>();
         try{
-            String sql="select top 5 id, nombre from Autor order by id desc";
+            String sql="select top 5 autor_id, nombre from Autor order by autor_id desc";
             ResultSet rs = db.executeQuery(sql);
             while(rs.next()){
             Autor autor1 =autor(rs);
@@ -408,7 +427,7 @@ public class Dao {
     }
 
     public void agregarAutor(String autor) throws Exception {
-        String sql = "insert into Autor(nombre)"
+        String sql = "insert into Autor(nombre_autor)"
                 + "values('%s')";
         sql = String.format(sql, autor);
         int count = db.executeUpdate(sql);
@@ -418,13 +437,13 @@ public class Dao {
     }
 
     public void modificarAutor(int id, String nombre) {
-        String sql = "update Autor set nombre='%s' where id=%d";
+        String sql = "update Autor set nombre='%s' where autor_id=%d";
         sql = String.format(sql, nombre, id);
         db.executeUpdate(sql);
     }
 
     public void eliminarAutor(int id) throws Exception {
-        String sql = "delete from Autor where id=%d";
+        String sql = "delete from Autor where autor_id=%d";
             sql = String.format(sql, id);
             int resultado = db.executeUpdate(sql);
                 if(resultado == 0){
@@ -436,7 +455,7 @@ public class Dao {
         ArrayList<Autor> lista = new ArrayList<>();
         try {
             for(int i = 0;i<autores.size();i++){
-                String sql = "select id from Autor where nombre = '%s'";
+                String sql = "select autor_id from Autor where nombre = '%s'";
                 sql = String.format(sql, autores.get(i));
                 ResultSet rs = db.executeQuery(sql);
                 while (rs.next()) {
@@ -454,7 +473,7 @@ public class Dao {
     public void guardarAutorLibro(ArrayList<Autor> datos, String titulo) throws Exception {
         Libro lib = new Libro();
         try {
-            String sql = "select id from Libro where titulo = '%s'";
+            String sql = "select libro_id from Libro where titulo = '%s'";
             sql = String.format(sql, titulo);
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
