@@ -183,7 +183,6 @@ public class Dao {
         String sql = "select * from Asignatura a,Libro l, Autor e, Libro_Autor r "
                 + "where l.asignatura_ID = a.asignatura_id and (l.libro_id = r.libro_ID and e.autor_id = r.autor_ID)";
         sql = String.format(sql);
-        //ResultSet rs = db.executeQuery(sql);
         Statement stmt = db.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = stmt.executeQuery (sql); 
         while(rs.next()){
@@ -412,7 +411,7 @@ public class Dao {
     public ArrayList<Autor> buscarUltimosAutores() throws Exception {
         ArrayList<Autor> autores = new ArrayList<Autor>();
         try{
-            String sql="select top 5 autor_id, nombre from Autor order by autor_id desc";
+            String sql="select top 5 autor_id, nombre_autor from Autor order by autor_id desc";
             ResultSet rs = db.executeQuery(sql);
             while(rs.next()){
             Autor autor1 =autor(rs);
@@ -437,7 +436,7 @@ public class Dao {
     }
 
     public void modificarAutor(int id, String nombre) {
-        String sql = "update Autor set nombre='%s' where autor_id=%d";
+        String sql = "update Autor set nombre_autor='%s' where autor_id=%d";
         sql = String.format(sql, nombre, id);
         db.executeUpdate(sql);
     }
@@ -455,7 +454,7 @@ public class Dao {
         ArrayList<Autor> lista = new ArrayList<>();
         try {
             for(int i = 0;i<autores.size();i++){
-                String sql = "select autor_id from Autor where nombre = '%s'";
+                String sql = "select autor_id from Autor where nombre_autor = '%s'";
                 sql = String.format(sql, autores.get(i));
                 ResultSet rs = db.executeQuery(sql);
                 while (rs.next()) {
