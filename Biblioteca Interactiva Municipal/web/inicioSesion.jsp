@@ -40,6 +40,7 @@
                             <label for="nombre">Contraseña:</label>
                             <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
                                 oninput="this.setCustomValidity('')">
+                            
                         </div>
 
                         <div class="form-group">

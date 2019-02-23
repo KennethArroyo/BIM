@@ -38,12 +38,12 @@ function inicializar() {
     buscarPrestamosUser();
 
     function buscarPrestamosUser() {
-        var user = JSON.parse(sessionStorage.getItem("usuario"));
-        $.ajax({
+        //var user = JSON.parse(sessionStorage.getItem("usuario"));     
+        $.ajax({       
             url: 'BuscarPrestamos',
             data: {
-                accion: "BuscarPrestamosUser",
-                identificacion: user.identificacion
+                accion: "BuscarPrestamosUser"
+          //      identificacion: user.identificacion
             },
             error: function () {
                 swal("Error", "No se pudieron cargar los préstamos", "error");

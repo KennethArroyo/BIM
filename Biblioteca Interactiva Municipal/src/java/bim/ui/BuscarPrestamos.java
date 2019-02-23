@@ -43,11 +43,11 @@ public class BuscarPrestamos extends HttpServlet {
             String json;
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
-            ArrayList<Prestamo> prestamos= new ArrayList();
+            ArrayList<Prestamo> prestamos= new ArrayList<>();
             switch(accion){
                 case "BuscarPrestamosUser":
-                    String identificacion = request.getParameter("identificacion");
-                    prestamos = Model.instance().buscarPrestamosUsuario(identificacion);
+                    //String identificacion = request.getParameter("identificacion");
+                    prestamos = Model.instance().buscarPrestamosUsuario("901110111");
                     json= new Gson().toJson(prestamos);
                     out.print(json);
                     break;
