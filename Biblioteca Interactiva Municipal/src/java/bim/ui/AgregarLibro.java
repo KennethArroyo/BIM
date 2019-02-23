@@ -165,6 +165,7 @@ public class AgregarLibro extends HttpServlet {
                 salida2.close();
             } else {
                 digital = 0;
+                p.setDigital(0);
                 p.setDir_PDF("");
             }
             
