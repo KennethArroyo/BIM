@@ -231,7 +231,6 @@ function modificarLibro() {
                     accion: "modificarLibro",
                     clasificacion: $("#clasificacion").val(),
                     titulo: $("#titulo").val(),
-                    autor: $("#autor").val(),
                     comentario: $("#comentario").val(),
                     estado: $("#estado").val(),
                     copias: $("#copias").val(),

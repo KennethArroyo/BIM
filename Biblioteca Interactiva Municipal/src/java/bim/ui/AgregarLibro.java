@@ -86,33 +86,34 @@ public class AgregarLibro extends HttpServlet {
         }
     }
     
-    protected ArrayList<String> revisarAutores(HttpServletRequest request){
-        String[] parametros = request.getParameterValues("autor");
-        ArrayList<String> autores = new ArrayList<>();
-        for(String autor : parametros){
+    protected ArrayList<String> revisarAutores(String [] autores){
+        ArrayList<String> lista = new ArrayList<>();
+        for(String autor : autores){
             if(!autor.isEmpty()){
-                autores.add(autor);
+                lista.add(autor);
             }
         }
-        return autores;
+        return lista;
     }
     
-    protected void guardarAutorLibro(HttpServletRequest request, String titulo) throws Exception{
-        ArrayList<String> autores = revisarAutores(request);
+    protected void guardarAutorLibro(String titulo, String[] autores) throws Exception{
+        ArrayList<String> lista = revisarAutores(autores);
         ArrayList<Autor> datos;
-        datos = Model.instance().obtenerAutoresId(autores);
+        datos = Model.instance().obtenerAutoresId(lista);
         Model.instance().guardarAutorLibro(datos,titulo);
     }
     
     protected void agregarLibro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int fisico;
-            ArrayList<String> autores = new ArrayList<>();
+            
             int digital;
             Part PartImagen;
             Asignatura asig = new Asignatura();
             Libro p = new Libro();
             HttpSession s = request.getSession(true);
+            String[] autores = request.getParameterValues("autor");
+            p.setCuentaAutores(autores.length + 1);
             String clasificacion = request.getParameter("clasificacion");
             String titulo = request.getParameter("titulo");
             int asignatura = Integer.parseInt(request.getParameter("asignatura"));
@@ -135,7 +136,7 @@ public class AgregarLibro extends HttpServlet {
                     salida.close();
                 }
                 else{
-                p.setDir_portada("");
+                p.setDir_portada("N");
                 }
             
             String[] listaF = request.getParameterValues("fisico");
@@ -166,7 +167,7 @@ public class AgregarLibro extends HttpServlet {
             } else {
                 digital = 0;
                 p.setDigital(0);
-                p.setDir_PDF("");
+                p.setDir_PDF("N");
             }
             
             String estado = request.getParameter("estado");
@@ -187,7 +188,7 @@ public class AgregarLibro extends HttpServlet {
        
 
             Model.instance().agregarLibro(p);
-            guardarAutorLibro(request,titulo);
+            guardarAutorLibro(titulo, autores);
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         } catch (Exception e) {
             String msg = e.getMessage();
