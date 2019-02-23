@@ -220,13 +220,14 @@ function buscarLibroId(idLibro) {
 }
 
 function solicitarPrestamo() {
-    var num;
+    var user = JSON.parse(sessionStorage.getItem("usuario"));
     $.ajax({
         url: 'CrearPrestamo',
         data: {
             accion: "solicitarPrestamo",
             fechaInicio: $("#fechaInicio").val(),
-            idLibro: $("#idLibro").val()
+            idLibro: $("#idLibro").val(),
+            ident: user.identificacion
         },
         error: function () { //si existe un error en la respuesta del ajax
             window.alert("1-error");

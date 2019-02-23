@@ -153,4 +153,8 @@ public class Model {
     public void cambiarClaveTemporal(String temporal, String contrasena) throws SQLException {
         dao.actualizarUsuarioTemporal(temporal, contrasena);
     }
+    
+    public ArrayList<Prestamo> buscarPrestamosUsuario(String identificacion)throws Exception{
+    return dao.buscarPrestamosUsuario(identificacion);
+    }
 }
