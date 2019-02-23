@@ -576,7 +576,26 @@ public class Dao {
             preparedStatement2.close();
             throw ex;
         }
-    }    
+    }  
+    
+    public ArrayList<Prestamo> buscarPrestamosUsuario(String identficacion) throws Exception {
+        ArrayList<Prestamo> prestamos = new ArrayList<>();
+    try{
+        String sql = "SELECT p.id id, p.fecha_inicio fecha_inicio, p.fecha_final fecha_final, p.usuario_ID usuario_ID, p.libro_ID libro_ID, p.estado_ID estado_ID FROM Prestamo p, Usuario u where p.usuario_ID=u.id and u.identificacion='%s'";
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                prestamos.add(prestamo(rs));
+            }
+    
+    }catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    
+    return prestamos;
+        
+    }
+    
     
 }
 

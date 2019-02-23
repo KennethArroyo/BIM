@@ -43,6 +43,7 @@ public class CrearPrestamo extends HttpServlet {
             switch (accion) {
                 case "solicitarPrestamo":
                     String fechatxtIni = request.getParameter("fechaInicio");
+                    String identif = request.getParameter("ident");
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                     Date date = format.parse(fechatxtIni);
                     calendar.setTime(date); // Configuramos la fecha que se recibe
@@ -52,7 +53,7 @@ public class CrearPrestamo extends HttpServlet {
                     p.setFecha_inicio(fechatxtIni);
                     p.setFecha_final(dev);
                     p.setEstado_ID(1);
-                    u = Model.instance().getUsuarioCed("304830405");
+                    u = Model.instance().getUsuarioCed(identif);
                     p.setUsuario_ID(u.getId());
                     Integer ident = Integer.parseInt(request.getParameter("idLibro"));
                     Libro l = Model.instance().buscarLibroId(ident);
