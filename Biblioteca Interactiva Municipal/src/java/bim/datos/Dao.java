@@ -66,9 +66,6 @@ public class Dao {
         lib.setDir_PDF(rs.getString("Dir_PDF"));
         a.setId(rs.getInt("Asignatura_ID"));
         lib.setAsignatura(a);
-        Autor at = new Autor();
-        at = autor(rs);
-        lib.setAutor(at);
         return lib;
     }
 
