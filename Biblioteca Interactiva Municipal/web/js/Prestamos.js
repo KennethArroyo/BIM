@@ -54,6 +54,15 @@ function inicializarTabla(){
 
     });
 }  
+
+function autoresToString(row){
+    var concatenado = "";
+    var datos = row.autores;
+    for(var i=0; i<datos.length;i++){
+        concatenado = concatenado+datos[i].nombre + ', ';
+    }
+    return concatenado;
+}
     
 function dibujarTabla(dataJson) {
     t.clear().draw();
@@ -64,10 +73,11 @@ function dibujarTabla(dataJson) {
 
 function dibujarFila(rowData) {
     var est;
+    var autores = autoresToString(rowData);
     if(rowData.estado===1){est="Bueno";}
     else if(rowData.estado===2){est="Regular";}
     else if(rowData.estado===3){est="Malo";}
-    t.row.add([rowData.clasificacion, 'ARREGLAR AUTORES', rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button>']).draw();
+    t.row.add([rowData.clasificacion, autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + 'Solicitar Préstamo' + '</button>']).draw();
 
 }
 }
