@@ -65,10 +65,11 @@ function dibujarTabla(dataJson) {
 
 function dibujarFila(rowData) {
     var est;
+    var autores = autoresToString(rowData);
     if(rowData.estado===1){est="Bueno";}
     else if(rowData.estado===2){est="Regular";}
     else if(rowData.estado===3){est="Malo";}
-    t.row.add([rowData.clasificacion, rowData.autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
+    t.row.add([rowData.clasificacion, autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
 
 }
 }
