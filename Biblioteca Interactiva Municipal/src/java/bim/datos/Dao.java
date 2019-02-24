@@ -268,7 +268,7 @@ public class Dao {
     public Libro buscarLibroId(int id) throws Exception {
         Libro libro = new Libro();
         try {
-            String sql = "select * from Libro l, Asignatura a where l.id=%d and l.asignatura_ID = a.asignatura_id";
+            String sql = "select * from Libro l, Asignatura a where l.libro_id=%d and l.asignatura_ID = a.asignatura_id";
             sql = String.format(sql, id);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
