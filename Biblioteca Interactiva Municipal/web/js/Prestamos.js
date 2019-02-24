@@ -116,82 +116,82 @@ function onClickDigital() {
     }
 }
 
-function  buscarLibroAutor(nombre) {
-    $.ajax({
-        url: "BuscarLibro",
-        data: {
-            accion: "buscarLibroAutor",
-            nombre: nombre
-        },
-
-        error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
-        },
-        success: function (data) {
-            dibujarTabla(data);
-
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
-function  buscarLibroClasificacion(name) {
-    $.ajax({
-        url: "BuscarLibro",
-        data: {
-            accion: "buscarLibroClasificacion",
-            nombre: name
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
-        },
-        success: function (data) {
-            dibujarTabla(data);
-
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
-function  buscarLibroTitulo(name) {
-    $.ajax({
-        url: "BuscarLibro",
-        data: {
-            accion: "buscarLibroTitulo",
-            nombre: name
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
-        },
-        success: function (data) {
-            dibujarTabla(data);
-
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
-function  buscarLibroAsignatura(name) {
-    $.ajax({
-        url: "BuscarLibro",
-        data: {
-            accion: "buscarLibroAsignatura",
-            nombre: name
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
-        },
-        success: function (data) {
-
-            dibujarTabla(data);
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
+//function  buscarLibroAutor(nombre) {
+//    $.ajax({
+//        url: "BuscarLibro",
+//        data: {
+//            accion: "buscarLibroAutor",
+//            nombre: nombre
+//        },
+//
+//        error: function () { //si existe un error en la respuesta del ajax
+//            window.alert("1-error");
+//        },
+//        success: function (data) {
+//            dibujarTabla(data);
+//
+//        },
+//        type: 'POST',
+//        dataType: "json"
+//    });
+//}
+//
+//function  buscarLibroClasificacion(name) {
+//    $.ajax({
+//        url: "BuscarLibro",
+//        data: {
+//            accion: "buscarLibroClasificacion",
+//            nombre: name
+//        },
+//        error: function () { //si existe un error en la respuesta del ajax
+//            window.alert("1-error");
+//        },
+//        success: function (data) {
+//            dibujarTabla(data);
+//
+//        },
+//        type: 'POST',
+//        dataType: "json"
+//    });
+//}
+//
+//function  buscarLibroTitulo(name) {
+//    $.ajax({
+//        url: "BuscarLibro",
+//        data: {
+//            accion: "buscarLibroTitulo",
+//            nombre: name
+//        },
+//        error: function () { //si existe un error en la respuesta del ajax
+//            window.alert("1-error");
+//        },
+//        success: function (data) {
+//            dibujarTabla(data);
+//
+//        },
+//        type: 'POST',
+//        dataType: "json"
+//    });
+//}
+//
+//function  buscarLibroAsignatura(name) {
+//    $.ajax({
+//        url: "BuscarLibro",
+//        data: {
+//            accion: "buscarLibroAsignatura",
+//            nombre: name
+//        },
+//        error: function () { //si existe un error en la respuesta del ajax
+//            window.alert("1-error");
+//        },
+//        success: function (data) {
+//
+//            dibujarTabla(data);
+//        },
+//        type: 'POST',
+//        dataType: "json"
+//    });
+//}
 
 function buscarLibroId(idLibro) {
     $.ajax({
@@ -201,7 +201,7 @@ function buscarLibroId(idLibro) {
             idLibro: idLibro
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            swal('Error', 'Ha ocurrido un error al cargar el libro', 'error');
         },
         success: function (data) {
             if (data.cantidad_copias > 1) {
@@ -212,7 +212,7 @@ function buscarLibroId(idLibro) {
                 $("#libro").val(data.titulo);
                 $("#libro").prop('disabled', true);
             } else
-                window.alert("El libro posee solo una copia, solo puede ser utilizado dentro de la biblioteca.");
+                swal('Info', 'El libro posee solo una copia, solo puede ser utilizado dentro de la biblioteca', 'info');
         },
         type: 'POST',
         dataType: "json"
@@ -230,18 +230,20 @@ function solicitarPrestamo() {
             ident: user.identificacion
         },
         error: function () { //si existe un error en la respuesta del ajax
-            window.alert("1-error");
+            swal('Error', 'Ha ocurrido un error con la solicitud del préstamo', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "C~") { //correcto
-                window.alert("se realizo el prestamo correcatamente");
+                swal('Listo!', 'Se realizo el préstamo correcatamente', 'success');
                 $("#myModalFormulario").modal("hide");
             } else {
                 if (tipoRespuesta === "E~") { //error
-                    window.alert("2-error");
+                    swal('Error', 'No se pudo realizar el préstamo', 'error');
+                    
                 } else {
-                    window.alert("3-error");
+                    swal('Error', 'No se pudo realizar el préstamo', 'error');
+                    
                 }
             }
         },
@@ -264,10 +266,10 @@ function validar() {
             data: JSON.stringify(prestamo),
             error: function () { //si existe un error en la respuesta del ajax
                 $("#myModalFormulario").modal("show");
-                window.alert("*Prestamo solicitado satisfactoriamente*");
+               swal('Listo!', 'Se realizo el préstamo correcatamente', 'success'); 
             },
             success: function (data) {
-                window.alert("Prestamo solicitado satisfactoriamente");
+                swal('Listo!', 'Se realizo el préstamo correcatamente', 'success');
             },
             type: 'POST',
             dataType: "json"
@@ -275,7 +277,7 @@ function validar() {
 
 
     } else {
-        window.alert("Por favor ingresar una cedula");
+        swal('Info', 'Por favor ingresar una cédula', 'info');
     }
 }
 

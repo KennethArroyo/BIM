@@ -24,11 +24,12 @@ function iniciar(){
               },
             error: function(status){
                     if(status.status===405){
-                        window.alert("Este usuario debe ser verificado, favor revisar su correo");
+                        
+                        swal("Info", "Este usuario debe ser verificado, favor revisar su correo", "info");
                         window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
                     }
                     else
-                        window.alert("El usuario o la contraseña son inválidos");
+                        swal("Error", "El usuario o la contaseña son incorrectos", "error");
               }                    
           }); 
       }
@@ -69,12 +70,11 @@ function enviarCorreo(){
             data:datos,
             success: 
               function(obj){
-               window.alert("Se ha enviado un código temporal a su correo electrónico \n\
-                                necesario para cambiar su contraseña");
+                  swal("Info", "Se ha enviado un código temporal a su correo electrónico necesario para cambiar su contraseña", "info");
                 window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
               },
             error: function(status){
-                        window.alert("Ha ocurrido un error al enviar el código temporal");
+                swal("Error", "Ha ocurrido un error al enviar el código temporal", "error");
               },
           }); 
       }
