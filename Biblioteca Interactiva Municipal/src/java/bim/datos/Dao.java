@@ -124,10 +124,10 @@ public class Dao {
     }
 
     public void agregarLibro(Libro p) throws Exception {
-        String sql = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID) "
-                + "values('%s','%s','%s',%d,%d,'%s','%s',%d,%d,%d,%d)";
+        String sql = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID, cuenta_autores) "
+                + "values('%s','%s','%s',%d,%d,'%s','%s',%d,%d,%d,%d, %d)";
         sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getComentario(), p.getEstado(), p.getCantidad_copias(),
-                p.getDir_portada(),p.getDir_PDF(),p.getHabilitado(), p.getFisico(), p.getDigital(), p.getAsignatura().getId());
+                p.getDir_portada(),p.getDir_PDF(),p.getHabilitado(), p.getFisico(), p.getDigital(), p.getAsignatura().getId(), p.getCuentaAutores());
         int count = db.executeUpdate(sql);
         if (count == 0) {
             throw new Exception("Error ingresando el libro!");

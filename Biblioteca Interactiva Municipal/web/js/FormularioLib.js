@@ -7,6 +7,7 @@
  var numeracion = 5;
  var autores = null;
     $(document).ready(function getAsignaturas(){
+        window.alert("hola");
             $.ajax({type: "GET", 
                   url:"GetAsigAutor",
                   success: 
@@ -158,15 +159,25 @@
       }
     }
       
-//    function RevisarAutores(){
+    function RevisarAutores(){
+        var nombre = "";
+        var autores2 = [];
+        for(var t = 1;t<numeracion;t++){
+            nombre = "autor"+t.toString();
+            window.alert("hello");
+            if($("#id='"+nombre+"'").text() !== ''){
+                autores2.push($(this).text());   
+            }
+            
+        }
 //        var autores2 = [];
-//        $( "name[value='autor']" ).each(function(index){
+//        $( "input[name='autor']" ).each(function(index){
 //            if($(this).text() !== ''){
-//                autores.push($(this).text());
+//                autores2.push($(this).text());
 //            }
 //        }));
-//        return autores;
-//    }
+        return autores2;
+    }
       
       
     function agregarCampoAutor(){

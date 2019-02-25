@@ -113,7 +113,8 @@ public class AgregarLibro extends HttpServlet {
             Libro p = new Libro();
             HttpSession s = request.getSession(true);
             String[] autores = request.getParameterValues("autor");
-            p.setCuentaAutores(autores.length + 1);
+            ArrayList<String> completos = revisarAutores(autores);
+            p.setCuentaAutores(completos.size());
             String clasificacion = request.getParameter("clasificacion");
             String titulo = request.getParameter("titulo");
             int asignatura = Integer.parseInt(request.getParameter("asignatura"));

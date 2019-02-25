@@ -190,24 +190,24 @@ function agregarLibro() {
     }
 
 }
-//$(document).ready(function(){
-//    $("#tablaLibros").DataTable();
-//    });
-
-
-$(document).ready(function getAsignaturas() {
-    $.ajax({type: "GET",
-        url: "GetAsignaturas",
-        success:
-                function (obj) {
-                    updateList(obj);
-                    $('#asignatura').reset();
-                },
-        error: function (status) {
-            swal('Error', 'No se pudieron cargar las asignaturas', 'error');
-        }
+$(document).ready(function(){
+    $("#tablaLibros").DataTable();
     });
-});
+
+
+//$(document).ready(function getAsignaturas() {
+//    $.ajax({type: "GET",
+//        url: "GetAsignaturas",
+//        success:
+//                function (obj) {
+//                    updateList(obj);
+//                    $('#asignatura').reset();
+//                },
+//        error: function (status) {
+//            swal('Error', 'No se pudieron cargar las asignaturas', 'error');
+//        }
+//    });
+//});
 
 function updateList(list) {
     for (var i = 0; i <= list.length; i++) {
