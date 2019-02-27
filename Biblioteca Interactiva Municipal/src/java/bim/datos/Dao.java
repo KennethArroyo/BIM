@@ -124,14 +124,41 @@ public class Dao {
     }
 
     public void agregarLibro(Libro p) throws Exception {
-        String sql = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID, cuenta_autores) "
-                + "values('%s','%s','%s',%d,%d,'%s','%s',%d,%d,%d,%d, %d)";
-        sql = String.format(sql, p.getClasificacion(), p.getTitulo(), p.getComentario(), p.getEstado(), p.getCantidad_copias(),
-                p.getDir_portada(),p.getDir_PDF(),p.getHabilitado(), p.getFisico(), p.getDigital(), p.getAsignatura().getId(), p.getCuentaAutores());
-        int count = db.executeUpdate(sql);
-        if (count == 0) {
-            throw new Exception("Error ingresando el libro!");
+        PreparedStatement preparedStatement = null;
+         
+        try{
+        String insertTableSQL = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,"
+                 + "dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID, cuenta_autores)"
+                 + "values"
+		+ "(?,?,?,?,?,?,?,?,?,?,?,?)";
+        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement.setString(1, p.getClasificacion());
+        preparedStatement.setString(2, p.getTitulo());
+        preparedStatement.setString(3, p.getComentario());
+        preparedStatement.setInt(4, p.getEstado());
+        preparedStatement.setInt(5, p.getCantidad_copias());
+        preparedStatement.setString(6, p.getDir_portada());
+        preparedStatement.setString(7, p.getDir_PDF());
+        preparedStatement.setInt(8, p.getHabilitado());
+        preparedStatement.setInt(9, p.getFisico());
+        preparedStatement.setInt(10, p.getDigital());
+        preparedStatement.setInt(11, p.getAsignatura().getId());
+        preparedStatement.setInt(12, p.getCuentaAutores());
+        
+        int count = preparedStatement.executeUpdate();
+        preparedStatement.close();
+        
+            if (count == 0) {
+                throw new Exception("Error ingresando el libro!");
+            }
         }
+        catch(SQLException e){
+            int codigoSQL = e.getErrorCode();
+            if(codigoSQL == 2627){
+                throw new Exception("unique");
+            }
+        }
+        
     }
     
     public void agregarPrestamo(Prestamo p)throws Exception{

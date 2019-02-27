@@ -193,8 +193,14 @@ public class AgregarLibro extends HttpServlet {
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         } catch (Exception e) {
             String msg = e.getMessage();
-            request.setAttribute("error", "Ocurrió un error");
-            request.getRequestDispatcher("Error.jsp").forward(request, response);
+            if(msg.matches("unique")){
+                request.setAttribute("error", "La clasificación del libro ya se encuentra registrada, favor revisar el libro");
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            else{
+                request.setAttribute("error", "Ocurrió un error");
+                request.getRequestDispatcher("Error.jsp").forward(request, response);
+            }
         }
     }
 
