@@ -6,8 +6,72 @@
 
 
 $(document).ready(function getAutores() {
-    buscar();
+    inicializar();
 });
+
+
+function inicializar(){
+        var t = $('#mydata').DataTable({
+//                dom: 'Bfrtip',
+//        "buttons": [
+//            {
+//                text: 'Agregar Asignatura',
+//                action: function ( e, dt, node, config ) {
+//                    $("#myModalAsignatura").modal();
+//                }
+//            }
+//        ],  
+        "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ autores",
+        "sZeroRecords":   "No se encontraron autores",
+        "sEmptyTable":    "Ninguna autor disponible en esta tabla",
+        "sInfo":          "Mostrando _END_ autor(s) de un total de _TOTAL_ autor(s)",
+        "sInfoEmpty":     "No hay autores disponibles",
+        "sInfoFiltered":  "",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+}); 
+    buscar();
+    
+    function buscar() {
+    $.ajax({type: "GET",
+        url: "BuscarAutores",
+        success:
+                function (obj) {
+                    dibujarTabla(obj);
+                },
+        error: function (status) {
+            swal('Error', 'Ha ocurrido un error con la lista de autores', 'error');
+        }
+    });
+}
+      
+function dibujarTabla(dataJson) {
+    t.clear().draw();
+    for (var i = 0; i < dataJson.length; i++) {
+        dibujarFila(dataJson[i]);
+    }
+}
+
+function dibujarFila(rowData) {
+    t.row.add([rowData.nombre,'<button type="button" class="btn btn-success" onclick="levantarModal('+ rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">'+ '<img src="imagenes/lead_pencil.png"/>' + '</button>' ,'<button type="button" class="btn btn-danger" onclick="eliminarAutor('+rowData.id+');">'+ '<img src="imagenes/delete.png"/>' + '</button>']).draw();
+}
+}
 
 //buscara los ultimos 5 autores agregados
 function buscar() {
@@ -40,45 +104,14 @@ function agregarAutor() {
     });
 }
 
-function dibujarTabla(dataJson) {
-    //limpia la información que tiene la tabla
-    $("#tablaAutores").html("");
-
-    //muestra el enzabezado de la tabla
-    var head = $("<thead class='thead-dark'/>");
-    var row = $("<tr />");
-    var row2 = $("<tr />");
-    head.append(row2);
-    head.append(row);
-    $("#tablaAutores").append(head);
-    row2.append($('<th colspan="3">Últimos 5 autores agregados<b></b></th>'));
-    row.append($("<th>NOMBRE<b></b></th>"));
-    row.append($("<th>EDITAR<b></b></th>"));
-    row.append($("<th>ELIMINAR<b></b></th>"));
-
-    //carga la tabla con el json devuelto
-    for (var i = 0; i < dataJson.length; i++) {
-        dibujarFila(dataJson[i]);
-    }
-}
-
-function dibujarFila(rowData) {
-    //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
-    //de un libro
-
-    var row = $('<tr id=' + rowData.id + '/>');
-    $("#tablaAutores").append(row);
-    row.append($('<td>' + rowData.nombre + '</td>'));
-    row.append($('<td><button type="button" class="btn btn-info" onclick="levantarModal(' + rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAutor(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
-    //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
-}
 
 function levantarModal(id, nombre) {
     $("#myModalAutor").modal();
     $("#nombre").val(nombre);
     $("#AutorId").val(id);
 }
+
+
 
 function modificarAutor() {
     var asig_id = $("#AutorId").val();
@@ -131,25 +164,6 @@ function eliminarAutor(id) {
                     swal("Cancelado");
                 }
             });
-}
-
-function eliminarFila(datos) {
-    var row = document.getElementById(datos.id);
-    row.parentNode.removeChild(row);
-}
-
-function agregarFila(datos) {
-    var tr = $('<tr id=' + datos.id + '/>');
-    tr.html("<td>" + datos.nombre + "</td>" +
-            '<td><button type="button" class="btn btn-info" onclick="levantarModal(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button></td>' +
-            '<td><button type="button" class="btn btn-danger" onclick="eliminarAutor(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
-    $("#tablaAutores").append(tr);
-}
-
-function actualizarTabla(datos) {
-    eliminarFila(datos);
-    agregarFila(datos);
-    $("#myModalAsignatura").modal("hide");
 }
 
 function cancelar() {

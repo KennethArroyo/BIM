@@ -20,7 +20,7 @@
         <%@ include file="header.jsp" %>
         
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
-            
+            <!--
             <div class="container col-md-4" style="align-self: center">
                 <h3  style="align-content: center;">Agregar Autores</h3>
                 <br>
@@ -41,6 +41,40 @@
                     <table border="2" class="table table-striped" id="tablaAutores">
                     </table>
                 </div>
+                
+                !-->
+                
+                            <div class="container" style="margin-top:50px; ">
+                
+    
+                
+                               
+                <h2  style="align-content: center;">Buscar Autores</h2><br><br>
+                <div style="align-content:center;" >
+                <table class="table table-striped table-bordered table-hover" id="mydata" style=" margin-left: auto;margin-right: auto;">
+
+                <thead>
+                 <tr>
+                      <th class="th-sm">Nombre
+                      </th>
+                      <th class="th-sm">Editar
+                      </th>
+                      <th class="th-sm">Eliminar
+                      </th>
+                    </tr>
+                </thead>
+
+                <tfoot>
+                </tfoot>
+
+                <tbody>
+                </tbody>
+                </table>
+                </div>      
+                </div>
+                
+                
+                
             </div>
         </div>
         <div class="modal fade" id="myModalAutor" role="dialog">

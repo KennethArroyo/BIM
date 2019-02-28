@@ -7,7 +7,6 @@
  var numeracion = 5;
  var autores = null;
     $(document).ready(function getAsignaturas(){
-        window.alert("hola");
             $.ajax({type: "GET", 
                   url:"GetAsigAutor",
                   success: 

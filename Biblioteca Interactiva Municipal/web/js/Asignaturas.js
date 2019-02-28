@@ -13,7 +13,7 @@ $(document).ready(function() {
 function inicializar(){
         var t = $('#mydata').DataTable({
 //                dom: 'Bfrtip',
-//        buttons: [
+//        "buttons": [
 //            {
 //                text: 'Agregar Asignatura',
 //                action: function ( e, dt, node, config ) {

@@ -158,7 +158,7 @@ public class Model {
     return dao.buscarPrestamosUsuario(identificacion);
     }
 
-    public String buscarDireccionPDF(int ident) {
+    public String buscarDireccionPDF(int ident) throws SQLException {
         return dao.buscarDireccionPDF(ident);
     }
 }
