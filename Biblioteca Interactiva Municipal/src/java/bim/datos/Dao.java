@@ -618,6 +618,17 @@ public class Dao {
     return prestamos;
         
     }
+
+    public String buscarDireccionPDF(int ident) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String insertTableSQL = "select dir_PDF from Libro where libro_id = ?";
+        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement.setInt(1, ident);
+        ResultSet rs = preparedStatement.executeQuery();
+        rs.next();
+        String dir = rs.getString("dir_PDF");
+        return dir;
+    }
     
     
 }

@@ -157,4 +157,8 @@ public class Model {
     public ArrayList<Prestamo> buscarPrestamosUsuario(String identificacion)throws Exception{
     return dao.buscarPrestamosUsuario(identificacion);
     }
+
+    public String buscarDireccionPDF(int ident) {
+        return dao.buscarDireccionPDF(ident);
+    }
 }

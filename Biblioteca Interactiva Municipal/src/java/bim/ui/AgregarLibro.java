@@ -194,7 +194,7 @@ public class AgregarLibro extends HttpServlet {
         } catch (Exception e) {
             String msg = e.getMessage();
             if(msg.matches("unique")){
-                request.setAttribute("error", "La clasificación del libro ya se encuentra registrada, favor revisar el libro");
+                request.setAttribute("error", "La clasificación del libro ya se encuentra registrada, no pueden existir dos iguales");
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
             else{
