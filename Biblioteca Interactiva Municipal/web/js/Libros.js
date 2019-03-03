@@ -148,7 +148,6 @@ function dibujarFila(rowData) {
 }
 
 function ejecutarDescarga(id){
-    $("#descargaID").val(id);
     var input = $("<input id='descargaID' name='descargaID'>").attr("type", "hidden").val(id);
     $('#descarga').append($(input));
     $("#descarga").submit();
