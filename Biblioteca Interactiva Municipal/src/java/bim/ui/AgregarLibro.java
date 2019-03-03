@@ -199,7 +199,7 @@ public class AgregarLibro extends HttpServlet {
             }
             else{
                 request.setAttribute("error", "Ocurrió un error");
-                request.getRequestDispatcher("Error.jsp").forward(request, response);
+                request.getRequestDispatcher("error.jsp").forward(request, response);
             }
         }
     }

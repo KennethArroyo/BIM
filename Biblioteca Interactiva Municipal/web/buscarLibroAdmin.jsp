@@ -20,6 +20,9 @@
 
     <body>
     <%@include file="header.jsp"%>
+        <form action="Descarga" id="descarga" method="GET" enctype="multipart/form-data">
+
+        </form>
                     
         <div class="container" style="margin-top:150px; ">
         <h2  style="align-content: center;">Buscar Libros</h2><br><br>
@@ -42,6 +45,8 @@
               <th class="th-sm">Asignatura
               </th>
               <th class="th-sm"> Editar
+              </th>
+              <th class="th-sm"> Descargar
               </th>
             </tr>
         </thead>
@@ -141,6 +146,11 @@
                 </div>
             </div>
         </div>    
+        
+        
+        <form role="form" action="Descarga" id="descarga" method="POST">
+        </form>   
+        
     
         </body>
 

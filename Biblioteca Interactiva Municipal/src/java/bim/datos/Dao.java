@@ -619,11 +619,11 @@ public class Dao {
         
     }
 
-    public String buscarDireccionPDF(int ident) throws SQLException {
+    public String buscarDireccionPDF(String clas) throws SQLException {
         PreparedStatement preparedStatement = null;
-        String insertTableSQL = "select dir_PDF from Libro where libro_id = ?";
+        String insertTableSQL = "select dir_PDF from Libro where clasificacion = ?";
         preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-        preparedStatement.setInt(1, ident);
+        preparedStatement.setString(1, clas);
         ResultSet rs = preparedStatement.executeQuery();
         rs.next();
         String dir = rs.getString("dir_PDF");

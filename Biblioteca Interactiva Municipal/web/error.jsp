@@ -27,11 +27,16 @@
                                         <%= name%>
                                     </span>
                                 </div>
-                                    <a class="btn btn-primary" href="agregarLibro" role="button" style="margin-left: 35%;">Agreagr Libro</a>
+                                    <a class="btn btn-primary" onclick="volver()" role="button" style="margin-left: 35%;">Volver</a>
                             </div>
             </div>
         </div>
     </body>
+    <script>
+function volver() {
+  window.history.back();
+}
+</script>
     
     
     

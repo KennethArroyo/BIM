@@ -69,8 +69,12 @@ function dibujarFila(rowData) {
     if(rowData.estado===1){est="Bueno";}
     else if(rowData.estado===2){est="Regular";}
     else if(rowData.estado===3){est="Malo";}
-    t.row.add([rowData.clasificacion, autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
-
+    if(rowData.digital === 1){
+        t.row.add([rowData.clasificacion, autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>', '<button id="download" onclick="ejecutarDescarga(' + rowData.id + ');" class="btn btn-info">' + "Descargar" + '</button>']).draw();
+    }
+    else{
+        t.row.add([rowData.clasificacion, autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>',"no disponible"]).draw();
+    }
 }
 }
 
@@ -134,9 +138,20 @@ function dibujarFila(rowData) {
     if(rowData.estado===1){est="Bueno";}
     else if(rowData.estado===2){est="Regular";}
     else if(rowData.estado===3){est="Malo";}
-    t.row.add([rowData.clasificacion, autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
-
+    if(rowData.digital === 1){
+        t.row.add([rowData.clasificacion, autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>','<button id="download" type="button" onclick="ejecutarDescarga(' + rowData.id + ');" class="btn btn-info">' + "Descargar" + '</button>']).draw();
+    }
+    else{
+        t.row.add([rowData.clasificacion, autores, rowData.titulo, est, rowData.comentario, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>',"no disponible"]).draw();
+    }
 }
+}
+
+function ejecutarDescarga(id){
+    $("#descargaID").val(id);
+    var input = $("<input id='descargaID' name='descargaID'>").attr("type", "hidden").val(id);
+    $('#descarga').append($(input));
+    $("#descarga").submit();
 }
 
 function autoresToString(row){
