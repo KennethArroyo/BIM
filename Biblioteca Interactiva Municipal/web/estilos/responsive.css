@@ -27,6 +27,11 @@
 	  .footer_main_container{
         margin-top: 200px;
     }
+                .company_logo {
+            margin-top: 100px;
+            height:100px; 
+            width:100px;
+        }
 }
 
 /************
@@ -38,6 +43,11 @@
   .footer_main_container{
         margin-top: 200px;
     }
+                .company_logo {
+            margin-top: 100px;
+            height:100px; 
+            width:100px;
+        }
 }
 
 /************
@@ -49,6 +59,11 @@
   .footer_main_container{
         margin-top: 200px;
     }
+                .company_logo {
+            margin-top: 100px;
+            height:100px; 
+            width:100px;
+        }
 }
 
 /************
@@ -60,6 +75,11 @@
     .footer_main_container{
         margin-top: 200px;
     }
+            .company_logo {
+            margin-top: 100px;
+            height:100px; 
+            width:100px;
+        }
 }
 
 /************
@@ -81,6 +101,11 @@
 	{
 		width: 80%;
 	}
+                .company_logo {
+            margin-top: 80px;
+            height:80px; 
+            width:80px;
+        }
 }
 
 /************
@@ -89,6 +114,11 @@
 
 @media only screen and (max-width: 1024px)
 {
+            .company_logo {
+            margin-top: 100px;
+            height:100px; 
+            width:100px;
+        }
 	
 }
 
@@ -146,6 +176,11 @@
 		margin-top: 20px;
 		margin-bottom: 40px;
 	}
+        .company_logo {
+            margin-top: 80px;
+            height:80px; 
+            width:80px;
+        }
 }
 
 /************
@@ -181,7 +216,12 @@
 	{
 		margin-top: 5px;
 		margin-bottom: 30px;
-	}
+        }
+                .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 
 }
 
@@ -214,6 +254,29 @@
 		margin-top: 5px;
 		margin-bottom: 30px;
 	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
+        
+        	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
 }
 
 /************
@@ -244,6 +307,11 @@
 		margin-top: 5px;
 		margin-bottom: 30px;
 	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
         
 }
 
@@ -288,6 +356,11 @@
 		margin-top: 5px;
 		margin-bottom: 30px;
 	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -333,6 +406,11 @@
 	{
 		font-size: 13px;
 	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -374,6 +452,11 @@
 		margin-top: 5px;
 		margin-bottom: 30px;
 	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -419,6 +502,11 @@
 		margin-top: 5px;
 		margin-bottom: 30px;
 	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -516,6 +604,11 @@
 		margin-top: 5px;
 		margin-bottom: 30px;
 	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -555,5 +648,10 @@
                 margin-left: -5px;
 	}
 
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 	
 }

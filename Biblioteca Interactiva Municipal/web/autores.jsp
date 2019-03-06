@@ -20,6 +20,21 @@
         <%@ include file="header.jsp" %>
         
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
+            
+                    <div class="input-bar" style="width: 1000px; display: block;">
+        <div class="input-bar-item">
+          <form action="AgregarAutor" method="POST" id="autorForm" class="log">
+                <label><h2>Agregar Autor:</h2></label>        
+
+            <div class="form-group" style="display: flex; height: 35px; width: 500px;">
+                <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')" oninput="this.setCustomValidity('')" >
+                <span class="input-group-btn">
+                  <button type="submit" onclick="agregarAutor()" class="btn btn-success" id="botonAgregar">Agregar</button>
+                </span>
+            </div>
+          </form>
+        </div>
+      </div>
             <!--
             <div class="container col-md-4" style="align-self: center">
                 <h3  style="align-content: center;">Agregar Autores</h3>
