@@ -27,7 +27,7 @@
 			</div>
         
                         <div class="footer-center">
-                            <a href="principal.jsp"><img style="height: 80px; width: 80px;" src="imagenes/EscudoMunicipal.png"></a>
+                           <!-- <a href="principal.jsp"><img style="height: 80px; width: 80px;" src="imagenes/EscudoMunicipal.png"></a> !-->
                         </div>
 
 			<div class="footer-right">

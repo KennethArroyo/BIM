@@ -87,7 +87,7 @@ function buscar() {
     });
 }
 
-function agregarAutor() {
+function agreAutor() {
     var aut_nom = $("#autor").val();
     var datos = {nombre: aut_nom};
     $.ajax({type: "POST",
@@ -97,9 +97,12 @@ function agregarAutor() {
         success:
                 function (status) {
                     swal("Listo!", "El autor ha sido agregado", "success");
+                    $("#mydata").DataTable().destroy();
+                    inicializar();
                 },
         error: function (status) {
-            swal("Error!", "Es posble que el autor ya este agregado", "error");
+            //swal("Error!", "Es posible que el autor ya este agregado", "error");
+            window.location.href = "http://localhost:8083/Biblioteca_Interactiva_Municipal/autores.jsp";
         }
     });
 }
@@ -152,8 +155,9 @@ function eliminarAutor(id) {
                         data: datos,
                         success:
                                 function (status) {
-                                    eliminarFila(datos);
                                     swal("Listo!", "El autor ha sido eliminado", "success");
+                                    $("#mydata").DataTable().destroy();
+                                    inicializar();
                                 },
                         error: function (status) {
                             swal("Info", "Esta autor no se puede eliminar debido a que esta ligado a algunos libros", "info");

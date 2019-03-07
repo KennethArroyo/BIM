@@ -824,7 +824,9 @@ display: block;
 	transform: translateY(-50%);
     padding-right: 20px;
 	left: 20px;
-    border-right: 0.5px solid #ffffff;
+    border-right: 0.1px solid #ffffff;
+    height: 90px;
+    margin-top: 20px;
 
 }
 
@@ -832,6 +834,7 @@ display: block;
     margin-left: -15px;
     height:70px; 
     width:70px;
+    margin-top: 10px;
 }
 
 /***********
@@ -1007,7 +1010,10 @@ display: block;
 
 .footer-distributed
 {
-	background-color: #1B1A1A;
+    
+        background-color: #000000;
+        background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+	//background-color: #1B1A1A;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
