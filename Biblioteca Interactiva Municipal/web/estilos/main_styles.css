@@ -844,7 +844,8 @@ display: block;
 .main_slider
 {
 	width: 100%;
-	height: 1000px;
+	display: block;
+        overflow: auto;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
