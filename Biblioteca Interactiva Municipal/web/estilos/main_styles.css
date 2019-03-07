@@ -1163,87 +1163,14 @@ display: block;
 	margin-bottom: 5px;
 }
 
-
-//*****************************************
-/*
-.footer{
-    width: 100%;
-    height: 150px;
-    position: absolute;
-    bottom: 0px;
-	background-image: linear-gradient(#061F72, black);
-	box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
-        
+#carouselActividades {
+    margin-top: 70px;
 }
 
-.footer_nav_container
-{	
-    height: 50px;
-}
-.cr
-{
-	margin-right: 48px;
-}
-.footer_nav li
-{
-	display: inline-block;
-	margin-right: 45px;
-        margin-top: 180px;
-}
-.footer_nav li:last-child
-{
-	margin-right: 0px;
-}
-.footer_nav li a, .cr
-{
-	font-size: 14px;
-	color: #51545f;
-	line-height: 30px;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-ms-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
-	transition: all 300ms ease;
-}
-.footer_nav li a:hover, .cr a, .cr i
-{
-	color: #fe4c50;
-}
-.footer_social
-{   
-        margin-left: 50px;
-	height: 130px;
-}
-.footer_social ul li
-{
-	display: inline-block;
-	margin-right: 10px;
-}
-.footer_social ul li:last-child
-{
-	margin-right: 0px;
-}
-.footer_social ul li a
-{
-	color: #51545f;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-ms-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
-	transition: all 300ms ease;
-	padding: 10px;
-}
-.footer_social ul li:last-child a
-{
-	padding-right: 0px;
-}
-.footer_social ul li a:hover
-{
-	color: #fe4c50;
-}
-*/
-
-/*PROPIOS*/
+ .carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
 
 .ingresar-libro
 { 
@@ -1499,3 +1426,4 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 *:focus {
     outline: none;
 } 
+

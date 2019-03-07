@@ -474,4 +474,8 @@
            height: 50px;
            width: 70px;
         }
+        
+        #carouselActividades {
+            margin-top: 150px;
+        }
 }
