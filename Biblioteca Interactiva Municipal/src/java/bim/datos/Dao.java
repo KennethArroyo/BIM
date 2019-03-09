@@ -1,5 +1,6 @@
 package bim.datos;
 
+import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.Libro;
@@ -26,6 +27,14 @@ public class Dao {
         Asignatura p = new Asignatura();
         p.setId(rs.getInt("asignatura_id"));
         p.setNombre(rs.getString("nombre"));
+        return p;
+    }
+    
+    private Actividad actividad(ResultSet rs) throws Exception {
+        Actividad p = new Actividad();
+        p.setId(rs.getInt("id"));
+        p.setNombre(rs.getString("nombre"));
+        p.setDir(rs.getString("direccion"));
         return p;
     }
     
@@ -628,6 +637,34 @@ public class Dao {
         rs.next();
         String dir = rs.getString("dir_PDF");
         return dir;
+    }
+
+    public void agregarActividad(String nombre, String caminoImagen) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        try{
+        String insertTableSQL = "insert into Actividad"
+		+ "(direccion, nombre) VALUES"
+		+ "(?,?)";
+        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement.setString(1, nombre);
+        preparedStatement.setString(2, caminoImagen);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            preparedStatement.close();
+            throw ex;
+        }
+    }
+    
+    public Actividad actividadesBuscarTodas() throws SQLException, Exception {
+        PreparedStatement preparedStatement = null;
+        String insertTableSQL = "select * from Actividad";
+        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        ResultSet rs = preparedStatement.executeQuery();
+        rs.next();
+        Actividad act = actividad(rs);
+        return act;
     }
     
     

@@ -74,7 +74,12 @@
                                             </ul>
 
                                         </li>
-                                        <li><a href="">Actividades</a></li>
+                                        <li class="dropdown"><a href="">Actividades<i class="fa fa-angle-down"></i></a>
+                                            <ul class="dropdown_selection">
+                                                <li><a href="mantenimientoActividades.jsp"></a>Mantenimiento de actividades</li>
+                                                <li><a href="actividades.jsp"></a>Actividades</li>
+                                            </ul>
+                                        </li>
                                         <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
@@ -162,6 +167,13 @@
                                 
                             </ul>
                         </li>
+                        <li class="dmenu_item has-children"><a href="">Actividades<i class="fa fa-angle-down"></i></a>
+                            <ul class="menu_selection">
+                                <li><a href="mantenimientoActividades.jsp"><i aria-hidden="true"></i></a>Mantenimiento de actividades</li>
+                                <li><a href="actividades.jsp"><i aria-hidden="true"></i></a>Actividades</li>
+                            </ul>
+                        </li>
+                        
                         <li class="menu_item has-children"><a href="#">Usuarios <i class="fa fa-angle-down"></i></a>
                             <ul class="menu_selection">
                                 <li><a href="buscarUsuarios.jsp"><i aria-hidden="true"></i>Buscar Usuarios</a></li>
