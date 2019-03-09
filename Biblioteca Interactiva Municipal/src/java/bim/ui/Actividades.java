@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,8 @@ import javax.servlet.http.Part;
  *
  * @author Sergio
  */
-@WebServlet(name = "Actividad", urlPatterns = {"/Actividad", "/EliminarAct", "/BuscarAct"})
+@WebServlet(name = "Actividades", urlPatterns = {"/Actividades", "/EliminarAct", "/BuscarAct"})
+@MultipartConfig
 public class Actividades extends HttpServlet {
 
     /**
@@ -46,7 +48,7 @@ public class Actividades extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         switch (request.getServletPath()) {
-            case "/Actividad":
+            case "/Actividades":
                 this.agregar(request, response);
                 break;
             case "/EliminarAct":

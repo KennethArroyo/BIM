@@ -11,7 +11,7 @@ $(document).ready(function getActividades(){
 
 function buscar(){
     $.ajax({type: "GET", 
-                  url:"BuscarActividad",
+                  url:"BuscarAct",
                   success: 
                     function(obj){
                       dibujarTabla(obj);
