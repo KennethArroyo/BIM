@@ -24,9 +24,7 @@
 
 @media only screen and (max-width: 1600px)
 {
-	  .footer_main_container{
-        margin-top: 200px;
-    }
+
 }
 
 /************
@@ -35,9 +33,6 @@
 
 @media only screen and (max-width: 1540px)
 {
-  .footer_main_container{
-        margin-top: 200px;
-    }
 }
 
 /************
@@ -46,9 +41,8 @@
 
 @media only screen and (max-width: 1380px)
 {
-  .footer_main_container{
-        margin-top: 200px;
-    }
+
+      
 }
 
 /************
@@ -57,8 +51,11 @@
 
 @media only screen and (max-width: 1280px)
 {
-    .footer_main_container{
-        margin-top: 200px;
+    .company_logo{
+        margin-left: -15px;
+        height:70px; 
+        width:70px;
+        margin-top: 10px;
     }
 }
 
@@ -81,6 +78,7 @@
 	{
 		width: 80%;
 	}
+        
 }
 
 /************
@@ -89,6 +87,11 @@
 
 @media only screen and (max-width: 1024px)
 {
+        .company_logo {
+            margin-top: 100px;
+            height:100px; 
+            width:100px;
+        }
 	
 }
 
@@ -127,25 +130,12 @@
 		width: 100%;
 		padding-right: 15px;
 	}
-        .footer_nav_container
-	{
-		margin-top: 700px;
-                heigth: 50px;
-	}
-	.cr
-	{
-		margin-top: -700px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-                width: 100%;
-	}
-	.footer_social
-	{
-		margin-top: 20px;
-		margin-bottom: 40px;
-	}
+
+        .company_logo {
+            margin-top: 80px;
+            height:80px; 
+            width:80px;
+        }
 }
 
 /************
@@ -159,29 +149,11 @@
             margin-left: 450px;
 	}
         
-        .footer_social
-        {
-            margin-left: -5px;
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
         }
-        
-        .footer_nav_container
-	{
-		margin-top: 650px;
-                heigth: 50px;
-	}
-	.cr
-	{
-		margin-top: -600px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-	}
-	.footer_social
-	{
-		margin-top: 5px;
-		margin-bottom: 30px;
-	}
 
 }
 
@@ -195,25 +167,36 @@
 	{
 		margin-left: 400px;
 	}
+
+        .company_logo {
+            margin-top: 0px;
+            height:70px; 
+            width:70px;
+        }
+	
+        .logo_container {
+           margin-top: 50px;
+           height: 80px;
+           width: 70px;
+        }
         
-                .footer_nav_container
-	{
-		margin-top: 675px;
-                heigth: 50px;
+        .footer-distributed{
+		font: bold 14px sans-serif;
 	}
-	.cr
-	{
-		margin-top: -600px;
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
 	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
 	}
-	.footer_social
-	{
-		margin-top: 5px;
-		margin-bottom: 30px;
-	}
+
 }
 
 /************
@@ -231,19 +214,16 @@
 		margin-top: 700px;
                 heigth: 50px;
 	}
-	.cr
-	{
-		margin-top: -600px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-	}
-	.footer_social
-	{
-		margin-top: 5px;
-		margin-bottom: 30px;
-	}
+
+        .company_logo {
+            margin-top: 15px;
+            height:60px; 
+            width:60px;
+        }
+        
+        .logo_container {
+            margin-top: 50px;
+        }
         
 }
 
@@ -275,19 +255,12 @@
 		margin-top: 650px;
                 heigth: 50px;
 	}
-	.cr
-	{
-		margin-top: -600px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-	}
-	.footer_social
-	{
-		margin-top: 5px;
-		margin-bottom: 30px;
-	}
+
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -305,34 +278,12 @@
 	{
 		margin-left: 220px;
 	}
-        .footer_nav_container
-	{
-		margin-top: 650px;
-                heigth: 50px;
-	}
-	.cr
-	{
-		margin-top: -600px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-	}
-	.footer_social
-	{
-		margin-top: 5px;
-		margin-bottom: 30px;
-	}margin-bottom: 20px;
-	}
-	.footer_nav li
-	{
-		display: block;
-		margin-right: 0px;
-	}
-	.footer_nav li a
-	{
-		font-size: 13px;
-	}
+
+        .company_logo {
+            margin-top: 15px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -346,34 +297,11 @@
 		margin-left: 150px;
 	}
         
-	.footer_nav li
-	{
-		display: block;
-		margin-right: 0px;
-	}
-	.footer_nav li a
-	{
-		font-size: 13px;
-	}
-        
-        .footer_nav_container
-	{
-		margin-top: 650px;
-                heigth: 50px;
-	}
-	.cr
-	{
-		margin-top: -600px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-	}
-	.footer_social
-	{
-		margin-top: 5px;
-		margin-bottom: 30px;
-	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -419,6 +347,11 @@
 		margin-top: 5px;
 		margin-bottom: 30px;
 	}
+        .company_logo {
+            margin-top: 60px;
+            height:60px; 
+            width:60px;
+        }
 }
 
 /************
@@ -498,24 +431,18 @@
 	{
 		height: calc((100vw - 30px) / 2.6);
 	}
-	.footer_nav_container
-	{
-		margin-top: 850px;
-                heigth: 50px;
-	}
-	.cr
-	{
-		margin-top: -800px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-	}
-	.footer_social
-	{
-		margin-top: 5px;
-		margin-bottom: 30px;
-	}
+		.company_logo {
+            margin-top: 0px;
+            height:60px; 
+            width:60px;
+            margin-left: 1px;
+        }
+	
+        .logo_container {
+           margin-top: 30px;
+           height: 50px;
+           width: 70px;
+        }
 }
 
 /************
@@ -534,26 +461,21 @@
             height: 600px;
             margin-left: -8px;
         }
-        
-        .footer_nav_container
-	{
-                height: 450px;
-		margin-top: 200px;
-	}
-	.cr
-	{
-		margin-top: -150px;
-	}
-	.footer_nav
-	{
-		margin-top: 350px;
-                height: 50px;
-	}
-	.footer_social
-	{
-		margin-top: 170px;
-                margin-left: -5px;
-	}
-
+       
+        .company_logo {
+            margin-top: 0px;
+            height:60px; 
+            width:60px;
+            margin-left: 1px;
+        }
 	
+        .logo_container {
+           margin-top: 30px;
+           height: 50px;
+           width: 70px;
+        }
+        
+        #carouselActividades {
+            margin-top: 150px;
+        }
 }

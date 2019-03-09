@@ -113,11 +113,12 @@ public class Autores extends HttpServlet {
             BufferedReader reader = request.getReader();
             HttpSession s = request.getSession(true);
             Gson gson = new Gson();
-            Asignatura asig = new Asignatura();
             response.setContentType("application/json; charset=UTF-8");
             String autor = request.getParameter("nombre");
             Model.instance().agregarAutor(autor);
             response.setStatus(200); // ok with content
+            //request.getRequestDispatcher("autores.jsp").forward(request, response);
+
         }
         catch(Exception e){
             String ms = e.getMessage();
@@ -149,7 +150,7 @@ public class Autores extends HttpServlet {
             PrintWriter out = response.getWriter();
             HttpSession s = request.getSession(true);
             Gson gson = new Gson();
-            q = Model.instance().buscarUltimosAutores();
+            q = Model.instance().listarAutores();
             response.setContentType("application/json; charset=UTF-8");
             out.write(gson.toJson(q));
             response.setStatus(200); // ok with content

@@ -20,31 +20,23 @@
         <%@ include file="header.jsp" %>
         
         <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
-            <!--
-            <div class="container col-md-4" style="align-self: center">
-                <h3  style="align-content: center;">Agregar Autores</h3>
-                <br>
-                <form onsubmit="return true" id="autorForm" class="log">
-                    <div class="form-group" col-sm-3 col-md-4>
-                        <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
-    oninput="this.setCustomValidity('')">
-                    </div>
-                <div id="mi_div">    
-                <div class="form-group">
-                <button type="submit" onclick="agregarAutor()" class="btn btn-success" id="botonAgregar">Agregar</button>
-                 <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
-                </div>
-                </div>
-                </form>
-                <br>
-                <div class="table-responsive">
-                    <table border="2" class="table table-striped" id="tablaAutores">
-                    </table>
-                </div>
+            
+        <div class="input-bar" style="width: 1000px; display: block;">
+        <div class="input-bar-item">
+          <form action="AgregarAutor" method="POST" id="autorForm" class="log">
+                <label><h2>Agregar Autor:</h2></label>        
+
+            <div class="form-group" style="display: flex; height: 35px; width: 500px;">
+                <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')" oninput="this.setCustomValidity('')" >
+                <span class="input-group-btn">
+                  <button type="submit" onclick="agreAutor()" class="btn btn-success" id="botonAgregar">Agregar</button>
+                </span>
+            </div>
+          </form>
+        </div>
+        </div>
                 
-                !-->
-                
-                            <div class="container" style="margin-top:50px; ">
+            <div class="container" style="margin-top:50px; ">
                 
     
                 

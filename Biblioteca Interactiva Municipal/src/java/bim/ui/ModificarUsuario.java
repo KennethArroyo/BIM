@@ -86,7 +86,7 @@ protected void modificarUsuario(HttpServletRequest request, HttpServletResponse 
         u.setRef_trab_est(ref_trab_est);
         
         Model.instance().modificarUsuario(u);
-        
+       
     
     }catch (Exception e) {
             String msg = e.getMessage();

@@ -39,6 +39,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="estilos/DataTables/datatables.min.css"/>
+        	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="estilos/DataTables/datatables.min.js"></script>
 
     </head>

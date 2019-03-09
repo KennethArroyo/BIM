@@ -43,7 +43,7 @@ function inicializar() {
             url: 'BuscarPrestamos',
             data: {
                 accion: "BuscarPrestamosUser",
-               identificacion: user.identificacion
+                identificacion: user.identificacion
             },
             error: function () {
                 swal("Error", "No se pudieron cargar los préstamos", "error");
@@ -66,13 +66,13 @@ function inicializar() {
         var est;
         if (rowData.estado_ID === 0) {
             est = "solicitado";
-        } else
-        if (rowData.estado_ID === 1) {
+        } 
+        else if (rowData.estado_ID === 1) {
             est = "prestado";
-        } else
-        if (rowData.estado_ID === 2) {
+        }
+        else if (rowData.estado_ID === 2) {
             est = "devuelto";
         }
-        t.row.add([rowData.fecha_inicio, rowData.fecha_final, rowData.usuario_ID, rowData.libro_ID, est]).draw();
+        t.row.add([rowData.fecha_inicio, rowData.fecha_final, est]).draw();
     }
 }

@@ -62,6 +62,7 @@
                                         </li>
                                         <li class="dropdown"><a href="">Préstamos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
+                                                <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
                                                 <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
                                                 <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
                                             </ul>
@@ -77,7 +78,6 @@
                                         <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
-                                                <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="javascript:cerrar();">Cerrar sesion</a></li>
@@ -146,7 +146,7 @@
                     <a class="menu_name" href="principal.jsp">Biblioteca Interactiva Municipal</a><br>
                     <ul class="menu_top_nav">
                         <li class="menu_item"><a href="principal.jsp" >Inicio</a></li>
-                        <li class="menu_item has-children"><a href=""> Libros <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
+                        <li class="menu_item has-children"><a href="#"> Libros <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                             <ul class="menu_selection"> 
                                 <li><a href="agregarLibro.jsp"><i aria-hidden="true"></i>Agregar Libro</a></li> <!--Item del dropdown-->
                                 <li><a href="buscarLibroAdmin.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
@@ -156,8 +156,10 @@
                         </li>
                         <li class="menu_item has-children"><a href="#">Prestamo <i class="fa fa-angle-down"></i></a>
                             <ul class="menu_selection">
+                                <li><a href="VerPrestamosUsuario.jsp"><i aria-hidden="true"></i>Mis préstamos</a></li>
                                 <li><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
                                 <li><a href="crearPrestamoUsuario.jsp"><i aria-hidden="true"></i>Crear Préstamo Usuario</a></li>
+                                
                             </ul>
                         </li>
                         <li class="menu_item has-children"><a href="#">Usuarios <i class="fa fa-angle-down"></i></a>
@@ -168,7 +170,6 @@
                         <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                             <ul class="menu_selection"> 
                                 <li><a href=""><i aria-hidden="true"></i>Libros descargados</a></li> <!--Item del dropdown-->
-                                <li><a href="VerPrestamosUsuario.jsp"><i aria-hidden="true"></i>Mis prestamos</a></li>
                                 <li><a href="EditarUsuario.jsp"><i aria-hidden="true"></i>Editar perfil</a></li>
                             </ul>
                         </li>
