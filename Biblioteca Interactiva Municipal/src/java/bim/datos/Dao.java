@@ -646,8 +646,8 @@ public class Dao {
 		+ "(direccion, nombre) VALUES"
 		+ "(?,?)";
         preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-        preparedStatement.setString(1, nombre);
-        preparedStatement.setString(2, caminoImagen);
+        preparedStatement.setString(1, caminoImagen);
+        preparedStatement.setString(2, nombre);
         preparedStatement.executeUpdate();
         preparedStatement.close();
         } catch (SQLException ex) {
@@ -657,14 +657,41 @@ public class Dao {
         }
     }
     
-    public Actividad actividadesBuscarTodas() throws SQLException, Exception {
+    public ArrayList<Actividad> actividadesBuscarTodas() throws SQLException, Exception {
+        ArrayList<Actividad> act = new ArrayList<>();
         PreparedStatement preparedStatement = null;
-        String insertTableSQL = "select * from Actividad";
-        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        String sql = "select * from Actividad";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+                act.add(actividad(rs));
+            };
+        return act;
+    }
+
+    public void eliminarActividad(int id) throws SQLException {
+        try{
+        PreparedStatement preparedStatement2 = null;
+         String sql = "delete from Actividad where id = ?";
+            preparedStatement2 = db.getConnection().prepareStatement(sql);
+            preparedStatement2.setInt(1, id);
+            preparedStatement2.executeUpdate();
+            preparedStatement2.close();
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+
+    public String obtenerDirActividad(int id) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String sql = "select direccion from Actividad where id = ?";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        preparedStatement.setInt(1, id);
         ResultSet rs = preparedStatement.executeQuery();
         rs.next();
-        Actividad act = actividad(rs);
-        return act;
+        String dir = rs.getString("direccion");
+        return dir;
     }
     
     

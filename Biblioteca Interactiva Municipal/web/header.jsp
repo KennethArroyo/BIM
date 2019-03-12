@@ -74,13 +74,13 @@
                                             </ul>
 
                                         </li>
-                                        <li class="dropdown"><a href="">Actividades<i class="fa fa-angle-down"></i></a>
+                                        <li class="dropdown"><a href="#">Actividades<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
-                                                <li><a href="mantenimientoActividades.jsp"></a>Mantenimiento de actividades</li>
-                                                <li><a href="actividades.jsp"></a>Actividades</li>
+                                                <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
+                                                <li><a href="actividades.jsp">Actividades</a></li>
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
+                                        <li class="dropdown"><a href="#"><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
                                             </ul>

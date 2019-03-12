@@ -17,7 +17,7 @@ function buscar(){
                       dibujarTabla(obj);
                     },
                   error: function(status){
-                         window.alert("Es posible que no existan actividades");
+                         swal("Error", "Es posible que no hayan actividades registradas", "error");
                     }                    
                 }); 
 }
@@ -47,14 +47,14 @@ function dibujarFila(rowData) {
     var row = $('<tr id='+rowData.id+'/>');
     $("#tablaActividades").append(row);
     row.append($('<td>' + rowData.nombre + '</td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAct(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAct(' + rowData.id + ',' + '\'' + rowData.dir + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
     //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
 }
 
 
-function eliminarAct(id){
+function eliminarAct(id, dir){
     if(confirm("¿Seguro que desea eliminar la Actividad?")){
-    var datos = {id:id};
+    var datos = {id:id, dir:dir};
     $.ajax({type: "POST", 
             url:"EliminarAct",
             dataType: "json",
@@ -64,8 +64,7 @@ function eliminarAct(id){
                 eliminarFila(datos);
               },
             error: function(status){
-                   window.alert("Ocurrio un error al eliminar la actividad");
-                   $("#myModalAsignatura").modal("hide");
+                   swal("Error", "Hubo un problema al eliminar la actividad", "error");
             }
     });
     }

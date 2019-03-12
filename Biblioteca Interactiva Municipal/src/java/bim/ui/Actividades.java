@@ -124,11 +124,30 @@ public class Actividades extends HttpServlet {
     }
 
     private void eliminar(HttpServletRequest request, HttpServletResponse response) {
+         try {
+                BufferedReader reader = request.getReader();
+                PrintWriter out = response.getWriter();
+                HttpSession s = request.getSession(true);
+                Gson gson = new Gson();
+                int id = Integer.parseInt(request.getParameter("id"));
+                String dir = Model.instance().obtenerDirActividad(id);
+                Model.instance().eliminarActividad(id);
+                File file = new File(dir);
+                if(file.delete()){
+                    response.setContentType("application/json; charset=UTF-8");
+                    out.write(gson.toJson("correcto")); 
+                    response.setStatus(200); // ok with content
+                }
+                else throw new Exception();
+            } catch (Exception e) {
+                String text = e.getMessage();
+                response.setStatus(401); //Bad request
+            }
     }
 
     private void buscar(HttpServletRequest request, HttpServletResponse response) {
         try {
-            Actividad act;
+            ArrayList<Actividad> act;
             BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
             HttpSession s = request.getSession(true);

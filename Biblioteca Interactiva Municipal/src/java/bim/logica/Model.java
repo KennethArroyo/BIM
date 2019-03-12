@@ -163,8 +163,16 @@ public class Model {
         dao.agregarActividad(nombre,caminoImagen);
     }
 
-    public Actividad buscarActividades() throws Exception {
+    public ArrayList<Actividad> buscarActividades() throws Exception {
        return dao.actividadesBuscarTodas();
+    }
+
+    public void eliminarActividad(int id) throws SQLException {
+        dao.eliminarActividad(id);
+    }
+
+    public String obtenerDirActividad(int id) {
+        return dao.obtenerDirActividad(id);
     }
 
 }
