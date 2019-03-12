@@ -4,6 +4,8 @@
     Author     : Kenneth
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="bim.entidades.Actividad"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,57 +17,28 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <%@ include file="header.jsp" %>
     </head>
     <body>
+        <jsp:useBean id="actividades" scope="request" type="List<Actividad>" class="java.util.ArrayList"/>
         <div class="super_container">
-            <%@ include file="header.jsp" %>
-            
-            
-                <!-- Slider -->
-                   <!-- <div class="main_slider" style="background-image:url(imagenes/slider_book.jpg)"></div> !-->
-                    
-                    <div id="carouselActividades" class="carousel slide" data-ride="carousel">
-
-                        <!-- Indicators -->
-                        <ul class="carousel-indicators">
-                          <li data-target="#carouselActividades" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselActividades" data-slide-to="1"></li>
-                          <li data-target="#carouselActividades" data-slide-to="2"></li>
-                        </ul>
-
-                        <!-- The slideshow -->
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="imagenes/book1.jpg" alt="Los Angeles" width="1100" height="500">
-                              <div class="carousel-caption">
-                                <h3>ACTIVIDAD #1</h3>
-                              </div>
-                          </div>
-                          <div class="carousel-item">
-                            <img src="imagenes/book2.jpg" alt="Chicago" width="1100" height="500">
-                              <div class="carousel-caption">
-                                <h3>ACTIVIDAD #2</h3>
-                              </div>
-                          </div>
-                          <div class="carousel-item">
-                            <img src="imagenes/book3.jpg" alt="New York" width="1100" height="500">
-                              <div class="carousel-caption">
-                                <h3>ACTIVIDAD #3</h3>
-                              </div>
-                          </div>
-                        </div>
-
-                        <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#carouselActividades" data-slide="prev">
-                          <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselActividades" data-slide="next">
-                          <span class="carousel-control-next-icon"></span>
-                        </a>
-                      </div>
-
-                    
-            <%@ include file="footer.jsp" %>
+                    <div class="siema">
+                        <%for(int i = 0;i<actividades.size();i++){;%>
+                            <%Actividad p = actividades.get(i);%>
+                            <div><img src='Actividades/<%=p.getNombre()%>' alt=""></div>
+                        <%}%>
+                    </div>
+                    <br>
+            <button id="prev" class="btn btn-info">Anterior</button>
+            <button id="next" class="btn btn-info">Siguiente</button>
         </div>
+
+
+<script>
+ const mySiema = new Siema({duration: 600,easing: 'cubic-bezier(.11,.73,.57,1.53)', loop: true});
+ document.querySelector('#prev').addEventListener('click',() => mySiema.prev());
+ document.querySelector('#next').addEventListener('click',() => mySiema.next());
+</script>
     </body>
+    <footer><%@ include file="footer.jsp" %></footer>
 </html>

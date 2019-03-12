@@ -243,6 +243,7 @@ section
 {
 	width: 100%;
 	overflow: hidden;
+        text-align: center;
 }
 
 /***********
@@ -1162,14 +1163,11 @@ display: block;
 	margin-bottom: 5px;
 }
 
-#carouselActividades {
-    margin-top: 70px;
-}
-
 .siema{
-    display: inline-block; 
-    height: 400px; 
-    width:80%;
+    display: block; 
+    height: 1200px;
+    margin-left: 40px;
+    width: 800px;
 }
 
  .carousel-inner img {

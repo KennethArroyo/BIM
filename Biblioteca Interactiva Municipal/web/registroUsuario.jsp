@@ -83,7 +83,7 @@
                 <div id="mi_div">    
                     <div class="form-group">
                         <button type="submit" class="btn btn-success" id="botonRegistrar" form="regUsuarios" >Registrar</button>
-                        <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
+                        <a href="Principal" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                     </div>
                 </div>
                 </form>

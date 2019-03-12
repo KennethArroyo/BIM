@@ -129,7 +129,7 @@
                     </div>
                 <div class="form-group" id="mi_div">
                 <button type="submit" class="btn btn-success" id="botonAgregar" form="libForm" >Agregar</button>
-                 <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
+                 <a href="Principal" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                 </div>
                 </form>
                 <br>
