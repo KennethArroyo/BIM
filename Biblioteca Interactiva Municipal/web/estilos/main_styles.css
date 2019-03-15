@@ -243,6 +243,7 @@ section
 {
 	width: 100%;
 	overflow: hidden;
+        text-align: center;
 }
 
 /***********
@@ -1014,7 +1015,6 @@ display: block;
     
         background-color: #000000;
         background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
-	//background-color: #1B1A1A;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
@@ -1163,8 +1163,11 @@ display: block;
 	margin-bottom: 5px;
 }
 
-#carouselActividades {
-    margin-top: 70px;
+.siema{
+    display: block; 
+    height: 1200px;
+    margin-left: 40px;
+    width: 800px;
 }
 
  .carousel-inner img {

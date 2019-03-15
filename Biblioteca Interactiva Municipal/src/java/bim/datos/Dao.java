@@ -1,5 +1,6 @@
 package bim.datos;
 
+import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.Libro;
@@ -26,6 +27,14 @@ public class Dao {
         Asignatura p = new Asignatura();
         p.setId(rs.getInt("asignatura_id"));
         p.setNombre(rs.getString("nombre"));
+        return p;
+    }
+    
+    private Actividad actividad(ResultSet rs) throws Exception {
+        Actividad p = new Actividad();
+        p.setId(rs.getInt("id"));
+        p.setNombre(rs.getString("nombre"));
+        p.setDir(rs.getString("direccion"));
         return p;
     }
     
@@ -113,13 +122,45 @@ public class Dao {
     }
 
     public void agregarUsuario(Usuario u) throws Exception {
-        String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
-                + "values(%d, '%s', '%s', '%s', '%s', %s, '%s', '%s','%s', %d, '%s')";
-        sql = String.format(sql, u.getTipo(), u.getIdentificacion(), u.getNombre(), u.getApellidos(), u.getLugar_residencia(),
-                u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est(), u.getHabilitado(), u.getCod_verificacion());
-        int count = db.executeUpdate(sql);
-        if (count == 0) {
-            throw new Exception("Error registrando al usuario!");
+        PreparedStatement preparedStatement = null;
+//        String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
+//                + "values(%d, '%s', '%s', '%s', '%s', %s, '%s', '%s','%s', %d, '%s')";
+//        sql = String.format(sql, u.getTipo(), u.getIdentificacion(), u.getNombre(), u.getApellidos(), u.getLugar_residencia(),
+//                u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est(), u.getHabilitado(), u.getCod_verificacion());
+//        int count = db.executeUpdate(sql);
+//        if (count == 0) {
+//            throw new Exception("Error registrando al usuario!");
+//        }
+try{
+        String insertTableSQL = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, "
+                + "telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
+                 + "values"
+		+ "(?,?,?,?,?,?,?,?,?,?,?)";
+        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement.setInt(1, u.getTipo());
+        preparedStatement.setString(2, u.getIdentificacion());
+        preparedStatement.setString(3, u.getNombre());
+        preparedStatement.setString(4, u.getApellidos());
+        preparedStatement.setString(5, u.getLugar_residencia());
+        preparedStatement.setString(6, u.getTelefono());
+        preparedStatement.setString(7, u.getCorreo());
+        preparedStatement.setString(8, u.getContrasena());
+        preparedStatement.setString(9, u.getRef_trab_est());
+        preparedStatement.setInt(10, u.getHabilitado());
+        preparedStatement.setString(11, u.getCod_verificacion());
+        
+        int count = preparedStatement.executeUpdate();
+        preparedStatement.close();
+        
+            if (count == 0) {
+                throw new Exception("Error ingresando el libro!");
+            }
+        }
+        catch(SQLException e){
+            int codigoSQL = e.getErrorCode();
+            if(codigoSQL == 2627){
+                throw new Exception("unique");
+            }
         }
     }
 
@@ -633,6 +674,61 @@ public class Dao {
         ResultSet rs = preparedStatement.executeQuery();
         rs.next();
         String dir = rs.getString("dir_PDF");
+        return dir;
+    }
+
+    public void agregarActividad(String nombre, String caminoImagen) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        try{
+        String insertTableSQL = "insert into Actividad"
+		+ "(direccion, nombre) VALUES"
+		+ "(?,?)";
+        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement.setString(1, caminoImagen);
+        preparedStatement.setString(2, nombre);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            preparedStatement.close();
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Actividad> actividadesBuscarTodas() throws SQLException, Exception {
+        ArrayList<Actividad> act = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        String sql = "select * from Actividad";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+                act.add(actividad(rs));
+            };
+        return act;
+    }
+
+    public void eliminarActividad(int id) throws SQLException {
+        try{
+        PreparedStatement preparedStatement2 = null;
+         String sql = "delete from Actividad where id = ?";
+            preparedStatement2 = db.getConnection().prepareStatement(sql);
+            preparedStatement2.setInt(1, id);
+            preparedStatement2.executeUpdate();
+            preparedStatement2.close();
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+
+    public String obtenerDirActividad(int id) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String sql = "select direccion from Actividad where id = ?";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        ResultSet rs = preparedStatement.executeQuery();
+        rs.next();
+        String dir = rs.getString("direccion");
         return dir;
     }
     

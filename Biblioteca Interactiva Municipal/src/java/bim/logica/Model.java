@@ -1,6 +1,7 @@
 package bim.logica;
 
 import bim.datos.Dao;
+import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.Libro;
@@ -162,6 +163,22 @@ public class Model {
     
     public ArrayList<Prestamo> buscarPrestamosUsuario(String identificacion)throws Exception{
     return dao.buscarPrestamosUsuario(identificacion);
+    }
+
+    public void agregarActividad(String nombre, String caminoImagen) throws SQLException {
+        dao.agregarActividad(nombre,caminoImagen);
+    }
+
+    public ArrayList<Actividad> buscarActividades() throws Exception {
+       return dao.actividadesBuscarTodas();
+    }
+
+    public void eliminarActividad(int id) throws SQLException {
+        dao.eliminarActividad(id);
+    }
+
+    public String obtenerDirActividad(int id) {
+        return dao.obtenerDirActividad(id);
     }
 
 }

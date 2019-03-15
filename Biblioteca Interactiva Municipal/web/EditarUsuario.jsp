@@ -85,7 +85,7 @@
                     <div id="mi_div">    
                         <div class="form-group">
                             <button type="submit" class="btn btn-success" onclick="modificarUsuario()"  >Guardar cambios</button>
-                            <a href="principal.jsp" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
+                            <a href="Principal" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </form>

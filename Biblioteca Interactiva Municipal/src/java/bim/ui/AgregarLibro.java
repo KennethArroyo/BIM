@@ -190,7 +190,7 @@ public class AgregarLibro extends HttpServlet {
 
             Model.instance().agregarLibro(p);
             guardarAutorLibro(titulo, autores);
-            request.getRequestDispatcher("principal.jsp").forward(request, response);
+            request.getRequestDispatcher("Principal").forward(request, response);
         } catch (Exception e) {
             String msg = e.getMessage();
             if(msg.matches("unique")){
