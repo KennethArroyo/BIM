@@ -122,13 +122,45 @@ public class Dao {
     }
 
     public void agregarUsuario(Usuario u) throws Exception {
-        String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
-                + "values(%d, '%s', '%s', '%s', '%s', %s, '%s', '%s','%s', %d, '%s')";
-        sql = String.format(sql, u.getTipo(), u.getIdentificacion(), u.getNombre(), u.getApellidos(), u.getLugar_residencia(),
-                u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est(), u.getHabilitado(), u.getCod_verificacion());
-        int count = db.executeUpdate(sql);
-        if (count == 0) {
-            throw new Exception("Error registrando al usuario!");
+        PreparedStatement preparedStatement = null;
+//        String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
+//                + "values(%d, '%s', '%s', '%s', '%s', %s, '%s', '%s','%s', %d, '%s')";
+//        sql = String.format(sql, u.getTipo(), u.getIdentificacion(), u.getNombre(), u.getApellidos(), u.getLugar_residencia(),
+//                u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est(), u.getHabilitado(), u.getCod_verificacion());
+//        int count = db.executeUpdate(sql);
+//        if (count == 0) {
+//            throw new Exception("Error registrando al usuario!");
+//        }
+try{
+        String insertTableSQL = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, "
+                + "telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
+                 + "values"
+		+ "(?,?,?,?,?,?,?,?,?,?,?)";
+        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+        preparedStatement.setInt(1, u.getTipo());
+        preparedStatement.setString(2, u.getIdentificacion());
+        preparedStatement.setString(3, u.getNombre());
+        preparedStatement.setString(4, u.getApellidos());
+        preparedStatement.setString(5, u.getLugar_residencia());
+        preparedStatement.setString(6, u.getTelefono());
+        preparedStatement.setString(7, u.getCorreo());
+        preparedStatement.setString(8, u.getContrasena());
+        preparedStatement.setString(9, u.getRef_trab_est());
+        preparedStatement.setInt(10, u.getHabilitado());
+        preparedStatement.setString(11, u.getCod_verificacion());
+        
+        int count = preparedStatement.executeUpdate();
+        preparedStatement.close();
+        
+            if (count == 0) {
+                throw new Exception("Error ingresando el libro!");
+            }
+        }
+        catch(SQLException e){
+            int codigoSQL = e.getErrorCode();
+            if(codigoSQL == 2627){
+                throw new Exception("unique");
+            }
         }
     }
 

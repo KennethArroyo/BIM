@@ -20,13 +20,13 @@ function iniciar(){
               function(obj){
                 usuarioFinal = obj;
                 sessionStorage.setItem("usuario", JSON.stringify(usuarioFinal));
-                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp");
+                window.location.assign("Principal");
               },
             error: function(status){
                     if(status.status===405){
                         
                         swal("Info", "Este usuario debe ser verificado, favor revisar su correo", "info");
-                        window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
+                        window.location.assign("Principal");
                     }
                     else
                         swal("Error", "El usuario o la contaseña son incorrectos", "error");

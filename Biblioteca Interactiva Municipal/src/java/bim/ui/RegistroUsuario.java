@@ -190,12 +190,18 @@ public class RegistroUsuario extends HttpServlet {
             message.setContent(bodyText.toString(), "text/html; charset=utf-8");
             Transport.send(message);
             
-            request.getRequestDispatcher("principal.jsp").forward(request, response);
+            request.getRequestDispatcher("Principal").forward(request, response);
         }
         catch (Exception e) {
-            String msh = e.getMessage();
+            String msg = e.getMessage();
+            if(msg.matches("unique")){
+                request.setAttribute("error", "Es posible que el correo o la identificacion ya se encuentran registradas");
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            else{
             request.setAttribute("error", "Ocurrió un error");
-            request.getRequestDispatcher("principal.jsp").forward(request, response);
+            request.getRequestDispatcher("Principal").forward(request, response);
+            }
         }
     }
     
