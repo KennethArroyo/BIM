@@ -66,9 +66,69 @@ function dibujarFila(rowData) {
     var hab;
     if(rowData.habilitado===1){hab="Sí";}
     else if(rowData.habilitado===0){hab="No";}
-    t.row.add([rowData.identificacion, rowData.nombre, rowData.apellidos, rowData.lugar_residencia, rowData.telefono, rowData.correo, rowData.ref_trab_est, hab]).draw();
+    t.row.add([rowData.identificacion, rowData.nombre, rowData.apellidos, rowData.lugar_residencia, rowData.telefono, rowData.correo, rowData.ref_trab_est, hab,'<button type="button" class="btn btn-info" onclick="buscarUsuarioId(' + rowData.identificacion + ');">' + 'Cambiar Tipo' + '</button>']).draw();
 
 }
+}
+
+function buscarUsuarioId(identificacion){
+    $.ajax({
+        url: "BuscarUsuarios",
+        data: {
+            accion: "buscarUsuarioId",
+            identificacion: identificacion
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            swal('Error', 'Ha ocurrido un error al cargar el usuario', 'error');
+        },
+        success: function (data) {
+            if (data.habilitado === 1) {
+                $("#myModalFormulario").modal();
+                $("#Tipoaction").val("cambiarTipoUsuario");
+                $("#identificacion").val(data.identificacion);
+                if(data.tipo===1){
+                    $("#tipo").val(1);
+                }else if(data.tipo===2){
+                    $("#tipo").val(2);
+                }
+            } else
+                swal('Info', 'El correo del usuario usuario no esta verificado', 'info');
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function cambiarTipoUsuario(){
+    $.ajax({
+       url:'BuscarUsuarios',
+       data:{
+           accion: "modificarTipoUsuario",
+           tipo:$("#tipo").val(),
+           identificacion:$("#identificacion").val()
+       },
+       error:function(){
+           swal('Error', 'Ha ocurrido un error al editar el tipo de usuario', 'error');
+       },
+       success: function(data){
+           var tipoRespuesta = data.substring(0,2);
+           if (tipoRespuesta === "C~") { //correcto
+                        swal("Listo", "Se modificó el tipo de usuario correctamente", "success");
+                        //window.alert("Se modificó el usuario correctamente");
+                        $("#myModalFormulario").modal("hide");
+                        //window.location.assign("http://localhost:8083/Biblioteca_Interactiva_Municipal/principal.jsp");
+                    } else {
+                        if (tipoRespuesta === "E~") { //error
+                            swal('Error', 'No se pudo modificar el tipo', 'error');
+                    }else {
+                    swal('Error', 'No se pudo modificar el tipo', 'error');
+                    
+                }
+                    }
+       },
+       type: 'POST'
+    });
+    
 }
 
 

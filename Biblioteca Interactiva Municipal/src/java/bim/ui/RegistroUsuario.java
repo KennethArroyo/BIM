@@ -134,7 +134,7 @@ public class RegistroUsuario extends HttpServlet {
             String ref_trab_est = request.getParameter("ref_trab_est");
             String hash = HashJavaMessageDigest(contrasena);
             Usuario u =  new Usuario();
-            u.setTipo(0);
+            u.setTipo(2);
             u.setIdentificacion(identificacion);
             u.setNombre(nombre);
             u.setApellidos(apellidos);

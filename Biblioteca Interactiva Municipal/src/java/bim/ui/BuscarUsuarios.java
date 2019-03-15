@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author Kenneth
@@ -44,14 +45,27 @@ public class BuscarUsuarios extends HttpServlet {
             Usuario u = new Usuario();
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
-            String input = request.getParameter("nombre");
+            //String input = request.getParameter("nombre");
             switch (accion) {
                 case "buscarTodosUsu":
                     q = Model.instance().buscarTodosUsuarios();
-                    json=new Gson().toJson(q);
+                    json = new Gson().toJson(q);
                     out.print(json);
                     break;
-
+                case "buscarUsuarioId":
+                    String ident = request.getParameter("identificacion");
+                    u = Model.instance().getUsuarioCed(ident);
+                    json = new Gson().toJson(u);
+                    out.print(json);
+                    break;
+                case "modificarTipoUsuario":
+                    this.ModificarTipoUsuario(request, response);
+                    //Usuario u = new Usuario();
+                    out.print("C~U");
+                    break;
+                default:
+                    out.print("E~No se indico la acción que se desea realizarse");
+                    break;
             }
         } catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());
@@ -59,7 +73,25 @@ public class BuscarUsuarios extends HttpServlet {
             out.print("E~" + e.getMessage());
         }
     }
-/**
+
+    protected void ModificarTipoUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            Usuario u = new Usuario();
+            int tipo = Integer.parseInt(request.getParameter("tipo"));
+            String identificacion =request.getParameter("identificacion");
+            u.setIdentificacion(identificacion);
+            u.setTipo(tipo);
+            
+            Model.instance().modificarTipoUsuario(u);
+
+        } catch (Exception e) {
+            String msg = e.getMessage();
+            request.setAttribute("error", "Ocurrió un error");
+            request.getRequestDispatcher("Error.jsp").forward(request, response);
+        }
+    }
+
+    /**
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
@@ -99,5 +131,3 @@ public class BuscarUsuarios extends HttpServlet {
     }// </editor-fold>
 
 }
-
-

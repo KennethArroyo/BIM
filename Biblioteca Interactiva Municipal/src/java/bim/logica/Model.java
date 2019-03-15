@@ -141,6 +141,12 @@ public class Model {
     public void modificarUsuario(Usuario u) throws Exception{
     dao.modificarUsuario(u);
     }
+    
+    public void modificarTipoUsuario(Usuario u) throws Exception{
+  
+   dao.modificarTipoUsuario(u); 
+    
+    }
 
     public int buscarIdUsuarioCorreo(String correo) throws Exception {
         return dao.buscarIdUsuarioCorreo(correo);

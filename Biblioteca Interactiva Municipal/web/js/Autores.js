@@ -74,18 +74,6 @@ function dibujarFila(rowData) {
 }
 
 //buscara los ultimos 5 autores agregados
-function buscar() {
-    $.ajax({type: "GET",
-        url: "BuscarAutores",
-        success:
-                function (obj) {
-                    dibujarTabla(obj);
-                },
-        error: function (status) {
-            swal('Error', 'Ha ocurrido un error con la lista de autores', 'error');
-        }
-    });
-}
 
 function agreAutor() {
     var aut_nom = $("#autor").val();

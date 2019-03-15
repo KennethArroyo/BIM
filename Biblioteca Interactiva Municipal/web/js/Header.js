@@ -12,7 +12,7 @@ $(document).ready(function mostrar(){
             if(user !== null){
                 $(".anonimo").hide();
                 $(".anonimoR").hide();
-                if(user.tipo===0){
+                if(user.tipo===2){
                     $(".usuario").show();
                     $(".usuarioR").show();
                 }

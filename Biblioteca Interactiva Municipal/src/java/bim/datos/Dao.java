@@ -556,6 +556,12 @@ public class Dao {
     sql = String.format(sql, u.getNombre(),u.getApellidos(),u.getLugar_residencia(),u.getTelefono(),u.getRef_trab_est(),u.getIdentificacion());
     db.executeUpdate(sql);
     }
+    
+    public void modificarTipoUsuario(Usuario u)throws Exception{
+    String sql = "update Usuario set tipo = %d where identificacion='%s'";
+    sql = String.format(sql,u.getTipo(),u.getIdentificacion());
+    db.executeQuery(sql);
+    }
 
     public void registrarTemporal(Timestamp timestamp, String temporal, int id) throws Exception {
         PreparedStatement preparedStatement = null;

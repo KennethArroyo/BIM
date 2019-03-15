@@ -43,6 +43,8 @@
               </th>
               <th class="th-sm"> Perfil Habilitado
               </th>
+              <th class="th-sm"> Editar tipo de usuario
+              </th>
             </tr>
         </thead>
 
@@ -53,7 +55,50 @@
         </tbody>
         </table>
         </div>
-    
+    <div class="modal fade" id="myModalFormulario" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <h4 class="modal-title" id="myModalTitle">Editar Tipo Usuario
+                            <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
+
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        <form role="form" onsubmit="return false" id="formModal">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="identificacion" >Usuario:</label>
+                                    <input class="form-control" type="disabled" style="border:none" id="identificacion" name="identificacion">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                <label for="tipo">Tipo</label>
+                                        <select class="form-control" id="tipo">
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Visitante</option>
+                                   
+                                        </select>    
+                                </div>      
+                            </div>
+                            <div class="row"> 
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="hidden" value="cambiarTipoUsuario" id="Tipoaction"/>
+                                        <button type="submit" onclick="cambiarTipoUsuario()" class=" btn btn-success">Cambiar tipo</button>
+                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         </body>
 
             <footer>

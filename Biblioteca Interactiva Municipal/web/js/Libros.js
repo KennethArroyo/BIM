@@ -231,7 +231,7 @@ function updateList(list) {
 }
 
 function cancelar() {
-    limpiarForm();
+    ///limpiarForm();
     $("#myModalFormulario").modal("hide");
     //$("#tablaLibros").html("");
 }
@@ -300,83 +300,6 @@ function limpiarForm() {
     //Resetear el formulario
     $('#forModal').trigger("reset");
 }
-
-function  buscarLibroAutor(nombre) {
-    $.ajax({
-        url: "BuscarLibro",
-        data: {
-            accion: "buscarLibroAutor",
-            nombre: nombre
-        },
-
-        error: function () { //si existe un error en la respuesta del ajax
-            swal("Error", "No se pudieron cargar los libros", "error");
-        },
-        success: function (data) {
-            dibujarTabla(data);
-
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
-function  buscarLibroClasificacion(name) {
-    $.ajax({
-        url: "BuscarLibro",
-        data: {
-            accion: "buscarLibroClasificacion",
-            nombre: name
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            swal("Error", "No se pudo cargar el libro", "error");
-        },
-        success: function (data) {
-            dibujarTabla(data);
-
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
-function  buscarLibroTitulo(name) {
-    $.ajax({
-        url: "BuscarLibro",
-        data: {
-            accion: "buscarLibroTitulo",
-            nombre: name
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            swal("Error", "No se pudieron cargar los libros", "error");
-        },
-        success: function (data) {
-            dibujarTabla(data);
-
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
-function  buscarLibroAsignatura(name) {
-    $.ajax({
-        url: "BuscarLibro",
-        data: {
-            accion: "buscarLibroAsignatura",
-            nombre: name
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            swal("Error", "No se pudieron cargar los libros", "error");
-        },
-        success: function (data) {
-            dibujarTabla(data);
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
 function buscarLibroId(idLibro) {
     $.ajax({
         url: "BuscarLibro",
@@ -397,7 +320,7 @@ function buscarLibroId(idLibro) {
             //$("#id").val(data.idLibro);
             $("#clasificacion").val(data.clasificacion);
             $("#titulo").val(data.titulo);
-            $("#autor").val(data.autor);
+            //$("#autor").val(data.autor);
             $("#comentario").val(data.comentario);
             $("#estado").val(data.estado);
             $("#copias").val(data.cantidad_copias);
