@@ -29,6 +29,15 @@ asignatura_id int primary key identity(1,1),
 nombre nvarchar(50) NOT NULL UNIQUE
 )
 
+----Tabla Actividades
+----pk: id asignado automáticamente, cada vez que se crea una nueva actividad
+----direccion en servidor
+CREATE TABLE Actividad(
+id int primary key identity(1,1),
+direccion nvarchar(200),
+nombre nvarchar(20)
+)
+
 ----Tabla Libro
 ----pk: id asignado automáticamente, cada vez que se crea un nuevo libro
 ----clasificacion: llave única

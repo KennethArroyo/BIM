@@ -51,7 +51,7 @@
                                 </div>
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
-                                        <li><a href="principal.jsp">Inicio</a></li>
+                                        <li><a href="Principal">Inicio</a></li>
                                         <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="agregarLibro.jsp">Agregar<br>Libro</a></li>
@@ -60,7 +60,7 @@
                                                 <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href="">Préstamos<i class="fa fa-angle-down"></i></a>
+                                        <li class="dropdown"><a href="#">Préstamos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
                                                 <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
@@ -68,7 +68,7 @@
                                             </ul>
 
                                         </li>
-                                        <li class="dropdown"><a href="">Usuarios<i class="fa fa-angle-down"></i></a>
+                                        <li class="dropdown"><a href="#">Usuarios<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="buscarUsuarios.jsp">Buscar Usuarios</a></li>
                                             </ul>
