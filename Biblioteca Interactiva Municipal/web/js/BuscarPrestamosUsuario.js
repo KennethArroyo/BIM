@@ -61,18 +61,22 @@ function inicializar() {
             dibujarFila(dataJson[i]);
         }
     }
-
+    function tituloLibro(row){
+        var titulo = row.libro.titulo;
+        return titulo;
+    }
     function dibujarFila(rowData) {
         var est;
-        if (rowData.estado_ID === 0) {
+        if (rowData.estado_ID === 1) {
             est = "solicitado";
         } 
-        else if (rowData.estado_ID === 1) {
+        else if (rowData.estado_ID === 2) {
             est = "prestado";
         }
-        else if (rowData.estado_ID === 2) {
+        else if (rowData.estado_ID === 3) {
             est = "devuelto";
         }
-        t.row.add([rowData.fecha_inicio, rowData.fecha_final, est]).draw();
+        //var titulo = tituloLibro(rowData);
+        t.row.add([rowData.fecha_inicio, rowData.fecha_final, rowData.libro_ID, est]).draw();
     }
 }

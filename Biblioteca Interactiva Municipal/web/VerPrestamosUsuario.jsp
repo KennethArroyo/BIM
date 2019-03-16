@@ -29,8 +29,8 @@
               </th>
               <th class="th-sm">Fecha Final
               </th>
-              <!--<th class="th-sm">Nombre libro
-              </th> !-->
+              <th class="th-sm">Nombre libro
+              </th> 
               <th class="th-sm">Estado
               </th>
             </tr>

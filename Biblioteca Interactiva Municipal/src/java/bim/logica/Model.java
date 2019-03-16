@@ -161,8 +161,8 @@ public class Model {
         dao.actualizarUsuarioTemporal(temporal, contrasena);
     }
     
-    public ArrayList<Prestamo> buscarPrestamosUsuario(String identificacion)throws Exception{
-    return dao.buscarPrestamosUsuario(identificacion);
+    public ArrayList<Prestamo> buscarPrestamosUsuario(int id)throws Exception{
+    return dao.buscarPrestamosUsuario(id);
     }
 
     public void agregarActividad(String nombre, String caminoImagen) throws SQLException {
@@ -177,7 +177,7 @@ public class Model {
         dao.eliminarActividad(id);
     }
 
-    public String obtenerDirActividad(int id) {
+    public String obtenerDirActividad(int id) throws SQLException {
         return dao.obtenerDirActividad(id);
     }
 

@@ -18,6 +18,15 @@ public class Prestamo {
     int usuario_ID;
     int estado_ID;
     int libro_ID;
+    Libro libro;
+
+    public Libro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
 
     
     public String getFecha_inicio() {

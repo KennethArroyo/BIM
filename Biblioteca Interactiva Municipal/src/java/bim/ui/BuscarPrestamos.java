@@ -6,6 +6,7 @@
 package bim.ui;
 
 import bim.entidades.Prestamo;
+import bim.entidades.Usuario;
 import bim.logica.Model;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -44,10 +45,13 @@ public class BuscarPrestamos extends HttpServlet {
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             ArrayList<Prestamo> prestamos= new ArrayList<>();
+            Usuario u;
             switch(accion){
                 case "BuscarPrestamosUser":
-                   String identificacion = request.getParameter("identificacion");
-                    prestamos = Model.instance().buscarPrestamosUsuario("116270830");
+                    u = Model.instance().getUsuarioCed(request.getParameter("identificacion"));
+                   //String identificacion = request.getParameter("identificacion");
+                    int id = u.getId();
+                    prestamos = Model.instance().buscarPrestamosUsuario(id);
                     json= new Gson().toJson(prestamos);
                     out.print(json);
                     break;
