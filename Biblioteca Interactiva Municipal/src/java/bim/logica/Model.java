@@ -177,7 +177,7 @@ public class Model {
         dao.eliminarActividad(id);
     }
 
-    public String obtenerDirActividad(int id) {
+    public String obtenerDirActividad(int id) throws SQLException {
         return dao.obtenerDirActividad(id);
     }
 
