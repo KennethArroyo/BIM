@@ -62,9 +62,11 @@
                                         </li>
                                         <li class="dropdown"><a href="#">Préstamos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
+                                                <li><a href="BuscarTodosPrestamos.jsp">Todos los préstamos</a></li>
                                                 <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
                                                 <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
                                                 <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
+                                                
                                             </ul>
 
                                         </li>
@@ -161,6 +163,7 @@
                         </li>
                         <li class="menu_item has-children"><a href="#">Prestamo <i class="fa fa-angle-down"></i></a>
                             <ul class="menu_selection">
+                                <li><a href="BuscarTodosPrestamos.jsp"><i aria-hidden="true"></i>Ver todos los préstamos</a></li>
                                 <li><a href="VerPrestamosUsuario.jsp"><i aria-hidden="true"></i>Mis préstamos</a></li>
                                 <li><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
                                 <li><a href="crearPrestamoUsuario.jsp"><i aria-hidden="true"></i>Crear Préstamo Usuario</a></li>

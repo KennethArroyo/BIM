@@ -45,15 +45,33 @@ public class BuscarPrestamos extends HttpServlet {
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             ArrayList<Prestamo> prestamos= new ArrayList<>();
+            Prestamo p = new Prestamo();
             Usuario u;
+            int id;
             switch(accion){
                 case "BuscarPrestamosUser":
                     u = Model.instance().getUsuarioCed(request.getParameter("identificacion"));
                    //String identificacion = request.getParameter("identificacion");
-                    int id = u.getId();
+                    id = u.getId();
                     prestamos = Model.instance().buscarPrestamosUsuario(id);
                     json= new Gson().toJson(prestamos);
                     out.print(json);
+                    break;
+                case "BuscarTodosPrestamos":
+                    prestamos =Model.instance().buscarTodosPrestamos();
+                    json= new Gson().toJson(prestamos);
+                    out.print(json);
+                    break;
+                case "BuscarPrestamoId":
+                    id = Integer.parseInt(request.getParameter("id"));
+                    p = Model.instance().buscarPrestamoId(id);
+                    json= new Gson().toJson(p);
+                    out.print(json);
+                    break;
+                    
+                case "ModificarEstadoPrestamo":
+                    this.ModificarEstadoPrestamo(request, response);
+                    out.print("C~U");
                     break;
                 default:
                     out.print("E~");
@@ -67,7 +85,22 @@ public class BuscarPrestamos extends HttpServlet {
             out.print("E~" + e.getMessage());
         }
     }
-
+protected void ModificarEstadoPrestamo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+try{
+    Prestamo p = new Prestamo();
+    int estado=Integer.parseInt(request.getParameter("estado"));
+    int id = Integer.parseInt(request.getParameter("id"));
+    p.setEstado_ID(estado);
+    p.setId(id);
+    
+    Model.instance().modificarEstadoPrestamo(p);
+    
+}catch (Exception e) {
+            String msg = e.getMessage();
+            request.setAttribute("error", "Ocurrió un error");
+            request.getRequestDispatcher("Error.jsp").forward(request, response);
+        }
+}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

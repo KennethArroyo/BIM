@@ -76,6 +76,10 @@ public class Model {
     public Libro buscarLibroId(int id)throws Exception{
         return dao.buscarLibroId(id);
     }
+    
+    public Prestamo buscarPrestamoId(int id)throws Exception{
+    return dao.buscarPrestamoId(id);
+    }
     public Libro modificarLibro(Libro l)throws Exception{
     return dao.modificarLibro(l);
     }
@@ -148,6 +152,10 @@ public class Model {
    dao.modificarTipoUsuario(u); 
     
     }
+    
+    public void modificarEstadoPrestamo(Prestamo p)throws Exception{
+    dao.modificarEstadoPrestamo(p);
+    }
 
     public int buscarIdUsuarioCorreo(String correo) throws Exception {
         return dao.buscarIdUsuarioCorreo(correo);
@@ -163,6 +171,10 @@ public class Model {
     
     public ArrayList<Prestamo> buscarPrestamosUsuario(int id)throws Exception{
     return dao.buscarPrestamosUsuario(id);
+    }
+    
+    public ArrayList<Prestamo> buscarTodosPrestamos()throws Exception{
+    return dao.buscarTodosPrestamos();
     }
 
     public void agregarActividad(String nombre, String caminoImagen) throws SQLException {
