@@ -1164,13 +1164,10 @@ display: block;
 }
 
 .siema{
-    display: block; 
-    height: 1200px;
-    margin-left: 40px;
-    width: 800px;
+    margin-top: 100px;
 }
 
- .carousel-inner img {
+ .siema img {
       width: 100%;
       height: 100%;
   }
