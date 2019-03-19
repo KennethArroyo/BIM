@@ -53,7 +53,16 @@ function dibujarFila(rowData) {
 
 
 function eliminarAct(id, dir){
-    if(confirm("¿Seguro que desea eliminar la Actividad?")){
+    swal({
+        title: "Está seguro?",
+        text: "Una vez eliminada no podrá volver a utilizarla",
+        type: "warning",
+        showConfirmButton: true,
+        showCancelButton: true
+    })
+    .then((willDelete) => {
+
+                if (willDelete) {
     var datos = {id:id, dir:dir};
     $.ajax({type: "POST", 
             url:"EliminarAct",
@@ -61,13 +70,18 @@ function eliminarAct(id, dir){
             data: datos,
             success: 
               function(status){ 
-                eliminarFila(datos);
+                  swal("Listo!", "La actividad ha sido eliminada", "success");
+                  eliminarFila(datos);
+              
               },
             error: function(status){
                    swal("Error", "Hubo un problema al eliminar la actividad", "error");
             }
     });
-    }
+    } else {
+                    swal("Cancelado");
+                }
+            });
 }
 
 function eliminarFila(datos){

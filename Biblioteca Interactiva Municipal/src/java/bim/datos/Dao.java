@@ -348,6 +348,20 @@ try{
         return libro;
     }
     
+    public Prestamo buscarPrestamoId(int id)throws Exception{
+    Prestamo p = new Prestamo();
+    try{
+    String sql = "select * from Prestamo p where p.id=%d";
+            sql = String.format(sql, id);
+            ResultSet rs = db.executeQuery(sql);
+            rs.next();
+            p = prestamo(rs);
+    }catch (SQLException ex) {
+            String error = ex.getMessage();
+            error = "s";
+        }
+    return p;
+    }
     public Usuario buscarUsuarioCed(String ced) throws Exception{
     Usuario u = new Usuario();
     try {
@@ -603,6 +617,12 @@ try{
     sql = String.format(sql,u.getTipo(),u.getIdentificacion());
     db.executeQuery(sql);
     }
+    
+    public void modificarEstadoPrestamo(Prestamo p)throws Exception{
+    String sql ="update Prestamo set estado_ID = %d where id=%d";
+    sql = String.format(sql, p.getEstado_ID(),p.getId());
+    db.executeQuery(sql);
+    }
 
     public void registrarTemporal(Timestamp timestamp, String temporal, int id) throws Exception {
         PreparedStatement preparedStatement = null;
@@ -648,11 +668,13 @@ try{
         }
     }  
     
-    public ArrayList<Prestamo> buscarPrestamosUsuario(String identficacion) throws Exception {
-        ArrayList<Prestamo> prestamos = new ArrayList<>();
+    public ArrayList<Prestamo> buscarPrestamosUsuario(int id) throws Exception {
+        
+    ArrayList<Prestamo> prestamos = new ArrayList<>();
     try{
-        String sql = "SELECT p.id id, p.fecha_inicio fecha_inicio, p.fecha_final fecha_final, p.usuario_ID usuario_ID, p.libro_ID libro_ID, p.estado_ID estado_ID FROM Prestamo p, Usuario u where p.usuario_ID=u.id and u.identificacion='%s'";
-            ResultSet rs = db.executeQuery(sql);
+        String sql = "SELECT p.id id, p.fecha_inicio fecha_inicio, p.fecha_final fecha_final, p.usuario_ID usuario_ID, p.libro_ID libro_ID, p.estado_ID estado_ID FROM Prestamo p where p.usuario_ID=%d";
+        sql = String.format(sql, id);    
+        ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 prestamos.add(prestamo(rs));
             }
@@ -665,6 +687,28 @@ try{
     return prestamos;
         
     }
+    
+    public ArrayList<Prestamo> buscarTodosPrestamos() throws Exception {
+        
+    ArrayList<Prestamo> prestamos = new ArrayList<>();
+    try{
+        String sql = "SELECT * FROM Prestamo";
+        sql = String.format(sql);    
+        ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                prestamos.add(prestamo(rs));
+            }
+    
+    }catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    
+    return prestamos;
+        
+    }
+    
+    
 
     public String buscarDireccionPDF(String clas) throws SQLException {
         PreparedStatement preparedStatement = null;
