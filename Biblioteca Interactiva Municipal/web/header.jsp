@@ -20,19 +20,6 @@
     </head>
     <body>
         <!-- Header -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
-                    </div>
-                    <div class="modal-body" id="myModalMessage">
-                        <p>This is a small modal.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <header class="header trans_300">
             <!-- Top Navigation --> 
             <div class="top_nav">
@@ -76,10 +63,10 @@
                                             </ul>
 
                                         </li>
-                                        <li class="dropdown"><a href="#">Actividades<i class="fa fa-angle-down"></i></a>
+                                        <li class="dropdown"><a href="#">Mantenimientos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
-                                                <li><a href="actividades.jsp">Actividades</a></li>
+                                                <li><a href="reportes.jsp">Reportes</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="#"><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
@@ -141,6 +128,7 @@
                     </div>
                 </div>
             </div>
+            
 
         </header>
 
@@ -224,5 +212,7 @@
             </div>
         </div>
 
+        
+       
     </body>
 </html>

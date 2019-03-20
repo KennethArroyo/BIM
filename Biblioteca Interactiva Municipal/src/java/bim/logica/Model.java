@@ -5,6 +5,7 @@ import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.Libro;
+import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import java.sql.SQLException;
@@ -191,6 +192,10 @@ public class Model {
 
     public String obtenerDirActividad(int id) throws SQLException {
         return dao.obtenerDirActividad(id);
+    }
+    
+    public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws Exception{
+        return dao.obtenerReportePrestados();
     }
 
 }

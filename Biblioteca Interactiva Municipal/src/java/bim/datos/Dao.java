@@ -4,6 +4,7 @@ import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.Libro;
+import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import java.sql.PreparedStatement;
@@ -35,6 +36,14 @@ public class Dao {
         p.setId(rs.getInt("id"));
         p.setNombre(rs.getString("nombre"));
         p.setDir(rs.getString("direccion"));
+        return p;
+    }
+    
+    private ModeloPrestamo modeloPrestamo(ResultSet rs) throws Exception {
+        ModeloPrestamo p = new ModeloPrestamo();
+        p.setId(rs.getInt("id"));
+        p.setTitulo(rs.getString("titulo"));
+        p.setUsuario(rs.getString("nombre"));
         return p;
     }
     
@@ -776,6 +785,16 @@ try{
         return dir;
     }
     
-    
+    public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws SQLException, Exception{
+        PreparedStatement preparedStatement = null;
+        ArrayList<ModeloPrestamo> lista = new ArrayList<>();
+        String sql = "select p.id, titulo, u.nombre from Prestamo p, Libro l, Usuario u where p.libro_ID = l.libro_id and p.usuario_ID = u.id";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            lista.add(modeloPrestamo(rs));
+        }
+        return lista;
+    }
 }
 
