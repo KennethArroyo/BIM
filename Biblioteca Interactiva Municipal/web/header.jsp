@@ -41,7 +41,7 @@
                                         <li><a href="Principal">Inicio</a></li>
                                         <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
-                                                <li><a href="agregarLibro.jsp">Agregar<br>Libro</a></li>
+                                                <li><a href="agregarLibro.jsp">Agregar Libro</a></li>
                                                 <li><a href="buscarLibroAdmin.jsp">Buscar Libro</a></li>
                                                 <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
                                                 <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
