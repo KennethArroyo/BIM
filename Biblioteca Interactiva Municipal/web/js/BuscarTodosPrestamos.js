@@ -84,6 +84,7 @@ function buscarPrestamoId(id) {
             $("#myModalFormulario").modal();
             $("#Estadoaction").val("modificarEstadoPrestamo");
             $("#id").val(data.id);
+            $("#libro_ID").val(data.libro_ID);
             if (data.estado_ID === 1) {
                 $("#estado").val(1);
             } else if (data.estado_ID === 2) {
@@ -104,7 +105,8 @@ function modificarEstadoPrestamo() {
         data: {
             accion: "ModificarEstadoPrestamo",
             estado: $("#estado").val(),
-            id: $("#id").val()
+            id: $("#id").val(),
+            libro_ID:$("#libro_ID").val()
         },
         error: function () {
             swal('Error', 'Ha ocurrido un error al editar el estado del prestamo', 'error');
@@ -114,7 +116,7 @@ function modificarEstadoPrestamo() {
             if (tipoRespuesta === "C~") { //correcto
                 swal("Listo", "Se modificó el estado del prestamo correctamente", "success");
                 $("#myModalFormulario").modal("hide");
-                inicializar();
+               
             } else {
                 if (tipoRespuesta === "E~") { //error
                     swal('Error', 'No se pudo modificar el estado', 'error');
@@ -123,8 +125,8 @@ function modificarEstadoPrestamo() {
 
                 }
             }
+           
         },
         type: 'POST'
     });
-
 }

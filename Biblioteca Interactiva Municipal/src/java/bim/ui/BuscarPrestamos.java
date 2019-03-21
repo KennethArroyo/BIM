@@ -104,10 +104,15 @@ try{
     Prestamo p = new Prestamo();
     int estado=Integer.parseInt(request.getParameter("estado"));
     int id = Integer.parseInt(request.getParameter("id"));
+    int libro=Integer.parseInt(request.getParameter("libro_ID"));
     p.setEstado_ID(estado);
     p.setId(id);
-    
+    if(estado==3){
+        Model.instance().devolucionLibro(libro);
     Model.instance().modificarEstadoPrestamo(p);
+    }
+    else
+        Model.instance().modificarEstadoPrestamo(p);
     
 }catch (Exception e) {
             String msg = e.getMessage();

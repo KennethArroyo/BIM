@@ -62,6 +62,10 @@
                                     <label for="id" >Préstamo:</label>
                                     <input class="form-control" type="disabled" style="border:none" id="id" name="id">
                                 </div>
+                                <div class="col-lg-6">
+                                    <label for="libro_ID" >Libro:</label>
+                                    <input class="form-control" type="disabled" style="border:none" id="libro_ID" name="libro_ID">
+                                </div>
                                 <%--<div class="col-lg-6">
                                     <label for="identificacion" >Usuario:</label>
                                     <input class="form-control" type="disabled" style="border:none" id="identificacion" name="identificacion">

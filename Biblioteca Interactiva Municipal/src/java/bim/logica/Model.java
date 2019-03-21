@@ -193,6 +193,9 @@ public class Model {
     public String obtenerDirActividad(int id) throws SQLException {
         return dao.obtenerDirActividad(id);
     }
+    public void devolucionLibro(int id)throws SQLException{
+    dao.devolucionLibro(id);
+    }
     
     public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws Exception{
         return dao.obtenerReportePrestados();
@@ -206,5 +209,4 @@ public class Model {
         return dao.buscarLibrosPrestados();
     }
     
-
 }
