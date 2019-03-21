@@ -72,7 +72,7 @@ function inicializarTabla(){
         return titulo;
     }
     function dibujarFila(rowData) {
-        t.row.add([rowData.usuario_ID, rowData.fecha_inicio, rowData.fecha_final, rowData.libro_ID, rowData.estado]).draw();
+        t.row.add([rowData.usuario, rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado]).draw();
     }
 }
 
