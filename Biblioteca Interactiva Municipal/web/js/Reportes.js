@@ -13,6 +13,7 @@ function reportePrestados() {
         url: "ReportePrestados",
         success:
                 function (datos) {
+                    var kennethSePara;
                     var y = 30;
                     var x = 20;
                     window.alert("entra");
