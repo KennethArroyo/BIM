@@ -10,6 +10,10 @@ $(document).ready(function () {
 
 function inicializar() {
     var t = $('#mydataTodosPrestamo').DataTable({
+        dom: 'Bfrtip',
+        "buttons": [
+            'excel', 'pdf'
+        ],
         "language": {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ prestamos",

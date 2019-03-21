@@ -697,6 +697,27 @@ try{
         
     }
     
+    public ArrayList<Prestamo> buscarPrestamosSolicitados() throws Exception {
+        
+    ArrayList<Prestamo> prestamos = new ArrayList<>();
+    try{
+        String sql = "SELECT * from Prestamo where p.estado_ID = 2";
+        sql = String.format(sql);    
+        ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                prestamos.add(prestamo(rs));
+            }
+    
+    }catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    
+    return prestamos;
+        
+    }
+    
+    
     public ArrayList<Prestamo> buscarTodosPrestamos() throws Exception {
         
     ArrayList<Prestamo> prestamos = new ArrayList<>();

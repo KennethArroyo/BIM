@@ -197,5 +197,10 @@ public class Model {
     public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws Exception{
         return dao.obtenerReportePrestados();
     }
+    
+    public ArrayList<Prestamo> PrestamosSolicitados() throws Exception{
+        return dao.buscarPrestamosSolicitados();
+    }
+    
 
 }

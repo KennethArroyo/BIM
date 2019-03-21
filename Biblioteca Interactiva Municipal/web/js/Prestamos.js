@@ -10,6 +10,11 @@ $(document).ready(function(){
 
 function inicializarTabla(){
         var t = $('#mydata').DataTable({
+            
+        dom: 'Bfrtip',
+        "buttons": [
+            'excel', 'pdf'
+        ],
         "language": {
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ libros",
