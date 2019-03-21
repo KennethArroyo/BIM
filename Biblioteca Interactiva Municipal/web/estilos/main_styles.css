@@ -1427,3 +1427,23 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
     outline: none;
 } 
 
+.dots {
+  display: flex;
+  justify-content: center;
+}
+
+.dots__item {
+  width: 15px;
+  height: 15px;
+  margin: 0 .5rem;
+  border: 0;
+  background-color: #ccc;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+}
+
+.dots__item--active {
+  background: blue;
+}
+

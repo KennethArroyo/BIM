@@ -25,20 +25,77 @@
         <div class="super_container">
             
                     <div class="siema">
+                        <div><img src='Actividades/actividadesmunicipales.jpg' alt=""></div>
                         <%for(int i = 0;i<actividades.size();i++){;%>
                             <%Actividad p = actividades.get(i);%>
                             <div><img src='Actividades/<%=p.getNombre()%>' alt=""></div>
                         <%}%>
                     </div>
                     <br>
-            <button id="prev" class="btn btn-info">Anterior</button>
-            <button id="next" class="btn btn-info">Siguiente</button>
+     <!--       <button id="prev" class="btn btn-info">Anterior</button>
+            <button id="next" class="btn btn-info">Siguiente</button> !-->
         </div>
 
 <script>
- const mySiema = new Siema({duration: 600,easing: 'cubic-bezier(.11,.73,.57,1.53)', loop: true});
- document.querySelector('#prev').addEventListener('click',() => mySiema.prev());
- document.querySelector('#next').addEventListener('click',() => mySiema.next());
+// const mySiema = new Siema({duration: 600,easing: 'cubic-bezier(.11,.73,.57,1.53)', loop: true});
+ //document.querySelector('#prev').addEventListener('click',() => mySiema.prev());
+ //document.querySelector('#next').addEventListener('click',() => mySiema.next());
+    class SiemaWithDots extends Siema {
+    addDots() {
+        // create a contnier for all dots
+        // add a class 'dots' for styling reason
+        this.dots = document.createElement('div');
+        this.dots.classList.add('dots');
+
+        // loop through slides to create a number of dots
+        for(let i = 0; i < this.innerElements.length; i++) {
+          // create a dot
+          const dot = document.createElement('button');
+
+          // add a class to dot
+          dot.classList.add('dots__item');
+
+          // add an event handler to each of them
+          dot.addEventListener('click', () => {
+            this.goTo(i);
+          })
+
+          // append dot to a container for all of them
+          this.dots.appendChild(dot);
+        }
+
+        // add the container full of dots after selector
+        this.selector.parentNode.insertBefore(this.dots, this.selector.nextSibling);
+      }
+
+      updateDots() {
+        // loop through all dots
+        for(let i = 0; i < this.dots.querySelectorAll('button').length; i++) {
+          // if current dot matches currentSlide prop, add a class to it, remove otherwise
+          const addOrRemove = this.currentSlide === i ? 'add' : 'remove';
+          this.dots.querySelectorAll('button')[i].classList[addOrRemove]('dots__item--active');
+        }
+      }
+    };
+ 
+ 
+ 
+const mySiemaWithDots = new SiemaWithDots({
+  duration: 250,
+  loop: true,
+       onInit: function(){
+        this.addDots();
+        this.updateDots();
+      },
+
+      // on change trigger method created above
+      onChange: function(){
+        this.updateDots()
+      }
+});
+// listen for keydown event
+setInterval(() => mySiemaWithDots.next(), 5000);
+
 </script>
     </body>
     <footer><%@ include file="footer.jsp" %></footer>
