@@ -19,4 +19,6 @@ $(document).ready(function(){
                 swal("Error", "Ocurrio un error con la lista de actividades municipales", "error");
               }                    
           }); 
+
 });
+
