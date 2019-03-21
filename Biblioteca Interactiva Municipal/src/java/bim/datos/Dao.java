@@ -41,9 +41,11 @@ public class Dao {
     
     private ModeloPrestamo modeloPrestamo(ResultSet rs) throws Exception {
         ModeloPrestamo p = new ModeloPrestamo();
-        p.setId(rs.getInt("id"));
         p.setTitulo(rs.getString("titulo"));
         p.setUsuario(rs.getString("nombre"));
+        p.setId_estado(rs.getInt("estado_ID"));
+        p.setFecha_inicio(rs.getString("fecha_inicio"));
+        p.setFecha_final(rs.getString("fecha_final"));
         return p;
     }
     
@@ -701,7 +703,7 @@ try{
         
     ArrayList<Prestamo> prestamos = new ArrayList<>();
     try{
-        String sql = "SELECT * FROM Prestamo";
+        String sql = "SELECT *,l.titulo, u.nombre FROM Prestamo p, Libro l, Usuario u";
         sql = String.format(sql);    
         ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
