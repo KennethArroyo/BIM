@@ -201,6 +201,10 @@ public class Model {
     public ArrayList<ModeloPrestamo> PrestamosSolicitados() throws Exception{
         return dao.buscarPrestamosSolicitados();
     }
+
+    public ArrayList<ModeloPrestamo> buscarLibrosPrestados() throws Exception {
+        return dao.buscarLibrosPrestados();
+    }
     
 
 }
