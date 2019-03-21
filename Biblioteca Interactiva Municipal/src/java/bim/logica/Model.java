@@ -192,5 +192,7 @@ public class Model {
     public String obtenerDirActividad(int id) throws SQLException {
         return dao.obtenerDirActividad(id);
     }
-
+    public void devolucionLibro(int id)throws SQLException{
+    dao.devolucionLibro(id);
+    }
 }
