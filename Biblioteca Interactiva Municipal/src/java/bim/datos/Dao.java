@@ -41,9 +41,10 @@ public class Dao {
     
     private ModeloPrestamo modeloPrestamo(ResultSet rs) throws Exception {
         ModeloPrestamo p = new ModeloPrestamo();
+        p.setId(rs.getInt("id"));
         p.setTitulo(rs.getString("titulo"));
         p.setUsuario(rs.getString("nombre"));
-        p.setId_estado(rs.getInt("estado_ID"));
+        p.setEstado(rs.getString("estado_prestamo"));
         p.setFecha_inicio(rs.getString("fecha_inicio"));
         p.setFecha_final(rs.getString("fecha_final"));
         return p;
@@ -720,16 +721,16 @@ try{
     }
     
     
-    public ArrayList<Prestamo> buscarTodosPrestamos() throws Exception {
+    public ArrayList<ModeloPrestamo> buscarTodosPrestamos() throws Exception {
         
-    ArrayList<Prestamo> prestamos = new ArrayList<>();
+    ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
     try{
-        String sql = "select p.fecha_inicio, p.fecha_final,e.estado_prestamo ,l.titulo, u.nombre "
-                + "from Prestamo p, Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id and p.usuario_ID = u.id and p.estado_ID = e.id";
+        String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
+                + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id and p.usuario_ID = u.id and p.estado_ID = e.id";
         sql = String.format(sql);    
         ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
-                prestamos.add(prestamo(rs));
+                prestamos.add(modeloPrestamo(rs));
             }
     
     }catch (SQLException ex) {

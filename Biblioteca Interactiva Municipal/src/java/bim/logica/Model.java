@@ -174,7 +174,7 @@ public class Model {
     return dao.buscarPrestamosUsuario(id);
     }
     
-    public ArrayList<Prestamo> buscarTodosPrestamos()throws Exception{
+    public ArrayList<ModeloPrestamo> buscarTodosPrestamos()throws Exception{
     return dao.buscarTodosPrestamos();
     }
 
