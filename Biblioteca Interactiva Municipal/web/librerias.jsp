@@ -19,6 +19,7 @@
         <script src="estilos/bootstrap4/bootstrap.min.js"></script>
         <script src="complementos/Isotope/isotope.pkgd.min.js"></script>
         <script src="complementos/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
         <script src="complementos/easing/easing.js"></script>
         <script src="js/custom.js"></script>
         <script type="text/javascript" src="js/addons/datatables.min.js"></script>
