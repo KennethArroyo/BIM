@@ -150,9 +150,10 @@
 	}
         
         .company_logo {
-            margin-top: 60px;
-            height:60px; 
-            width:60px;
+            margin-top: 14px;
+            height: 60px;
+            width: 60px;
+            margin-left: -66px;
         }
 
 }
@@ -257,7 +258,7 @@
 	}
 
         .company_logo {
-            margin-top: 60px;
+            margin-top: 10px;
             height:60px; 
             width:60px;
         }
@@ -298,7 +299,7 @@
 	}
         
         .company_logo {
-            margin-top: 60px;
+            margin-top: 8px;
             height:60px; 
             width:60px;
         }

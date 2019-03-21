@@ -4,12 +4,6 @@
     Author     : Kenneth
 --%>
 
-<%-- 
-    Document   : header
-    Created on : Sep 14, 2018, 11:31:12 PM
-    Author     : Kenneth
---%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,7 +62,7 @@
                                         <li class="dropdown"><a href="#">Mantenimientos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
-                                                <li><a href="reportes.jsp">Reportes</a></li>
+                                               <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="#"><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
@@ -92,7 +86,7 @@
                                     <ul class="navbar_menu">
                                         <li><a href="Principal">Inicio</a></li>                           
                                         <li><a href="buscarLibroUsuario.jsp">Buscar Libro</a></li>                                                                                                                    
-                                        <li><a href="">Actividades</a></li>      
+                                       <!-- <li><a href="">Actividades</a></li> !-->      
                                         <li class="my_account_item"><a href="registroUsuario.jsp"><small class="fa fa-user-plus" ></small>&nbsp Registrarse</a></li>
                                         <li><a href="inicioSesion.jsp"><small class="fa fa-sign-in" ></small>&nbsp Iniciar Sesión</a></li>
                                     </ul>
