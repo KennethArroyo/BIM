@@ -724,7 +724,8 @@ try{
         
     ArrayList<Prestamo> prestamos = new ArrayList<>();
     try{
-        String sql = "SELECT *,l.titulo, u.nombre FROM Prestamo p, Libro l, Usuario u";
+        String sql = "select p.fecha_inicio, p.fecha_final,e.estado_prestamo ,l.titulo, u.nombre "
+                + "from Prestamo p, Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id and p.usuario_ID = u.id and p.estado_ID = e.id";
         sql = String.format(sql);    
         ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
