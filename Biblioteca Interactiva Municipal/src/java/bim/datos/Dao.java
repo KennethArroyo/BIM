@@ -812,13 +812,11 @@ try{
         return dir;
     }
     
-<<<<<<< HEAD
     public void devolucionLibro(int id)throws SQLException{
     String sql = "update Libro set cantidad_copias = cantidad_copias+1 where libro_id=%d";
     sql = String.format(sql,id);
     db.executeQuery(sql);
     }
-=======
     public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws SQLException, Exception{
         PreparedStatement preparedStatement = null;
         ArrayList<ModeloPrestamo> lista = new ArrayList<>();
@@ -849,6 +847,5 @@ ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
         }
     
     return prestamos;    }
->>>>>>> 92b514b29157f99ad0e339b7d1a2193d95d7480d
 }
 
