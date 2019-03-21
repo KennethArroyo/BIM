@@ -44,12 +44,12 @@ function inicializarTabla(){
     
     function buscarTodosLibros() {
     $.ajax({
-        url: 'BuscarPrestamo',
+        url: 'BuscarPrestamos',
         data: {
             accion: "BuscarPrestamosSolicitados"
         },
         error: function () {
-           swal("Error", "No se pudieron cargar los libros", "error");
+           swal("Error", "No se pudieron cargar los prestamos solicitados", "error");
         },
         success: function (data) {
             dibujarTabla(data);

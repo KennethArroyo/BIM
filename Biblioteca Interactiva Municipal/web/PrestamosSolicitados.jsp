@@ -20,7 +20,7 @@
                     
         <div class="container" style="margin-top:150px; ">
         <h2  style="align-content: center;">Préstamos Solicitados</h2><br><br>
-        <table class="table table-striped table-bordered table-hover" id="mydataTodosPrestamo">
+        <table class="table table-striped table-bordered table-hover" id="mydata">
             
         <thead>
          <tr>
