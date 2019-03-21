@@ -14,6 +14,7 @@ function reportePrestados() {
         success:
                 function (datos) {
                     var kennethSePara;
+                    var kennethSePara2;
                     var y = 30;
                     var x = 20;
                     window.alert("entra");
