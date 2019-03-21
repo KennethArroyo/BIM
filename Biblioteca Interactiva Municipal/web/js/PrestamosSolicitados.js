@@ -44,12 +44,12 @@ function inicializarTabla(){
     
     function buscarTodosLibros() {
     $.ajax({
-        url: 'BuscarPrestamo',
+        url: 'BuscarPrestamos',
         data: {
             accion: "BuscarPrestamosSolicitados"
         },
         error: function () {
-           swal("Error", "No se pudieron cargar los libros", "error");
+           swal("Error", "No se pudieron cargar los prestamos solicitados", "error");
         },
         success: function (data) {
             dibujarTabla(data);
@@ -72,7 +72,7 @@ function inicializarTabla(){
         return titulo;
     }
     function dibujarFila(rowData) {
-        t.row.add([rowData.usuario_ID, rowData.fecha_inicio, rowData.fecha_final, rowData.libro_ID, rowData.estado]).draw();
+        t.row.add([rowData.usuario, rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado]).draw();
     }
 }
 
