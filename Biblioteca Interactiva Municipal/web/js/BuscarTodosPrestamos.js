@@ -10,6 +10,10 @@ $(document).ready(function () {
 
 function inicializar() {
     var t = $('#mydataTodosPrestamo').DataTable({
+        dom: 'Bfrtip',
+        "buttons": [
+            'excel', 'pdf'
+        ],
         "language": {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ prestamos",
@@ -60,20 +64,9 @@ function inicializar() {
             dibujarFila(dataJson[i]);
         }
     }
-    function tituloLibro(row) {
-        var titulo = row.libro.titulo;
-        return titulo;
-    }
+    
     function dibujarFila(rowData) {
-        var est;
-        if (rowData.estado_ID === 1) {
-            est = "solicitado";
-        } else if (rowData.estado_ID === 2) {
-            est = "prestado";
-        }else if (rowData.estado_ID === 3) {
-            est = "devuelto";
-        }
-        t.row.add([rowData.usuario_ID, rowData.fecha_inicio, rowData.fecha_final, rowData.libro_ID, est, '<button type="button" class="btn btn-info" onclick="buscarPrestamoId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
+        t.row.add([rowData.usuario, rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado, '<button type="button" class="btn btn-info" onclick="buscarPrestamoId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
     }
 }
 

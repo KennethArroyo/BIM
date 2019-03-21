@@ -17,77 +17,86 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="js/siema.min.js"></script>
   <%@ include file="header.jsp" %>
     </head>
     <body>
         <jsp:useBean id="actividades" scope="request" type="List<Actividad>" class="java.util.ArrayList"/>
         <div class="super_container">
-            <div id="carouselActividades" class="carousel slide" data-ride="carousel">
-
-                        <!-- Indicators -->
-                        <ul class="carousel-indicators">
-                            <%for(int i = 0;i<actividades.size();i++){;%>
-                            <c:choose>
-                                <c:when test="i==0"><li data-target="#carouselActividades" data-slide-to='/<%=i%>' class="active"></li></c:when>
-                                <c:otherwise><li data-target="#carouselActividades" data-slide-to='/<%=i%>'></li></c:otherwise>    <!-- else condition -->
-                             </c:choose>
-                             <%}%>
-                        </ul>
-
-                        <!-- The slideshow -->
-                        <div class="carousel-inner">
-                            <%for(int i = 0;i<actividades.size();i++){;%>
-                            <%Actividad p = actividades.get(i);%>
-                            <c:choose>
-                                <c:when test="i==0">
-                                    <div class="carousel-item active">
-                                    <img src='Actividades/<%=p.getNombre()%>' alt="Los Angeles" width="1100" height="500">
-                                      <div class="carousel-caption">
-                                        <h3>ACTIVIDAD #1</h3>
-                                      </div>
-                                    </div>
-                                </c:when>
-                                      <c:otherwise>
-                                          <div class="carousel-item">
-                                            <img src='Actividades/<%=p.getNombre()%>' alt="Chicago" width="1100" height="500">
-                                            <div class="carousel-caption">
-                                                <h3>ACTIVIDAD #2</h3>
-                                            </div>
-                                        </div>
-                                      </c:otherwise>    <!-- else condition -->
-                             </c:choose>
-                             <%}%>
-                        </div>
-
-                        <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#carouselActividades" data-slide="prev">
-                          <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselActividades" data-slide="next">
-                          <span class="carousel-control-next-icon"></span>
-                        </a>
-                      </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
                     <div class="siema">
+                        <div><img src='Actividades/actividadesmunicipales.jpg' alt=""></div>
                         <%for(int i = 0;i<actividades.size();i++){;%>
                             <%Actividad p = actividades.get(i);%>
                             <div><img src='Actividades/<%=p.getNombre()%>' alt=""></div>
                         <%}%>
                     </div>
                     <br>
-            <button id="prev" class="btn btn-info">Anterior</button>
-            <button id="next" class="btn btn-info">Siguiente</button>
+     <!--       <button id="prev" class="btn btn-info">Anterior</button>
+            <button id="next" class="btn btn-info">Siguiente</button> !-->
         </div>
 
+<script>
+// const mySiema = new Siema({duration: 600,easing: 'cubic-bezier(.11,.73,.57,1.53)', loop: true});
+ //document.querySelector('#prev').addEventListener('click',() => mySiema.prev());
+ //document.querySelector('#next').addEventListener('click',() => mySiema.next());
+    class SiemaWithDots extends Siema {
+    addDots() {
+        // create a contnier for all dots
+        // add a class 'dots' for styling reason
+        this.dots = document.createElement('div');
+        this.dots.classList.add('dots');
+
+        // loop through slides to create a number of dots
+        for(let i = 0; i < this.innerElements.length; i++) {
+          // create a dot
+          const dot = document.createElement('button');
+
+          // add a class to dot
+          dot.classList.add('dots__item');
+
+          // add an event handler to each of them
+          dot.addEventListener('click', () => {
+            this.goTo(i);
+          })
+
+          // append dot to a container for all of them
+          this.dots.appendChild(dot);
+        }
+
+        // add the container full of dots after selector
+        this.selector.parentNode.insertBefore(this.dots, this.selector.nextSibling);
+      }
+
+      updateDots() {
+        // loop through all dots
+        for(let i = 0; i < this.dots.querySelectorAll('button').length; i++) {
+          // if current dot matches currentSlide prop, add a class to it, remove otherwise
+          const addOrRemove = this.currentSlide === i ? 'add' : 'remove';
+          this.dots.querySelectorAll('button')[i].classList[addOrRemove]('dots__item--active');
+        }
+      }
+    };
+ 
+ 
+ 
+const mySiemaWithDots = new SiemaWithDots({
+  duration: 250,
+  loop: true,
+       onInit: function(){
+        this.addDots();
+        this.updateDots();
+      },
+
+      // on change trigger method created above
+      onChange: function(){
+        this.updateDots()
+      }
+});
+// listen for keydown event
+setInterval(() => mySiemaWithDots.next(), 5000);
+
+</script>
     </body>
     <footer><%@ include file="footer.jsp" %></footer>
 </html>

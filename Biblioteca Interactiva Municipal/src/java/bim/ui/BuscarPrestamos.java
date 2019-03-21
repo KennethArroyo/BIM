@@ -5,6 +5,7 @@
  */
 package bim.ui;
 
+import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import bim.logica.Model;
@@ -58,8 +59,21 @@ public class BuscarPrestamos extends HttpServlet {
                     out.print(json);
                     break;
                 case "BuscarTodosPrestamos":
-                    prestamos =Model.instance().buscarTodosPrestamos();
-                    json= new Gson().toJson(prestamos);
+                    ArrayList<ModeloPrestamo> lista= new ArrayList<>();
+                    lista =Model.instance().buscarTodosPrestamos();
+                    json= new Gson().toJson(lista);
+                    out.print(json);
+                    break;
+                case "BuscarPrestamosSolicitados":
+                    ArrayList<ModeloPrestamo> solicitados= new ArrayList<>();
+                    solicitados = Model.instance().PrestamosSolicitados();
+                    json = new Gson().toJson(solicitados);
+                    out.print(json);
+                    break;
+                case "BuscarLibrosPrestados":
+                    ArrayList<ModeloPrestamo> prestados= new ArrayList<>();
+                    prestados = Model.instance().buscarLibrosPrestados();
+                    json = new Gson().toJson(prestados);
                     out.print(json);
                     break;
                 case "BuscarPrestamoId":
