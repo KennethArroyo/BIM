@@ -198,7 +198,7 @@ public class Model {
         return dao.obtenerReportePrestados();
     }
     
-    public ArrayList<Prestamo> PrestamosSolicitados() throws Exception{
+    public ArrayList<ModeloPrestamo> PrestamosSolicitados() throws Exception{
         return dao.buscarPrestamosSolicitados();
     }
     

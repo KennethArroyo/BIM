@@ -65,8 +65,9 @@ public class BuscarPrestamos extends HttpServlet {
                     out.print(json);
                     break;
                 case "BuscarPrestamosSolicitados":
-                    prestamos = Model.instance().PrestamosSolicitados();
-                    json = new Gson().toJson(prestamos);
+                    ArrayList<ModeloPrestamo> solicitados= new ArrayList<>();
+                    solicitados = Model.instance().PrestamosSolicitados();
+                    json = new Gson().toJson(solicitados);
                     out.print(json);
                     break;
                 case "BuscarPrestamoId":

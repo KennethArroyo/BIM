@@ -700,15 +700,17 @@ try{
         
     }
     
-    public ArrayList<Prestamo> buscarPrestamosSolicitados() throws Exception {
+    public ArrayList<ModeloPrestamo> buscarPrestamosSolicitados() throws Exception {
         
-    ArrayList<Prestamo> prestamos = new ArrayList<>();
+    ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
     try{
-        String sql = "SELECT * from Prestamo where p.estado_ID = 2";
+        String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
+        + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id "
+                + "and p.usuario_ID = u.id and p.estado_ID = e.id and p.estado_ID = 1";
         sql = String.format(sql);    
         ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
-                prestamos.add(prestamo(rs));
+                prestamos.add(modeloPrestamo(rs));
             }
     
     }catch (SQLException ex) {

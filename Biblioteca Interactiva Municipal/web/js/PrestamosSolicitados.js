@@ -72,15 +72,7 @@ function inicializarTabla(){
         return titulo;
     }
     function dibujarFila(rowData) {
-        var est;
-        if (rowData.estado_ID === 1) {
-            est = "Solicitado";
-        } else if (rowData.estado_ID === 2) {
-            est = "Prestado";
-        }else if (rowData.estado_ID === 3) {
-            est = "Devuelto";
-        }
-        t.row.add([rowData.usuario_ID, rowData.fecha_inicio, rowData.fecha_final, rowData.libro_ID, est]).draw();
+        t.row.add([rowData.usuario_ID, rowData.fecha_inicio, rowData.fecha_final, rowData.libro_ID, rowData.estado]).draw();
     }
 }
 

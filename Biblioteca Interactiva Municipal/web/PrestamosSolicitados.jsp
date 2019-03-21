@@ -13,7 +13,7 @@
         <a href="librerias.jsp"></a>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
-        <script src="js/BuscarTodosPrestamos.js" type="text/javascript"></script>
+        <script src="js/PestamosSolicitados.js" type="text/javascript"></script>
     </head>
     <body>
         <%@include file="header.jsp"%>
