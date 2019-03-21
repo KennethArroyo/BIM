@@ -10,7 +10,8 @@ package bim.entidades;
  * @author Sergio
  */
 public class ModeloPrestamo {
-    private int id_estado;
+    private int id;
+    private String estado;
     private String titulo;
     private String usuario;
     private String fecha_inicio;
@@ -19,8 +20,12 @@ public class ModeloPrestamo {
     public ModeloPrestamo() {
     }
 
-    public void setId_estado(int id_estado) {
-        this.id_estado = id_estado;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setFecha_inicio(String fecha_inicio) {
@@ -32,8 +37,8 @@ public class ModeloPrestamo {
     }
     
 
-    public void setId(int id) {
-        this.id_estado = id;
+    public void setEstado(String id) {
+        this.estado = id;
     }
 
     public void setTitulo(String titulo) {
@@ -44,8 +49,8 @@ public class ModeloPrestamo {
         this.usuario = usuario;
     }
 
-    public int getId_estado() {
-        return id_estado;
+    public String getEstado() {
+        return estado;
     }
 
     public String getFecha_inicio() {
@@ -54,10 +59,6 @@ public class ModeloPrestamo {
 
     public String getFecha_final() {
         return fecha_final;
-    }
-
-    public int getId() {
-        return id_estado;
     }
 
     public String getTitulo() {
