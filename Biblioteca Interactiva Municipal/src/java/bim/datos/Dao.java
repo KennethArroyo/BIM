@@ -4,6 +4,7 @@ import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.Libro;
+import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import java.sql.PreparedStatement;
@@ -35,6 +36,17 @@ public class Dao {
         p.setId(rs.getInt("id"));
         p.setNombre(rs.getString("nombre"));
         p.setDir(rs.getString("direccion"));
+        return p;
+    }
+    
+    private ModeloPrestamo modeloPrestamo(ResultSet rs) throws Exception {
+        ModeloPrestamo p = new ModeloPrestamo();
+        p.setId(rs.getInt("id"));
+        p.setTitulo(rs.getString("titulo"));
+        p.setUsuario(rs.getString("nombre"));
+        p.setEstado(rs.getString("estado_prestamo"));
+        p.setFecha_inicio(rs.getString("fecha_inicio"));
+        p.setFecha_final(rs.getString("fecha_final"));
         return p;
     }
     
@@ -688,15 +700,39 @@ try{
         
     }
     
-    public ArrayList<Prestamo> buscarTodosPrestamos() throws Exception {
+    public ArrayList<ModeloPrestamo> buscarPrestamosSolicitados() throws Exception {
         
-    ArrayList<Prestamo> prestamos = new ArrayList<>();
+    ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
     try{
-        String sql = "SELECT * FROM Prestamo";
+        String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
+        + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id "
+                + "and p.usuario_ID = u.id and p.estado_ID = e.id and p.estado_ID = 1";
         sql = String.format(sql);    
         ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
-                prestamos.add(prestamo(rs));
+                prestamos.add(modeloPrestamo(rs));
+            }
+    
+    }catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    
+    return prestamos;
+        
+    }
+    
+    
+    public ArrayList<ModeloPrestamo> buscarTodosPrestamos() throws Exception {
+        
+    ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
+    try{
+        String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
+                + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id and p.usuario_ID = u.id and p.estado_ID = e.id";
+        sql = String.format(sql);    
+        ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                prestamos.add(modeloPrestamo(rs));
             }
     
     }catch (SQLException ex) {
@@ -776,10 +812,43 @@ try{
         return dir;
     }
     
+<<<<<<< HEAD
     public void devolucionLibro(int id)throws SQLException{
     String sql = "update Libro set cantidad_copias = cantidad_copias+1 where libro_id=%d";
     sql = String.format(sql,id);
     db.executeQuery(sql);
     }
+=======
+    public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws SQLException, Exception{
+        PreparedStatement preparedStatement = null;
+        ArrayList<ModeloPrestamo> lista = new ArrayList<>();
+        String sql = "select p.id, titulo, u.nombre from Prestamo p, Libro l, Usuario u where p.libro_ID = l.libro_id and p.usuario_ID = u.id";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            lista.add(modeloPrestamo(rs));
+        }
+        return lista;
+    }
+
+    public ArrayList<ModeloPrestamo> buscarLibrosPrestados() throws SQLException, Exception {
+ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
+    try{
+        String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
+        + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id "
+                + "and p.usuario_ID = u.id and p.estado_ID = e.id and p.estado_ID = 2";
+        sql = String.format(sql);    
+        ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                prestamos.add(modeloPrestamo(rs));
+            }
+    
+    }catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+    
+    return prestamos;    }
+>>>>>>> 92b514b29157f99ad0e339b7d1a2193d95d7480d
 }
 

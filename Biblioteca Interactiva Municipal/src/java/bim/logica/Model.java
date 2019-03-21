@@ -5,6 +5,7 @@ import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.Libro;
+import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
 import bim.entidades.Usuario;
 import java.sql.SQLException;
@@ -173,7 +174,7 @@ public class Model {
     return dao.buscarPrestamosUsuario(id);
     }
     
-    public ArrayList<Prestamo> buscarTodosPrestamos()throws Exception{
+    public ArrayList<ModeloPrestamo> buscarTodosPrestamos()throws Exception{
     return dao.buscarTodosPrestamos();
     }
 
@@ -192,7 +193,24 @@ public class Model {
     public String obtenerDirActividad(int id) throws SQLException {
         return dao.obtenerDirActividad(id);
     }
+<<<<<<< HEAD
     public void devolucionLibro(int id)throws SQLException{
     dao.devolucionLibro(id);
     }
+=======
+    
+    public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws Exception{
+        return dao.obtenerReportePrestados();
+    }
+    
+    public ArrayList<ModeloPrestamo> PrestamosSolicitados() throws Exception{
+        return dao.buscarPrestamosSolicitados();
+    }
+
+    public ArrayList<ModeloPrestamo> buscarLibrosPrestados() throws Exception {
+        return dao.buscarLibrosPrestados();
+    }
+    
+
+>>>>>>> 92b514b29157f99ad0e339b7d1a2193d95d7480d
 }
