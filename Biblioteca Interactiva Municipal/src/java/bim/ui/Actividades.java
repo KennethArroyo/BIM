@@ -101,9 +101,9 @@ public class Actividades extends HttpServlet {
     private void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try{
         Part PartImagen;
-        String nombre = request.getParameter("nombre");
          PartImagen = request.getPart("imagen");
                     String nombreImagen = Paths.get(PartImagen.getSubmittedFileName()).getFileName().toString();
+                    String nombre = nombreImagen.replaceFirst("[.][^.]+$", "");
                     String tipo = getServletContext().getMimeType(nombreImagen);
                     OutputStream salida = new FileOutputStream(new File(getServletContext().getRealPath("/") + "Actividades/" + nombreImagen));
                     String caminoImagen = Paths.get(getServletContext().getRealPath("/") + "Actividades/", nombreImagen).toString();
