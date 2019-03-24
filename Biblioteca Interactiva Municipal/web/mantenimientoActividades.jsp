@@ -24,11 +24,6 @@
                         <h2 style="align-content: center;"><center>Mantenimiento de actividades</center></h2>
                     </div>
                     <form action="Actividades" onsubmit="return true" id="formAct" enctype="multipart/form-data" method="POST">
-                        <div class="form-group" id="groupUsuario">
-                            <label>Nombre de la imagen (con extension)</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre"autofocus="true" placeholder="Nombre.jpg" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
-                                oninput="this.setCustomValidity('')">
-                        </div>
                         <div class="form-group" id="group">
                             <label for="imagen">Imagen de actividad</label>
                             <input type="file" class="form-control" id="imagen" name="imagen" required oninvalid="this.setCustomValidity('Favor elegir imagen')"

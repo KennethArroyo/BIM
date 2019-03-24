@@ -17,7 +17,7 @@
                       var asig=obj[0]; 
                       autores=obj[1];
                       updateList(asig);
-                      autocomplete(document.getElementById("autor"), autores);
+                      autocomplete(document.getElementById("autor1"), autores);
                       autocomplete(document.getElementById("autor2"), autores);
                       autocomplete(document.getElementById("autor3"), autores);
                       autocomplete(document.getElementById("autor4"), autores);
@@ -162,20 +162,21 @@
         var nombre = "";
         var autores2 = [];
         for(var t = 1;t<numeracion;t++){
-            nombre = "autor"+t.toString();
-            window.alert("hello");
-            if($("#id='"+nombre+"'").text() !== ''){
-                autores2.push($(this).text());   
-            }
-            
+            nombre = "#autor"+t.toString();
+            autores2.push($(nombre).val());   
+            window.alert(autores2[t-1]);
         }
-//        var autores2 = [];
-//        $( "input[name='autor']" ).each(function(index){
-//            if($(this).text() !== ''){
-//                autores2.push($(this).text());
-//            }
-//        }));
-        return autores2;
+        for(var i = 0;i<autores2.length - 1;i++){
+            var valor = autores2[i];
+            for(var j = i+1; j<autores2.length;j++){
+                var valor2 = autores2[j];
+                if(valor === valor2){
+                    swal("Info","No pueden haber autores repetidos","info");
+                    return false;
+                }
+            }
+        }
+        return true;
     }
       
       
@@ -188,6 +189,7 @@
     function agregarLibro(){
     var dato = $("#imagenPDF").val();
     var num = $("#copias").val();
+    
        if($.isNumeric(num)){
             if($("#fisico").prop('checked')||$("#digital").prop('checked')){
                  //revisar imagen
@@ -195,28 +197,24 @@
                     var Extension = dato.substring(dato.lastIndexOf('.') + 1).toLowerCase();
             //Es imagen
                 if (Extension === "png"|| Extension === "jpeg" || Extension === "jpg") {
-                    
-                    return true;
+                    return RevisarAutores();
                 } 
             //No es imagen
                 else {
                         swal("Info","Por favor subir en portada unicamente archivos tipo imagen","info");
-                       
                           return false;
                     }
                  }
-                return true;
+                return RevisarAutores();
             }
             //ningun check esta seleccionado
             else{
                 swal("Info","Debe seleccionar al menos un tipo de Libro, físico o digital","info");
-                
                 return false;
             }
        }
        else{
            $("#copias").css("border-color","#d81a1a").css("border-width", "3px");
-           
            swal("Info","La cantiad de copias debe ser un valor númerico","info");
            return false;
        }
