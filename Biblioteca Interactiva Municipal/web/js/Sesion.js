@@ -27,7 +27,10 @@ function iniciar(){
                         
                         swal("Info", "Este usuario debe ser verificado, favor revisar su correo", "info");
                         window.location.assign("Principal");
-                    }
+                    }else
+                        if(status.status===406){
+                            swal("Error", "Su usuario fue deshabilitado, contacte con el administrador", "error");
+                        }
                     else
                         swal("Error", "El usuario o la contaseña son incorrectos", "error");
               }                    

@@ -150,6 +150,11 @@ public class Sesion extends HttpServlet {
                 //response.sendError(0);
                 error = 405;
                 throw new Exception();
+            }else
+                if(us.getHabilitado()==2){
+                //response.sendError(0);
+                error = 406;
+                throw new Exception();
             }
             out.write(gson.toJson(us));
             response.setStatus(200); // ok with content

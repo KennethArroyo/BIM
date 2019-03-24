@@ -45,6 +45,7 @@ public class BuscarUsuarios extends HttpServlet {
             Usuario u = new Usuario();
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
+            String ident;
             //String input = request.getParameter("nombre");
             switch (accion) {
                 case "buscarTodosUsu":
@@ -53,14 +54,23 @@ public class BuscarUsuarios extends HttpServlet {
                     out.print(json);
                     break;
                 case "buscarUsuarioId":
-                    String ident = request.getParameter("identificacion");
+                    ident = request.getParameter("identificacion");
                     u = Model.instance().getUsuarioCed(ident);
                     json = new Gson().toJson(u);
                     out.print(json);
                     break;
                 case "modificarTipoUsuario":
                     this.ModificarTipoUsuario(request, response);
-                    //Usuario u = new Usuario();
+                    out.print("C~U");
+                    break;
+                case "verificaPrestamosUsu":
+                    ident = request.getParameter("identificacion");
+                    u = Model.instance().verificaPrestamosUsu(ident);
+                    json = new Gson().toJson(u);
+                    out.print(json);
+                    break;
+                case "modificarEstadoUsuario":
+                    this.modificarEstadoUsuario(request, response);
                     out.print("C~U");
                     break;
                 default:
@@ -84,6 +94,18 @@ public class BuscarUsuarios extends HttpServlet {
             
             Model.instance().modificarTipoUsuario(u);
 
+        } catch (Exception e) {
+            String msg = e.getMessage();
+            request.setAttribute("error", "Ocurrió un error");
+            request.getRequestDispatcher("Error.jsp").forward(request, response);
+        }
+    }
+    
+    protected void modificarEstadoUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            int habilitado = Integer.parseInt(request.getParameter("habilitado"));
+            String identificacion =request.getParameter("identificacion");
+            Model.instance().modificarEstadoUsuario(identificacion, habilitado);
         } catch (Exception e) {
             String msg = e.getMessage();
             request.setAttribute("error", "Ocurrió un error");

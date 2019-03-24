@@ -1,3 +1,4 @@
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -70,8 +71,9 @@ function dibujarTabla(dataJson) {
 function dibujarFila(rowData) {
     var hab;
     if(rowData.habilitado===1){hab="Sí";}
-    else if(rowData.habilitado===0){hab="No";}
-    t.row.add([rowData.identificacion, rowData.nombre, rowData.apellidos, rowData.lugar_residencia, rowData.telefono, rowData.correo, rowData.ref_trab_est, hab,'<button type="button" class="btn btn-info" onclick="buscarUsuarioId(' + rowData.identificacion + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
+    else if(rowData.habilitado===0){hab="Falta verificación";}
+    else if(rowData.habilitado===2){hab="Deshabilitado por admin";}
+    t.row.add([rowData.identificacion, rowData.nombre, rowData.apellidos, rowData.lugar_residencia, rowData.telefono, rowData.correo, rowData.ref_trab_est, hab,'<button type="button" class="btn btn-info" onclick="buscarUsuarioId(' + rowData.identificacion + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>','<button type="button" class="btn btn-info" onclick="buscarUsuarioId2(' + rowData.identificacion + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
 
 }
 }
@@ -104,6 +106,26 @@ function buscarUsuarioId(identificacion){
     });
 }
 
+function buscarUsuarioId2(identificacion){
+    $.ajax({
+        url: "BuscarUsuarios",
+        data: {
+            accion: "buscarUsuarioId",
+            identificacion: identificacion
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            swal('Error', 'Ha ocurrido un error al cargar el usuario', 'error');
+        },
+        success: function (data) {
+                $("#myModalFormulario2").modal();
+                $("#Estadoaction").val("cambiarEstadoUsuario");
+                $("#identificacion2").val(data.identificacion);
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
 function cambiarTipoUsuario(){
     $.ajax({
        url:'BuscarUsuarios',
@@ -127,6 +149,36 @@ function cambiarTipoUsuario(){
                             swal('Error', 'No se pudo modificar el tipo', 'error');
                     }else {
                     swal('Error', 'No se pudo modificar el tipo', 'error');
+                    
+                }
+                    }
+       },
+       type: 'POST'
+    });
+    
+}
+
+function cambiarEstadoUsuario(){
+    $.ajax({
+       url:'BuscarUsuarios',
+       data:{
+           accion: "modificarEstadoUsuario",
+           habilitado:$("#habilitado").val(),
+           identificacion:$("#identificacion2").val()
+       },
+       error:function(){
+           swal('Error', 'Ha ocurrido un error al editar el estado de usuario', 'error');
+       },
+       success: function(data){
+           var tipoRespuesta = data.substring(0,2);
+           if (tipoRespuesta === "C~") { //correcto
+                        swal("Listo", "Se modificó el estado de usuario correctamente", "success");
+                        $("#myModalFormulario2").modal("hide");
+                    } else {
+                        if (tipoRespuesta === "E~") { //error
+                            swal('Error', 'No se pudo modificar el estado del usuario', 'error');
+                    }else {
+                    swal('Error', 'No se pudo modificar el estado del usuario', 'error');
                     
                 }
                     }

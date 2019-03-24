@@ -209,4 +209,11 @@ public class Model {
         return dao.buscarLibrosPrestados();
     }
     
+    public Usuario verificaPrestamosUsu(String ced)throws SQLException{
+    return dao.verificaPrestamosUsu(ced);
+    }
+    
+    public void modificarEstadoUsuario(String ced, int estado)throws Exception{
+    dao.modificarEstadoUsuario(ced, estado);
+    }
 }

@@ -22,6 +22,9 @@ public class Usuario {
     String ref_trab_est;
     int habilitado;
     String cod_verificacion;
+    boolean tienePrestamos;
+
+    
     
     public static String NUMEROS = "0123456789";
     public static String MAYUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -30,7 +33,15 @@ public class Usuario {
 
     public Usuario() {
     }
+    
+    public boolean isTienePrestamos() {
+        return tienePrestamos;
+    }
 
+    public void setTienePrestamos(boolean tienePrestamos) {
+        this.tienePrestamos = tienePrestamos;
+    }
+    
     public String getCod_verificacion() {
         return cod_verificacion;
     }

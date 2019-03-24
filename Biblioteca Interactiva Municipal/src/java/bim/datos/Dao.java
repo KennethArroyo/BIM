@@ -846,6 +846,39 @@ ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
             throw ex;
         }
     
-    return prestamos;    }
+    return prestamos;    
+    
+    }
+    
+    public Usuario verificaPrestamosUsu(String ced )throws SQLException{
+        Usuario u=new Usuario();
+        int cantidad;
+        try{
+            String sql ="select count(id) cuenta from Prestamo where usuario_ID='%s'";
+            sql = String.format(sql, ced);
+            ResultSet rs = db.executeQuery(sql);
+            rs.next();
+            cantidad = rs.getInt("cuenta");
+            if(cantidad>0){
+            u.setTienePrestamos(true);
+            u.setIdentificacion(ced);
+            //u.setHabilitado(1);
+            }else{
+                u.setTienePrestamos(false);
+                u.setIdentificacion(ced);
+              //  u.setHabilitado(1);
+            }
+        
+        }catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+        return u;
+    }
+    
+    public void modificarEstadoUsuario(String ced,int estado)throws Exception{
+    String sql = "update Usuario set habilitado = %d where identificacion='%s'";
+    sql = String.format(sql,estado,ced);
+    db.executeQuery(sql);
+    }
 }
-
