@@ -9,11 +9,20 @@ $(document).ready(function () {
 
 function inicializar() {
     var t = $('#mydataPrestamo').DataTable({
+"lengthMenu": [[ 10, 25, 50, -1 ],[ 'Mostrar 10 datos', 'Mostrar 25 datos', 'Mostrar 50 datos', 'Todos los datos' ]],
         dom: 'Bfrtip',
         "buttons": [
-            'excel', 'pdf'
+            'pageLength',
+            {extend:'excel', text:'Exportar Excel'},
+            {extend:'pdf', text:'Exportar PDF'}
         ],
         "language": {
+        "buttons": {
+            pageLength: {
+                _: "Mostrar %d datos",
+                '-1': "Todos"
+            }
+        },
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ prestamos",
             "sZeroRecords": "No se encontraron prestamos",
@@ -22,7 +31,7 @@ function inicializar() {
             "sInfoEmpty": "No hay prestamos disponibles",
             "sInfoFiltered": "",
             "sInfoPostFix": "",
-            "sSearch": "Buscar:",
+            "sSearch": "Buscar Préstamo:",
             "sUrl": "",
             "sInfoThousands": ",",
             "sLoadingRecords": "Cargando...",
@@ -72,13 +81,13 @@ function inicializar() {
     function dibujarFila(rowData) {
         var est;
         if (rowData.estado_ID === 1) {
-            est = "solicitado";
+            est = "Solicitado";
         } 
         else if (rowData.estado_ID === 2) {
-            est = "prestado";
+            est = "Prestado";
         }
         else if (rowData.estado_ID === 3) {
-            est = "devuelto";
+            est = "Devuelto";
         }
         //var titulo = tituloLibro(rowData);
         t.row.add([rowData.fecha_inicio, rowData.fecha_final, rowData.libro_ID, est]).draw();

@@ -23,11 +23,11 @@
                         <div class="col-lg-24">
                             <div class="administrador">
                                 <div class="logo_container">
-                                    <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
+                                    <a href="Principal"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
                                 </div>
                                 <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="principal.jsp">Inicio</a></li>                           
+                                    <li><a href="Principal">Inicio</a></li>                           
                                     <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                               
                                     <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>                                                                                                                     
                                     <li><a href="">Actividades</a></li>
@@ -46,11 +46,11 @@
                             </div>
                             <div class="anonimo">
                                 <div class="logo_container">
-                                    <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
+                                    <a href="Principal"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
                                 </div>
                                 <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="principal.jsp">Inicio</a></li>                           
+                                    <li><a href="Principal">Inicio</a></li>                           
                                     <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                               
                                     <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>                                                                                                                     
                                     <li><a href="">Actividades</a></li>
@@ -69,11 +69,11 @@
                             </div>
                             <div class="usuario">
                                 <div class="logo_container">
-                                    <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
+                                    <a href="Principal"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
                                 </div>
                                 <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="principal.jsp">Inicio</a></li>                           
+                                    <li><a href="Principal">Inicio</a></li>                           
                                     <li><a href="buscarLibro.jsp">Buscar Libro</a></li>                                                                                               
                                     <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>                                                                                                                     
                                     <li><a href="">Actividades</a></li>
@@ -102,9 +102,9 @@
         <div class="hamburger_menu">
             <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
             <div class="hamburger_menu_content text-right">
-                <a class="menu_name" href="principal.jsp">Biblioteca Interactiva Municipal</a><br>
+                <a class="menu_name" href="Principal">Biblioteca Interactiva Municipal</a><br>
                 <ul class="menu_top_nav">
-                    <li class="menu_item"><a href="principal.jsp" >Inicio</a></li>                                           
+                    <li class="menu_item"><a href="Principal" >Inicio</a></li>                                           
                     <li><a href="buscarLibro.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>                                                                                                                     
                     <li><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>                                                
                     <li class="menu_item"><a href="">Actividades</a></li>

@@ -10,20 +10,29 @@ $(document).ready(function () {
 
 function inicializar() {
     var t = $('#mydataTodosPrestamo').DataTable({
+        "lengthMenu": [[ 10, 25, 50, -1 ],[ 'Mostrar 10 datos', 'Mostrar 25 datos', 'Mostrar 50 datos', 'Todos los datos' ]],
         dom: 'Bfrtip',
         "buttons": [
-            'excel', 'pdf'
+            'pageLength',
+            {extend:'excel', text:'Exportar Excel'},
+            {extend:'pdf', text:'Exportar PDF'}
         ],
         "language": {
+        "buttons": {
+            pageLength: {
+                _: "Mostrar %d datos",
+                '-1': "Todos"
+            }
+        },
             "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ prestamos",
-            "sZeroRecords": "No se encontraron prestamos",
-            "sEmptyTable": "Ningún prestamo disponible en esta tabla",
-            "sInfo": "Mostrando _END_ prestamo(s) de un total de _TOTAL_ prestamo(s)",
-            "sInfoEmpty": "No hay prestamos disponibles",
+            "sLengthMenu": "Mostrar _MENU_ préstamos",
+            "sZeroRecords": "No se encontraron préstamos",
+            "sEmptyTable": "Ningún préstamo disponible en esta tabla",
+            "sInfo": "Mostrando _END_ préstamo(s) de un total de _TOTAL_ préstamo(s)",
+            "sInfoEmpty": "No hay préstamos disponibles",
             "sInfoFiltered": "",
             "sInfoPostFix": "",
-            "sSearch": "Buscar:",
+            "sSearch": "Buscar Préstamo:",
             "sUrl": "",
             "sInfoThousands": ",",
             "sLoadingRecords": "Cargando...",
@@ -116,7 +125,9 @@ function modificarEstadoPrestamo() {
             if (tipoRespuesta === "C~") { //correcto
                 swal("Listo", "Se modificó el estado del prestamo correctamente", "success");
                 $("#myModalFormulario").modal("hide");
-               
+                $("#mydataTodosPrestamo").DataTable().destroy();
+                inicializar();
+
             } else {
                 if (tipoRespuesta === "E~") { //error
                     swal('Error', 'No se pudo modificar el estado', 'error');

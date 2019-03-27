@@ -11,12 +11,21 @@ $(document).ready(function(){
 
 function inicializar(){
         var t = $('#mydata').DataTable({
-            
+
+        "lengthMenu": [[ 10, 25, 50, -1 ],[ 'Mostrar 10 datos', 'Mostrar 25 datos', 'Mostrar 50 datos', 'Todos los datos' ]],
         dom: 'Bfrtip',
         "buttons": [
-            'excel', 'pdf'
+            'pageLength',
+            {extend:'excel', text:'Exportar Excel'},
+            {extend:'pdf', text:'Exportar PDF'}
         ],
         "language": {
+        "buttons": {
+            pageLength: {
+                _: "Mostrar %d datos",
+                '-1': "Todos"
+            }
+        },
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ usuarios",
         "sZeroRecords":   "No se encontraron usuarios",
@@ -25,7 +34,7 @@ function inicializar(){
         "sInfoEmpty":     "No hay libros disponibles",
         "sInfoFiltered":  "",
         "sInfoPostFix":   "",
-        "sSearch":        "Buscar:",
+        "sSearch":        "Buscar Usuario:",
         "sUrl":           "",
         "sInfoThousands":  ",",
         "sLoadingRecords": "Cargando...",
@@ -72,7 +81,7 @@ function dibujarFila(rowData) {
     var hab;
     if(rowData.habilitado===1){hab="Sí";}
     else if(rowData.habilitado===0){hab="Falta verificación";}
-    else if(rowData.habilitado===2){hab="Deshabilitado por admin";}
+    else if(rowData.habilitado===2){hab="Deshabilitado por Admin";}
     t.row.add([rowData.identificacion, rowData.nombre, rowData.apellidos, rowData.lugar_residencia, rowData.telefono, rowData.correo, rowData.ref_trab_est, hab,'<button type="button" class="btn btn-info" onclick="buscarUsuarioId(' + rowData.identificacion + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>','<button type="button" class="btn btn-info" onclick="buscarUsuarioId2(' + rowData.identificacion + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
 
 }
@@ -143,6 +152,8 @@ function cambiarTipoUsuario(){
                         swal("Listo", "Se modificó el tipo de usuario correctamente", "success");
                         //window.alert("Se modificó el usuario correctamente");
                         $("#myModalFormulario").modal("hide");
+                        $("#mydata").DataTable().destroy();
+                        inicializar();
                         //window.location.assign("http://localhost:8083/Biblioteca_Interactiva_Municipal/principal.jsp");
                     } else {
                         if (tipoRespuesta === "E~") { //error
@@ -174,6 +185,8 @@ function cambiarEstadoUsuario(){
            if (tipoRespuesta === "C~") { //correcto
                         swal("Listo", "Se modificó el estado de usuario correctamente", "success");
                         $("#myModalFormulario2").modal("hide");
+                        $("#mydata").DataTable().destroy();
+                        inicializar();
                     } else {
                         if (tipoRespuesta === "E~") { //error
                             swal('Error', 'No se pudo modificar el estado del usuario', 'error');

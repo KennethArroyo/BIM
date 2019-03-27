@@ -15,7 +15,7 @@
 			<div class="footer-left">
 
 				<p class="footer-links">
-                                        <a href="principal.jsp">Inicio</a>
+                                        <a href="Principal">Inicio</a>
 					·
 					<a href="buscarLibroUsuario.jsp">Libros</a>
 					·

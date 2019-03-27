@@ -4,11 +4,50 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function getActividades(){  
-            buscar();
-            });
+$(document).ready(function(){
+    inicializar();
+});
 
-
+function inicializar(){
+        var t = $('#mydata').DataTable({
+        "lengthMenu": [[ 10, 25, 50, -1 ],[ 'Mostrar 10 datos', 'Mostrar 25 datos', 'Mostrar 50 datos', 'Todos los datos' ]],
+        dom: 'Bfrtip',
+        "buttons": [
+            'pageLength'
+        ],
+        "language": {
+        "buttons": {
+            pageLength: {
+                _: "Mostrar %d datos",
+                '-1': "Todos"
+            }
+        },
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ actividades",
+        "sZeroRecords":   "No se encontraron actividades",
+        "sEmptyTable":    "Ninguna actividad disponible en esta tabla",
+        "sInfo":          "Mostrando _END_ actividad(es) de un total de _TOTAL_ actividad(es))",
+        "sInfoEmpty":     "No hay actividades disponibles",
+        "sInfoFiltered":  "",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar Actividad:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+}); 
+    buscar();
+    
 function buscar(){
     $.ajax({type: "GET", 
                   url:"BuscarAct",
@@ -21,34 +60,18 @@ function buscar(){
                     }                    
                 }); 
 }
-
+  
+    
 function dibujarTabla(dataJson) {
-    //limpia la información que tiene la tabla
-    $("#tablaActividades").html("");
-
-    //muestra el enzabezado de la tabla
-    var head = $("<thead class='thead-dark'/>");
-    var row = $("<tr />");
-    head.append(row);
-    $("#tablaActividades").append(head);
-    row.append($("<th>NOMBRE<b></b></th>"));
-    row.append($("<th>ELIMINAR<b></b></th>"));
-
-    //carga la tabla con el json devuelto
+    t.clear().draw();
     for (var i = 0; i < dataJson.length; i++) {
         dibujarFila(dataJson[i]);
     }
 }
 
 function dibujarFila(rowData) {
-    //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
-    //de un libro
-
-    var row = $('<tr id='+rowData.id+'/>');
-    $("#tablaActividades").append(row);
-    row.append($('<td>' + rowData.nombre + '</td>'));
-    row.append($('<td><button type="button" class="btn btn-danger" onclick="eliminarAct(' + rowData.id + ',' + '\'' + rowData.dir + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>'));
-    //row.append($('<td><button type="button" class="btn btn-danger" onclick="deshabilitarLibro('+rowData.id+');">'+'del'+'</button></td>'));          
+    t.row.add([rowData.nombre, '<button type="button" class="btn btn-danger" onclick="eliminarAct(' + rowData.id + ',' + '\'' + rowData.dir + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button>']).draw();
+}
 }
 
 
@@ -72,6 +95,8 @@ function eliminarAct(id, dir){
               function(status){ 
                   swal("Listo!", "La actividad ha sido eliminada", "success");
                   eliminarFila(datos);
+                  $("#mydata").DataTable().destroy();
+                  inicializar();
               
               },
             error: function(status){
@@ -84,16 +109,8 @@ function eliminarAct(id, dir){
             });
 }
 
-function eliminarFila(datos){
-    var row = document.getElementById(datos.id);
-    row.parentNode.removeChild(row);
-}
 
-function agregarFila(datos){
-var tr =$('<tr id='+datos.id+'/>');
-	tr.html("<td>"+datos.nombre+"</td>"+
-				'<td><button type="button" class="btn btn-danger" onclick="eliminarAct(' + datos.id + ',' + '\'' + datos.nombre + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button></td>');
-	$("#tablaActividades").append(tr);    
-}
+
+
 
 

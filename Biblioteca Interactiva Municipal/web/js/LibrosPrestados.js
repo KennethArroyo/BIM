@@ -17,12 +17,20 @@ $(document).ready(function(){
 
 function inicializarTabla(){
         var t = $('#mydata').DataTable({
-            
+        "lengthMenu": [[ 10, 25, 50, -1 ],[ 'Mostrar 10 datos', 'Mostrar 25 datos', 'Mostrar 50 datos', 'Todos los datos' ]],
         dom: 'Bfrtip',
         "buttons": [
-            'excel', 'pdf'
+            'pageLength',
+            {extend:'excel', text:'Exportar Excel'},
+            {extend:'pdf', text:'Exportar PDF'}
         ],
         "language": {
+        "buttons": {
+            pageLength: {
+                _: "Mostrar %d datos",
+                '-1': "Todos"
+            }
+        },
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ libros prestados",
         "sZeroRecords":   "No se encontraron libros prestados",
@@ -31,7 +39,7 @@ function inicializarTabla(){
         "sInfoEmpty":     "No hay libros prestados disponibles",
         "sInfoFiltered":  "",
         "sInfoPostFix":   "",
-        "sSearch":        "Buscar:",
+        "sSearch":        "Buscar Libro:",
         "sUrl":           "",
         "sInfoThousands":  ",",
         "sLoadingRecords": "Cargando...",

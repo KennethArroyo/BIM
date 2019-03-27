@@ -12,16 +12,20 @@ $(document).ready(function getAutores() {
 
 function inicializar(){
         var t = $('#mydata').DataTable({
-//                dom: 'Bfrtip',
-//        "buttons": [
-//            {
-//                text: 'Agregar Asignatura',
-//                action: function ( e, dt, node, config ) {
-//                    $("#myModalAsignatura").modal();
-//                }
-//            }
-//        ],  
+        "lengthMenu": [[ 10, 25, 50, -1 ],[ 'Mostrar 10 datos', 'Mostrar 25 datos', 'Mostrar 50 datos', 'Todos los datos' ]],
+        dom: 'Bfrtip',
+        "buttons": [
+            'pageLength',
+            {extend:'excel', text:'Exportar Excel'},
+            {extend:'pdf', text:'Exportar PDF'}
+        ],
         "language": {
+        "buttons": {
+            pageLength: {
+                _: "Mostrar %d datos",
+                '-1': "Todos"
+            }
+        },
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ autores",
         "sZeroRecords":   "No se encontraron autores",
@@ -30,7 +34,7 @@ function inicializar(){
         "sInfoEmpty":     "No hay autores disponibles",
         "sInfoFiltered":  "",
         "sInfoPostFix":   "",
-        "sSearch":        "Buscar:",
+        "sSearch":        "Buscar Autor:",
         "sUrl":           "",
         "sInfoThousands":  ",",
         "sLoadingRecords": "Cargando...",
