@@ -26,7 +26,7 @@ function inicializar(){
         "sLengthMenu":    "Mostrar _MENU_ actividades",
         "sZeroRecords":   "No se encontraron actividades",
         "sEmptyTable":    "Ninguna actividad disponible en esta tabla",
-        "sInfo":          "Mostrando _END_ actividad(es) de un total de _TOTAL_ actividad(es))",
+        "sInfo":          "Mostrando _END_ actividad(es) de un total de _TOTAL_ actividad(es)",
         "sInfoEmpty":     "No hay actividades disponibles",
         "sInfoFiltered":  "",
         "sInfoPostFix":   "",
@@ -70,12 +70,12 @@ function dibujarTabla(dataJson) {
 }
 
 function dibujarFila(rowData) {
-    t.row.add([rowData.nombre, '<button type="button" class="btn btn-danger" onclick="eliminarAct(' + rowData.id + ',' + '\'' + rowData.dir + '\'' + ');">' + '<img src="imagenes/remove.png"/>' + '</button>']).draw();
+    t.row.add([rowData.nombre, '<button type="button" class="btn btn-danger" onclick="eliminarAct(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button>']).draw();
 }
 }
 
 
-function eliminarAct(id, dir){
+function eliminarAct(id){
     swal({
         title: "Está seguro?",
         text: "Una vez eliminada no podrá volver a utilizarla",
@@ -86,7 +86,7 @@ function eliminarAct(id, dir){
     .then((willDelete) => {
 
                 if (willDelete) {
-    var datos = {id:id, dir:dir};
+    var datos = {id:id};
     $.ajax({type: "POST", 
             url:"EliminarAct",
             dataType: "json",
@@ -94,7 +94,6 @@ function eliminarAct(id, dir){
             success: 
               function(status){ 
                   swal("Listo!", "La actividad ha sido eliminada", "success");
-                  eliminarFila(datos);
                   $("#mydata").DataTable().destroy();
                   inicializar();
               
