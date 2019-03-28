@@ -28,7 +28,7 @@
 
                             <div class="administrador">
                                 <div class="logo_container">
-                                    <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
+                                    <a href="Principal"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
                                 </div>
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
@@ -70,7 +70,7 @@
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="javascript:cerrar();">Cerrar sesion</a></li>
+                                        <li><a href="javascript:cerrar();"><small class="fa fa-sign-out"></small>&nbsp Cerrar sesion</a></li>
                                     </ul>
                                     <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
                                         <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
@@ -80,7 +80,7 @@
 
                             <div class="anonimo">
                                 <div class="logo_container">
-                                    <a href="principal.jsp"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
+                                    <a href="Principal"><img class="company_logo" src="imagenes/EscudoMunicipal.png"></a>
                                 </div>
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
@@ -113,7 +113,7 @@
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="javascript:cerrar();">Cerrar sesion</a></li>
+                                        <li><a href="javascript:cerrar();"><small class="fa fa-sign-out" ></small>Cerrar sesion</a></li>
                                     </ul>
                                     <div class="hamburger_container">	<!--Menu desplegable, Modo Responsivo-->				
                                         <i class="fa fa-bars" aria-hidden="true" id="hamburguer-icon"></i>
@@ -174,7 +174,7 @@
                                 <li><a href="EditarUsuario.jsp"><i aria-hidden="true"></i>Editar perfil</a></li>
                             </ul>
                         </li>
-                        <li class="menu_item"><a href="javascript:cerrar();" >Cerrar Sesion</a></li>
+                        <li class="menu_item"><a href="javascript:cerrar();"><span class="fa fa-sign-out"></span>&nbspCerrar Sesion</a></li>
                     </ul>
                 </div>
 
@@ -204,7 +204,7 @@
                                 <li><a href=""><i aria-hidden="true"></i>Autores</a></li>
                             </ul>
                         </li>
-                        <li class="menu_item"><a href="javascript:cerrar();" >Cerrar Sesion</a></li>
+                        <li class="menu_item"><a href="javascript:cerrar();"><span class="fa fa-sign-in"></span>&nbspCerrar Sesion</a></li>
                     </ul>
                 </div>
             </div>

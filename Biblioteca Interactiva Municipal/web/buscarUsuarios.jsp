@@ -23,9 +23,9 @@
                     
         <div class="container" style="margin-top:150px; ">
         <h2  style="align-content: center;">Buscar Usuarios</h2><br><br>
-        <table class="table table-striped table-bordered table-hover" id="mydata">
+        <table class="table table-striped table-bordered table-hover compact" id="mydata">
             
-        <thead>
+        <thead >
          <tr>
               <th class="th-sm">Identificación
               </th>
@@ -43,9 +43,9 @@
               </th>
               <th class="th-sm"> Perfil Habilitado
               </th>
-              <th class="th-sm"> Editar tipo de usuario
+              <th class="th-sm"> Editar tipo de Usuario
               </th>
-              <th class="th-sm"> Cambiar estado de usuario
+              <th class="th-sm"> Cambiar estado de Usuario
               </th>
             </tr>
         </thead>

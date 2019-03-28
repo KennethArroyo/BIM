@@ -221,11 +221,11 @@ public class RegistroUsuario extends HttpServlet {
             else {
                 out.print("C~Ha ocurrido un error verificando la cuenta");
             }
-           request.getRequestDispatcher("principal.jsp").forward(request, response);
+           request.getRequestDispatcher("Principal").forward(request, response);
         }
         catch (Exception e) {
             request.setAttribute("error", "Ocurrió un error");
-            request.getRequestDispatcher("principal.jsp").forward(request, response);
+            request.getRequestDispatcher("Principal").forward(request, response);
         }
     }
     protected void buscarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -37,10 +37,29 @@
                     </form>
                 <div class="col-md-4"></div>
             </div>
+                
+                <div class="container" style="margin-top:30px;">
+        <table class="table table-striped table-bordered table-hover compact" id="mydata">
             
-            <div class="table-responsive">
-                <table border="2" class="table table-striped" id="tablaActividades"></table>
-            </div>  
+        <thead >
+         <tr>
+              <th class="th-sm">Nombre
+              </th>
+              <th class="th-sm">Eliminar
+              </th>
+            </tr>
+        </thead>
+
+        <tfoot>
+        </tfoot>
+
+        <tbody>
+        </tbody>
+        </table>
+        </div>    
+                
+                
+                
         </div>
         </div>
         <footer>
