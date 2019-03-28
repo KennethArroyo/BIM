@@ -26,6 +26,8 @@
             
                     <div class="siema">
                         <div><img src='Actividades/actividadesmunicipales.jpg' alt=""></div>
+                         <div><img src='Actividades/biblio.png' alt=""></div>
+
                         <%for(int i = 0;i<actividades.size();i++){;%>
                             <%Actividad p = actividades.get(i);%>
                             <div><img src='Actividades/<%=p.getNombre()%>' alt=""></div>
