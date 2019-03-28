@@ -163,8 +163,9 @@
         var autores2 = [];
         for(var t = 1;t<numeracion;t++){
             nombre = "#autor"+t.toString();
+            var dato = $(nombre).val();
+            if(dato!== '')
             autores2.push($(nombre).val());   
-            window.alert(autores2[t-1]);
         }
         for(var i = 0;i<autores2.length - 1;i++){
             var valor = autores2[i];
