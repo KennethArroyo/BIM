@@ -5,6 +5,7 @@
  */
  //agregarLibro.jsp
  var numeracion = 5;
+ var clicksUsuario = 0;
  var autores = null;
     $(document).ready(function getAsignaturas(){
             $.ajax({type: "GET", 
@@ -71,11 +72,12 @@
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+              clicksUsuario = clicksUsuario + 1;
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists(inp);
           });
-          a.appendChild(b);
+          a.appendChild(b); 
         }
       }
   });
@@ -163,8 +165,13 @@
         var autores2 = [];
         for(var t = 1;t<numeracion;t++){
             nombre = "#autor"+t.toString();
+            var dato = $(nombre).val();
+            if(dato!== '')
             autores2.push($(nombre).val());   
-            window.alert(autores2[t-1]);
+        }
+        if(autores2.length > clicksUsuario){
+            swal("Info","Uno o mas autores no se encunetran registrados","info");
+            return false;
         }
         for(var i = 0;i<autores2.length - 1;i++){
             var valor = autores2[i];
