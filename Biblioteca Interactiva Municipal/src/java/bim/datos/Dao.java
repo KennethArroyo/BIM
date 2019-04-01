@@ -181,9 +181,9 @@ try{
          
         try{
         String insertTableSQL = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,"
-                 + "dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID, cuenta_autores)"
+                 + "dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID, cuenta_autores, derechos_autor)"
                  + "values"
-		+ "(?,?,?,?,?,?,?,?,?,?,?,?)";
+		+ "(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
         preparedStatement.setString(1, p.getClasificacion());
         preparedStatement.setString(2, p.getTitulo());
@@ -197,7 +197,7 @@ try{
         preparedStatement.setInt(10, p.getDigital());
         preparedStatement.setInt(11, p.getAsignatura().getId());
         preparedStatement.setInt(12, p.getCuentaAutores());
-        
+        preparedStatement.setInt(13, 0);
         int count = preparedStatement.executeUpdate();
         preparedStatement.close();
         
@@ -206,6 +206,7 @@ try{
             }
         }
         catch(SQLException e){
+            String msg = e.getMessage();
             int codigoSQL = e.getErrorCode();
             if(codigoSQL == 2627){
                 throw new Exception("unique");
@@ -881,4 +882,15 @@ ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
     sql = String.format(sql,estado,ced);
     db.executeQuery(sql);
     }
+    
+//    public String bitacoraLibro(int id) throws SQLException {
+//        PreparedStatement preparedStatement = null;
+//        String insertTableSQL = "select * from Libro_bit where libro_id = ?";
+//        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+//        preparedStatement.setInt(1, id);
+//        ResultSet rs = preparedStatement.executeQuery();
+//        rs.next();
+//        String dir = rs.getString("dir_PDF");
+//        return dir;
+//    }
 }
