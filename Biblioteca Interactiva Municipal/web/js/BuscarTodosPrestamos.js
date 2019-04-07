@@ -154,38 +154,24 @@ function inicializar() {
         }
     }
     
-    function dibujarFila(rowData) {
-        t.row.add([rowData.usuario, rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado, '<button type="button" class="btn btn-info" onclick="buscarPrestamoId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
+    function dibujarFila(rowData) {                                                                                                                                     //onclick="levantarModal('+ rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');"
+        t.row.add([rowData.usuario, rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado, '<button type="button" class="btn btn-info" onclick="buscarPrestamoId(' + rowData.id + ',' + '\'' + rowData.titulo + '\'' + ',' + '\'' + rowData.estado + '\'' +');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
     }
 }
 
-function buscarPrestamoId(id) {
-    $.ajax({
-        url: "BuscarPrestamos",
-        data: {
-            accion: "BuscarPrestamoId",
-            id: id
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            swal('Error', 'Ha ocurrido un error al cargar el prestamo', 'error');
-        },
-        success: function (data) {
-            $("#myModalFormulario").modal();
-            $("#Estadoaction").val("modificarEstadoPrestamo");
-            $("#id").val(data.id);
-            $("#libro_ID").val(data.libro_ID);
-            if (data.estado_ID === 1) {
-                $("#estado").val(1);
-            } else if (data.estado_ID === 2) {
-                $("#estado").val(2);
-            } else if (data.estado_ID === 3) {
-                $("#estado").val(3);
-            }
-
-        },
-        type: 'POST',
-        dataType: "json"
-    });
+function buscarPrestamoId(id, titulo, estado) {
+    $("#myModalFormulario").modal();
+    $("#Estadoaction").val("modificarEstadoPrestamo");
+    $("#id").val(id);
+    $("#libro_ID").val(titulo);
+    if (estado === "solicitado") {
+        $("#estado").val(1);
+    } else if (estado === "prestado") {
+        $("#estado").val(2);
+    } else if (estado === "devuelto") {
+        $("#estado").val(3);
+    }
+       
 }
 
 function modificarEstadoPrestamo() {
