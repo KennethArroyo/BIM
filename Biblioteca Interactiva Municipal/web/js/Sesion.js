@@ -83,6 +83,8 @@ function enviarCorreo(){
       }
 }
 
-function cancelar(){
-    $("#myModalRecuperar").modal("hide");
-}
+$(function () {
+    $("#cancelar2").click(function () {
+        $("#myModalRecuperar").modal("hide");
+    });
+    });

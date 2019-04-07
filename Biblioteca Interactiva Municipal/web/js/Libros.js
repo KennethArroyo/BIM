@@ -335,11 +335,6 @@ function updateList(list) {
     }
 }
 
-function cancelar() {
-    ///limpiarForm();
-    $("#myModalFormulario").modal("hide");
-    //$("#tablaLibros").html("");
-}
 
 function modificarLibro() {
     if ($("#fisico").prop('checked')) {
@@ -400,10 +395,6 @@ function modificarLibro() {
         
 
     }
-}
-function limpiarForm() {
-    //Resetear el formulario
-    $('#forModal').trigger("reset");
 }
 function buscarLibroId(idLibro) {
     $.ajax({
@@ -477,4 +468,10 @@ function validar() {
 
     return validacion;
 }
+
+$(function () {
+    $("#cancelar").click(function () {
+        $("#myModalFormulario").modal("hide");
+    });
+    });
 

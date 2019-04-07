@@ -221,3 +221,9 @@ function modificarEstadoPrestamo() {
         type: 'POST'
     });
 }
+
+$(function () {
+    $("#cancelar").click(function () {
+        $("#myModalFormulario").modal("hide");
+    });
+    });

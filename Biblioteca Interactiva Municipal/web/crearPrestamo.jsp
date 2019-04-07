@@ -97,7 +97,7 @@
                                     <div class="form-group">
                                         <input type="hidden" value="solicitarPrestamo" id="prestamoAction"/>
                                         <button type="submit" onclick="solicitarPrestamo()" class=" btn btn-success">Solicitar</button>
-                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
+                                        <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                                     </div>
                                 </div>
                             </div>

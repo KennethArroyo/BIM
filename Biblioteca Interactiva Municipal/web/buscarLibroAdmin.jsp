@@ -137,7 +137,7 @@
                                     <div class="form-group">
                                         <input type="hidden" value="modificarLibro" id="libroAction"/>
                                         <button type="submit" onclick="modificarLibro()" class=" btn btn-success">Guardar</button>
-                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
+                                        <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
