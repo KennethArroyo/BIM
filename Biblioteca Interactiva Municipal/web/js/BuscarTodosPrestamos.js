@@ -155,15 +155,16 @@ function inicializar() {
     }
     
     function dibujarFila(rowData) {                                                                                                                                     //onclick="levantarModal('+ rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');"
-        t.row.add([rowData.usuario, rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado, '<button type="button" class="btn btn-info" onclick="buscarPrestamoId(' + rowData.id + ',' + '\'' + rowData.titulo + '\'' + ',' + '\'' + rowData.estado + '\'' +');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
+        t.row.add([rowData.usuario, rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado, '<button type="button" class="btn btn-info" onclick="buscarPrestamoId(' + rowData.id + ',' + '\'' + rowData.titulo + '\'' + ',' + '\'' + rowData.estado + '\'' +',' +'\'' + rowData.libro_ID+ '\'' +');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
     }
 }
 
-function buscarPrestamoId(id, titulo, estado) {
+function buscarPrestamoId(id, titulo, estado,libro_ID) {
     $("#myModalFormulario").modal();
     $("#Estadoaction").val("modificarEstadoPrestamo");
     $("#id").val(id);
     $("#libro_ID").val(titulo);
+    $("#idLibro").val(libro_ID);
     if (estado === "solicitado") {
         $("#estado").val(1);
     } else if (estado === "prestado") {
@@ -181,7 +182,7 @@ function modificarEstadoPrestamo() {
             accion: "ModificarEstadoPrestamo",
             estado: $("#estado").val(),
             id: $("#id").val(),
-            libro_ID:$("#libro_ID").val()
+            libro_ID:$("#idLibro").val()
         },
         error: function () {
             swal('Error', 'Ha ocurrido un error al editar el estado del prestamo', 'error');
@@ -193,6 +194,7 @@ function modificarEstadoPrestamo() {
                 $("#myModalFormulario").modal("hide");
                 $("#mydataTodosPrestamo").DataTable().destroy();
                 inicializar();
+                prueba();
 
             } else {
                 if (tipoRespuesta === "E~") { //error
@@ -212,4 +214,13 @@ $(function () {
     $("#cancelar").click(function () {
         $("#myModalFormulario").modal("hide");
     });
+    
+    $("#cancelar2").click(function () {
+        $("#myModalSancion").modal("hide");
     });
+
+});
+    
+function prueba() {
+    $("#myModalSancion").modal();       
+}    

@@ -80,10 +80,9 @@
                                     <label for="libro_ID" >Libro:</label>
                                     <input class="form-control" type="disabled" style="border:none" id="libro_ID" name="libro_ID">
                                 </div>
-                                <%--<div class="col-lg-6">
-                                    <label for="identificacion" >Usuario:</label>
-                                    <input class="form-control" type="disabled" style="border:none" id="identificacion" name="identificacion">
-                                </div>--%>
+                                <div class="col-lg-6">
+                                    <input type="hidden" id="idLibro">
+                                </div>
                                 
                             </div>
                             <div class="row">
@@ -111,6 +110,64 @@
                             </div>
 
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+                                
+        <div class="modal fade" id="myModalSancion" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <h4 class="modal-title" id="myModalTitle">Sancion
+                            <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
+
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        <form role="form" onsubmit="return false" id="formModal">
+                        <div class="row">
+                            <div class="col-lg-10"> 
+                            <div class="form-group">
+                                <h2 style="color:#FF0000">  Este libro ha sido devuelto en una fecha posterior a la entrega oficial</h2>
+                                
+                            </div>
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                            <div class="form-group">
+                                <b>  ¿Desea aplicar una sanción?.</b>
+                                <b>  Una sanción no le permitira al usuario realizar préstamos hasta que acabe el período de la misma.</b>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="diasSancion"><b>Digite la cantidad de días en las que se aplicar la sanción</b></label>
+                                
+                            </div>
+                                </div>
+                            
+                            <div class="col-md-4">
+                                <div class="form-group">
+          
+                                <input type="text" id="diasSancion" name="diasSancion" maxlength="4" size="4">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row"> 
+                                
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <input type="hidden" value="crearSancion" id="Sancionaction"/>
+                                        <button type="submit" onclick="crearSancion()" class=" btn btn-success">Sancionar</button>
+                                        <button type = "reset" class="btn btn-danger" id="cancelar2" >No aplicar sanción</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+
                     </div>
                 </div>
             </div>

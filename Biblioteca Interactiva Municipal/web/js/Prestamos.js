@@ -263,6 +263,8 @@ function solicitarPrestamo() {
             if (tipoRespuesta === "C~") { //correcto
                 swal('Listo!', 'Se realizo el préstamo correcatamente', 'success');
                 $("#myModalFormulario").modal("hide");
+                $("#mydata").DataTable().destroy();
+                        inicializar();
             } else {
                 if (tipoRespuesta === "E~") { //error
                     swal('Error', 'No se pudo realizar el préstamo', 'error');
