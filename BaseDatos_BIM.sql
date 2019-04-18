@@ -153,11 +153,6 @@ fecha datetime not null,
 usuario_ID int foreign key references Usuario(id)
 )
 
-CREATE TABLE Actividad(
-id int primary key identity(1,1),
-direccion nvarchar(200),
-nombre nvarchar(20)
-)
 
 create table Sancion(
 id int primary key identity(1,1),
