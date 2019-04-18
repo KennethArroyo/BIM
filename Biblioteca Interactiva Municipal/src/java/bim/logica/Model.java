@@ -7,6 +7,7 @@ import bim.entidades.Autor;
 import bim.entidades.Libro;
 import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
+import bim.entidades.Sancion;
 import bim.entidades.Usuario;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -46,6 +47,10 @@ public class Model {
     
     public void agregarPrestamo(Prestamo p)throws Exception{
     dao.agregarPrestamo(p);
+    }
+    
+    public void agregarSancion(Sancion s )throws Exception{
+    dao.agregarSancion(s);
     }
     
     public Usuario verificarCuenta(String correo, String codigo) throws Exception {
@@ -215,5 +220,10 @@ public class Model {
     
     public void modificarEstadoUsuario(String ced, int estado)throws Exception{
     dao.modificarEstadoUsuario(ced, estado);
+    }
+    
+    public Sancion verficarSancion(String ced)throws Exception{
+    return dao.verificaSancion(ced);
+      
     }
 }

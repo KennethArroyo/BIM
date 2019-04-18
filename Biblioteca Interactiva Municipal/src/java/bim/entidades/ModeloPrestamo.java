@@ -14,7 +14,7 @@ public class ModeloPrestamo {
     private String estado;
     private String titulo;
     private int libro_ID;
-
+    private int usuario_ID;
    
     private String usuario;
     private String fecha_inicio;
@@ -23,6 +23,14 @@ public class ModeloPrestamo {
     public ModeloPrestamo() {
     }
 
+    public int getUsuario_ID() {
+        return usuario_ID;
+    }
+
+    public void setUsuario_ID(int usuario_ID) {
+        this.usuario_ID = usuario_ID;
+    }
+    
     public int getId() {
         return id;
     }
