@@ -130,15 +130,34 @@ public class Dao {
 
     private Sancion sancion(ResultSet rs) throws Exception {
         Sancion s = new Sancion();
-        if(!rs.next()){
-        s.setEstado(0);
-        }
-        else{
-        s.setId(rs.getInt("id"));
-        s.setFecha_inicio(rs.getString("fecha_inicio"));
-        s.setFecha_final(rs.getString("fecha_final"));
-        s.setEstado(rs.getInt("estado"));
-        s.setUsuario_ID(rs.getInt("usuario_ID"));
+//        if (rs.first()) {
+//            s.setId(rs.getInt("id"));
+//            s.setFecha_inicio(rs.getString("fecha_inicio"));
+//            s.setFecha_final(rs.getString("fecha_final"));
+//            s.setEstado(rs.getInt("estado"));
+//            s.setUsuario_ID(rs.getInt("usuario_ID"));
+//        } else {
+//            s.setId(0);
+//            s.setFecha_inicio("");
+//            s.setFecha_final("");
+//            s.setUsuario_ID(0);
+//            s.setEstado(0);
+//        }
+
+        if (rs.next()) {
+            do {
+                s.setId(rs.getInt("id"));
+                s.setFecha_inicio(rs.getString("fecha_inicio"));
+                s.setFecha_final(rs.getString("fecha_final"));
+                s.setEstado(rs.getInt("estado"));
+                s.setUsuario_ID(rs.getInt("usuario_ID"));
+            } while (rs.next());
+        } else {
+            s.setId(0);
+            s.setFecha_inicio("");
+            s.setFecha_final("");
+            s.setUsuario_ID(0);
+            s.setEstado(0);
         }
         return s;
     }
@@ -886,13 +905,13 @@ public class Dao {
     }
 
     public Sancion verificaSancion(String ced) throws Exception {
-        Sancion s = new Sancion();     
+        Sancion s = new Sancion();
         try {
             String sql = "select s.id, s.fecha_inicio, s.fecha_final, s.usuario_ID, s.estado from Sancion s,Usuario u where u.identificacion='%s' and u.id=s.usuario_ID";
             sql = String.format(sql, ced);
             ResultSet rs = db.executeQuery(sql);
-            rs.next();
-            s= sancion(rs);
+            //     rs.next();
+            s = sancion(rs);
         } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;

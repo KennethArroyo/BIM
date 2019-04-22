@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 var validacion;
 $(document).ready(function () {
     inicializarTabla();
@@ -262,7 +261,9 @@ function buscarLibroId(idLibro) {
             type: 'POST',
             dataType: "json"
         });
-    } else
+    } 
+    else
+    if(validacion===1)
     {
         swal('Info', 'Usted se encuentra sancionado, no puede realizar préstamos', 'info');
     }
@@ -312,7 +313,7 @@ function verificarSancion() {
         error: function () {
             swal('Error', 'Ha ocurrido un error al verificar las sanciones', 'error');
         },
-        succes: function (data) {
+        success: function (data) {
             if (data.estado === 1) {
                 validacion=1;
             } else if(data.estado === 0){
