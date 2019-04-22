@@ -194,8 +194,8 @@ function buscarPrestamoId(id, titulo, estado, libro_ID, usuario_ID,fecha_final) 
 }
 
 function modificarEstadoPrestamo() {
-    var fecha_entrega = $("fechaEntrega").val();
-    var jsDate = $("fechaActual").val();
+    var fecha_entrega = $("#fechaEntrega").val();
+    var jsDate = $("#fechaActual").val();
     var fe = new Date(fecha_entrega);
     var fa = new Date(jsDate);
     var usuario = $("#usuario").val();
@@ -215,12 +215,12 @@ function modificarEstadoPrestamo() {
             if (tipoRespuesta === "C~") { //correcto
                 swal("Listo", "Se modificó el estado del prestamo correctamente", "success");
                 $("#myModalFormulario").modal("hide");
-                //  if (fe >= fa) {
+               if (fe >= fa) {
                 $("#mydataTodosPrestamo").DataTable().destroy();
                 inicializar();
-                //} else {
+                } else {
                 modalSancion();
-                //}
+                }
                 //prueba(fecha_entrega);
 
             } else {
