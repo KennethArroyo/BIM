@@ -153,10 +153,12 @@ fecha datetime not null,
 usuario_ID int foreign key references Usuario(id)
 )
 
-CREATE TABLE Actividad(
+
+create table Sancion(
 id int primary key identity(1,1),
-direccion nvarchar(200),
-nombre nvarchar(20)
+fecha_inicio date not null,
+fecha_final date not null,
+estado int not null   
 )
 
 
@@ -292,3 +294,13 @@ UNION ALL
         deleted AS u
 END
 
+-- Crea foreign key de usuario en sancion 
+
+--ALTER TABLE Sancion ADD usuario_ID int; 
+    
+--ALTER TABLE Sancion     
+--ADD CONSTRAINT FK_usuario_ID FOREIGN KEY (usuario_ID)     
+--    REFERENCES Usuario (id)     
+--    ON DELETE CASCADE    
+--    ON UPDATE CASCADE    
+--;      

@@ -6,6 +6,7 @@ import bim.entidades.Autor;
 import bim.entidades.Libro;
 import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
+import bim.entidades.Sancion;
 import bim.entidades.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ public class Dao {
         p.setNombre(rs.getString("nombre"));
         return p;
     }
-    
+
     private Actividad actividad(ResultSet rs) throws Exception {
         Actividad p = new Actividad();
         p.setId(rs.getInt("id"));
@@ -38,7 +39,7 @@ public class Dao {
         p.setDir(rs.getString("direccion"));
         return p;
     }
-    
+
     private ModeloPrestamo modeloPrestamo(ResultSet rs) throws Exception {
         ModeloPrestamo p = new ModeloPrestamo();
         p.setId(rs.getInt("id"));
@@ -47,22 +48,23 @@ public class Dao {
         p.setEstado(rs.getString("estado_prestamo"));
         p.setFecha_inicio(rs.getString("fecha_inicio"));
         p.setFecha_final(rs.getString("fecha_final"));
+        p.setUsuario_ID(rs.getInt("usuario_id"));
         return p;
     }
-    
+
     private Autor autor(ResultSet rs) throws Exception {
         Autor aut = new Autor();
         aut.setId(rs.getInt("autor_id"));
         aut.setNombre(rs.getString("nombre_autor"));
         return aut;
     }
-    
+
     private Autor autorID(ResultSet rs) throws Exception {
         Autor aut = new Autor();
         aut.setId(rs.getInt("autor_id"));
         return aut;
     }
-    
+
     private Libro libroID(ResultSet rs) throws Exception {
         Libro lib = new Libro();
         lib.setId(rs.getInt("libro_id"));
@@ -104,7 +106,7 @@ public class Dao {
         u.setRef_trab_est(rs.getString("ref_trab_est"));
         return u;
     }
-    
+
     private Usuario usuarioSesion(ResultSet rs) throws Exception {
         Usuario u = new Usuario();
         u.setId(rs.getInt("id"));
@@ -114,7 +116,6 @@ public class Dao {
         u.setHabilitado(rs.getInt("habilitado"));
         return u;
     }
-
 
     private Prestamo prestamo(ResultSet rs) throws Exception {
         Prestamo p = new Prestamo();
@@ -126,7 +127,40 @@ public class Dao {
         p.setLibro_ID(rs.getInt("libro_ID"));
         return p;
     }
- 
+
+    private Sancion sancion(ResultSet rs) throws Exception {
+        Sancion s = new Sancion();
+//        if (rs.first()) {
+//            s.setId(rs.getInt("id"));
+//            s.setFecha_inicio(rs.getString("fecha_inicio"));
+//            s.setFecha_final(rs.getString("fecha_final"));
+//            s.setEstado(rs.getInt("estado"));
+//            s.setUsuario_ID(rs.getInt("usuario_ID"));
+//        } else {
+//            s.setId(0);
+//            s.setFecha_inicio("");
+//            s.setFecha_final("");
+//            s.setUsuario_ID(0);
+//            s.setEstado(0);
+//        }
+
+        if (rs.next()) {
+            do {
+                s.setId(rs.getInt("id"));
+                s.setFecha_inicio(rs.getString("fecha_inicio"));
+                s.setFecha_final(rs.getString("fecha_final"));
+                s.setEstado(rs.getInt("estado"));
+                s.setUsuario_ID(rs.getInt("usuario_ID"));
+            } while (rs.next());
+        } else {
+            s.setId(0);
+            s.setFecha_inicio("");
+            s.setFecha_final("");
+            s.setUsuario_ID(0);
+            s.setEstado(0);
+        }
+        return s;
+    }
 
     public Asignatura buscarAsignatura(String nombre) {
         Asignatura n = new Asignatura();
@@ -135,42 +169,33 @@ public class Dao {
 
     public void agregarUsuario(Usuario u) throws Exception {
         PreparedStatement preparedStatement = null;
-//        String sql = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
-//                + "values(%d, '%s', '%s', '%s', '%s', %s, '%s', '%s','%s', %d, '%s')";
-//        sql = String.format(sql, u.getTipo(), u.getIdentificacion(), u.getNombre(), u.getApellidos(), u.getLugar_residencia(),
-//                u.getTelefono(), u.getCorreo(), u.getContrasena(), u.getRef_trab_est(), u.getHabilitado(), u.getCod_verificacion());
-//        int count = db.executeUpdate(sql);
-//        if (count == 0) {
-//            throw new Exception("Error registrando al usuario!");
-//        }
-try{
-        String insertTableSQL = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, "
-                + "telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
-                 + "values"
-		+ "(?,?,?,?,?,?,?,?,?,?,?)";
-        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-        preparedStatement.setInt(1, u.getTipo());
-        preparedStatement.setString(2, u.getIdentificacion());
-        preparedStatement.setString(3, u.getNombre());
-        preparedStatement.setString(4, u.getApellidos());
-        preparedStatement.setString(5, u.getLugar_residencia());
-        preparedStatement.setString(6, u.getTelefono());
-        preparedStatement.setString(7, u.getCorreo());
-        preparedStatement.setString(8, u.getContrasena());
-        preparedStatement.setString(9, u.getRef_trab_est());
-        preparedStatement.setInt(10, u.getHabilitado());
-        preparedStatement.setString(11, u.getCod_verificacion());
-        
-        int count = preparedStatement.executeUpdate();
-        preparedStatement.close();
-        
+        try {
+            String insertTableSQL = "insert into Usuario(tipo, identificacion, nombre, apellidos, lugar_residencia, "
+                    + "telefono, correo, contrasena, ref_trab_est, habilitado, cod_verificacion)"
+                    + "values"
+                    + "(?,?,?,?,?,?,?,?,?,?,?)";
+            preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+            preparedStatement.setInt(1, u.getTipo());
+            preparedStatement.setString(2, u.getIdentificacion());
+            preparedStatement.setString(3, u.getNombre());
+            preparedStatement.setString(4, u.getApellidos());
+            preparedStatement.setString(5, u.getLugar_residencia());
+            preparedStatement.setString(6, u.getTelefono());
+            preparedStatement.setString(7, u.getCorreo());
+            preparedStatement.setString(8, u.getContrasena());
+            preparedStatement.setString(9, u.getRef_trab_est());
+            preparedStatement.setInt(10, u.getHabilitado());
+            preparedStatement.setString(11, u.getCod_verificacion());
+
+            int count = preparedStatement.executeUpdate();
+            preparedStatement.close();
+
             if (count == 0) {
                 throw new Exception("Error ingresando el libro!");
             }
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             int codigoSQL = e.getErrorCode();
-            if(codigoSQL == 2627){
+            if (codigoSQL == 2627) {
                 throw new Exception("unique");
             }
         }
@@ -178,53 +203,61 @@ try{
 
     public void agregarLibro(Libro p) throws Exception {
         PreparedStatement preparedStatement = null;
-         
-        try{
-        String insertTableSQL = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,"
-                 + "dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID, cuenta_autores, derechos_autor)"
-                 + "values"
-		+ "(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-        preparedStatement.setString(1, p.getClasificacion());
-        preparedStatement.setString(2, p.getTitulo());
-        preparedStatement.setString(3, p.getComentario());
-        preparedStatement.setInt(4, p.getEstado());
-        preparedStatement.setInt(5, p.getCantidad_copias());
-        preparedStatement.setString(6, p.getDir_portada());
-        preparedStatement.setString(7, p.getDir_PDF());
-        preparedStatement.setInt(8, p.getHabilitado());
-        preparedStatement.setInt(9, p.getFisico());
-        preparedStatement.setInt(10, p.getDigital());
-        preparedStatement.setInt(11, p.getAsignatura().getId());
-        preparedStatement.setInt(12, p.getCuentaAutores());
-        preparedStatement.setInt(13, 0);
-        int count = preparedStatement.executeUpdate();
-        preparedStatement.close();
-        
+
+        try {
+            String insertTableSQL = "insert into Libro(clasificacion,titulo,comentario,estado,cantidad_copias,"
+                    + "dir_Portada,dir_PDF,habilitado,fisico,digital,asignatura_ID, cuenta_autores, derechos_autor)"
+                    + "values"
+                    + "(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+            preparedStatement.setString(1, p.getClasificacion());
+            preparedStatement.setString(2, p.getTitulo());
+            preparedStatement.setString(3, p.getComentario());
+            preparedStatement.setInt(4, p.getEstado());
+            preparedStatement.setInt(5, p.getCantidad_copias());
+            preparedStatement.setString(6, p.getDir_portada());
+            preparedStatement.setString(7, p.getDir_PDF());
+            preparedStatement.setInt(8, p.getHabilitado());
+            preparedStatement.setInt(9, p.getFisico());
+            preparedStatement.setInt(10, p.getDigital());
+            preparedStatement.setInt(11, p.getAsignatura().getId());
+            preparedStatement.setInt(12, p.getCuentaAutores());
+            preparedStatement.setInt(13, 0);
+            int count = preparedStatement.executeUpdate();
+            preparedStatement.close();
+
             if (count == 0) {
                 throw new Exception("Error ingresando el libro!");
             }
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             String msg = e.getMessage();
             int codigoSQL = e.getErrorCode();
-            if(codigoSQL == 2627){
+            if (codigoSQL == 2627) {
                 throw new Exception("unique");
             }
         }
-        
+
     }
-    
-    public void agregarPrestamo(Prestamo p)throws Exception{
-    String sql ="insert into Prestamo(fecha_inicio,fecha_final,usuario_ID,estado_ID,libro_ID)"
-            + "values('%s','%s','%s',%d,%d)";
-    sql=String.format(sql,p.getFecha_inicio(),p.getFecha_final(),p.getUsuario_ID(),p.getEstado_ID(),p.getLibro_ID());
-    int count =db.executeUpdate(sql);
-    if(count==0){
-    throw new Exception("Error crendo el nuevo prestamo");
+
+    public void agregarPrestamo(Prestamo p) throws Exception {
+        String sql = "insert into Prestamo(fecha_inicio,fecha_final,usuario_ID,estado_ID,libro_ID)"
+                + "values('%s','%s','%s',%d,%d)";
+        sql = String.format(sql, p.getFecha_inicio(), p.getFecha_final(), p.getUsuario_ID(), p.getEstado_ID(), p.getLibro_ID());
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Error crendo el nuevo prestamo");
+        }
     }
+
+    public void agregarSancion(Sancion s) throws Exception {
+        String sql = "insert into Sancion(fecha_inicio, fecha_final,estado,usuario_ID) values('%s','%s',%d,%d)";
+        sql = String.format(sql, s.getFecha_inicio(), s.getFecha_final(), s.getEstado(), s.getUsuario_ID());
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Error crendo la sancion");
+        }
     }
-    
+
     public ArrayList<Autor> listarAutoresLibro() throws Exception {
         ArrayList<Autor> lista = new ArrayList<Autor>();
         try {
@@ -238,7 +271,7 @@ try{
         }
         return lista;
     }
-    
+
     public ArrayList<Asignatura> listarAsignaturas() throws Exception {
         ArrayList<Asignatura> lista = new ArrayList<Asignatura>();
         try {
@@ -252,36 +285,38 @@ try{
         }
         return lista;
     }
-    public ArrayList<Libro> buscarTodosLibros()throws Exception{
-    ArrayList<Libro> libros = new ArrayList<Libro>();
-    Libro l = new Libro();
-    Autor a = new Autor();
-    int id;
-    try{
-        String sql = "select * from Asignatura a,Libro l, Autor e, Libro_Autor r "
-                + "where l.asignatura_ID = a.asignatura_id and (l.libro_id = r.libro_ID and e.autor_id = r.autor_ID)";
-        sql = String.format(sql);
-        Statement stmt = db.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = stmt.executeQuery (sql); 
-        while(rs.next()){
-            int cuenta = rs.getInt("cuenta_autores");
-            l = libro(rs);
-            id_auxiliar = l.getId();
-            while(cuenta != 0){
-                cuenta--;
-                a = autor(rs);
-                l.setAutor(a);
-                rs.next();
+
+    public ArrayList<Libro> buscarTodosLibros() throws Exception {
+        ArrayList<Libro> libros = new ArrayList<Libro>();
+        Libro l = new Libro();
+        Autor a = new Autor();
+        int id;
+        try {
+            String sql = "select * from Asignatura a,Libro l, Autor e, Libro_Autor r "
+                    + "where l.asignatura_ID = a.asignatura_id and (l.libro_id = r.libro_ID and e.autor_id = r.autor_ID)";
+            sql = String.format(sql);
+            Statement stmt = db.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                int cuenta = rs.getInt("cuenta_autores");
+                l = libro(rs);
+                id_auxiliar = l.getId();
+                while (cuenta != 0) {
+                    cuenta--;
+                    a = autor(rs);
+                    l.setAutor(a);
+                    rs.next();
+                }
+                rs.previous();
+                libros.add(l);
             }
-            rs.previous();
-            libros.add(l);
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            error = "s";
         }
-    }catch(SQLException ex){
-        String error=ex.getMessage();
-        error="s";
+        return libros;
     }
-    return libros;
-    }
+
     public ArrayList<Libro> buscarLibroAutor(String autor) throws Exception {
         ArrayList<Libro> libros = new ArrayList<Libro>();
         try {
@@ -360,24 +395,25 @@ try{
         }
         return libro;
     }
-    
-    public Prestamo buscarPrestamoId(int id)throws Exception{
-    Prestamo p = new Prestamo();
-    try{
-    String sql = "select * from Prestamo p where p.id=%d";
+
+    public Prestamo buscarPrestamoId(int id) throws Exception {
+        Prestamo p = new Prestamo();
+        try {
+            String sql = "select * from Prestamo p where p.id=%d";
             sql = String.format(sql, id);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
             p = prestamo(rs);
-    }catch (SQLException ex) {
+        } catch (SQLException ex) {
             String error = ex.getMessage();
             error = "s";
         }
-    return p;
+        return p;
     }
-    public Usuario buscarUsuarioCed(String ced) throws Exception{
-    Usuario u = new Usuario();
-    try {
+
+    public Usuario buscarUsuarioCed(String ced) throws Exception {
+        Usuario u = new Usuario();
+        try {
             String sql = "select * from Usuario where identificacion='%s'";
             sql = String.format(sql, ced);
             ResultSet rs = db.executeQuery(sql);
@@ -387,13 +423,13 @@ try{
             String error = ex.getMessage();
             throw ex;
         }
-    return u;
+        return u;
     }
-    
-    public int buscarIdUsuarioCorreo(String correo) throws Exception{
-    Usuario u = new Usuario();
-    int id = 0;
-    try {
+
+    public int buscarIdUsuarioCorreo(String correo) throws Exception {
+        Usuario u = new Usuario();
+        int id = 0;
+        try {
             String sql = "select id from Usuario where correo='%s'";
             sql = String.format(sql, correo);
             ResultSet rs = db.executeQuery(sql);
@@ -403,7 +439,7 @@ try{
             String error = ex.getMessage();
             throw ex;
         }
-    return id;
+        return id;
     }
 
     public Libro modificarLibro(Libro l) throws Exception {
@@ -427,21 +463,20 @@ try{
         }
         return a;
     }
-    
-        public Usuario verificarCuenta(String correo, String cod_verificacion) throws Exception {
+
+    public Usuario verificarCuenta(String correo, String cod_verificacion) throws Exception {
         Usuario u;
-        try{
+        try {
             String sql = "select * from Usuario where correo = '%s' and cod_verificacion = '%s'";
             sql = String.format(sql, correo, cod_verificacion);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
-            u = usuario(rs); 
+            u = usuario(rs);
             String sql1 = "update Usuario set habilitado = 1 where correo = '%s'";
             sql1 = String.format(sql1, correo);
             db.executeQuery(sql1);
-            
-        }
-        catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             return null;
         }
         return u;
@@ -449,14 +484,13 @@ try{
 
     public int verificarUsuario(String ced) {
         int cantidad;
-        try{
+        try {
             String sql = "select count(*) Cuenta from Usuario where  identificacion = %d";
             sql = String.format(sql, ced);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
             cantidad = rs.getInt("Cuenta");
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             return 0;
         }
         return cantidad;
@@ -479,16 +513,16 @@ try{
     }
 
     public void eliminarAsignatura(int id) throws Exception {
-            String sql = "delete from Asignatura where asignatura_id=%d";
-            sql = String.format(sql, id);
-            int resultado = db.executeUpdate(sql);
-                if(resultado == 0){
-                    throw new Exception("Error ingresando la Asignatura");
-                }
+        String sql = "delete from Asignatura where asignatura_id=%d";
+        sql = String.format(sql, id);
+        int resultado = db.executeUpdate(sql);
+        if (resultado == 0) {
+            throw new Exception("Error ingresando la Asignatura");
+        }
     }
 
     public ArrayList<Autor> listarAutores() throws Exception {
-       ArrayList<Autor> lista = new ArrayList<Autor>();
+        ArrayList<Autor> lista = new ArrayList<Autor>();
         try {
             String sql = "select * from Autor";
             ResultSet rs = db.executeQuery(sql);
@@ -500,19 +534,19 @@ try{
         }
         return lista;
     }
+
     public ArrayList<Autor> buscarUltimosAutores() throws Exception {
         ArrayList<Autor> autores = new ArrayList<Autor>();
-        try{
-            String sql="select top 5 autor_id, nombre_autor from Autor order by autor_id desc";
+        try {
+            String sql = "select top 5 autor_id, nombre_autor from Autor order by autor_id desc";
             ResultSet rs = db.executeQuery(sql);
-            while(rs.next()){
-            Autor autor1 =autor(rs);
-            autores.add(autor1);
+            while (rs.next()) {
+                Autor autor1 = autor(rs);
+                autores.add(autor1);
             }
-        }
-        catch(SQLException ex){
-        String s = ex.getMessage();
-        ex.getMessage();
+        } catch (SQLException ex) {
+            String s = ex.getMessage();
+            ex.getMessage();
         }
         return autores;
     }
@@ -535,17 +569,17 @@ try{
 
     public void eliminarAutor(int id) throws Exception {
         String sql = "delete from Autor where autor_id=%d";
-            sql = String.format(sql, id);
-            int resultado = db.executeUpdate(sql);
-                if(resultado == 0){
-                    throw new Exception("Error ingresando la Asignatura");
-                }
+        sql = String.format(sql, id);
+        int resultado = db.executeUpdate(sql);
+        if (resultado == 0) {
+            throw new Exception("Error ingresando la Asignatura");
+        }
     }
 
     public ArrayList<Autor> obtenerAutoresId(ArrayList<String> autores) throws Exception {
         ArrayList<Autor> lista = new ArrayList<>();
         try {
-            for(int i = 0;i<autores.size();i++){
+            for (int i = 0; i < autores.size(); i++) {
                 String sql = "select autor_id from Autor where nombre_autor = '%s'";
                 sql = String.format(sql, autores.get(i));
                 ResultSet rs = db.executeQuery(sql);
@@ -553,12 +587,11 @@ try{
                     lista.add(autorID(rs));
                 }
             }
-        } 
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             String error = ex.getMessage();
         }
         return lista;
-        
+
     }
 
     public void guardarAutorLibro(ArrayList<Autor> datos, String titulo) throws Exception {
@@ -570,26 +603,25 @@ try{
             while (rs.next()) {
                 lib = libroID(rs);
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             String error = ex.getMessage();
         }
-            for(int i = 0;i<datos.size();i++){
-                String sql = "insert into Libro_Autor(libro_ID,autor_ID)"
-                + "values(%d,%d)";
-                sql = String.format(sql,lib.getId(),datos.get(i).getId());
-                int count = db.executeUpdate(sql);
-                if (count == 0) {
-                    throw new Exception("Error ingresando los datos");
-                }
+        for (int i = 0; i < datos.size(); i++) {
+            String sql = "insert into Libro_Autor(libro_ID,autor_ID)"
+                    + "values(%d,%d)";
+            sql = String.format(sql, lib.getId(), datos.get(i).getId());
+            int count = db.executeUpdate(sql);
+            if (count == 0) {
+                throw new Exception("Error ingresando los datos");
             }
+        }
     }
 
     public Usuario buscarUsRegistrado(String usuario, String contrasena) throws SQLException, Exception {
         Usuario u = new Usuario();
-    try {
+        try {
             String sql = "select * from Usuario where identificacion='%s' and contrasena='%s'";
-            sql = String.format(sql, usuario,contrasena);
+            sql = String.format(sql, usuario, contrasena);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
             u = usuarioSesion(rs);
@@ -597,58 +629,56 @@ try{
             String error = ex.getMessage();
             throw ex;
         }
-    return u;
+        return u;
     }
-    
-    public ArrayList<Usuario> buscarTodosUsuarios()throws Exception{
-    ArrayList<Usuario> usuarios = new ArrayList<>();
-    try{
-        String sql = "select * from Usuario";
+
+    public ArrayList<Usuario> buscarTodosUsuarios() throws Exception {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try {
+            String sql = "select * from Usuario";
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 usuarios.add(usuario(rs));
             }
-    
-    }catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;
         }
-    
-    return usuarios;
+
+        return usuarios;
     }
-    
-    
-    
-    public void modificarUsuario(Usuario u)throws Exception{
-    String sql = "update Usuario set nombre='%s', apellidos='%s', lugar_residencia='%s', telefono='%s', ref_trab_est='%s' where identificacion='%s'";
-    sql = String.format(sql, u.getNombre(),u.getApellidos(),u.getLugar_residencia(),u.getTelefono(),u.getRef_trab_est(),u.getIdentificacion());
-    db.executeUpdate(sql);
+
+    public void modificarUsuario(Usuario u) throws Exception {
+        String sql = "update Usuario set nombre='%s', apellidos='%s', lugar_residencia='%s', telefono='%s', ref_trab_est='%s' where identificacion='%s'";
+        sql = String.format(sql, u.getNombre(), u.getApellidos(), u.getLugar_residencia(), u.getTelefono(), u.getRef_trab_est(), u.getIdentificacion());
+        db.executeUpdate(sql);
     }
-    
-    public void modificarTipoUsuario(Usuario u)throws Exception{
-    String sql = "update Usuario set tipo = %d where identificacion='%s'";
-    sql = String.format(sql,u.getTipo(),u.getIdentificacion());
-    db.executeQuery(sql);
+
+    public void modificarTipoUsuario(Usuario u) throws Exception {
+        String sql = "update Usuario set tipo = %d where identificacion='%s'";
+        sql = String.format(sql, u.getTipo(), u.getIdentificacion());
+        db.executeQuery(sql);
     }
-    
-    public void modificarEstadoPrestamo(Prestamo p)throws Exception{
-    String sql ="update Prestamo set estado_ID = %d where id=%d";
-    sql = String.format(sql, p.getEstado_ID(),p.getId());
-    db.executeQuery(sql);
+
+    public void modificarEstadoPrestamo(Prestamo p) throws Exception {
+        String sql = "update Prestamo set estado_ID = %d where id=%d";
+        sql = String.format(sql, p.getEstado_ID(), p.getId());
+        db.executeQuery(sql);
     }
 
     public void registrarTemporal(Timestamp timestamp, String temporal, int id) throws Exception {
         PreparedStatement preparedStatement = null;
-        try{
-        String insertTableSQL = "INSERT INTO Claves_Temporales"
-		+ "(id, fecha, usuario_ID) VALUES"
-		+ "(?,?,?)";
-        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-        preparedStatement.setString(1, temporal);
-        preparedStatement.setTimestamp(2, timestamp);
-        preparedStatement.setInt(3, id);
-        preparedStatement.executeUpdate();
-        preparedStatement.close();
+        try {
+            String insertTableSQL = "INSERT INTO Claves_Temporales"
+                    + "(id, fecha, usuario_ID) VALUES"
+                    + "(?,?,?)";
+            preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+            preparedStatement.setString(1, temporal);
+            preparedStatement.setTimestamp(2, timestamp);
+            preparedStatement.setInt(3, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException ex) {
             String error = ex.getMessage();
             preparedStatement.close();
@@ -665,12 +695,12 @@ try{
             preparedStatement.setString(1, contrasena);
             preparedStatement.setString(2, temporal);
             preparedStatement.executeUpdate();
-            
+
             String sql = "delete from Claves_Temporales where id = ?";
             preparedStatement2 = db.getConnection().prepareStatement(sql);
             preparedStatement2.setString(1, temporal);
             preparedStatement2.executeUpdate();
-            
+
             preparedStatement.close();
             preparedStatement2.close();
         } catch (SQLException ex) {
@@ -679,73 +709,70 @@ try{
             preparedStatement2.close();
             throw ex;
         }
-    }  
-    
+    }
+
     public ArrayList<Prestamo> buscarPrestamosUsuario(int id) throws Exception {
-        
-    ArrayList<Prestamo> prestamos = new ArrayList<>();
-    try{
-        String sql = "SELECT p.id id, p.fecha_inicio fecha_inicio, p.fecha_final fecha_final, p.usuario_ID usuario_ID, p.libro_ID libro_ID, p.estado_ID estado_ID FROM Prestamo p where p.usuario_ID=%d";
-        sql = String.format(sql, id);    
-        ResultSet rs = db.executeQuery(sql);
+
+        ArrayList<Prestamo> prestamos = new ArrayList<>();
+        try {
+            String sql = "SELECT p.id id, p.fecha_inicio fecha_inicio, p.fecha_final fecha_final, p.usuario_ID usuario_ID, p.libro_ID libro_ID, p.estado_ID estado_ID FROM Prestamo p where p.usuario_ID=%d";
+            sql = String.format(sql, id);
+            ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 prestamos.add(prestamo(rs));
             }
-    
-    }catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;
         }
-    
-    return prestamos;
-        
+
+        return prestamos;
+
     }
-    
+
     public ArrayList<ModeloPrestamo> buscarPrestamosSolicitados() throws Exception {
-        
-    ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
-    try{
-        String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
-        + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id "
-                + "and p.usuario_ID = u.id and p.estado_ID = e.id and p.estado_ID = 1";
-        sql = String.format(sql);    
-        ResultSet rs = db.executeQuery(sql);
+
+        ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
+        try {
+            String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
+                    + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id "
+                    + "and p.usuario_ID = u.id and p.estado_ID = e.id and p.estado_ID = 1";
+            sql = String.format(sql);
+            ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 prestamos.add(modeloPrestamo(rs));
             }
-    
-    }catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;
         }
-    
-    return prestamos;
-        
+
+        return prestamos;
+
     }
-    
-    
+
     public ArrayList<ModeloPrestamo> buscarTodosPrestamos() throws Exception {
-        
-    ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
-    try{
-        String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
-                + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id and p.usuario_ID = u.id and p.estado_ID = e.id";
-        sql = String.format(sql);    
-        ResultSet rs = db.executeQuery(sql);
+
+        ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
+        try {
+            String sql = "select p.fecha_inicio fecha_inicio, p.id id, p.fecha_final fecha_final, p.libro_ID libro_ID,e.estado_prestamo estado_prestamo, l.titulo titulo, u.nombre nombre, u.identificacion usuario_id from Prestamo p, "
+                    + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id and p.usuario_ID = u.id and p.estado_ID = e.id";
+            sql = String.format(sql);
+            ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 prestamos.add(modeloPrestamo(rs));
             }
-    
-    }catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;
         }
-    
-    return prestamos;
-        
+
+        return prestamos;
+
     }
-    
-    
 
     public String buscarDireccionPDF(String clas) throws SQLException {
         PreparedStatement preparedStatement = null;
@@ -760,22 +787,22 @@ try{
 
     public void agregarActividad(String nombre, String caminoImagen) throws SQLException {
         PreparedStatement preparedStatement = null;
-        try{
-        String insertTableSQL = "insert into Actividad"
-		+ "(direccion, nombre) VALUES"
-		+ "(?,?)";
-        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-        preparedStatement.setString(1, caminoImagen);
-        preparedStatement.setString(2, nombre);
-        preparedStatement.executeUpdate();
-        preparedStatement.close();
+        try {
+            String insertTableSQL = "insert into Actividad"
+                    + "(direccion, nombre) VALUES"
+                    + "(?,?)";
+            preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
+            preparedStatement.setString(1, caminoImagen);
+            preparedStatement.setString(2, nombre);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException ex) {
             String error = ex.getMessage();
             preparedStatement.close();
             throw ex;
         }
     }
-    
+
     public ArrayList<Actividad> actividadesBuscarTodas() throws SQLException, Exception {
         ArrayList<Actividad> act = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -783,21 +810,20 @@ try{
         preparedStatement = db.getConnection().prepareStatement(sql);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
-                act.add(actividad(rs));
-            };
+            act.add(actividad(rs));
+        };
         return act;
     }
 
     public void eliminarActividad(int id) throws SQLException {
-        try{
-        PreparedStatement preparedStatement2 = null;
-         String sql = "delete from Actividad where id = ?";
+        try {
+            PreparedStatement preparedStatement2 = null;
+            String sql = "delete from Actividad where id = ?";
             preparedStatement2 = db.getConnection().prepareStatement(sql);
             preparedStatement2.setInt(1, id);
             preparedStatement2.executeUpdate();
             preparedStatement2.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             throw ex;
         }
     }
@@ -812,13 +838,14 @@ try{
         String dir = rs.getString("direccion");
         return dir;
     }
-    
-    public void devolucionLibro(int id)throws SQLException{
-    String sql = "update Libro set cantidad_copias = cantidad_copias+1 where libro_id=%d";
-    sql = String.format(sql,id);
-    db.executeQuery(sql);
+
+    public void devolucionLibro(int id) throws SQLException {
+        String sql = "update Libro set cantidad_copias = cantidad_copias+1 where libro_id=%d";
+        sql = String.format(sql, id);
+        db.executeQuery(sql);
     }
-    public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws SQLException, Exception{
+
+    public ArrayList<ModeloPrestamo> obtenerReportePrestados() throws SQLException, Exception {
         PreparedStatement preparedStatement = null;
         ArrayList<ModeloPrestamo> lista = new ArrayList<>();
         String sql = "select p.id, titulo, u.nombre from Prestamo p, Libro l, Usuario u where p.libro_ID = l.libro_id and p.usuario_ID = u.id";
@@ -831,66 +858,71 @@ try{
     }
 
     public ArrayList<ModeloPrestamo> buscarLibrosPrestados() throws SQLException, Exception {
-ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
-    try{
-        String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
-        + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id "
-                + "and p.usuario_ID = u.id and p.estado_ID = e.id and p.estado_ID = 2";
-        sql = String.format(sql);    
-        ResultSet rs = db.executeQuery(sql);
+        ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
+        try {
+            String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
+                    + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id "
+                    + "and p.usuario_ID = u.id and p.estado_ID = e.id and p.estado_ID = 2";
+            sql = String.format(sql);
+            ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 prestamos.add(modeloPrestamo(rs));
             }
-    
-    }catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;
         }
-    
-    return prestamos;    
-    
+
+        return prestamos;
+
     }
-    
-    public Usuario verificaPrestamosUsu(String ced )throws SQLException{
-        Usuario u=new Usuario();
+
+    public Usuario verificaPrestamosUsu(String ced) throws SQLException {
+        Usuario u = new Usuario();
         int cantidad;
-        try{
-            String sql ="select count(id) cuenta from Prestamo where usuario_ID='%s'";
+        try {
+            String sql = "select count(id) cuenta from Prestamo where usuario_ID='%s'";
             sql = String.format(sql, ced);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
             cantidad = rs.getInt("cuenta");
-            if(cantidad>0){
-            u.setTienePrestamos(true);
-            u.setIdentificacion(ced);
-            //u.setHabilitado(1);
-            }else{
+            if (cantidad > 0) {
+                u.setTienePrestamos(true);
+                u.setIdentificacion(ced);
+                //u.setHabilitado(1);
+            } else {
                 u.setTienePrestamos(false);
                 u.setIdentificacion(ced);
-              //  u.setHabilitado(1);
+                //  u.setHabilitado(1);
             }
-        
-        }catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             String error = ex.getMessage();
             throw ex;
         }
         return u;
     }
-    
-    public void modificarEstadoUsuario(String ced,int estado)throws Exception{
-    String sql = "update Usuario set habilitado = %d where identificacion='%s'";
-    sql = String.format(sql,estado,ced);
-    db.executeQuery(sql);
+
+    public Sancion verificaSancion(String ced) throws Exception {
+        Sancion s = new Sancion();
+        try {
+            String sql = "select s.id, s.fecha_inicio, s.fecha_final, s.usuario_ID, s.estado from Sancion s,Usuario u where u.identificacion='%s' and u.id=s.usuario_ID";
+            sql = String.format(sql, ced);
+            ResultSet rs = db.executeQuery(sql);
+            //     rs.next();
+            s = sancion(rs);
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+            throw ex;
+        }
+        return s;
     }
-    
-//    public String bitacoraLibro(int id) throws SQLException {
-//        PreparedStatement preparedStatement = null;
-//        String insertTableSQL = "select * from Libro_bit where libro_id = ?";
-//        preparedStatement = db.getConnection().prepareStatement(insertTableSQL);
-//        preparedStatement.setInt(1, id);
-//        ResultSet rs = preparedStatement.executeQuery();
-//        rs.next();
-//        String dir = rs.getString("dir_PDF");
-//        return dir;
-//    }
+
+    public void modificarEstadoUsuario(String ced, int estado) throws Exception {
+        String sql = "update Usuario set habilitado = %d where identificacion='%s'";
+        sql = String.format(sql, estado, ced);
+        db.executeQuery(sql);
+    }
+
 }

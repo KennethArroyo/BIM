@@ -335,11 +335,6 @@ function updateList(list) {
     }
 }
 
-function cancelar() {
-    ///limpiarForm();
-    $("#myModalFormulario").modal("hide");
-    //$("#tablaLibros").html("");
-}
 
 function modificarLibro() {
     if ($("#fisico").prop('checked')) {
@@ -401,10 +396,6 @@ function modificarLibro() {
 
     }
 }
-function limpiarForm() {
-    //Resetear el formulario
-    $('#forModal').trigger("reset");
-}
 function buscarLibroId(idLibro) {
     $.ajax({
         url: "BuscarLibro",
@@ -448,20 +439,6 @@ function buscarLibroId(idLibro) {
 
 function validar() {
     var validacion = true;
-
-    //Elimina estilo de error en los css
-    //notese que es sobre el grupo que contienen el input
-    //$("#groupId").removeClass("has-error");
-    //$("#groupNombre").removeClass("has-error");
-    //$("#groupApellidos").removeClass("has-error");
-    //$("#groupFechaNacimiento").removeClass("has-error");
-    //$("#groupFechaVencimiento").removeClass("has-error");
-    //$("#groupTipoLicencia").removeClass("has-error");
-    //  $("#groupEstado").removeClass("has-error");
-//    $("#groupEsClienteTransportista").removeClass("has-error");
-
-    //valida cada uno de los campos del formulario
-    //Nota: Solo si fueron digitados
     if ($("#titulo").val() === "") {
         //$("#groupId").addClass("has-error");
         validacion = false;
@@ -477,4 +454,10 @@ function validar() {
 
     return validacion;
 }
+
+$(function () {
+    $("#cancelar").click(function () {
+        $("#myModalFormulario").modal("hide");
+    });
+    });
 

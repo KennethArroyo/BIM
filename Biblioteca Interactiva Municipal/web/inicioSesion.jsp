@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" onclick="enviarCorreo()" class=" btn btn-success">Enviar</button>
-                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
+                                        <button type="reset" class="btn btn-danger" id="cancelar2" >Cancelar</button>
                                     </div>
                                 
                             <div class="form-group height25" >

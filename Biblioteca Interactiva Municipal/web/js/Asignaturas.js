@@ -221,6 +221,8 @@ function eliminarFila(datos) {
     row.parentNode.removeChild(row);
 }
 
-function cancelar() {
-    $("#myModalAsignatura").modal("hide");
-}
+$(function () {
+    $("#cancelar").click(function () {
+        $("#myModalAsignatura").modal("hide");
+    });
+    });

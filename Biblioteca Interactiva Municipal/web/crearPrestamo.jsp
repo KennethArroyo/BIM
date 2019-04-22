@@ -18,44 +18,44 @@
         <link href="estilos/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-ui.min.js" type="text/javascript"></script>
     </head>
-    
+
     <body>
-    <%@include file="header.jsp"%>
-                    
+        <%@include file="header.jsp"%>
+
         <div class="container" style="margin-top:150px; ">
-        <h2  style="align-content: center;">Préstamo de Libros</h2><br><br>
-        <table class="table table-striped table-bordered table-hover" id="mydata">
-            
-        <thead>
-         <tr>
-              <th class="th-sm">Clasificación
-              </th>
-              <th class="th-sm">Autor
-              </th>
-              <th class="th-sm">Título
-              </th>
-              <th class="th-sm">Estado del Libro
-              </th>
-              <th class="th-sm">Comentario
-              </th>
-              <th class="th-sm">Cantidad de Copias
-              </th>
-              <th class="th-sm">Asignatura
-              </th>
-              <th class="th-sm">Préstamo
-              </th>
-            </tr>
-        </thead>
+            <h2  style="align-content: center;">Préstamo de Libros</h2><br><br>
+            <table class="table table-striped table-bordered table-hover" id="mydata">
 
-        <tfoot>
-        </tfoot>
+                <thead>
+                    <tr>
+                        <th class="th-sm">Clasificación
+                        </th>
+                        <th class="th-sm">Autor
+                        </th>
+                        <th class="th-sm">Título
+                        </th>
+                        <th class="th-sm">Estado del Libro
+                        </th>
+                        <th class="th-sm">Comentario
+                        </th>
+                        <th class="th-sm">Cantidad de Copias
+                        </th>
+                        <th class="th-sm">Asignatura
+                        </th>
+                        <th class="th-sm">Préstamo
+                        </th>
+                    </tr>
+                </thead>
 
-        <tbody>
-        </tbody>
-        </table>
+                <tfoot>
+                </tfoot>
+
+                <tbody>
+                </tbody>
+            </table>
         </div>
-    
-            <div class="modal fade" id="myModalFormulario" role="dialog">
+
+        <div class="modal fade" id="myModalFormulario" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header"> 
@@ -97,23 +97,25 @@
                                     <div class="form-group">
                                         <input type="hidden" value="solicitarPrestamo" id="prestamoAction"/>
                                         <button type="submit" onclick="solicitarPrestamo()" class=" btn btn-success">Solicitar</button>
-                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
+                                        <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
 
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
+        <input type="hidden" id="verifica">
     </body>
-    
-        <footer>
-            <br><br><br><br><br><br>
-            <%@ include file="footer.jsp" %>
-        </footer>
-    
+
+    <footer>
+        <br><br><br><br><br><br>
+        <%@ include file="footer.jsp" %>
+    </footer>
+
 </html>
 
 

@@ -243,6 +243,8 @@ function eliminarAutor(id) {
             });
 }
 
-function cancelar() {
-    $("#myModalAutor").modal("hide");
-}
+$(function () {
+    $("#cancelar").click(function () {
+        $("#myModalAutor").modal("hide");
+    });
+    });

@@ -282,6 +282,16 @@ function cambiarEstadoUsuario(){
     
 }
 
+$(function () {
+    $("#cancelar").click(function () {
+        $("#myModalFormulario").modal("hide");
+    });
+    
+    $("#cancelar2").click(function () {
+        $("#myModalFormulario2").modal("hide");
+    });
+
+});
 
 
 

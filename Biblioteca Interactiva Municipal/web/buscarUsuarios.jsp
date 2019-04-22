@@ -91,7 +91,7 @@
                                     <div class="form-group">
                                         <input type="hidden" value="cambiarTipoUsuario" id="Tipoaction"/>
                                         <button type="submit" onclick="cambiarTipoUsuario()" class=" btn btn-success">Cambiar</button>
-                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
+                                        <button type="reset" class="btn btn-danger" id="cancelar" >Cancelar</button>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                     <div class="form-group">
                                         <input type="hidden" value="cambiarEstadoUsuario" id="Estadoaction"/>
                                         <button type="submit" onclick="cambiarEstadoUsuario()" class=" btn btn-success">Cambiar</button>
-                                        <button type="reset" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
+                                        <button type="reset" class="btn btn-danger"  id="cancelar2" >Cancelar</button>
                                     </div>
                                 </div>
                             </div>
