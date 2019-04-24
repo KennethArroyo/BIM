@@ -37,6 +37,7 @@
                                             <ul class="dropdown_selection">
                                                 <li><a href="agregarLibro.jsp">Agregar Libro</a></li>
                                                 <li><a href="buscarLibroAdmin.jsp">Buscar Libro</a></li>
+                                                <li><a href="ReporteEstados.jsp">Estado de Libros</a></li>
                                                 <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
                                                 <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
                                             </ul>
