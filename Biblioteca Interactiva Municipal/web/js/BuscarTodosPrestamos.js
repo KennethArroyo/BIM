@@ -215,7 +215,7 @@ function modificarEstadoPrestamo() {
             if (tipoRespuesta === "C~") { //correcto
                 swal("Listo", "Se modificó el estado del prestamo correctamente", "success");
                 $("#myModalFormulario").modal("hide");
-                if (fe >= fa) {
+               if (fe >= fa) {
                 $("#mydataTodosPrestamo").DataTable().destroy();
                 inicializar();
                 } else {
