@@ -735,7 +735,7 @@ public class Dao {
 
         ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
         try {
-            String sql = "select p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
+            String sql = "select u.identificacion usuario_id, p.fecha_inicio, p.id, p.fecha_final,e.estado_prestamo, l.titulo, u.nombre from Prestamo p, "
                     + "Libro l, Usuario u, Estado e where p.libro_ID = l.libro_id "
                     + "and p.usuario_ID = u.id and p.estado_ID = e.id and p.estado_ID = 1";
             sql = String.format(sql);

@@ -163,12 +163,12 @@ function inicializarTabla(){
         t.row.add([rowData.usuario, rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado]).draw();
     }
 }
-
-$(document).ready(function inicializar() {
-    var today = new Date().toISOString().split('T')[0];
-    document.getElementsByName("fechaInicio")[0].setAttribute('min', today);
-    //$("#myModalFormulario").modal({"backdrop": "static"});
-});
+//
+//$(document).ready(function inicializar() {
+//    var today = new Date().toISOString().split('T')[0];
+//    //document.getElementsByName("fechaInicio")[0].setAttribute('min', today);
+//    //$("#myModalFormulario").modal({"backdrop": "static"});
+//});
 
 
 function buscarLibroId(idLibro) {
