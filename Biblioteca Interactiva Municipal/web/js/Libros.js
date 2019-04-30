@@ -3,11 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+var asigs = {};
 $(document).ready(function(){
     inicializar();
     inicializar1();
+    getAsignaturas();
 });
+
+function getAsignaturas(){
+    $.ajax({type: "GET", 
+          url:"GetAsignaturas",
+          success: 
+            function(obj){
+              asigs = obj;
+            },
+          error: function(status){
+
+                 swal('Error al listar las Asignaturas', '', 'error');
+          }                    
+        });   
+}  
 
 function inicializar(){
     var now = new Date();
@@ -310,9 +325,6 @@ function agregarLibro() {
     }
 
 }
-$(document).ready(function(){
-    $("#tablaLibros").DataTable();
-    });
 
 
 //$(document).ready(function getAsignaturas() {
@@ -407,6 +419,7 @@ function buscarLibroId(idLibro) {
             swal("Error", "No se pudo cargar el libro", "error");
         },
         success: function (data) {
+            updateList(asigs);
             $("#myModalFormulario").modal();
             //dibujarTabla(data);
             //buscarAsignaturaId(data.asignatura.id);
@@ -430,11 +443,17 @@ function buscarLibroId(idLibro) {
             } else {
                 $("#digital").prop('checked', false);
             }
-            $("select").val(data.asignatura.id);
+            $("#asignatura").val(data.asignatura.id);
         },
         type: 'POST',
         dataType: "json"
     });
+}
+
+function updateList(list){
+    for (var i = 0; i < list.length; i++) {
+    $("select").append('<option value="' + list[i].id + '">' + list[i].nombre + '</option>');
+    }
 }
 
 function validar() {
