@@ -452,7 +452,7 @@ function buscarLibroId(idLibro) {
 
 function updateList(list){
     for (var i = 0; i < list.length; i++) {
-    $("select").append('<option value="' + list[i].id + '">' + list[i].nombre + '</option>');
+    $("#asignatura").append('<option value="' + list[i].id + '">' + list[i].nombre + '</option>');
     }
 }
 
