@@ -11,16 +11,16 @@
     <head>
         <title>Editar Usuario</title>
         <%@ include file="librerias.jsp" %>
+        <%@ include file="header.jsp" %>
         
     </head>
 
-    <body>
-        <%@ include file="header.jsp" %>
-        <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
-
-            <div class="container" style="background-image:url(imagenes/bg.jpg)">
-                <h2  style="align-content: center;">Editar mis datos personales</h2>
-                <br>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
+       
+        <div class="containerForm">
+        <div class="registroForm">    
+        <h2 class="tituloForm">Editar Mi Perfil</h2>
+        <div class="divisionTitulo"></div>
                 <form role="form" id="regUsuarios" onsubmit="return false;">
                     <div class="form-group">
                         <label for="identificacion">Identificación</label>
@@ -89,15 +89,12 @@
                         </div>
                     </div>
                 </form>
-                <br>
+               
             </div>    
         </div>  
         <script src="js/UsuarioAdmin.js" type="text/javascript"></script>
 
     </body>
 
-    <footer>
-        <br><br><br><br><br><br>
         <%@ include file="footer.jsp" %>
-    </footer> 
 </html>
