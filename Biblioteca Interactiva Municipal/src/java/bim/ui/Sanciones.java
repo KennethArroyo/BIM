@@ -52,8 +52,7 @@ public class Sanciones extends HttpServlet {
                     out.print("C~U");
                     break;
                 case "VerificarSancion":
-                    String ced = request.getParameter("usuario");
-                    Sancion s = Model.instance().verficarSancion(ced);
+                    Sancion s = this.verificarSancion(request, response);
                     json = new Gson().toJson(s);
                     out.print(json);
                     break;
@@ -98,6 +97,28 @@ public class Sanciones extends HttpServlet {
             String msg = e.getMessage();
             request.setAttribute("error", "Ocurrió un error");
         }
+    }
+
+    protected Sancion verificarSancion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
+        Sancion s = new Sancion();
+        Date fechaActual = new Date();
+        try {
+            String ced = request.getParameter("usuario");
+            s = Model.instance().verficarSancion(ced);
+            String fechaFinal = s.getFecha_final();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date fechaFinalDate = format.parse(fechaFinal);
+            if (fechaFinalDate.compareTo(fechaActual) >= 0) {
+                s.setEstado(1);
+            } else {
+                s.setEstado(0);
+            }
+        } catch (Exception e) {
+            String msg = e.getMessage();
+            request.setAttribute("error", "Ocurrió un error");
+        }
+
+        return s;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

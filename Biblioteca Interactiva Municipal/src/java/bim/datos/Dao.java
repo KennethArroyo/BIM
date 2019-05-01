@@ -3,6 +3,8 @@ package bim.datos;
 import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
+import bim.entidades.BitacoraLib;
+import bim.entidades.BitacoraUs;
 import bim.entidades.Libro;
 import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Dao {
 
@@ -127,23 +130,33 @@ public class Dao {
         p.setLibro_ID(rs.getInt("libro_ID"));
         return p;
     }
+    
+    private BitacoraLib bitacoraLib(ResultSet rs) throws Exception{
+        BitacoraLib bit = new BitacoraLib();
+        bit.setClasificacion(rs.getString("clasificacion"));
+        bit.setTitulo(rs.getString("titulo"));
+        bit.setCopias(rs.getInt("cantidad_copias"));
+        bit.setAccion(rs.getString("accion"));
+        Date date = rs.getDate("fec_accion");
+        bit.setFecha(date.toString());
+        bit.setUsuario(rs.getString("usu_Accion"));
+        return bit;
+    }
+    
+    private BitacoraUs bitacoraUs(ResultSet rs) throws Exception{
+        BitacoraUs bit = new BitacoraUs();
+        bit.setNombre(rs.getString("nombre"));
+        bit.setApellidos(rs.getString("apellidos"));
+        bit.setIdent(rs.getString("identificacion"));
+        bit.setAccion(rs.getString("accion"));
+        Date date = rs.getDate("fec_accion");
+        bit.setFecha(date.toString());
+        bit.setUsuario(rs.getString("usu_Accion"));
+        return bit;
+    }
 
     private Sancion sancion(ResultSet rs) throws Exception {
         Sancion s = new Sancion();
-//        if (rs.first()) {
-//            s.setId(rs.getInt("id"));
-//            s.setFecha_inicio(rs.getString("fecha_inicio"));
-//            s.setFecha_final(rs.getString("fecha_final"));
-//            s.setEstado(rs.getInt("estado"));
-//            s.setUsuario_ID(rs.getInt("usuario_ID"));
-//        } else {
-//            s.setId(0);
-//            s.setFecha_inicio("");
-//            s.setFecha_final("");
-//            s.setUsuario_ID(0);
-//            s.setEstado(0);
-//        }
-
         if (rs.next()) {
             do {
                 s.setId(rs.getInt("id"));
@@ -923,6 +936,30 @@ public class Dao {
         String sql = "update Usuario set habilitado = %d where identificacion='%s'";
         sql = String.format(sql, estado, ced);
         db.executeQuery(sql);
+    }
+    
+    public ArrayList<BitacoraLib> buscarBitacorasLib() throws SQLException, Exception {
+        ArrayList<BitacoraLib> bit = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        String sql = "select * from Libro_bit";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            bit.add(bitacoraLib(rs));
+        };
+        return bit;
+    }
+    
+    public ArrayList<BitacoraUs> buscarBitacorasUs() throws SQLException, Exception {
+        ArrayList<BitacoraUs> bit = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        String sql = "select * from Usuario_bit";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            bit.add(bitacoraUs(rs));
+        };
+        return bit;
     }
 
 }

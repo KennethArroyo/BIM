@@ -111,9 +111,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <br>
-                            <input type="file" name="imagenPDF" class="file" id="imagenPDF">
                             <br>
                             <div class="col-md-4">
                                 <div class="form-group">

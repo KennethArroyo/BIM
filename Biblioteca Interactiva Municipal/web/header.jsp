@@ -63,6 +63,8 @@
                                         <li class="dropdown"><a href="#">Mantenimientos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
+                                                <li><a href="bitacorasUsuarios.jsp">Bitacoras Usuario</a></li>
+                                                <li><a href="bitacorasLibros.jsp">Bitacoras Libros</a></li>
                                                <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                                             </ul>
                                         </li>
@@ -157,10 +159,12 @@
                                 
                             </ul>
                         </li>
-                        <li class="dmenu_item has-children"><a href="">Actividades<i class="fa fa-angle-down"></i></a>
-                            <ul class="menu_selection">
-                                <li><a href="mantenimientoActividades.jsp"><i aria-hidden="true"></i></a>Mantenimiento de actividades</li>
-                                <li><a href="actividades.jsp"><i aria-hidden="true"></i></a>Actividades</li>
+                        <li class="dropdown"><a href="#">Mantenimientos<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown_selection">
+                                <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
+                                <li><a href="bitacorasUsuarios.jsp">Bitacoras Usuario</a></li>
+                                <li><a href="bitacorasLibros.jsp">Bitacoras Libros</a></li>
+                               <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                             </ul>
                         </li>
                         

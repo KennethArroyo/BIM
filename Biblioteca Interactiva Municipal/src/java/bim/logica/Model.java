@@ -4,6 +4,8 @@ import bim.datos.Dao;
 import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
+import bim.entidades.BitacoraLib;
+import bim.entidades.BitacoraUs;
 import bim.entidades.Libro;
 import bim.entidades.ModeloPrestamo;
 import bim.entidades.Prestamo;
@@ -225,5 +227,13 @@ public class Model {
     public Sancion verficarSancion(String ced)throws Exception{
     return dao.verificaSancion(ced);
       
+    }
+
+    public ArrayList<BitacoraLib> bitacorasLib() throws Exception {
+        return dao.buscarBitacorasLib();
+    }
+
+    public ArrayList<BitacoraUs> bitacorasUs() throws Exception {
+        return dao.buscarBitacorasUs();
     }
 }
