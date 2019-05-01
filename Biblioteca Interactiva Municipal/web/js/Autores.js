@@ -154,7 +154,7 @@ function dibujarTabla(dataJson) {
 }
 
 function dibujarFila(rowData) {
-    t.row.add([rowData.nombre,'<button type="button" class="btn btn-success" onclick="levantarModal('+ rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">'+ '<img src="imagenes/lead_pencil.png"/>' + '</button>' ,'<button type="button" class="btn btn-danger" onclick="eliminarAutor('+rowData.id+');">'+ '<img src="imagenes/delete.png"/>' + '</button>']).draw();
+    t.row.add([rowData.nombre,'<button type="button" class="btn btn-success" onclick="levantarAutorModal('+ rowData.id + ',' + '\'' + rowData.nombre + '\'' + ');">'+ '<img src="imagenes/lead_pencil.png"/>' + '</button>' ,'<button type="button" class="btn btn-danger" onclick="eliminarAutor('+rowData.id+');">'+ '<img src="imagenes/delete.png"/>' + '</button>']).draw();
 }
 }
 
@@ -181,7 +181,7 @@ function agreAutor() {
 }
 
 
-function levantarModal(id, nombre) {
+function levantarAutorModal(id, nombre) {
     $("#myModalAutor").modal();
     $("#nombre").val(nombre);
     $("#AutorId").val(id);
@@ -199,7 +199,8 @@ function modificarAutor() {
         data: datos,
         success:
                 function (status) {
-                    actualizarTabla(datos);
+                    $("#mydata").DataTable().destroy();
+                    inicializar();
                     $("#myModalAutor").modal("hide");
                 },
         error: function (status) {

@@ -168,7 +168,6 @@ function modificarAsig() {
         data: datos,
         success:
                 function (status) {
-
                     inicializar();
                 },
         error: function (status) {
