@@ -157,20 +157,6 @@ public class Dao {
 
     private Sancion sancion(ResultSet rs) throws Exception {
         Sancion s = new Sancion();
-//        if (rs.first()) {
-//            s.setId(rs.getInt("id"));
-//            s.setFecha_inicio(rs.getString("fecha_inicio"));
-//            s.setFecha_final(rs.getString("fecha_final"));
-//            s.setEstado(rs.getInt("estado"));
-//            s.setUsuario_ID(rs.getInt("usuario_ID"));
-//        } else {
-//            s.setId(0);
-//            s.setFecha_inicio("");
-//            s.setFecha_final("");
-//            s.setUsuario_ID(0);
-//            s.setEstado(0);
-//        }
-
         if (rs.next()) {
             do {
                 s.setId(rs.getInt("id"));
