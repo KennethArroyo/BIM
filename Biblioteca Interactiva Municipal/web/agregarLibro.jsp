@@ -5,17 +5,18 @@
         <%@ include file="librerias.jsp" %>
         <script src="js/FormularioLib.js" type="text/javascript"></script>
         <title>Agregar libro</title>
+        <%@ include file="header.jsp" %>
+
     </head>
     
-    <body>
-        <%@ include file="header.jsp" %>
-        <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
-            
-            <div class="container col-lg-8 " style="align-self: center">
-                <h2  style="align-content: center;">Agregar Libros</h2>
-                <br>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
+        
+        <div class="containerAgregarLibroForm" >
+                <div class='registroAgregarLibroForm'>
+                <h2  class='tituloAgregarLibroForm'>Agregar Libros</h2>
+                <div class='divisionTitulo'></div>
                 <form onsubmit="return agregarLibro()" autocomplete="off" action="AgregarLibro" method="POST" enctype="multipart/form-data" id="libForm" class="log">
-                    <div class="row">
+                    <div class="row" style='width: 950px;'>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="clasificacion">Clasificación</label>
@@ -31,12 +32,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style='width: 950px;'>
                         <div class="col-lg-4">
                             <label>¡Por favor registre primero los autores del libro!</label>
                         </div>
                      </div>
-                    <div class="row">
+                    <div class="row" style='width: 950px;'>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <div class="autocomplete">
@@ -53,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style='width: 950px;'>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="autor">Autor (opcional)</label>
@@ -76,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style='width: 950px;'>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="asignatura">Asignatura</label>
@@ -95,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style='width: 950px;'>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="copias">Cantidad de copias</label>
@@ -109,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row"><br>
+                    <div class="row" style='width: 950px;'><br>
                         <div class="col-lg-4">
                             <div class="form-check">
                                 <label for="fisico"><input class="form-check-input" type="checkbox" id="fisico" name="fisico" value="1">
@@ -132,13 +133,8 @@
                  <a href="Principal" id="cancel" name="cancel" class="btn btn btn-danger">Cancelar</a>
                 </div>
                 </form>
-                <br>
-            </div>    
-        </div> 
+                </div>
+            </div>
     </body>
-   <div class="container">
-    <footer class="footer">
         <%@ include file="footer.jsp" %>
-    </footer>
-   </div>
 </html>

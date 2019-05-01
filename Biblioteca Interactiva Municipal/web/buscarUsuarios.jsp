@@ -16,13 +16,15 @@
         <script src="js/BuscarUsuarios.js" type="text/javascript"></script>
         <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/modals.js" type="text/javascript"></script>
+        <%@include file="header.jsp"%>
     </head>
 
-    <body>
-    <%@include file="header.jsp"%>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
                     
-        <div class="container" style="margin-top:150px; ">
-        <h2  style="align-content: center;">Buscar Usuarios</h2><br><br>
+        <div class="containerDataTableForm">
+        <div class="registroDataTableForm">    
+        <h2 class="tituloDataTableForm">Buscar Usuarios</h2>
+        <div class="divisionTitulo"></div>
         <table class="table table-striped table-bordered table-hover compact" id="mydata">
             
         <thead >
@@ -56,6 +58,7 @@
         <tbody>
         </tbody>
         </table>
+        </div>
         </div>
     <div class="modal fade" id="myModalFormulario" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -149,7 +152,5 @@
     
         </body>
 
-            <footer>
                 <%@include file="footer.jsp"%>
-            </footer>
         </html>

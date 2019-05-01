@@ -14,14 +14,16 @@
         <script src="js/modals.js" type="text/javascript"></script>
         <script src="js/Asignaturas.js" type="text/javascript"></script>
         <title>Asignaturas</title>
+        <%@ include file="header.jsp" %>
+
     </head>
     
-    <body>
-        <%@ include file="header.jsp" %>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
         
-        <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
-            <div class="container" style="margin-top:50px; ">
-                
+        <div class="containerDataTableForm">
+        <div class="registroDataTableForm">
+        <div class="tituloAsignaturasForm">Asignaturas</div>  
+        <div class="divisionTitulo"></div>
         <div class="input-bar" style="width: 1000px; display: block;">
         <div class="input-bar-item">
           <form action="AgregarAsignatura" method="POST" id="asigForm" class="log">
@@ -60,6 +62,7 @@
                 </table>
                 </div>      
                 </div>
+            </div>
              
         </div>
                 <div class="modal fade" id="myModalAsignatura" role="dialog">

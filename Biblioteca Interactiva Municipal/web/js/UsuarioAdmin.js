@@ -51,7 +51,7 @@ function modificarUsuario(){
            if (tipoRespuesta === "C~") { //correcto
                         swal("Listo", "Se modificó el usuario correctamente", "success");
                         //window.alert("Se modificó el usuario correctamente");
-                        window.location.assign("http://localhost:8083/Biblioteca_Interactiva_Municipal/Principal");
+                        window.location.assign("http://192.170.10.103/Biblioteca_Interactiva_Municipal/Principal");
                     } else {
                         if (tipoRespuesta === "E~") { //error
                             window.alert("No se pudo modificar el usuario");

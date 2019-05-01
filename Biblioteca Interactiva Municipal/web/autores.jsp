@@ -14,13 +14,15 @@
         <script src="js/modals.js" type="text/javascript"></script>
         <script src="js/Autores.js" type="text/javascript"></script>
         <title>Autores</title>
+        <%@ include file="header.jsp" %>
     </head>
     
-    <body>
-        <%@ include file="header.jsp" %>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
         
-        <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
-            
+        <div class="containerDataTableForm"> 
+        <div class="registroDataTableForm">
+        <div class="tituloAutoresForm">Autores</div>
+        <div class="divisionTitulo"></div>   
         <div class="input-bar" style="width: 1000px; display: block;">
         <div class="input-bar-item">
           <form action="AgregarAutor" method="POST" id="autorForm" class="log">
@@ -37,8 +39,6 @@
         </div>
                 
             <div class="container" style="margin-top:50px; ">
-                
-    
                 
                                
                 <h2  style="align-content: center;">Buscar Autores</h2><br><br>
@@ -63,8 +63,7 @@
                 </tbody>
                 </table>
                 </div>      
-                </div>
-                
+                </div>                    
                 
                 
             </div>
@@ -116,9 +115,5 @@
             </div>
         </div> 
     </body>
-    
-    <footer>
-        <br><br><br><br><br><br>
         <%@ include file="footer.jsp" %>
-    </footer>  
 </html>

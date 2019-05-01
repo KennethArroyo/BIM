@@ -5,20 +5,20 @@
         <%@ include file="librerias.jsp" %>
         <script src="js/modals.js" type="text/javascript"></script>
         <title>Registro de Usuarios</title>
+        <%@ include file="header.jsp" %>
     </head>
     
-    <body>
-        <%@ include file="header.jsp" %>
-        <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
-            
-            <div class="container" style="background-image:url(imagenes/bg.jpg)">
-                <h2  style="align-content: center;">Registro de Usuarios</h2>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
+            <div class="containerForm">
                 <br>
                 <form action="RegistrarUsuario" method="POST" id="regUsuarios">
-                    
+                    <div class="registroForm">
+                    <h2 class="tituloForm">Registro de Usuarios</h2>
+                    <div class='divisionTitulo'></div>
+
                     <div class="form-group">
                         <label for="identificacion">Identificación</label>
-                            <div class="input-group" style="width: 10px;">
+                            <div class="input-group">
                             <div class="input-group-prepend">
                               <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"></button>
                               <div class="dropdown-menu">
@@ -69,7 +69,7 @@
                         <p>Debe tener al menos una mayúscula, una minúscula, un número y debe contener como mínimo 8 caracteres</p>
                     </div>
                     
-                    <div class="form-group" id="show_hide_password-verify">
+                    <div class="form-group" id="show_hide_password">
                         <label for="verificacontrasena">Repetir Contraseña</label>
                         <input type="password" class="form-control" id="verificacontrasena" name="verificacontrasena" required>
                         <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
@@ -89,15 +89,13 @@
                 </form>
                 <br>
             </div>    
-        </div>  
-
-<!-- Modal -->
+           </div>  
+          
+        
 
         <script src="js/Usuarios.js" type="text/javascript"></script>
     </body>
     
-    <footer>
-        <br><br><br><br><br><br>
-        <%@ include file="footer.jsp" %>
-    </footer>  
+    <%@ include file="footer.jsp" %>
+
 </html>

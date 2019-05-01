@@ -20,9 +20,8 @@
   <script src="js/siema.min.js"></script>
   <%@ include file="header.jsp" %>
     </head>
-    <body>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
         <jsp:useBean id="actividades" scope="request" type="List<Actividad>" class="java.util.ArrayList"/>
-        <div class="super_container">
             
                     <div class="siema">
                         <div><img src='Actividades/actividadesmunicipales.jpg' alt=""></div>
@@ -33,10 +32,7 @@
                             <div><img src='Actividades/<%=p.getNombre()%>' alt=""></div>
                         <%}%>
                     </div>
-                    <br>
-     <!--       <button id="prev" class="btn btn-info">Anterior</button>
-            <button id="next" class="btn btn-info">Siguiente</button> !-->
-        </div>
+                    
 
 <script>
 // const mySiema = new Siema({duration: 600,easing: 'cubic-bezier(.11,.73,.57,1.53)', loop: true});
@@ -100,5 +96,6 @@ setInterval(() => mySiemaWithDots.next(), 5000);
 
 </script>
     </body>
-    <footer><%@ include file="footer.jsp" %></footer>
+    
+    <%@ include file="footer.jsp" %>
 </html>

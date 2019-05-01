@@ -17,18 +17,15 @@
         <script src="js/jquery-ui.min.js" type="text/javascript"></script>
         <script src="js/Sesion.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <%@ include file="header.jsp" %>
+
     </head>
-    <body>
-        <%@ include file="header.jsp" %>
-        <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div>
-                        <h2 style="align-content: center;"><center>Iniciar Sesión</center></h2>
-                    </div>
-                    <br/>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
+
+                <div class="containerInicioSesionForm">                        
+                    <div class="registroInicioSesionForm">    
+                    <h2 class='tituloInicioSesionForm'>Iniciar Sesión</h2>       
+                    <div class='divisionTitulo'></div>    
                     <form onsubmit="return false" role="form" id="formLogin" method="POST">
                         <div class="form-group" id="groupUsuario">
                             <label for="cedula">Identificación</label>
@@ -51,7 +48,7 @@
                         <div class="form-group">
                             <button class="btn btn-link" onclick="levantarModal()">¿Olvidó su contraseña?</button>
                         </div>
-
+                        
                         <div class="form-group height25" >
                             <div class="alert alert-success hiddenDiv" id="mesajeResult">
                                 <strong id="mesajeResultNeg">Info!</strong> 
@@ -59,11 +56,9 @@
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
-        </div>
-        </div>
+                    </div>    
+                </div>                
+
         <div class="modal fade" id="myModalRecuperar" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">

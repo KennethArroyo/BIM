@@ -848,29 +848,13 @@ display: block;
 
 .main_slider
 {
-	width: 100%;
-	display: block;
-        overflow: auto;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-	margin-top: 150px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: auto;
 }
-.main_slider_content
-{
-	width: 100%;
-}
-.main_slider_content h6
-{
-	font-weight: 500;
-	text-transform: uppercase;
-	margin-bottom: 29px;
-}
-.main_slider_content h1
-{
-	font-weight: 400;
-	line-height: 1;
-}
+
 .red_button
 {
 	display: -webkit-inline-box;
@@ -1462,3 +1446,202 @@ table.dataTable thead {
    // background-color:gray
    vertical-align: middle;
 }
+
+.containerForm {
+width: 660px;
+position: relative;
+margin: 0 auto;
+}
+
+.registroForm{
+    background: #fff;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-o-border-radius: 10px;
+-ms-border-radius: 10px;
+padding: 50px 85px;
+margin-top: 200px;
+border-style: inset;
+border-color: blue;
+border-width: thick;
+}
+
+.tituloForm{
+    line-height: 1.66;
+margin: 0;
+    margin-bottom: 0px;
+padding: 0;
+font-weight: 900;
+color: #222;
+text-transform: uppercase;
+text-align: center;
+margin-bottom: 20px;
+margin-left: 144px;
+} 
+
+.containerInicioSesionForm {
+width: 660px;
+position: relative;
+margin: 0 auto;
+}
+
+.registroInicioSesionForm{
+    background: #fff;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-o-border-radius: 10px;
+-ms-border-radius: 10px;
+padding: 50px 85px;
+margin-top: 200px;
+border-style: inset;
+border-color: blue;
+border-width: thick;
+}
+
+.tituloInicioSesionForm{
+    line-height: 1.66;
+margin: 0;
+    margin-bottom: 0px;
+padding: 0;
+font-weight: 900;
+color: #222;
+text-transform: uppercase;
+text-align: center;
+margin-bottom: 20px;
+margin-left: 175px;
+} 
+
+
+.containerAgregarLibroForm {
+width: 850px;
+position: relative;
+margin: 0 auto;
+}
+
+.registroAgregarLibroForm{
+    background: #fff;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-o-border-radius: 10px;
+-ms-border-radius: 10px;
+padding: 50px 85px;
+margin-top: 200px;
+border-style: inset;
+border-color: blue;
+border-width: thick;
+}
+
+.tituloAgregarLibroForm{
+    line-height: 1.66;
+margin: 0;
+    margin-bottom: 0px;
+padding: 0;
+font-weight: 900;
+color: #222;
+text-transform: uppercase;
+text-align: center;
+margin-bottom: 20px;
+margin-left: 265px;
+} 
+
+
+.containerMantenimientoForm {
+width: 900px;
+position: relative;
+margin: 0 auto;
+}
+
+.registroMantenimientoForm{
+    background: #fff;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-o-border-radius: 10px;
+-ms-border-radius: 10px;
+padding: 50px 85px;
+margin-top: 200px;
+border-style: inset;
+border-color: blue;
+border-width: thick;
+}
+
+.tituloMantenimientoForm{
+    line-height: 1.66;
+margin: 0;
+    margin-bottom: 0px;
+padding: 0;
+font-weight: 900;
+color: #222;
+text-transform: uppercase;
+text-align: center;
+margin-bottom: 20px;
+margin-left: 215px;
+} 
+
+.divisionTitulo{
+    border-bottom: 2px solid blue;
+    margin-bottom: 60px
+}
+
+.containerDataTableForm {
+width: 1200px;
+position: relative;
+margin: 0 auto;
+}
+
+.registroDataTableForm{
+    background: #fff;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-o-border-radius: 10px;
+-ms-border-radius: 10px;
+padding: 50px 85px;
+margin-top: 200px;
+border-style: inset;
+border-color: blue;
+border-width: thick;
+}
+
+.tituloDataTableForm{
+    line-height: 1.66;
+margin: 0;
+    margin-bottom: 0px;
+padding: 0;
+font-weight: 900;
+color: #222;
+text-transform: uppercase;
+text-align: center;
+margin-bottom: 20px;
+margin-left: 420px;
+} 
+
+.tituloAsignaturasForm{
+    line-height: 1.66;
+margin: 0;
+    margin-bottom: 0px;
+padding: 0;
+font-weight: 900;
+color: #222;
+text-transform: uppercase;
+text-align: center;
+margin-bottom: 20px;
+margin-left: 0px;
+} 
+
+.tituloAutoresForm{
+    line-height: 1.66;
+margin: 0;
+    margin-bottom: 0px;
+padding: 0;
+font-weight: 900;
+color: #222;
+text-transform: uppercase;
+text-align: center;
+margin-bottom: 20px;
+margin-left: 0px;
+} 
+

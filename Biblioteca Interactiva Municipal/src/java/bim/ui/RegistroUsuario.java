@@ -148,49 +148,49 @@ public class RegistroUsuario extends HttpServlet {
             
             Model.instance().registrarUsuario(u);  
             
-            //Envio de correo de verificacion
-            String MAIL_SMTP_HOST = "smtp.gmail.com";
-            String MAIL_USERNAME = "bimsantodomingo@gmail.com";
-            String MAIL_PASSWORD = "bibliotecabim";
-         
-            Properties props = new Properties();
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.host", MAIL_SMTP_HOST);
-            props.put("mail.smtp.port", "587");
-
-            Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(MAIL_USERNAME, MAIL_PASSWORD);
-                    }
-                });
-
-            String link = "http://localhost:8083/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
-
-            StringBuilder bodyText = new StringBuilder();
-            bodyText.append("<div>")
-                    .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
-                    .append("  Código para verificar su cuenta:  <b>" + u.getCod_verificacion() + "</b> <br/>")
-                    .append("  Copie y pegue el siguiente texto en el campo de código de verificación en el formulario al que lo redirigue el enlace: ")
-                    .append("  <br/>")
-                    .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
-                    .append("  <a href=\"" + link + "\">" + link + "</a>")
-                    .append("  <br/><br/>")
-                    .append("  Gracias.<br/>")
-                    .append("  Biblioteca Isaac Felipe Azofeifa <br/>")
-                    .append("  Municipalidad de Santo Domingo de Heredia <br/>")
-                    .append("</div>");
-            
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(MAIL_USERNAME));
-            message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(correo));
-            message.setSubject("Verificación de Cuenta - BIM");
-            message.setContent(bodyText.toString(), "text/html; charset=utf-8");
-            Transport.send(message);
-            
-            request.getRequestDispatcher("Principal").forward(request, response);
+//            //Envio de correo de verificacion
+//            String MAIL_SMTP_HOST = "smtp.gmail.com";
+//            String MAIL_USERNAME = "bimsantodomingo@gmail.com";
+//            String MAIL_PASSWORD = "bibliotecabim";
+//         
+//            Properties props = new Properties();
+//            props.put("mail.smtp.auth", "true");
+//            props.put("mail.smtp.starttls.enable", "true");
+//            props.put("mail.smtp.host", MAIL_SMTP_HOST);
+//            props.put("mail.smtp.port", "587");
+//
+//            Session session = Session.getInstance(props,
+//                new javax.mail.Authenticator() {
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(MAIL_USERNAME, MAIL_PASSWORD);
+//                    }
+//                });
+//
+//            String link = "http://192.170.10.103/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
+//
+//            StringBuilder bodyText = new StringBuilder();
+//            bodyText.append("<div>")
+//                    .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")
+//                    .append("  Código para verificar su cuenta:  <b>" + u.getCod_verificacion() + "</b> <br/>")
+//                    .append("  Copie y pegue el siguiente texto en el campo de código de verificación en el formulario al que lo redirigue el enlace: ")
+//                    .append("  <br/>")
+//                    .append("  Por favor haga click<a href=\"" + link + "\"> aquí</a> o copie el siguiente enlace en su navegador: <br/>")
+//                    .append("  <a href=\"" + link + "\">" + link + "</a>")
+//                    .append("  <br/><br/>")
+//                    .append("  Gracias.<br/>")
+//                    .append("  Biblioteca Isaac Felipe Azofeifa <br/>")
+//                    .append("  Municipalidad de Santo Domingo de Heredia <br/>")
+//                    .append("</div>");
+//            
+//            Message message = new MimeMessage(session);
+//            message.setFrom(new InternetAddress(MAIL_USERNAME));
+//            message.setRecipients(Message.RecipientType.TO,
+//                    InternetAddress.parse(correo));
+//            message.setSubject("Verificación de Cuenta - BIM");
+//            message.setContent(bodyText.toString(), "text/html; charset=utf-8");
+//            Transport.send(message);
+//            
+//            request.getRequestDispatcher("Principal").forward(request, response);
         }
         catch (Exception e) {
             String msg = e.getMessage();

@@ -59,7 +59,7 @@ function cambiarClave(){
             success: 
               function(obj){
                 swal("Listo","Su contraseña ha sido modificada con éxito","success");
-                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/inicioSesion.jsp");
+                window.location.assign("http://192.170.10.103/Biblioteca_Interactiva_Municipal/inicioSesion.jsp");
               },
             error: function(status){
                         swal("Error","Ha ocurrido un problema al cambiar su contraseña","error");

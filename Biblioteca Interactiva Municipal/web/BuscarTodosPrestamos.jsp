@@ -14,12 +14,14 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
     <script src="js/BuscarTodosPrestamos.js" type="text/javascript"></script>
-</head>
-<body>
     <%@include file="header.jsp"%>
+</head>
+<body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
 
-    <div class="container" style="margin-top:150px; ">
-        <h2  style="align-content: center;">Préstamos</h2><br><br>
+    <div class="containerDataTableForm">
+        <div class="registroDataTableForm">
+        <h2 class="tituloDataTableForm">Préstamos</h2>
+        <div class="divisionTitulo"></div>
         <table class="table table-striped table-bordered table-hover" id="mydataTodosPrestamo">
 
             <thead>
@@ -46,6 +48,7 @@
             </tbody>
         </table>
     </div>
+    </div>    
 
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-sm">
@@ -186,8 +189,5 @@
     </div>
 </body>
 
-<footer>
     <%@include file="footer.jsp"%>
-</footer>
-</body>
 </html>

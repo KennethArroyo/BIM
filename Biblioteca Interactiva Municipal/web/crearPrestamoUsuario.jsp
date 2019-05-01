@@ -17,13 +17,15 @@
         <script src="js/modals.js" type="text/javascript"></script>
         <link href="estilos/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+        <%@include file="header.jsp"%>
     </head>
     
-    <body>
-    <%@include file="header.jsp"%>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
                     
-        <div class="container" style="margin-top:150px; ">
-        <h2  style="align-content: center;">Préstamo de Libros</h2><br><br>
+        <div class="containerDataTableForm">
+        <div class="registroDataTableForm">    
+        <h2 class="tituloDataTableForm">Préstamo de Libros</h2>
+        <div class="divisionTitulo"></div>
         <table class="table table-striped table-bordered table-hover" id="mydata">
             
         <thead>
@@ -54,7 +56,8 @@
         </tbody>
         </table>
         </div>
-    
+        </div>
+        
             <div class="modal fade" id="myModalFormulario" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -124,10 +127,7 @@
             </div>
         </div>
     </body>
-    
-        <footer>
-            <br><br><br><br><br><br>
-            <%@ include file="footer.jsp" %>
-        </footer>
+   
+        <%@ include file="footer.jsp" %>
     
 </html>
