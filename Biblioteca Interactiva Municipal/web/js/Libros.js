@@ -178,10 +178,10 @@ function dibujarFila(rowData) {
     if(rowData.estado===1){est="Bueno";}
     else if(rowData.estado===2){est="Regular";}
     else if(rowData.estado===3){est="Malo";}
-    if(rowData.comentario === null || rowData.comentario === " "){
-        com = "Sin comentarios";
+    if(rowData.comentario === null || rowData.comentario === ""){
+        com = "No hay comentarios";
     }
-    else if(rowData.comentario !== null || rowData.comentario === " "){
+    else if(rowData.comentario !== null || rowData.comentario !== ""){
         com = rowData.comentario;
     }
 
@@ -189,7 +189,7 @@ function dibujarFila(rowData) {
         t.row.add([rowData.clasificacion, autores, rowData.titulo, est, com, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>', '<button id="download" onclick="ejecutarDescarga(' + rowData.id + ');" class="btn btn-info">' + "Descargar" + '</button>']).draw();
     }
     else{
-        t.row.add([rowData.clasificacion, autores, rowData.titulo, est, com, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>',"no disponible"]).draw();
+        t.row.add([rowData.clasificacion, autores, rowData.titulo, est, com, rowData.cantidad_copias, rowData.asignatura.nombre, '<button id="editar" type="button" class="btn btn-info" onclick="buscarLibroId(' + rowData.id + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>',"No disponible"]).draw();
     }
 }
 }
@@ -268,7 +268,7 @@ function dibujarFila(rowData) {
     if(rowData.estado===1){est="Bueno";}
     else if(rowData.estado===2){est="Regular";}
     else if(rowData.estado===3){est="Malo";}
-     if(rowData.comentario === null || rowData.comentario === " "){
+     if(rowData.comentario === null || rowData.comentario !== " "){
         com = "No hay comentarios";
     }
     else if(rowData.comentario !== null || rowData.comentario === " "){

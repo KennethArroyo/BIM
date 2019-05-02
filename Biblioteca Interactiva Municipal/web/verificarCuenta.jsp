@@ -4,15 +4,14 @@
     <head>    
         <%@ include file="librerias.jsp" %>
         <title>Verificación de Cuenta</title>
+        <%@ include file="header.jsp" %>
     </head>
     
-    <body>
-        <%@ include file="header.jsp" %>
-        <div class="main_slider" style="background-image:url(imagenes/bg.jpg)"><br> 
-            
-            <div class="container" style="background-image:url(imagenes/bg.jpg)">
-                <h2  style="align-content: center;">Verificación de Cuenta</h2>
-                <br>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
+                    <div class="containerInicioSesionForm">                        
+                    <div class="registroDataTableForm">    
+                    <h2 class='tituleForm'>Verificación de Cuenta</h2>       
+                    <div class='divisionTitulo'></div> 
                 <form action="VerificarCuenta" method="POST" id="verificaUsuario">
                     <div class="form-group">
                         <h6 style="color:red;">Favor revisar su correo electrónico para obtener el código de verificación.</h6>
@@ -36,14 +35,16 @@
                     </div>
                 </div>
                 </form>
+                    
+                 <form action="ReenviarVerificar" method="POST" action="ReenviarVerificar">  
+                     <button type="submit">Reenviar código</button>
+                 </form> 
                 <br>
             </div>    
-        </div>  
+        </div>
         <script src="js/Usuarios.js" type="text/javascript"></script>
     </body>
     
-    <footer>
-        <br><br><br><br><br><br>
+
         <%@ include file="footer.jsp" %>
-    </footer>  
 </html>

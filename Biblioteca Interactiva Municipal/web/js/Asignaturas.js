@@ -100,6 +100,12 @@ function inicializar(){
             }            
         ],  
         "language": {
+        "buttons": {
+            pageLength: {
+                _: "Mostrar %d datos",
+                '-1': "Todos"
+            }
+        },
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ asignaturas",
         "sZeroRecords":   "No se encontraron asignaturas",
