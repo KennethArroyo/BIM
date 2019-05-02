@@ -61,8 +61,7 @@
                     </div>                 
                     
                     <div class="form-group" id="show_hide_password">
-                        <label for="contrasena">Contraseña</label>
-                        
+                        <label for="contrasena">Contraseña</label>                        
                         <input type="password" class="form-control" id="contrasena" name="contrasena"  
                         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
                         <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
@@ -96,6 +95,8 @@
         <script src="js/Usuarios.js" type="text/javascript"></script>
     </body>
     
-    <%@ include file="footer.jsp" %>
+        <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
 
 </html>

@@ -45,6 +45,7 @@
         <script src="js/Usuarios.js" type="text/javascript"></script>
     </body>
     
-
-        <%@ include file="footer.jsp" %>
+        <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
 </html>

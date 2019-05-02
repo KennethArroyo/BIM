@@ -12,12 +12,9 @@
         
         <title>Inicio de Sesión</title>
         <%@include file="librerias.jsp"%>
-        <script src="js/modals.js" type="text/javascript"></script>
-        <link href="estilos/jquery-ui.css" rel="stylesheet" type="text/css"/>
-        <script src="js/jquery-ui.min.js" type="text/javascript"></script>
         <script src="js/Sesion.js" type="text/javascript"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <%@ include file="header.jsp" %>
+        <script src="js/modals.js" type="text/javascript"></script>
+        <%@ include file="header.jsp" %>
 
     </head>
     <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
@@ -29,15 +26,14 @@
                     <form onsubmit="return false" role="form" id="formLogin" method="POST">
                         <div class="form-group" id="groupUsuario">
                             <label for="cedula">Identificación</label>
-                            <input type="text" class="form-control" id="usuario" autofocus="true" placeholder="Identificación" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                            <input type="text" class="form-control" id="usuario" autofocus="true" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
                                 oninput="this.setCustomValidity('')">
                         </div>
 
-                        <div class="form-group" id="show_hide_password-verify">
-                            <label for="nombre">Contraseña:</label>
-                            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
-                                oninput="this.setCustomValidity('')">
-                            
+                        <div class="form-group" id="show_hide_password">
+                            <label for="contrasena">Contraseña:</label>
+                            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                            <a><i class="fa fa-eye-slash field-icon" aria-hidden="true" style="margin-left: 450px;"></i></a>
                         </div>
 
                         <div class="form-group">
@@ -90,8 +86,27 @@
                 </div>
             </div>
         </div> 
-        <footer>
-            <%@ include file="footer.jsp" %>
-        </footer>
+        
     </body>
+        <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
+                
+<script>
+    $(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});                
+                    
+</script>            
 </html>

@@ -41,5 +41,8 @@
                 </div>
             </div>
         </div>
-    </body>
+    </body
+            <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
 </html>

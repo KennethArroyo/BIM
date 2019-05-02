@@ -59,5 +59,7 @@
     
         </body>
 
-                <%@include file="footer.jsp"%>
-        </html>
+        <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
+</html>

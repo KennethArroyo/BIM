@@ -119,6 +119,8 @@
             </div>
         </div>
         <div class="main_slider" style="background-image:url(imagenes/slider_book.jpg)"></div>
-        <%@ include file="footer.jsp" %>
     </body>
+            <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
 </html>

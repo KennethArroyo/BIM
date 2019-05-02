@@ -16,29 +16,29 @@
         <script src="js/BitacorasLibs.js" type="text/javascript"></script>
         <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/modals.js" type="text/javascript"></script>
+        <%@include file="header.jsp"%>
     </head>
 
-    <body>
-    <%@include file="header.jsp"%>
-        <form action="Descarga" id="descarga" method="GET" enctype="multipart/form-data">
-
-        </form>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
+        <form action="Descarga" id="descarga" method="GET" enctype="multipart/form-data"></form>
                     
-        <div class="container" style="margin-top:150px; ">
-        <h2  style="align-content: center;">Bitacoras Libros</h2><br><br>
+        <div class="containerDataTableForm">
+        <div class='registroDataTableForm'>    
+        <h2  class='tituloDataTableForm'>Bitácoras de Libros</h2>
+        <div class="divisionTitulo"></div>
         <table class="table table-striped table-bordered table-hover" id="mydata">
             
         <thead>
          <tr>
-              <th class="th-sm">Clasificacion
+              <th class="th-sm">Clasificación
               </th>
-              <th class="th-sm">Titulo
+              <th class="th-sm">Título
               </th>
               <th class="th-sm">Estado del Libro
               </th>
-              <th class="th-sm">Accion
+              <th class="th-sm">Acción
               </th>
-              <th class="th-sm">fecha de accion
+              <th class="th-sm">Fecha de Acción
               </th>
               <th class="th-sm">Usuario
               </th>
@@ -52,7 +52,7 @@
         </tbody>
         </table>
         </div>
-        
+        </div>
         
         <form role="form" action="Descarga" id="descarga" method="POST">
         </form>   

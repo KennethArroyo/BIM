@@ -129,7 +129,7 @@ function inicializar() {
             }
         }
     });
-
+    
     buscarBitacora();
 
     function buscarBitacora() {    

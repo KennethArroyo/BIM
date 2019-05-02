@@ -50,7 +50,7 @@ function inicializar() {
                                             {
                                                 alignment: 'left',
                                                 italics: true,
-                                                text: 'Bitacora usuarios',
+                                                text: 'Bitácoras de Usuarios',
                                                 fontSize: 18,
                                                 margin: [10,0]
                                             },
@@ -153,6 +153,6 @@ function inicializar() {
     }
 
     function dibujarFila(rowData) {
-        t.row.add([rowData.nombre, rowData.apellidos, rowData.identificacion, rowData.accion, rowData.fecha, rowData.usuario]).draw();
+        t.row.add([rowData.ident, rowData.nombre, rowData.apellidos, rowData.accion, rowData.fecha, rowData.usuario]).draw();
     }
 }

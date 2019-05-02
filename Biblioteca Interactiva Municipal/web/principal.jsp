@@ -95,5 +95,7 @@ setInterval(() => mySiemaWithDots.next(), 5000);
 </script>
     </body>
     
-    <%@ include file="footer.jsp" %>
+        <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
 </html>

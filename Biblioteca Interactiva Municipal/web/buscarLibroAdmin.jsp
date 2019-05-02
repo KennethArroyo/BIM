@@ -150,8 +150,8 @@
         
         <form role="form" action="Descarga" id="descarga" method="POST">
         </form>   
-        
-    
         </body>
-                <%@include file="footer.jsp"%>
+        <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
         </html>

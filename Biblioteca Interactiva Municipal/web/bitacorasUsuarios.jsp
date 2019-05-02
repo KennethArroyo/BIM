@@ -18,14 +18,14 @@
         <script src="js/modals.js" type="text/javascript"></script>
     </head>
 
-    <body>
+    <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
     <%@include file="header.jsp"%>
-        <form action="Descarga" id="descarga" method="GET" enctype="multipart/form-data">
-
-        </form>
+        <form action="Descarga" id="descarga" method="GET" enctype="multipart/form-data"></form>
                     
-        <div class="container" style="margin-top:150px; ">
-        <h2  style="align-content: center;">Bitacoras Usuarios</h2><br><br>
+        <div class="containerDataTableForm">
+        <div class='registroDataTableForm'>    
+        <h2  class='tituloDataTableForm'>Bitácoras de Usuarios</h2>
+        <div class="divisionTitulo"></div>
         <table class="table table-striped table-bordered table-hover" id="mydata">
         <thead>
          <tr>
@@ -52,10 +52,9 @@
         </tbody>
         </table>
         </div>
-    
+        </div>    
 
-                   
-        
+                  
         
         <form role="form" action="Descarga" id="descarga" method="POST">
         </form>   
@@ -63,7 +62,7 @@
     
         </body>
 
-            <footer>
-                <%@include file="footer.jsp"%>
-            </footer>
-        </html>
+        <footer>
+            <%@include file="footer.jsp"%>        
+        </footer>
+</html>
