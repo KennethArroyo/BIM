@@ -65,6 +65,7 @@
                                                 <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
                                                 <li><a href="bitacorasUsuarios.jsp">Bitacoras Usuario</a></li>
                                                 <li><a href="bitacorasLibros.jsp">Bitacoras Libros</a></li>
+                                                <li><a href="bitacorasPrestamos.jsp">Bitacoras Préstamos</a></li>
                                                <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                                             </ul>
                                         </li>
@@ -164,7 +165,8 @@
                                 <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
                                 <li><a href="bitacorasUsuarios.jsp">Bitacoras Usuario</a></li>
                                 <li><a href="bitacorasLibros.jsp">Bitacoras Libros</a></li>
-                               <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
+                                <li><a href="bitacorasPrestamos.jsp">Bitacoras Préstamos</a></li>
+                                <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                             </ul>
                         </li>
                         

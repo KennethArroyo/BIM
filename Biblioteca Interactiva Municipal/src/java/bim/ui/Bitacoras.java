@@ -6,6 +6,7 @@
 package bim.ui;
 
 import bim.entidades.BitacoraLib;
+import bim.entidades.BitacoraPrest;
 import bim.entidades.BitacoraUs;
 import bim.logica.Model;
 import com.google.gson.Gson;
@@ -23,7 +24,7 @@ import static javax.ws.rs.client.Entity.json;
  *
  * @author Sergio
  */
-@WebServlet(name = "Bitacoras", urlPatterns = {"/BitacorasLibros", "/BitacorasUsuarios"})
+@WebServlet(name = "Bitacoras", urlPatterns = {"/BitacorasLibros", "/BitacorasUsuarios", "/BitacorasPrestamos"})
 public class Bitacoras extends HttpServlet {
 
     /**
@@ -45,6 +46,9 @@ public class Bitacoras extends HttpServlet {
                 break;
             case "/BitacorasUsuarios":
                 this.bitacorasUsuario(request, response);
+                break;
+            case "/BitacorasPrestamos":
+                this.bitacorasPrestamo(request, response);
                 break;
             }
         }
@@ -113,6 +117,22 @@ public class Bitacoras extends HttpServlet {
         String json;
         ArrayList<BitacoraUs> solicitados= new ArrayList<>();
         solicitados = Model.instance().bitacorasUs();
+        json = new Gson().toJson(solicitados);
+        out.print(json);
+        response.setStatus(200); // ok with content
+        } 
+        catch (Exception e) {
+            String text = e.getMessage();
+            response.setStatus(401); //Bad request
+        }
+    }
+    
+    private void bitacorasPrestamo(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
+        try{
+        PrintWriter out = response.getWriter();
+        String json;
+        ArrayList<BitacoraPrest> solicitados= new ArrayList<>();
+        solicitados = Model.instance().bitacorasPrest();
         json = new Gson().toJson(solicitados);
         out.print(json);
         response.setStatus(200); // ok with content
