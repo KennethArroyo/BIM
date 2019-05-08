@@ -4,6 +4,7 @@ import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.BitacoraLib;
+import bim.entidades.BitacoraPrest;
 import bim.entidades.BitacoraUs;
 import bim.entidades.Libro;
 import bim.entidades.ModeloPrestamo;
@@ -152,6 +153,18 @@ public class Dao {
         Date date = rs.getDate("fec_accion");
         bit.setFecha(date.toString());
         bit.setUsuario(rs.getString("usu_Accion"));
+        return bit;
+    }
+    
+    private BitacoraPrest bitacoraPrest(ResultSet rs) throws Exception{
+        BitacoraPrest bit = new BitacoraPrest();
+        bit.setLibro_prest(rs.getString("libro_prest"));
+        bit.setUsuario_prest(rs.getString("usuario_prest"));
+        bit.setFecha_inicio(rs.getString("fecha_inicio"));
+        bit.setFecha_final(rs.getString("fecha_final"));
+        bit.setAccion(rs.getString("accion"));
+        bit.setFecha(rs.getString("fec_accion"));
+        bit.setUsuario(rs.getString("usu_accion"));
         return bit;
     }
 
@@ -958,6 +971,18 @@ public class Dao {
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             bit.add(bitacoraUs(rs));
+        };
+        return bit;
+    }
+    
+    public ArrayList<BitacoraPrest> buscarBitacorasPrest() throws SQLException, Exception {
+        ArrayList<BitacoraPrest> bit = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        String sql = "select l.titulo libro_prest, u.identificacion usuario_prest, pb.fecha_inicio fecha_inicio, pb.fecha_final fecha_final, pb.accion accion, pb.fec_accion fec_accion, pb.usu_accion usu_accion  from Prestamo_bit pb,Libro l, Prestamo p, Usuario u where pb.id=p.id and p.libro_ID=l.libro_id and p.usuario_ID=u.id";
+        preparedStatement = db.getConnection().prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            bit.add(bitacoraPrest(rs));
         };
         return bit;
     }

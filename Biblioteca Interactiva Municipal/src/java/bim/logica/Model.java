@@ -5,6 +5,7 @@ import bim.entidades.Actividad;
 import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.entidades.BitacoraLib;
+import bim.entidades.BitacoraPrest;
 import bim.entidades.BitacoraUs;
 import bim.entidades.Libro;
 import bim.entidades.ModeloPrestamo;
@@ -235,5 +236,9 @@ public class Model {
 
     public ArrayList<BitacoraUs> bitacorasUs() throws Exception {
         return dao.buscarBitacorasUs();
+    }
+    
+    public ArrayList<BitacoraPrest> bitacorasPrest() throws Exception {
+        return dao.buscarBitacorasPrest();
     }
 }
