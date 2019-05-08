@@ -15,7 +15,7 @@
                     <div class="registroForm">
                     <h2 class="tituloForm">Registro de Usuarios</h2>
                     <div class='divisionTitulo'></div>
-
+                    <ul class="errorMessages"></ul>
                     <div class="form-group">
                         <label for="identificacion">Identificación</label>
                             <div class="input-group">
@@ -26,7 +26,7 @@
                                 <a class="dropdown-item" data="Extranjero">Extranjero</a>
                               </div>
                             </div>
-                            <input type="text" class="form-control" id="identificacion" name="identificacion" pattern="([0-9]{9,12})"required>
+                            <input type="text" minlength="9" maxlength="12" class="form-control" id="identificacion" name="identificacion" pattern="([0-9]{9,12})"required>
                             
                         </div>
                         <p>Formato Nacional(9 Digitos): 000000000 <br> Formato Extranjero(12 Digitos): 000000000000</p>
@@ -35,22 +35,22 @@
 
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" minlength="1" maxlength="16" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="Apellidos">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" required>
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" minlength="1" maxlength="32" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="lugar_residencia">Lugar de Residencia</label>
-                        <input type="text" class="form-control" id="lugar_residencia" name="lugar_residencia" required>
+                        <input type="text" class="form-control" id="lugar_residencia" name="lugar_residencia" pattern="{1,16}" minlength="1" maxlength="16"required>
                     </div>
                     
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}" required>
+                        <input type="text" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}" minlength="8" maxlength="12" required>
                         <p>Formato: 00000000</p>
                     </div>
                     
@@ -63,7 +63,7 @@
                     <div class="form-group" id="show_hide_password">
                         <label for="contrasena">Contraseña</label>                        
                         <input type="password" class="form-control" id="contrasena" name="contrasena"  
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" minlength="1" required>
                         <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
                         <p>Debe tener al menos una mayúscula, una minúscula, un número y debe contener como mínimo 8 caracteres</p>
                     </div>
@@ -76,7 +76,7 @@
                     
                     <div class="form-group">
                         <label for="ref_trab_est">Referencia Lugar de Trabajo/Estudio</label>
-                        <input type="text" class="form-control" id="ref_trab_est" name="ref_trab_est" required>
+                        <input type="text" class="form-control" id="ref_trab_est" name="ref_trab_est" pattern="{1,16}" minlength="1" maxlength="16" required>
                     </div>
                     
                 <div id="mi_div">    

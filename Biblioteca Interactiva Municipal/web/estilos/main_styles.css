@@ -349,7 +349,6 @@ display: block;
 {
 	display: block;
 	color: 	#FFFFFF;
-	border-bottom: solid 1px #dddddd;
 	font-size: 13px;
 	-webkit-transition: opacity 0.3s ease;
 	-moz-transition: opacity 0.3s ease;
@@ -1655,4 +1654,23 @@ margin-left: 0px;
      color: #0066ff;
      text-decoration: underline;
      cursor: pointer; 
+}
+
+.errorMessages {
+    display: none;
+    list-style-type: disc;
+    margin: 0 10px 15px 10px;
+    padding: 8px 35px 8px 30px;
+    color: #B94A48;
+    background-color: #F2DEDE;
+    border: 2px solid #EED3D7;
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.errorMessages span {
+    font-weight: bold;
+}
+
+.divisionmenu{
+    border-bottom: 0.5px solid grey;
 }

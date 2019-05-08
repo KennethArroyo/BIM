@@ -36,19 +36,28 @@
                                         <li class="dropdown"><a href="#">Libros<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="agregarLibro.jsp">Agregar Libro</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="buscarLibroAdmin.jsp">Buscar Libro</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="ReporteEstados.jsp">Estado de Libros</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="#">Préstamos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="BuscarTodosPrestamos.jsp">Todos los préstamos</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="PrestamosSolicitados.jsp">Préstamos Solicitados</a></li>
-                                                <li><a href="reporteLibrosPrestados.jsp"><i aria-hidden="true"></i>reporte libros prestados</a></li>
+                                                <div class='divisionmenu'></div>
+                                                <li><a href="reporteLibrosPrestados.jsp"><i aria-hidden="true"></i>Reporte Libros Prestados</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
                                                 
                                             </ul>
@@ -63,7 +72,9 @@
                                         <li class="dropdown"><a href="#">Mantenimientos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
                                                 <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="bitacorasUsuarios.jsp">Bitacoras Usuario</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="bitacorasLibros.jsp">Bitacoras Libros</a></li>
                                                <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                                             </ul>
@@ -113,6 +124,7 @@
                                             <ul class="dropdown_selection">
                                                 <li><a href="">Libros descargados</a></li>
                                                 <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
+                                                <div class='divisionmenu'></div>
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
                                             </ul>
                                         </li>
