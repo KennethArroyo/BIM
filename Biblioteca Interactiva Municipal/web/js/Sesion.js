@@ -26,8 +26,10 @@ function iniciar(){
                     if(status.status===405){
                         
                         swal("Info", "Este usuario debe ser verificado, favor revisar su correo", "info");
-                        window.location.assign("http://localhost:8083/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
-                    }else
+                        window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
+                        //window.location.assign("localhost:8083/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
+
+                }else
                         if(status.status===406){
                             swal("Error", "Su usuario fue deshabilitado, contacte con el administrador", "error");
                         }
@@ -59,7 +61,7 @@ function cerrar(){
                 $(".anonimo").show();
                 $(".anonimoR").show();
                 sessionStorage.removeItem("usuario");
-                window.location.assign("http://localhost:8083/Biblioteca_Interactiva_Municipal/Principal");
+                window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/Principal");
             }
     
 }
@@ -74,7 +76,7 @@ function enviarCorreo(){
             success: 
               function(obj){
                   swal("Info", "Se ha enviado un código temporal a su correo electrónico necesario para cambiar su contraseña", "info");
-                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
+                window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
               },
             error: function(status){
                 swal("Error", "Ha ocurrido un error al enviar el código temporal", "error");
