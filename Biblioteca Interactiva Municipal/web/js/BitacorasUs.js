@@ -153,6 +153,16 @@ function inicializar() {
     }
 
     function dibujarFila(rowData) {
-        t.row.add([rowData.ident, rowData.nombre, rowData.apellidos, rowData.accion, rowData.fecha, rowData.usuario]).draw();
+        var accion;
+       if(rowData.accion==="U"){
+           accion="actualizado";
+       }else
+           if(rowData.accion==="D"){
+           accion="borrado";
+       }else
+           if(rowData.accion==="I"){
+           accion="creado";
+       }
+        t.row.add([rowData.ident, rowData.nombre, rowData.apellidos, accion, rowData.fecha, rowData.usuario]).draw();
     }
 }

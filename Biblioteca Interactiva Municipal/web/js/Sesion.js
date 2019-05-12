@@ -26,8 +26,8 @@ function iniciar(){
                     if(status.status===405){
                         
                         swal("Info", "Este usuario debe ser verificado, favor revisar su correo", "info");
-                        window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
-                        //window.location.assign("localhost:8083/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
+                        //window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
+                        window.location.assign("localhost:8083/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp");
 
                 }else
                         if(status.status===406){

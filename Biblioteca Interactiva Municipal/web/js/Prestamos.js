@@ -201,26 +201,28 @@ $(document).ready(function inicializar() {
 function validarCed() {
     var us_id = $("#cedUsuario").val();
     $.ajax({
-        url: "BuscarUsuario",
+        url: "CrearPrestamo",
         data: {
+            accion: "ValidarCed",
             id: us_id
         },
 
         error: function () { //si existe un error en la respuesta del ajax
-            $("#userLabel").remove();
-            $("#user").remove();
-            $("#VerUsuario").append('<label for="' + "user" + '" id="userLabel">Usuario:</label>' +
-                    '<input class="form-control" disabled="disabled" id="user" name="user">');
-            $("#user").val("El usuario no existe");
-            return false;
+            swal('Error', 'Ha ocurrido un error al verificar las sanciones', 'error');
         },
         success: function (data) {
-            $("#userLabel").remove();
-            $("#user").remove();
-            $("#VerUsuario").append('<label for="' + "user" + '" id="userLabel" >Usuario:</label>' +
-                    '<input class="form-control" disabled="disabled" id="user" name="user">');
-            $("#user").val(data.nombre + " " + data.apellidos);
-            return false;
+            if (data === 1) {
+                $("#userLabel").remove();
+                $("#user").remove();
+                $("#VerUsuario").append('<label for="' + "user" + '" id="userLabel" >Usuario:</label>' +
+                        '<input class="form-control" disabled="disabled" id="user" name="user">');
+                $("#user").val("usuario verificado");
+            } else
+            {
+                $("#userLabel").remove();
+                $("#user").remove();
+                swal('Error', 'El usuario no existe', 'error');
+            }
         },
         type: 'POST',
         dataType: "json"
@@ -237,36 +239,35 @@ function onClickDigital() {
 }
 
 function buscarLibroId(idLibro) {
-        if (validacion===0) {
-            $.ajax({
-                url: "BuscarLibro",
-                data: {
-                    accion: "buscarLibroId",
-                    idLibro: idLibro
-                },
-                error: function () { //si existe un error en la respuesta del ajax
-                    swal('Error', 'Ha ocurrido un error al cargar el libro', 'error');
-                },
-                success: function (data) {
-                    if (data.cantidad_copias > 1) {
-                        $("#myModalFormulario").modal();
-                        $("#prestamoAction").val("solicitarPrestamo");
-                        $("#idLibro").val(data.id);
-                        $("#cantidad").val(data.cantidad_copias);
-                        $("#libro").val(data.titulo);
-                        $("#libro").prop('disabled', true);
-                    } else
-                        swal('Info', 'El libro posee solo una copia, solo puede ser utilizado dentro de la biblioteca', 'info');
-                },
-                type: 'POST',
-                dataType: "json"
-            });
-        } 
-        else
-        if(validacion===1)
-        {
-            swal('Info', 'Usted se encuentra sancionado, no puede realizar préstamos', 'info');
-        }
+    if (validacion === 0) {
+        $.ajax({
+            url: "BuscarLibro",
+            data: {
+                accion: "buscarLibroId",
+                idLibro: idLibro
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                swal('Error', 'Ha ocurrido un error al cargar el libro', 'error');
+            },
+            success: function (data) {
+                if (data.cantidad_copias > 1) {
+                    $("#myModalFormulario").modal();
+                    $("#prestamoAction").val("solicitarPrestamo");
+                    $("#idLibro").val(data.id);
+                    $("#cantidad").val(data.cantidad_copias);
+                    $("#libro").val(data.titulo);
+                    $("#libro").prop('disabled', true);
+                } else
+                    swal('Info', 'El libro posee solo una copia, solo puede ser utilizado dentro de la biblioteca', 'info');
+            },
+            type: 'POST',
+            dataType: "json"
+        });
+    } else
+    if (validacion === 1)
+    {
+        swal('Info', 'Usted se encuentra sancionado, no puede realizar préstamos', 'info');
+    }
 }
 
 function solicitarPrestamo() {
@@ -289,7 +290,7 @@ function solicitarPrestamo() {
                 swal('Listo!', 'Se realizo el préstamo correcatamente', 'success');
                 $("#myModalFormulario").modal("hide");
                 $("#mydata").DataTable().destroy();
-                inicializar();
+                inicializarTabla();
             } else {
                 if (tipoRespuesta === "E~") { //error
                     swal('Error', 'No se pudo realizar el préstamo', 'error');
@@ -316,37 +317,46 @@ function verificarSancion() {
         },
         success: function (data) {
             if (data.estado === 1) {
-                validacion=1;
-            } else if(data.estado === 0){
-                validacion=0;
+                validacion = 1;
+            } else if (data.estado === 0) {
+                validacion = 0;
             }
         },
         type: 'POST',
         dataType: "json"
     });
 }
-function validar() {
+function crearPrestamoUs() {
     if ($("#cedUsuario").val() !== "") {
-        var id = $("#cedUsuario").val();
-        var libro = $("#idLibro").val();
-        var fecha = $("#fechaInicio").val();
-        prestamo = {
-            usuario_ID: id,
-            libro_ID: libro,
-            fecha_inicio: fecha
-        };
         $.ajax({
-            url: "CrearPrestamoUs",
-            data: JSON.stringify(prestamo),
-            error: function () { //si existe un error en la respuesta del ajax
-                $("#myModalFormulario").modal("show");
-                swal('Listo!', 'Se realizo el préstamo correcatamente', 'success');
+            url: 'CrearPrestamo',
+            data: {
+                accion: "crearPrestamoUsuario",
+                usuario_ID: $("#cedUsuario").val(),
+                libro_ID: $("#idLibro").val(),
+                fecha_inicio: $("#fechaInicio").val()
+            },
+            error: function () {
+                swal('Error', 'Ha ocurrido un error con la solicitud del préstamo', 'error');
             },
             success: function (data) {
-                swal('Listo!', 'Se realizo el préstamo correcatamente', 'success');
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "C~") { //correcto
+                    swal('Listo!', 'Se realizo el préstamo correcatamente', 'success');
+                    $("#myModalFormulario").modal("hide");
+                    $("#mydata").DataTable().destroy();
+                    inicializarTabla();
+                } else {
+                    if (tipoRespuesta === "E~") { //error
+                        swal('Error', 'No se pudo realizar el préstamo', 'error');
+
+                    } else {
+                        swal('Error', 'No se pudo realizar el préstamo', 'error');
+
+                    }
+                }
             },
-            type: 'POST',
-            dataType: "json"
+            type: 'POST'
         });
 
 

@@ -66,7 +66,7 @@
                             <button type="button" class="close" id="close-modal" data-dismiss="modal" style="margin-left: 500px;">&times;</button>
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return true" id="formModalUs">
+                        <form role="form" onsubmit="return false" id="formModalUs">
                             <div class="row">
                                 <div class="col-md-4">
                                     <input type="hidden" id="idLibro">
@@ -104,13 +104,14 @@
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div style="margin-left: 15px;">
-                                <input class="form-control" type="button" onclick="return validarCed()" value="Verificar usuario" class="btn btn-info btn-sm">
+                                <input class="form-control" type="button" onclick="validarCed()" value="Verificar usuario" class="btn btn-info btn-sm">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;"> 
                                 <div class="col-md-4" style="margin-left: 250px;">
                                     <div class="form-group">
-                                        <button onclick="validar()" class="btn btn-success">Solicitar</button>
+                                        <input type="hidden" value="solicitarPrestamo" id="prestamoAction"/>
+                                        <button type="submit" onclick="crearPrestamoUs()" class="btn btn-success">Solicitar</button>
                                         <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                                     </div>
                                 </div>

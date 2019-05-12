@@ -39,8 +39,8 @@
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="buscarLibroAdmin.jsp">Buscar Libro</a></li>
                                                 <div class='divisionmenu'></div>
-                                                <li><a href="ReporteEstados.jsp">Estado de Libros</a></li>
-                                                <div class='divisionmenu'></div>
+                                                <!--                                                <li><a href="ReporteEstados.jsp">Estado de Libros</a></li>
+                                                                                                <div class='divisionmenu'></div>-->
                                                 <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
@@ -48,18 +48,18 @@
                                         </li>
                                         <li class="dropdown"><a href="#">Préstamos<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
-                                                <li><a href="BuscarTodosPrestamos.jsp">Todos los préstamos</a></li>
+                                                <li><a href="BuscarTodosPrestamos.jsp">Editar estado de los préstamos</a></li>
                                                 <div class='divisionmenu'></div>
-                                                <li><a href="PrestamosSolicitados.jsp">Préstamos Solicitados</a></li>
+                                                <li><a href="ReportesPrestamos.jsp">Reportes de préstamos</a></li>
+                                                <div class='divisionmenu'></div>
+<!--                                                <li><a href="PrestamosSolicitados.jsp">Préstamos Solicitados</a></li>
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="reporteLibrosPrestados.jsp"><i aria-hidden="true"></i>Reporte Libros Prestados</a></li>
-                                                <div class='divisionmenu'></div>
-                                                <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
-                                                <div class='divisionmenu'></div>
+                                                <div class='divisionmenu'></div>-->
                                                 <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
                                                 <div class='divisionmenu'></div>
-                                                <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo Usuario</a></li>
-                                                
+                                                <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo a un usuario</a></li>
+
                                             </ul>
 
                                         </li>
@@ -73,16 +73,22 @@
                                             <ul class="dropdown_selection">
                                                 <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
                                                 <div class='divisionmenu'></div>
-                                                <li><a href="bitacorasUsuarios.jsp">Bitacoras Usuario</a></li>
+                                                <li><a href="bitacorasUsuarios.jsp">Bitácoras de Usuario</a></li>
                                                 <div class='divisionmenu'></div>
-                                                <li><a href="bitacorasLibros.jsp">Bitacoras Libros</a></li>
-                                                <li><a href="bitacorasPrestamos.jsp">Bitacoras Préstamos</a></li>
-                                               <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
+                                                <li><a href="bitacorasLibros.jsp">Bitácoras de Libros</a></li>
+                                                <div class='divisionmenu'></div>
+                                                <li><a href="bitacorasPrestamos.jsp">Bitácoras de Préstamos</a></li>
+                                                <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="#"><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
-                                                <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
+                                                <ul class="dropdown_selection">
+                                                    <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
+                                                    <div class='divisionmenu'></div>
+                                                    <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
+                                                    <div class='divisionmenu'></div>
+                                                </ul>
                                             </ul>
                                         </li>
                                         <li><a href="javascript:cerrar();"><small class="fa fa-sign-out"></small>&nbsp Cerrar sesion</a></li>
@@ -140,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
         </header>
 
@@ -169,7 +175,7 @@
                                 <li><a href="VerPrestamosUsuario.jsp"><i aria-hidden="true"></i>Mis préstamos</a></li>
                                 <li><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
                                 <li><a href="crearPrestamoUsuario.jsp"><i aria-hidden="true"></i>Crear Préstamo Usuario</a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="dropdown"><a href="#">Mantenimientos<i class="fa fa-angle-down"></i></a>
@@ -181,14 +187,14 @@
                                 <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                             </ul>
                         </li>
-                        
+
                         <li class="menu_item has-children"><a href="#">Usuarios <i class="fa fa-angle-down"></i></a>
                             <ul class="menu_selection">
                                 <li><a href="buscarUsuarios.jsp"><i aria-hidden="true"></i>Buscar Usuarios</a></li>
                             </ul>
                         </li>
                         <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
-                            <ul class="menu_selection"> 
+                            <ul class="dropdown_selection"> 
                                 <li><a href=""><i aria-hidden="true"></i>Libros descargados</a></li> <!--Item del dropdown-->
                                 <li><a href="EditarUsuario.jsp"><i aria-hidden="true"></i>Editar perfil</a></li>
                             </ul>
@@ -229,7 +235,7 @@
             </div>
         </div>
 
-        
-       
+
+
     </body>
 </html>

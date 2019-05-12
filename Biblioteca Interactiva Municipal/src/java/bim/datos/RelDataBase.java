@@ -33,15 +33,15 @@ public class RelDataBase {
             //File file = new File(resourceUrl.toURI());            
             //prop.load(new BufferedInputStream(new FileInputStream(file)));
             String connectionUrl =
-                "jdbc:sqlserver://192.170.10.84;"
-                        + "database=BIM;"
-                        + "user=sa;"
-                        + "password=Pa$$w0rd;";
-            
-//             "jdbc:sqlserver://localhost;"
+//                "jdbc:sqlserver://192.170.10.84;"
 //                        + "database=BIM;"
-//                        + "user=UserBIM;"
-//                        + "password=root;";     
+//                        + "user=sa;"
+//                        + "password=Pa$$w0rd;";
+            
+             "jdbc:sqlserver://localhost;"
+                        + "database=BIM;"
+                        + "user=UserBIM;"
+                        + "password=root;";     
 
             String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             Class.forName(driver).newInstance();

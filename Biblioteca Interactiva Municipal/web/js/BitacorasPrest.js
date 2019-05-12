@@ -146,7 +146,17 @@ function inicializar() {
     }
 
     function dibujarFila(rowData) {
-        t.row.add([rowData.libro_prest,rowData.usuario_prest,rowData.fecha_inicio,rowData.fecha_final,rowData.accion,rowData.fecha,rowData.usuario]).draw();
+       var accion;
+       if(rowData.accion==="U"){
+           accion="actualizado";
+       }else
+           if(rowData.accion==="D"){
+           accion="borrado";
+       }else
+           if(rowData.accion==="I"){
+           accion="creado";
+       }
+        t.row.add([rowData.usuario_prest,rowData.libro_prest,rowData.fecha_inicio,rowData.fecha_final,accion,rowData.fecha,rowData.usuario]).draw();
     }
 }
 

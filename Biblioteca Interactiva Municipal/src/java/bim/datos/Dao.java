@@ -511,7 +511,7 @@ public class Dao {
     public int verificarUsuario(String ced) {
         int cantidad;
         try {
-            String sql = "select count(*) Cuenta from Usuario where  identificacion = %d";
+            String sql = "select count(*) Cuenta from Usuario where  identificacion = '%s'";
             sql = String.format(sql, ced);
             ResultSet rs = db.executeQuery(sql);
             rs.next();
