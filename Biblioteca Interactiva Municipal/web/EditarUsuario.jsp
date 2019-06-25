@@ -41,17 +41,17 @@
 
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" >
+                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" minlength="1" maxlength="20">
                     </div>
 
                     <div class="form-group">
                         <label for="Apellidos">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*">
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" minlength="1" maxlength="22">
                     </div>
 
                     <div class="form-group">
                         <label for="lugar_residencia">Lugar de Residencia</label>
-                        <input type="text" class="form-control" id="lugar_residencia" name="lugar_residencia">
+                        <input type="text" class="form-control" id="lugar_residencia" name="lugar_residencia" minlength="1" maxlength="30">
                     </div>
 
                     <div class="form-group">
@@ -79,7 +79,7 @@
 
                     <div class="form-group">
                         <label for="ref_trab_est">Referencia Lugar de Trabajo/Estudio</label>
-                        <input type="text" class="form-control" id="ref_trab_est" name="ref_trab_est" required>
+                        <input type="text" class="form-control" id="ref_trab_est" name="ref_trab_est" minlength="1" maxlength="30" required>
                     </div>
 
                     <div id="mi_div">    
