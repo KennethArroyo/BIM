@@ -390,7 +390,7 @@ body.swal2-iosfix {
       text-align: center;
       margin-right: 10px; }
 
-@supports (-ms-accelerator: true) {
+@supports (-ms-accelerator:true) {
   .swal2-range input{
     width: 100% !important; }
   .swal2-range output {

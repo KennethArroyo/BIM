@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+var libro_ID_g;
+var fechaActual_g;
+var fechaEntrega_g;
+var usuario_g;
 $(document).ready(function () {
     inicializar();
 });
@@ -176,12 +179,15 @@ function buscarPrestamoId(id, titulo, estado, libro_ID, usuario_ID,fecha_final) 
     var jsDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
     $("#myModalFormulario").modal();
     $("#Estadoaction").val("modificarEstadoPrestamo");
+    
     $("#id").val(id);
-    $("#libro_ID").val(titulo);
-    $("#idLibro").val(libro_ID);
-    $("#fechaEntrega").val(fecha_final);
-    $("#fechaActual").val(jsDate);
-    $("#usuario").val(usuario_ID);
+    
+    $("#titulo").val(titulo);
+    libro_ID_g=libro_ID;
+    fechaActual_g=jsDate;
+    fechaEntrega_g=fecha_final;
+    usuario_g=usuario_ID;
+    
     if (estado === "solicitado") {
         $("#estado").val(1);
     } else if (estado === "prestado") {
@@ -205,7 +211,7 @@ function modificarEstadoPrestamo() {
             accion: "ModificarEstadoPrestamo",
             estado: $("#estado").val(),
             id: $("#id").val(),
-            libro_ID: $("#idLibro").val()
+            libro_ID: libro_ID_g
         },
         error: function () {
             swal('Error', 'Ha ocurrido un error al editar el estado del prestamo', 'error');
@@ -220,6 +226,8 @@ function modificarEstadoPrestamo() {
                 inicializar();
                 } else {
                 modalSancion();
+                $("#mydataTodosPrestamo").DataTable().destroy();
+                inicializar();
                 }
                 //prueba(fecha_entrega);
 

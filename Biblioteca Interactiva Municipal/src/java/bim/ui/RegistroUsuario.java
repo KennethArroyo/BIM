@@ -169,8 +169,8 @@ public class RegistroUsuario extends HttpServlet {
                     }
                 });
 
-            String link = "http://localhost:8083/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
-
+            String link = "http://localhost:80083/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
+           // String link ="http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
             StringBuilder bodyText = new StringBuilder();
             bodyText.append("<div>")
                     .append("  Estimado(a) usuario de la Biblioteca Interactiva Municipal:<br/><br/>")

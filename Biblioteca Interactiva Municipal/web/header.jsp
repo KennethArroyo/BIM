@@ -129,7 +129,7 @@
                                         <li><a href="">Actividades</a></li>
                                         <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
-                                                <li><a href="">Libros descargados</a></li>
+                                            
                                                 <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
@@ -195,7 +195,7 @@
                         </li>
                         <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                             <ul class="dropdown_selection"> 
-                                <li><a href=""><i aria-hidden="true"></i>Libros descargados</a></li> <!--Item del dropdown-->
+                                
                                 <li><a href="EditarUsuario.jsp"><i aria-hidden="true"></i>Editar perfil</a></li>
                             </ul>
                         </li>
@@ -223,7 +223,7 @@
                         <li class="menu_item"><a href="">Actividades</a></li>
                         <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                             <ul class="menu_selection"> 
-                                <li><a href=""><i aria-hidden="true"></i>Libros descargados</a></li> <!--Item del dropdown-->
+                               
                                 <li><a href=""><i aria-hidden="true"></i>Mis prestamos</a></li>
                                 <li><a href=""><i aria-hidden="true"></i>Editar perfil</a></li>
                                 <li><a href=""><i aria-hidden="true"></i>Autores</a></li>
