@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
  //agregarLibro.jsp
+ 
+  $(document).ready(function(){
+    $(window).scrollTop(0);
+});
+
  var numeracion = 5;
  var clicksUsuario = 0;
  var autores = null;
@@ -204,29 +209,67 @@
                     var Extension = dato.substring(dato.lastIndexOf('.') + 1).toLowerCase();
             //Es imagen
                 if (Extension === "png"|| Extension === "jpeg" || Extension === "jpg") {
+                    $(window).scrollTop(0);
                     return RevisarAutores();
                 } 
             //No es imagen
                 else {
+                        $(window).scrollTop(0);
                         swal("Info","Por favor subir en portada unicamente archivos tipo imagen","info");
-                          return false;
+                        return false;
                     }
                  }
+                $(window).scrollTop(0);
                 return RevisarAutores();
             }
             //ningun check esta seleccionado
             else{
+                $(window).scrollTop(0);
                 swal("Info","Debe seleccionar al menos un tipo de Libro, físico o digital","info");
                 return false;
             }
        }
        else{
+           $(window).scrollTop(0);
            $("#copias").css("border-color","#d81a1a").css("border-width", "3px");
-           swal("Info","La cantiad de copias debe ser un valor númerico","info");
+           swal("Info","La cantidad de copias debe ser un valor númerico","info");
            return false;
        }
        
    }
      
+     
+     $(function() {
+    var createAllErrors = function() {
+        var form = $(this);
+        var errorList = $('ul.errorMessages', form);
+        
+        var showAllErrorMessages = function() {
+            errorList.empty();
+            
+            //Find all invalid fields within the form.
+            form.find(':invalid').each(function(index, node) {
+
+                //Find the field's corresponding label
+                var label = $('label[for=' + node.id + ']');
+
+                //Opera incorrectly does not fill the validationMessage property.
+                var message = node.validationMessage || 'Invalid value.';
+                errorList
+                    .show()
+                    .append('<li><span>' + label.html() + '</span> ' + message + '</li>');
+            });
+        };
+        
+        $('input[type=submit], button', form).on('click', showAllErrorMessages);
+        $('input[type=text]', form).on('keypress', function(event) {
+            //keyCode 13 is Enter
+            if (event.keyCode == 13) {
+                showAllErrorMessages();
+            }
+        });
+    };
+    $('form').each(createAllErrors);
+});
 
 
