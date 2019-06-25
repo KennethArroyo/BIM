@@ -32,7 +32,7 @@
                                     <a class="dropdown-item" data="Extranjero">Extranjero</a>
                                 </div>
                             </div>
-                            <input type="text" class="form-control" id="identificacion" name="identificacion" pattern="([0-9]{9,12})"required readonly>
+                            <input type="text" class="form-control" id="identificacion" name="identificacion" pattern="([0-9]{9,12})" minlength="9" maxlength="12" required readonly>
 
                         </div>
                         <p>Formato Nacional(9 Digitos): 0-0000-0000 <br> Formato Extranjero(12 Digitos): 0000-0000-0000</p>
