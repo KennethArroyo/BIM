@@ -168,19 +168,30 @@
     function RevisarAutores(){
         var nombre = "";
         var autores2 = [];
-        for(var t = 1;t<numeracion;t++){
-            nombre = "#autor"+t.toString();
-            var dato = $(nombre).val();
-            if(dato!== '')
-            autores2.push($(nombre).val());   
+        var cuenta = 0;
+        var cuentaOcurrencias = 0;
+        for(var i = 1;i < numeracion;i++){
+            nombre = $("#autor"+i.toString()).val();
+            if(nombre !== ''){
+                cuenta += 1;
+                autores2.push(nombre);
+                for(var t = 0;t < autores.length;t++){
+                    if(autores[t].nombre === nombre){
+                        cuentaOcurrencias += 1;
+                        break;
+                    }
+                }
+            }
         }
-        if(autores2.length > clicksUsuario){
+        if(cuenta !== cuentaOcurrencias){
+            cuenta = 0;
+            cuentaOcurrencias = 0;
             swal("Info","Uno o mas autores no se encunetran registrados","info");
             return false;
         }
-        for(var i = 0;i<autores2.length - 1;i++){
-            var valor = autores2[i];
-            for(var j = i+1; j<autores2.length;j++){
+        for(var k = 0;k<autores2.length - 1;k++){
+            var valor = autores2[k];
+            for(var j = k+1; j<autores2.length;j++){
                 var valor2 = autores2[j];
                 if(valor === valor2){
                     swal("Info","No pueden haber autores repetidos","info");
@@ -217,6 +228,16 @@
                         $(window).scrollTop(0);
                         swal("Info","Por favor subir en portada unicamente archivos tipo imagen","info");
                         return false;
+                    }
+                 }
+                 //es digital entonces revisa el archivo PDF
+                 if($("#digital").prop('checked')){
+                    var portadaPdf = $("#file").val();
+                    var extensionPdf = portadaPdf.substring(portadaPdf.lastIndexOf('.') + 1).toLowerCase();
+                    if(extensionPdf !== "pdf" && extensionPdf !== "PDF"){
+                       $(window).scrollTop(0);
+                       swal("Info","El libro debe ser un formato PDF","info");
+                       return false;
                     }
                  }
                 $(window).scrollTop(0);
