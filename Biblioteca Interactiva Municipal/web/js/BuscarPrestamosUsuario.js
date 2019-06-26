@@ -159,17 +159,17 @@ function inicializar() {
         return titulo;
     }
     function dibujarFila(rowData) {
-        var est;
-        if (rowData.estado_ID === 1) {
-            est = "Solicitado";
-        } 
-        else if (rowData.estado_ID === 2) {
-            est = "Prestado";
-        }
-        else if (rowData.estado_ID === 3) {
-            est = "Devuelto";
-        }
+//        var est;
+//        if (rowData.estado_ID === 1) {
+//            est = "Solicitado";
+//        } 
+//        else if (rowData.estado_ID === 2) {
+//            est = "Prestado";
+//        }
+//        else if (rowData.estado_ID === 3) {
+//            est = "Devuelto";
+//        }
         //var titulo = tituloLibro(rowData);
-        t.row.add([rowData.fecha_inicio, rowData.fecha_final, rowData.libro_ID, est]).draw();
+        t.row.add([rowData.fecha_inicio, rowData.fecha_final, rowData.titulo, rowData.estado]).draw();
     }
 }

@@ -110,6 +110,7 @@ public class Sanciones extends HttpServlet {
             Date fechaFinalDate = format.parse(fechaFinal);
             if (fechaFinalDate.compareTo(fechaActual) >= 0) {
                 s.setEstado(1);
+
             } else {
                 s.setEstado(0);
             }
