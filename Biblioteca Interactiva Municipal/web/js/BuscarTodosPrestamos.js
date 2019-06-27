@@ -188,6 +188,7 @@ function buscarPrestamoId(id, titulo, estado, libro_ID, usuario_ID,fecha_final) 
     fechaEntrega_g=fecha_final;
     usuario_g=usuario_ID;
     
+    
     if (estado === "solicitado") {
         $("#estado").val(1);
     } else if (estado === "prestado") {
@@ -200,11 +201,10 @@ function buscarPrestamoId(id, titulo, estado, libro_ID, usuario_ID,fecha_final) 
 }
 
 function modificarEstadoPrestamo() {
-    var fecha_entrega = $("#fechaEntrega").val();
-    var jsDate = $("#fechaActual").val();
-    var fe = new Date(fecha_entrega);
-    var fa = new Date(jsDate);
-    var usuario = $("#usuario").val();
+    //var fecha_entrega = $("#fechaEntrega").val();
+    //var jsDate = $("#fechaActual").val();
+    var fe = new Date(fechaEntrega_g);
+    var fa = new Date(fechaActual_g);
     $.ajax({
         url: 'BuscarPrestamos',
         data: {
@@ -250,8 +250,8 @@ function crearSancion() {
         url: 'Sanciones',
         data: {
             accion: "CrearSancion",
-            factual:$("#fechaActual1").val(),
-            usuario:$("#usuario1").val(),
+            factual:fechaActual_g,
+            usuario:usuario_g,
             cantDias:$("#diasSancion").val()
         },
         error: function () {
@@ -291,9 +291,9 @@ $(function () {
 
 function modalSancion() {
     $("#myModalSancion").modal();
-    $("#fechaEntrega1").val($("#fechaEntrega").val());
-    $("#fechaActual1").val($("#fechaActual").val());
-    $("#usuario1").val($("#usuario").val());
+    $("#fechaEntrega1").val(fechaEntrega_g);
+    $("#fechaActual1").val(fechaActual_g);
+    $("#usuario1").val(usuario_g);
     
 }
 

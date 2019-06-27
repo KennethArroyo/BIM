@@ -55,6 +55,16 @@ public class Dao {
         p.setUsuario_ID(rs.getInt("usuario_id"));
         return p;
     }
+    
+    private ModeloPrestamo modeloPrestamoUsuario(ResultSet rs)throws Exception{
+    ModeloPrestamo p= new ModeloPrestamo();
+    //p.setId(rs.getInt("id"));
+    p.setTitulo(rs.getString("titulo"));
+    p.setEstado(rs.getString("estado_prestamo"));
+    p.setFecha_inicio(rs.getString("fecha_inicio"));
+    p.setFecha_final(rs.getString("fecha_final"));
+    return p;
+    }
 
     private Autor autor(ResultSet rs) throws Exception {
         Autor aut = new Autor();
@@ -737,15 +747,16 @@ public class Dao {
         }
     }
 
-    public ArrayList<Prestamo> buscarPrestamosUsuario(int id) throws Exception {
+    public ArrayList<ModeloPrestamo> buscarPrestamosUsuario(int id) throws Exception {
 
-        ArrayList<Prestamo> prestamos = new ArrayList<>();
+        ArrayList<ModeloPrestamo> prestamos = new ArrayList<>();
         try {
-            String sql = "SELECT p.id id, p.fecha_inicio fecha_inicio, p.fecha_final fecha_final, p.usuario_ID usuario_ID, p.libro_ID libro_ID, p.estado_ID estado_ID FROM Prestamo p where p.usuario_ID=%d";
-            sql = String.format(sql, id);
+            //String sql = "SELECT p.id id, p.fecha_inicio fecha_inicio, p.fecha_final fecha_final, p.usuario_ID usuario_ID, p.libro_ID libro_ID, p.estado_ID estado_ID FROM Prestamo p where p.usuario_ID=%d";
+            String sql= "Select p.id id, p.fecha_inicio fecha_inicio, p.fecha_final fecha_final,e.estado_prestamo estado_prestamo,p.usuario_ID usuario_ID, l.titulo titulo, u.nombre nombre from Prestamo p, Estado e, Usuario u, Libro l where p.usuario_ID =%d and p.libro_ID = l.libro_id and p.usuario_ID = u.id and p.estado_ID = e.id";
+            sql = String.format(sql,id);
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
-                prestamos.add(prestamo(rs));
+                prestamos.add(modeloPrestamoUsuario(rs));
             }
 
         } catch (SQLException ex) {

@@ -36,6 +36,7 @@ public class Principal extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
+        response.setContentType("text/html;charset=UTF-8");
         ArrayList<Actividad> lista = Model.instance().buscarActividades();
         request.setAttribute("actividades",lista);
         request.getRequestDispatcher("principal.jsp").forward( request, response);

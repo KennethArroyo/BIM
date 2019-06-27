@@ -3,10 +3,10 @@
     Created on : 21/02/2019, 02:52:41 PM
     Author     : esteban
 --%>
-<%@page import ="java.util.ArrayList"%>
-<%@page import="bim.entidades.Prestamo"%>
+<%--<%@page import ="java.util.ArrayList"%>
+<%@page import="bim.entidades.Prestamo"%>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*"session="true"%>
+<%--<%@page import="java.util.*"session="true"%>--%>
 <!DOCTYPE html>
 <html>
     <head>

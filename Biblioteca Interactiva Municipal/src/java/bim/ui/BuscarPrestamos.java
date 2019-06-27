@@ -45,7 +45,8 @@ public class BuscarPrestamos extends HttpServlet {
             String json;
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
-            ArrayList<Prestamo> prestamos= new ArrayList<>();
+        
+            ArrayList<ModeloPrestamo> prestamos2= new ArrayList<>();
             Prestamo p = new Prestamo();
             Usuario u;
             int id;
@@ -54,8 +55,8 @@ public class BuscarPrestamos extends HttpServlet {
                     u = Model.instance().getUsuarioCed(request.getParameter("identificacion"));
                    //String identificacion = request.getParameter("identificacion");
                     id = u.getId();
-                    prestamos = Model.instance().buscarPrestamosUsuario(id);
-                    json= new Gson().toJson(prestamos);
+                    prestamos2 = Model.instance().buscarPrestamosUsuario(id);
+                    json= new Gson().toJson(prestamos2);
                     out.print(json);
                     break;
                 case "BuscarTodosPrestamos":

@@ -79,12 +79,13 @@
                     <form role="form" onsubmit="return false" id="formModal">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="id" >Préstamo:</label>
-                                <input class="form-control" type="disabled" style="border:none" id="id" name="id">
-                            </div>
-                            <div class="col-lg-6">
                                 <label for="libro_ID" >Libro:</label>
                                 <input class="form-control" type="disabled" style="border:none" id="titulo" name="titulo">
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="hidden" style="border:none" id="id" name="id">
+                                
                             </div>
                             <div class="col-lg-6">
                                 <label type="hidden" id="idLibro"></label>
@@ -132,14 +133,6 @@
                 </div>
                 <div class="modal-body" id="myModalMessage">
                     <form role="form" onsubmit="return false" id="formModal">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label for="libro_ID" >Libro:</label>
-                                <input class="form-control" type="disabled" style="border:none" id="fechaActual1" name="fechaActual1">
-                                <input class="form-control" type="disabled" style="border:none" id="fechaEntrega1" name="fechaEntrega1">
-                                <input class="form-control" type="disabled" style="border:none" id="usuario1" name="usuario1">
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-lg-10"> 
                                 <div class="form-group">

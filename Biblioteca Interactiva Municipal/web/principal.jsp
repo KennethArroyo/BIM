@@ -3,7 +3,7 @@
     Created on : Sep 14, 2018, 11:44:07 PM
     Author     : Kenneth
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="bim.entidades.Actividad"%>
 <!DOCTYPE html>
@@ -11,7 +11,6 @@
     <head>
         <title>Biblioteca Interactiva Municipal</title>
         <%@ include file="librerias.jsp" %>
-<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 var validacion;
+var fecha_final_g;
 $(document).ready(function () {
     inicializarTabla();
     verificarSancion();
@@ -266,7 +267,7 @@ function buscarLibroId(idLibro) {
     } else
     if (validacion === 1)
     {
-        swal('Info', 'Usted se encuentra sancionado, no puede realizar préstamos', 'info');
+        swal('Info', 'Usted se encuentra sancionado, no puede realizar préstamos'+' hasta '+fecha_final_g, 'info');
     }
 }
 
@@ -318,6 +319,7 @@ function verificarSancion() {
         success: function (data) {
             if (data.estado === 1) {
                 validacion = 1;
+                fecha_final_g=data.fecha_final;
             } else if (data.estado === 0) {
                 validacion = 0;
             }

@@ -178,7 +178,7 @@ public class Model {
         dao.actualizarUsuarioTemporal(temporal, contrasena);
     }
     
-    public ArrayList<Prestamo> buscarPrestamosUsuario(int id)throws Exception{
+    public ArrayList<ModeloPrestamo> buscarPrestamosUsuario(int id)throws Exception{
     return dao.buscarPrestamosUsuario(id);
     }
     

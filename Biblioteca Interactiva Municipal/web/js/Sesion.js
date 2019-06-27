@@ -61,7 +61,7 @@ function cerrar(){
                 $(".anonimo").show();
                 $(".anonimoR").show();
                 sessionStorage.removeItem("usuario");
-                window.location.assign("localhost:80083/Biblioteca_Interactiva_Municipal/Principal.jsp");
+                window.location.assign("http://localhost:8080/Biblioteca_Interactiva_Municipal/principal.jsp");
                 //window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/Principal");
             }
     
