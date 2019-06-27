@@ -179,6 +179,7 @@
                     if(autores[t].nombre === nombre){
                         cuentaOcurrencias += 1;
                         break;
+                        //subase
                     }
                 }
             }
