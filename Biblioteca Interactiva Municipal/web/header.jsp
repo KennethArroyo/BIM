@@ -78,6 +78,9 @@
                                                 <li><a href="bitacorasLibros.jsp">Bitácoras de Libros</a></li>
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="bitacorasPrestamos.jsp">Bitácoras de Préstamos</a></li>
+                                                <div class='divisionmenu'></div>
+                                                <li><a href="verSanciones.jsp">Buscar Sanciones</a></li>
+
                                                 <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                                             </ul>
                                         </li>
@@ -184,6 +187,7 @@
                                 <li><a href="bitacorasUsuarios.jsp">Bitacoras Usuario</a></li>
                                 <li><a href="bitacorasLibros.jsp">Bitacoras Libros</a></li>
                                 <li><a href="bitacorasPrestamos.jsp">Bitacoras Préstamos</a></li>
+                                <li><a href="verSanciones.jsp">Buscar Sanciones</a></li>
                                 <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
                             </ul>
                         </li>
