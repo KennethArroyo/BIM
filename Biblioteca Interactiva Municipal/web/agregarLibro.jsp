@@ -13,21 +13,23 @@
         
         <div class="containerAgregarLibroForm" >
                 <div class='registroAgregarLibroForm'>
+                <form onsubmit="return agregarLibro()" autocomplete="off" action="AgregarLibro" method="POST" enctype="multipart/form-data" id="libForm" class="log">
+
                 <h2  class='tituloAgregarLibroForm'>Agregar Libros</h2>
                 <div class='divisionTitulo'></div>
-                <form onsubmit="return agregarLibro()" autocomplete="off" action="AgregarLibro" method="POST" enctype="multipart/form-data" id="libForm" class="log">
+                <ul class="errorMessages"></ul>
                     <div class="row" style='width: 950px;'>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="clasificacion">Clasificación</label>
-                                <input type="text" class="form-control" id="clasificacion" name="clasificacion" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                <input type="text" class="form-control" id="clasificacion" name="clasificacion" minlength="1" maxlength="15" required 
                                 oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="titulo">Titulo</label>
-                                <input type="text" class="form-control" id="titulo" name="titulo" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                <input type="text" class="form-control" id="titulo" name="titulo" minlength="1" maxlength="50" required 
                                 oninput="this.setCustomValidity('')">
                             </div>
                         </div>
@@ -41,15 +43,15 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <div class="autocomplete">
-                                <label for="autor">Autor (obligatorio)</label>
-                                <input type="text" class="form-control" id="autor1" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')"
+                                <label for="autor1">Autor (obligatorio)</label>
+                                <input type="text" class="form-control" id="autor1" name="Autor" required 
                                 oninput="this.setCustomValidity('')">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="autor">Autor (opcional)</label>
+                                <label for="autor2">Autor (opcional)</label>
                                 <input type="text" class="form-control" id="autor2" name="autor">
                             </div>
                         </div>
@@ -57,13 +59,13 @@
                     <div class="row" style='width: 950px;'>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="autor">Autor (opcional)</label>
+                                <label for="autor3">Autor (opcional)</label>
                                 <input type="text" class="form-control" id="autor3" name="autor">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="autor">Autor (opcional)</label>
+                                <label for="autor4">Autor (opcional)</label>
                                 <input type="text" class="form-control" id="autor4" name="autor">
                             </div>
                         </div>
@@ -100,7 +102,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="copias">Cantidad de copias</label>
-                                <input type="text" class="form-control" id="copias" name="copias">
+                                <input type="text" class="form-control" id="copias" name="copias" pattern="[0-9]" required>
                             </div><br>
                         </div>
                         <div class="col-lg-4">
@@ -124,7 +126,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="comentario">Comentario corto</label>
-                                <textarea class="form-control" maxlength="30" rows="2" id="comentario" name="comentario"></textarea>
+                                <textarea class="form-control" maxlength="50" rows="2" id="comentario" name="comentario"></textarea>
                             </div>
                         </div>
                     </div>
