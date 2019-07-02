@@ -175,7 +175,7 @@ function agreAutor() {
                 },
         error: function (status) {
             //swal("Error!", "Es posible que el autor ya este agregado", "error");
-            window.location.href = "http://localhost:80083/Biblioteca_Interactiva_Municipal/autores.jsp";
+            window.location.href = "http://localhost:8083/Biblioteca_Interactiva_Municipal/autores.jsp";
             //window.location.href = "http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
         }
     });
@@ -250,3 +250,38 @@ $(function () {
         $("#myModalAutor").modal("hide");
     });
     });
+    
+    
+    $(function() {
+    var createAllErrors = function() {
+        var form = $(this);
+        var errorList = $('ul.errorMessages', form);
+        
+        var showAllErrorMessages = function() {
+            errorList.empty();
+            
+            //Find all invalid fields within the form.
+            form.find(':invalid').each(function(index, node) {
+
+                //Find the field's corresponding label
+                var label = $('label[for=' + node.id + ']');
+
+                //Opera incorrectly does not fill the validationMessage property.
+                var message = node.validationMessage || 'Invalid value.';
+                errorList
+                    .show()
+                    .append('<li><span>' + label.html() + '</span> ' + message + '</li>');
+            });
+        };
+        
+        $('input[type=submit], button', form).on('click', showAllErrorMessages);
+        $('input[type=text]', form).on('keypress', function(event) {
+            //keyCode 13 is Enter
+            if (event.keyCode == 13) {
+                showAllErrorMessages();
+            }
+        });
+    };
+    
+    $('form').each(createAllErrors);
+});

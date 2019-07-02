@@ -5,6 +5,7 @@
  */
 package bim.ui;
 
+import bim.entidades.Libro;
 import bim.entidades.Sancion;
 import bim.entidades.Usuario;
 import bim.logica.Model;
@@ -13,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.ServletException;
@@ -26,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author esteban montero
  */
-@WebServlet(name = "Sanciones", urlPatterns = {"/Sanciones"})
+@WebServlet(name = "Sanciones", urlPatterns = {"/Sanciones", "/BuscarSanciones"})
 public class Sanciones extends HttpServlet {
 
     /**
@@ -44,6 +46,7 @@ public class Sanciones extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String json;
+            ArrayList<Sancion> q = new ArrayList<>();
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             switch (accion) {
@@ -54,6 +57,11 @@ public class Sanciones extends HttpServlet {
                 case "VerificarSancion":
                     Sancion s = this.verificarSancion(request, response);
                     json = new Gson().toJson(s);
+                    out.print(json);
+                    break;
+                case "buscarSanciones":
+                    q = Model.instance().buscarSanciones();
+                    json=new Gson().toJson(q);
                     out.print(json);
                     break;
                 default:

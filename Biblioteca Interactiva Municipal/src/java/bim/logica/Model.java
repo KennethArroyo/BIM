@@ -67,6 +67,11 @@ public class Model {
     public ArrayList<Libro> buscarTodosLibros() throws Exception{
     return dao.buscarTodosLibros();
     }
+    
+     public ArrayList<Sancion> buscarSanciones() throws Exception{
+    return dao.buscarSanciones();
+    }
+    
     public ArrayList<Libro> buscarLibroAutor(String autor) throws Exception {
         return dao.buscarLibroAutor(autor);
     }

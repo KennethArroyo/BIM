@@ -35,35 +35,35 @@
 
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" minlength="1" maxlength="16" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" minlength="1" maxlength="20" required>
                     </div>
 
                     <div class="form-group">
                         <label for="apellidos">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" minlength="1" maxlength="32" required>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*" minlength="1" maxlength="22" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="lugar_residencia">Lugar de Residencia</label>
-                        <input type="text" class="form-control" id="lugar_residencia" name="lugar_residencia" pattern="{1,16}" minlength="1" maxlength="16"required>
+                        <input type="text" class="form-control" id="lugar_residencia" name="lugar_residencia" pattern="{1,30}" minlength="1" maxlength="30"required>
                     </div>
                     
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}" minlength="8" maxlength="12" required>
+                        <input type="text" class="form-control" id="telefono" name="telefono" pattern="[0-9]{8}" minlength="8" maxlength="8" required>
                         <p>Formato: 00000000</p>
                     </div>
                     
                     <div class="form-group">
                         <label for="correo">Correo</label>
-                        <input type="text" class="form-control" id="correo" name="correo" required>
+                        <input type="text" class="form-control" id="correo" name="correo" minlength="1" maxlength="50" required>
                         <p>Formato: ejemplo@dominio.com</p>
                     </div>                 
                     
                     <div class="form-group" id="show_hide_password">
                         <label for="contrasena">Contraseña</label>                        
                         <input type="password" class="form-control" id="contrasena" name="contrasena"  
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" minlength="1" required>
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,64}$" minlength="1" maxlength="64"  required>
                         <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
                         <p>Debe tener al menos una mayúscula, una minúscula, un número y debe contener como mínimo 8 caracteres</p>
                     </div>
@@ -76,7 +76,7 @@
                     
                     <div class="form-group">
                         <label for="ref_trab_est">Referencia Lugar de Trabajo/Estudio</label>
-                        <input type="text" class="form-control" id="ref_trab_est" name="ref_trab_est" pattern="{1,16}" minlength="1" maxlength="16" required>
+                        <input type="text" class="form-control" id="ref_trab_est" name="ref_trab_est" pattern="{1,30}" minlength="1" maxlength="30" required>
                     </div>
                     
                 <div id="mi_div">    

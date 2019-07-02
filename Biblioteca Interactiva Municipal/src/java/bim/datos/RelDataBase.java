@@ -37,7 +37,7 @@ public class RelDataBase {
 //                        + "database=BIM;"
 //                        + "user=sa;"
 //                        + "password=Pa$$w0rd;";
-            
+//            
              "jdbc:sqlserver://localhost;"
                         + "database=BIM;"
                         + "user=UserBIM;"

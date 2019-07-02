@@ -384,7 +384,21 @@ public class Dao {
         }
         return libros;
     }
-
+    
+    public ArrayList<Sancion> buscarSanciones() throws Exception {
+        ArrayList<Sancion> lista = new ArrayList<Sancion>();
+        try {
+            String sql = "select * from Sancion";
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                lista.add(sancion(rs));
+            }
+        } catch (SQLException ex) {
+            String error = ex.getMessage();
+        }
+        return lista;
+    }
+        
     public ArrayList<Libro> buscarLibroClasificacion(String clasificacion) throws Exception {
         ArrayList<Libro> libros = new ArrayList<Libro>();
         try {

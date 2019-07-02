@@ -29,7 +29,7 @@
                 <label><h2>Agregar Autor:</h2></label>        
 
             <div class="form-group" style="display: flex; height: 35px; width: 500px;">
-                <input type="text" class="form-control" id="autor" name="autor" required oninvalid="this.setCustomValidity('Favor llenar este campo')" oninput="this.setCustomValidity('')" >
+                <input type="text" class="form-control" id="autor" name="autor" minlength="1" maxlength="50" required oninvalid="this.setCustomValidity('Favor llenar este campo')" oninput="this.setCustomValidity('')" >
                 <span class="input-group-btn">
                   <button type="submit" onclick="agreAutor()" class="btn btn-success" id="botonAgregar">Agregar</button>
                 </span>
