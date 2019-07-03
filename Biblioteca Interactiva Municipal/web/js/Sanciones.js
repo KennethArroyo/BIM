@@ -134,9 +134,9 @@ function inicializar(){
     
     function buscarSancion() {
     $.ajax({
-        url: 'BuscarSanciones',
+        url: 'Sanciones',
         data: {
-            accion: "buscarSanciones"
+            accion: "BuscarSanciones"
         },
         error: function () {
            swal("Error", "No se pudieron cargar las sanciones", "error");

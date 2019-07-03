@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author esteban montero
  */
-@WebServlet(name = "Sanciones", urlPatterns = {"/Sanciones", "/BuscarSanciones"})
+@WebServlet(name = "Sanciones", urlPatterns = {"/Sanciones"})
 public class Sanciones extends HttpServlet {
 
     /**
@@ -59,7 +59,7 @@ public class Sanciones extends HttpServlet {
                     json = new Gson().toJson(s);
                     out.print(json);
                     break;
-                case "buscarSanciones":
+                case "BuscarSanciones":
                     q = Model.instance().buscarSanciones();
                     json=new Gson().toJson(q);
                     out.print(json);
