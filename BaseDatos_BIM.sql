@@ -158,7 +158,8 @@ create table Sancion(
 id int primary key identity(1,1),
 fecha_inicio date not null,
 fecha_final date not null,
-estado int not null   
+estado int not null,   
+usuario_ID int foreign key references Usuario(id)
 )
 
 --HAY QUE INGRESAR LOS TRIGGERS UNO A UNO
