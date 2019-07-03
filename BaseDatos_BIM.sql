@@ -161,7 +161,10 @@ fecha_final date not null,
 estado int not null   
 )
 
+--HAY QUE INGRESAR LOS TRIGGERS UNO A UNO
 
+Use BIM
+go
 create trigger Libro_trg on Libro AFTER INSERT, UPDATE, DELETE as
 BEGIN
   insert into Libro_bit(libro_id, clasificacion,titulo,estado, cuenta_autores, comentario,cantidad_copias,
@@ -227,6 +230,8 @@ UNION ALL
 END
 
 
+Use BIM
+go
 create trigger Usuario_trg on Usuario AFTER UPDATE, DELETE as
 BEGIN
   insert into Usuario_bit(id,tipo,identificacion ,nombre ,apellidos ,lugar_residencia ,telefono ,correo,
@@ -270,6 +275,9 @@ UNION ALL
         deleted AS u
 END
 
+
+Use BIM
+go
 create trigger Prestamo_trg on Prestamo AFTER UPDATE, DELETE as
 BEGIN
   insert into Prestamo_bit(id,fecha_inicio,fecha_final,accion,fec_accion,usu_accion)
