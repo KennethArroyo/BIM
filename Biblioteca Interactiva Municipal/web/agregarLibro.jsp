@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <div class="autocomplete">
                                 <label for="autor1">Autor (obligatorio)</label>
-                                <input type="text" class="form-control" id="autor1" name="Autor" required 
+                                <input type="text" class="form-control" id="autor1" name="autor" required 
                                 oninput="this.setCustomValidity('')">
                                 </div>
                             </div>

@@ -1615,6 +1615,7 @@ text-transform: uppercase;
 text-align: center;
 margin-bottom: 20px;
 margin-left: 420px;
+font-size: x-large;
 } 
 
 .tituloAsignaturasForm{
@@ -1628,6 +1629,7 @@ text-transform: uppercase;
 text-align: center;
 margin-bottom: 20px;
 margin-left: 0px;
+font-size: x-large;
 } 
 
 .tituloAutoresForm{
@@ -1641,6 +1643,7 @@ text-transform: uppercase;
 text-align: center;
 margin-bottom: 20px;
 margin-left: 0px;
+font-size: x-large;
 } 
 
 #regUsuarios #identificacion{
@@ -1673,3 +1676,9 @@ margin-left: 0px;
 .divisionmenu{
     border-bottom: 0.5px solid grey;
 }
+
+
+.th-sm{
+    font-size: 14px;
+}
+

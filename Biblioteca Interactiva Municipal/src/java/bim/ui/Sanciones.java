@@ -47,6 +47,7 @@ public class Sanciones extends HttpServlet {
         try {
             String json;
             ArrayList<Sancion> q = new ArrayList<>();
+            Usuario u = new Usuario();
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             switch (accion) {
@@ -63,7 +64,7 @@ public class Sanciones extends HttpServlet {
                     q = Model.instance().buscarSanciones();
                     json=new Gson().toJson(q);
                     out.print(json);
-                    break;
+                    break;                    
                 default:
                     out.print("E~");
                     break;

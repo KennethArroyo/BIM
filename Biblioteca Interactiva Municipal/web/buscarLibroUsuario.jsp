@@ -23,11 +23,13 @@
         <form action="Descarga" id="descarga" method="GET" enctype="multipart/form-data">
 
         </form>
+       
                     
         <div class="containerDataTableForm">
         <div class='registroDataTableForm'>    
         <h2  class='tituloDataTableForm'>Buscar Libros</h2>
         <div class="divisionTitulo"></div>
+        
         <table class="table table-striped table-bordered table-hover" id="mydataUsuario">
             
         <thead>

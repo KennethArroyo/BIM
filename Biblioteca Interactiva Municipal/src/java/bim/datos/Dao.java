@@ -197,6 +197,16 @@ public class Dao {
         }
         return s;
     }
+    
+        private Sancion sancion1(ResultSet rs) throws Exception {
+        Sancion s = new Sancion();
+                s.setId(rs.getInt("id"));
+                s.setFecha_inicio(rs.getString("fecha_inicio"));
+                s.setFecha_final(rs.getString("fecha_final"));
+                s.setEstado(rs.getInt("estado"));
+                s.setUsuario_ID(rs.getInt("usuario_ID"));
+        return s;
+    }
 
     public Asignatura buscarAsignatura(String nombre) {
         Asignatura n = new Asignatura();
@@ -290,7 +300,7 @@ public class Dao {
         sql = String.format(sql, s.getFecha_inicio(), s.getFecha_final(), s.getEstado(), s.getUsuario_ID());
         int count = db.executeUpdate(sql);
         if (count == 0) {
-            throw new Exception("Error crendo la sancion");
+            throw new Exception("Error creando la sancion");
         }
     }
 
@@ -391,7 +401,7 @@ public class Dao {
             String sql = "select * from Sancion";
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
-                lista.add(sancion(rs));
+                lista.add(sancion1(rs));
             }
         } catch (SQLException ex) {
             String error = ex.getMessage();
@@ -445,6 +455,7 @@ public class Dao {
         }
         return libro;
     }
+    
 
     public Prestamo buscarPrestamoId(int id) throws Exception {
         Prestamo p = new Prestamo();
@@ -460,6 +471,8 @@ public class Dao {
         }
         return p;
     }
+    
+
 
     public Usuario buscarUsuarioCed(String ced) throws Exception {
         Usuario u = new Usuario();

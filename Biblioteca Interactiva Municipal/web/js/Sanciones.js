@@ -36,9 +36,9 @@ function inicializar(){
                     // Set page margins [left,top,right,bottom] or [horizontal,vertical]
                     doc.pageMargins = [50,100,20,50];
                     // Set the font size fot the entire document
-                    doc.defaultStyle.fontSize = 7;
+                    doc.defaultStyle.fontSize = 10;
                     // Set the fontsize for the table header
-                    doc.styles.tableHeader.fontSize = 7;
+                    doc.styles.tableHeader.fontSize = 10;
                     // Create a header object with 3 columns
                     doc['header']=(function() {
                         return {
@@ -93,7 +93,7 @@ function inicializar(){
                     objLayout['vLineWidth'] = function(i) { return .5; };
                     objLayout['hLineColor'] = function(i) { return '#aaa'; };
                     objLayout['vLineColor'] = function(i) { return '#aaa'; };
-                    objLayout['paddingLeft'] = function(i) { return 4; };
+                    objLayout['paddingLeft'] = function(i) { return 75; };
                     objLayout['paddingRight'] = function(i) { return 4; };
                     doc.content[0].layout = objLayout;
 		}                        
@@ -149,7 +149,7 @@ function inicializar(){
 
     });
 }  
-    
+     
 function dibujarTabla(dataJson) {
     t.clear().draw();
     for (var i = 0; i < dataJson.length; i++) {
@@ -158,9 +158,16 @@ function dibujarTabla(dataJson) {
 }
 
 function dibujarFila(rowData) {
-    if(rowData.digital === 1){
-        t.row.add([rowData.fecha_inicio, rowData.fecha_final, rowData.estado, rowData.usuario_ID]).draw();
-    }
+        var est;
+        if (rowData.estado === 1) {
+            est = "Solicitado";
+        } else if (rowData.estado === 2) {
+            est = "Prestado";
+        } else if (rowData.estado === 3) {
+            est = "Devuelto";
+        }
+        t.row.add([rowData.fecha_inicio, rowData.fecha_final, est, rowData.usuario_ID]).draw();
  
 }
 }
+
