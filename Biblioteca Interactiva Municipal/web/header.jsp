@@ -39,8 +39,6 @@
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="buscarLibroAdmin.jsp">Buscar Libro</a></li>
                                                 <div class='divisionmenu'></div>
-                                                <!--                                                <li><a href="ReporteEstados.jsp">Estado de Libros</a></li>
-                                                                                                <div class='divisionmenu'></div>-->
                                                 <li><a href="asignaturas.jsp"><i aria-hidden="true"></i>Asignaturas</a></li>
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="autores.jsp"><i aria-hidden="true"></i>Autores</a></li>
@@ -52,10 +50,6 @@
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="ReportesPrestamos.jsp">Reportes de préstamos</a></li>
                                                 <div class='divisionmenu'></div>
-<!--                                                <li><a href="PrestamosSolicitados.jsp">Préstamos Solicitados</a></li>
-                                                <div class='divisionmenu'></div>
-                                                <li><a href="reporteLibrosPrestados.jsp"><i aria-hidden="true"></i>Reporte Libros Prestados</a></li>
-                                                <div class='divisionmenu'></div>-->
                                                 <li><a href="crearPrestamo.jsp">Crear Préstamo</a></li>
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="crearPrestamoUsuario.jsp">Crear Préstamo a un usuario</a></li>
@@ -81,7 +75,7 @@
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="verSanciones.jsp">Buscar Sanciones</a></li>
 
-                                                <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
+
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="#"><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
@@ -91,6 +85,7 @@
                                                     <div class='divisionmenu'></div>
                                                     <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
                                                     <div class='divisionmenu'></div>
+                                                    <li><a href="OtrasConfigPerfil.jsp">Deshabilitar perfil</a></li>
                                                 </ul>
                                             </ul>
                                         </li>
@@ -132,10 +127,12 @@
                                         <li><a href="">Actividades</a></li>
                                         <li class="dropdown"><a href=""><small class="fa fa-user"></small>&nbsp Mi perfil<i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_selection">
-                                            
+
                                                 <li><a href="VerPrestamosUsuario.jsp">Mis préstamos</a></li>
                                                 <div class='divisionmenu'></div>
                                                 <li><a href="EditarUsuario.jsp">Editar mi perfil</a></li>
+                                                <div class='divisionmenu'></div>
+                                                <li><a href="OtrasConfigPerfil.jsp">Deshabilitar perfil</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="javascript:cerrar();"><small class="fa fa-sign-out" ></small>Cerrar sesion</a></li>
@@ -172,10 +169,8 @@
                         </li>
                         <li class="menu_item has-children"><a href="#">Prestamo<i class="fa fa-angle-down"></i></a>
                             <ul class="menu_selection">
-                                <li><a href="BuscarTodosPrestamos.jsp"><i aria-hidden="true"></i>Ver todos los préstamos</a></li>
-                                <li><a href="PrestamosSolicitados.jsp"><i aria-hidden="true"></i>Préstamos Solicitados</a></li>
-                                <li><a href="reporteLibrosPrestados.jsp"><i aria-hidden="true"></i>reporte libros prestados</a></li> 
-                                <li><a href="VerPrestamosUsuario.jsp"><i aria-hidden="true"></i>Mis préstamos</a></li>
+                                <li><a href="BuscarTodosPrestamos.jsp"><i aria-hidden="true"></i>Editar estado de los préstamos</a></li>
+                                <li><a href="ReportesPrestamos.jsp"><i aria-hidden="true"></i>Reportes de préstamos</a></li>
                                 <li><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
                                 <li><a href="crearPrestamoUsuario.jsp"><i aria-hidden="true"></i>Crear Préstamo Usuario</a></li>
 
@@ -183,12 +178,12 @@
                         </li>
                         <li class="dropdown"><a href="#">Mantenimientos<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown_selection">
-                                <li><a href="mantenimientoActividades.jsp">Mantenimiento de actividades</a></li>
-                                <li><a href="bitacorasUsuarios.jsp">Bitacoras Usuario</a></li>
-                                <li><a href="bitacorasLibros.jsp">Bitacoras Libros</a></li>
-                                <li><a href="bitacorasPrestamos.jsp">Bitacoras Préstamos</a></li>
-                                <li><a href="verSanciones.jsp">Buscar Sanciones</a></li>
-                                <!-- <li><a href="reportes.jsp">Reportes</a></li> !-->
+                                <li><a href="mantenimientoActividades.jsp"><i aria-hidden="true"></i>Mantenimiento de actividades</a></li>
+                                <li><a href="bitacorasUsuarios.jsp"><i aria-hidden="true"></i>Bitacoras Usuario</a></li>
+                                <li><a href="bitacorasLibros.jsp"><i aria-hidden="true"></i>Bitacoras Libros</a></li>
+                                <li><a href="bitacorasPrestamos.jsp"><i aria-hidden="true"></i>Bitacoras Préstamos</a></li>
+                                <li><a href="verSanciones.jsp"><i aria-hidden="true"></i>Buscar Sanciones</a></li>
+
                             </ul>
                         </li>
 
@@ -199,8 +194,9 @@
                         </li>
                         <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                             <ul class="dropdown_selection"> 
-                                
+                                <li><a href="VerPrestamosUsuario.jsp"><i aria-hidden="true"></i>Mis prestamos</a></li>
                                 <li><a href="EditarUsuario.jsp"><i aria-hidden="true"></i>Editar perfil</a></li>
+                                <li><a href="OtrasConfigPerfil.jsp"><i aria-hidden="true"></i>Deshabilitar perfil</a></li>
                             </ul>
                         </li>
                         <li class="menu_item"><a href="javascript:cerrar();"><span class="fa fa-sign-out"></span>&nbspCerrar Sesion</a></li>
@@ -212,7 +208,7 @@
                     <ul class="menu_top_nav">
                         <li class="menu_item"><a href="Principal" >Inicio</a></li>
                         <li class="menu_item"><a href="buscarLibroUsuario.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>
-                        <li class="menu_item"><a href="">Actividades</a></li>
+                        <li class="menu_item"><a href=""><i aria-hidden="true"></i>Actividades</a></li>
                         <li class="menu_item"><a href="registroUsuario.jsp"><span class="fa fa-user-plus"></span>&nbsp Registrarse</a></li>
                         <li class="menu_item"><a href="inicioSesion.jsp"><span class="fa fa-sign-in"></span>&nbsp Iniciar Sesión</a></li>
                     </ul>
@@ -224,13 +220,13 @@
                         <li class="menu_item"><a href="Principal">Inicio</a></li>
                         <li class="menu_item"><a href="buscarLibroUsuario.jsp"><i aria-hidden="true"></i>Buscar Libro</a></li>     
                         <li class="menu_item"><a href="crearPrestamo.jsp"><i aria-hidden="true"></i>Crear Préstamo</a></li>
-                        <li class="menu_item"><a href="">Actividades</a></li>
+                        <li class="menu_item"><a href=""><i aria-hidden="true"></i>Actividades</a></li>
                         <li class="menu_item has-children"><a href=""> &nbsp Mi perfil <i class="fa fa-angle-down"></i></a> <!--Dropdown-->
                             <ul class="menu_selection"> 
-                               
-                                <li><a href=""><i aria-hidden="true"></i>Mis prestamos</a></li>
-                                <li><a href=""><i aria-hidden="true"></i>Editar perfil</a></li>
-                                <li><a href=""><i aria-hidden="true"></i>Autores</a></li>
+
+                                <li><a href="VerPrestamosUsuario.jsp"><i aria-hidden="true"></i>Mis prestamos</a></li>
+                                <li><a href="EditarUsuario.jsp"><i aria-hidden="true"></i>Editar perfil</a></li>
+                                <li><a href="OtrasConfigPerfil.jsp"><i aria-hidden="true"></i>Deshabilitar perfil</a></li>
                             </ul>
                         </li>
                         <li class="menu_item"><a href="javascript:cerrar();"><span class="fa fa-sign-in"></span>&nbspCerrar Sesion</a></li>

@@ -60,23 +60,6 @@
                         <p>Formato: 0000-0000</p>
                     </div>                
 
-                    <%-- Contrasena mejor hacerlo por aparte, y ningun campo tienen que ser required
-
-                        <div class="form-group" id="show_hide_password">
-                        <label for="contrasena">Contraseña</label>
-
-                        <input type="password" class="form-control" id="contrasena" name="contrasena"  
-                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
-                        <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
-                        <p>Debe tener al menos una mayúscula, una minúscula, un número y debe contener como mínimo 8 caracteres</p>
-                    </div>
-
-                    <div class="form-group" id="show_hide_password-verify">
-                        <label for="verificacontrasena">Repetir Contraseña</label>
-                        <input type="password" class="form-control" id="verificacontrasena" name="verificacontrasena" required>
-                        <a><i class="fa fa-eye-slash field-icon" aria-hidden="true"></i></a>
-                    </div>--%>
-
                     <div class="form-group">
                         <label for="ref_trab_est">Referencia Lugar de Trabajo/Estudio</label>
                         <input type="text" class="form-control" id="ref_trab_est" name="ref_trab_est" minlength="1" maxlength="30" required>

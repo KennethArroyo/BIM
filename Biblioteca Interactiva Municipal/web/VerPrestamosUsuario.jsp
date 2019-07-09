@@ -6,7 +6,7 @@
 <%--<%@page import ="java.util.ArrayList"%>
 <%@page import="bim.entidades.Prestamo"%>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--<%@page import="java.util.*"session="true"%>--%>
+<%@page import="java.util.*" session="true" %>
 <!DOCTYPE html>
 <html>
     <head>
