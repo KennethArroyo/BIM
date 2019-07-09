@@ -16,6 +16,15 @@ public class Sancion {
     String fecha_final;
     int estado;
     int usuario_ID;
+    String identUsuario;
+
+    public String getIdentUsuario() {
+        return identUsuario;
+    }
+
+    public void setIdentUsuario(String identUsuario) {
+        this.identUsuario = identUsuario;
+    }
 
     public int getUsuario_ID() {
         return usuario_ID;

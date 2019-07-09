@@ -159,14 +159,12 @@ function dibujarTabla(dataJson) {
 
 function dibujarFila(rowData) {
         var est;
-        if (rowData.estado === 1) {
-            est = "Solicitado";
-        } else if (rowData.estado === 2) {
-            est = "Prestado";
-        } else if (rowData.estado === 3) {
-            est = "Devuelto";
-        }
-        t.row.add([rowData.fecha_inicio, rowData.fecha_final, est, rowData.usuario_ID]).draw();
+        if (rowData.estado === 0) {
+            est = "Finalizada";
+        } else if (rowData.estado === 1) {
+            est = "Activa";
+        } 
+        t.row.add([rowData.fecha_inicio, rowData.fecha_final, est, rowData.identUsuario]).draw();
  
 }
 }

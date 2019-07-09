@@ -199,13 +199,13 @@ public class Dao {
         return s;
     }
     
-        private Sancion sancion1(ResultSet rs) throws Exception {
+        private Sancion sancionBuscar(ResultSet rs) throws Exception {
         Sancion s = new Sancion();
                 s.setId(rs.getInt("id"));
                 s.setFecha_inicio(rs.getString("fecha_inicio"));
                 s.setFecha_final(rs.getString("fecha_final"));
                 s.setEstado(rs.getInt("estado"));
-                s.setUsuario_ID(rs.getInt("usuario_ID"));
+                s.setIdentUsuario(rs.getString("identUsuario"));
         return s;
     }
 
@@ -399,10 +399,10 @@ public class Dao {
     public ArrayList<Sancion> buscarSanciones() throws Exception {
         ArrayList<Sancion> lista = new ArrayList<Sancion>();
         try {
-            String sql = "select * from Sancion";
+            String sql = "Select s.id id, s.fecha_inicio fecha_inicio, s.fecha_final fecha_final, s.estado estado, u.identificacion identUsuario FROM Sancion s, Usuario u where s.usuario_ID=u.id";
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
-                lista.add(sancion1(rs));
+                lista.add(sancionBuscar(rs));
             }
         } catch (SQLException ex) {
             String error = ex.getMessage();
