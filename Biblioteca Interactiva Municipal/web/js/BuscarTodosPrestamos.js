@@ -7,6 +7,7 @@ var libro_ID_g;
 var fechaActual_g;
 var fechaEntrega_g;
 var usuario_g;
+var prestamo_id_g;
 $(document).ready(function () {
     inicializar();
 });
@@ -180,9 +181,11 @@ function buscarPrestamoId(id, titulo, estado, libro_ID, usuario_ID,fecha_final) 
     $("#myModalFormulario").modal();
     $("#Estadoaction").val("modificarEstadoPrestamo");
     
-    $("#id").val(id);
+    //$("#id").val(id);
     
     $("#titulo").val(titulo);
+    //$("#libro_ID").val(libro_ID);
+    prestamo_id_g=id;
     libro_ID_g=libro_ID;
     fechaActual_g=jsDate;
     fechaEntrega_g=fecha_final;
@@ -210,7 +213,7 @@ function modificarEstadoPrestamo() {
         data: {
             accion: "ModificarEstadoPrestamo",
             estado: $("#estado").val(),
-            id: $("#id").val(),
+            id: prestamo_id_g,
             libro_ID: libro_ID_g
         },
         error: function () {

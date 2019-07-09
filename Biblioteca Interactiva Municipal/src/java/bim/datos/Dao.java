@@ -53,6 +53,7 @@ public class Dao {
         p.setFecha_inicio(rs.getString("fecha_inicio"));
         p.setFecha_final(rs.getString("fecha_final"));
         p.setUsuario_ID(rs.getInt("usuario_id"));
+        p.setLibro_id(rs.getInt("libro_ID"));
         return p;
     }
     

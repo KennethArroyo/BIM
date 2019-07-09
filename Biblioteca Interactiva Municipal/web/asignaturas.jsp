@@ -14,7 +14,7 @@
         <script src="js/modals.js" type="text/javascript"></script>
         <script src="js/Asignaturas.js" type="text/javascript"></script>
         <title>Asignaturas</title>
-        <%@ include file="header.jsp" %>
+        <%@include file="header.jsp" %>
 
     </head>
     
@@ -31,7 +31,7 @@
                 <label><h2>Agregar Asignatura:</h2></label>        
 
             <div class="form-group" style="display: flex; height: 35px; width: 500px;">
-                <input type="text" class="form-control" id="asignatura" name="asignatura" required oninvalid="this.setCustomValidity('Favor llenar este campo')" minlength="1" maxlength="50" oninput="this.setCustomValidity('')" minlength="1" maxlength="50" >
+                <input type="text" class="form-control" id="asignatura" name="asignatura" required oninvalid="this.setCustomValidity('Favor llenar este campo')" oninput="this.setCustomValidity('')" minlength="1" maxlength="50" >
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-success" id="botonAgregar">Agregar</button>
                   <!--<a href="asignaturas.jsp" id="cancel" name="cancel" class="btn btn btn-danger" style="text-align: center;">Cancelar</a>!-->
@@ -64,8 +64,6 @@
                 </div>      
                 </div>
             </div>
-             
-        </div>
                 <div class="modal fade" id="myModalAsignatura" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" session="true" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -79,19 +80,11 @@
                     <form role="form" onsubmit="return false" id="formModal">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="libro_ID" >Libro:</label>
-                                <input class="form-control" type="disabled" style="border:none" id="titulo" name="titulo">
+                                <label for="titulo" >Libro:</label>
+                                <input class="form-control" style="border:none" id="titulo" name="titulo">
                                 
                             </div>
-                            <div class="col-lg-6">
-                                <input class="form-control" type="hidden" style="border:none" id="id" name="id">
-                                
-                            </div>
-                            <div class="col-lg-6">
-                                <label type="hidden" id="idLibro"></label>
-
-                            </div>
-
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -181,7 +174,6 @@
         </div>
     </div>
 </body>
-
 <footer>
     <%@include file="footer.jsp"%>        
 </footer>
