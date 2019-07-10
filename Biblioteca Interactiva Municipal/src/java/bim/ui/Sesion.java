@@ -151,7 +151,7 @@ public class Sesion extends HttpServlet {
                 error = 405;
                 throw new Exception();
             }else
-                if(us.getHabilitado()==2){
+                if((us.getHabilitado()==2) || (us.getHabilitado()==3)){
                 //response.sendError(0);
                 error = 406;
                 throw new Exception();

@@ -12,19 +12,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Deshabilitar perfil</title>
         <%@include file="librerias.jsp"%>
+        <script src="js/OtrasConfigPerfil.js" type="text/javascript"></script>
         <script src="js/modals.js" type="text/javascript"></script>    
-        
+
         <%@include file="header.jsp"%>
     </head>
     <body style=" background: url(imagenes/bg2.png) no-repeat center center fixed;">
-        
+
         <div class="containerForm">
             <div class="registroForm">
                 <h2 class="tituloForm">Deshabilitar Mi Perfil</h2>
                 <div class="divisionTitulo"></div>
                 <center><img src="imagenes/remove_user.png" width="200" height="200"/></center>
                 <br>
-                <center> <button type="submit" class="btn btn-success" onclick="modalDeshabilitar()">Deshabilitar</button></center>
+                <center> <button type="reset" class="btn btn-danger" onclick="opcionDeshabilitarPerfil()">Deshabilitar</button></center>
             </div>
         </div>
         <footer>

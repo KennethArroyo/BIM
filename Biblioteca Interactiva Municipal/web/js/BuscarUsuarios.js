@@ -163,6 +163,7 @@ function dibujarFila(rowData) {
     if(rowData.habilitado===1){hab="Sí";}
     else if(rowData.habilitado===0){hab="Falta verificación";}
     else if(rowData.habilitado===2){hab="Deshabilitado por Admin";}
+    else if(rowData.habilitado===3){hab="Deshabilitado por Usuario";}
     t.row.add([rowData.identificacion, rowData.nombre, rowData.apellidos, rowData.lugar_residencia, rowData.telefono, rowData.correo, rowData.ref_trab_est, hab,'<button type="button" class="btn btn-info" onclick="buscarUsuarioId(' + rowData.identificacion + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>','<button type="button" class="btn btn-info" onclick="buscarUsuarioId2(' + rowData.identificacion + ');">' + '<img src="imagenes/lead_pencil.png"/>' + '</button>']).draw();
 
 }
