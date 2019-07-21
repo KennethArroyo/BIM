@@ -52,6 +52,8 @@ public class Sesion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, MessagingException, Exception {
+        response.setContentType("application/json; charset=UTF-8");
+
         switch(request.getServletPath()){
                 case "/Iniciar":
                     this.iniciaSesion(request, response);
@@ -136,30 +138,40 @@ public class Sesion extends HttpServlet {
     
     private void iniciaSesion(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int error = 401;
-        try{
-            HttpSession s = request.getSession(true);
-            BufferedReader reader = request.getReader();
+        try {
+            //HttpSession s = request.getSession(true);
+            //BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
-            Gson gson = new Gson();
-            response.setContentType("application/json; charset=UTF-8");
+            //Gson gson = new Gson();
+            String json;
             String usuario = request.getParameter("usuario");
+            error=1;
             String contrasena = request.getParameter("contrasena");
+            error=2;
             String hash = HashJavaMessageDigest(contrasena);
-            Usuario us = Model.instance().buscarUsRegistrado(usuario,hash);
-            if(us.getHabilitado()==0){
+            error=3;
+            Usuario us = Model.instance().buscarUsRegistrado(usuario, hash);
+            error=4;
+            if (us.getHabilitado() == 0) {
                 //response.sendError(0);
                 error = 405;
                 throw new Exception();
-            }else
-                if((us.getHabilitado()==2) || (us.getHabilitado()==3)){
-                //response.sendError(0);
-                error = 406;
-                throw new Exception();
+            } else {
+                if ((us.getHabilitado() == 2) || (us.getHabilitado() == 3)) {
+                    //response.sendError(0);
+                    error = 406;
+                    throw new Exception();
+                }
             }
-            out.write(gson.toJson(us));
-            response.setStatus(200); // ok with content
-        }
-        catch(Exception e) {
+            //    out.write(gson.toJson(us));
+            error=5;
+            json = new Gson().toJson(us);
+            error=6;
+            out.print(json);
+            error=7;
+            //response.setStatus(200); // ok with content
+        } catch (Exception e) {
+            //error = 14;
             String msj = e.getMessage();
             response.sendError(error);
         }
