@@ -110,10 +110,10 @@ public class Autores extends HttpServlet {
     
     private void agregarAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
         try{
-            BufferedReader reader = request.getReader();
-            HttpSession s = request.getSession(true);
-            Gson gson = new Gson();
-            response.setContentType("application/json; charset=UTF-8");
+           // BufferedReader reader = request.getReader();
+            //HttpSession s = request.getSession(true);
+           // Gson gson = new Gson();
+            //response.setContentType("application/json; charset=UTF-8");
             String autor = request.getParameter("nombre");
             Model.instance().agregarAutor(autor);
             response.setStatus(200); // ok with content
@@ -128,13 +128,13 @@ public class Autores extends HttpServlet {
     
     private void buscarAutor(HttpServletRequest request, HttpServletResponse response) {
         try {
-            ArrayList<Autor> q = new ArrayList<Autor>();
-            BufferedReader reader = request.getReader();
+            ArrayList<Autor> q;
+            //BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
-            HttpSession s = request.getSession(true);
+            //HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             q = Model.instance().buscarUltimosAutores();
-            response.setContentType("application/json; charset=UTF-8");
+           // response.setContentType("application/json; charset=UTF-8");
             out.write(gson.toJson(q));
             response.setStatus(200); // ok with content
         } catch (Exception e) {
@@ -145,8 +145,8 @@ public class Autores extends HttpServlet {
 
     private void buscarAutores(HttpServletRequest request, HttpServletResponse response) {
         try {
-            ArrayList<Autor> q = new ArrayList<Autor>();
-            BufferedReader reader = request.getReader();
+            ArrayList<Autor> q;
+           BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
             HttpSession s = request.getSession(true);
             Gson gson = new Gson();

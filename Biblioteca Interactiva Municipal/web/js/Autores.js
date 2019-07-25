@@ -175,7 +175,7 @@ function agreAutor() {
                 },
         error: function (status) {
             //swal("Error!", "Es posible que el autor ya este agregado", "error");
-            window.location.href = "http://localhost:8083/Biblioteca_Interactiva_Municipal/autores.jsp";
+            window.location.href = "http://localhost:15548/Biblioteca_Interactiva_Municipal/autores.jsp";
             //window.location.href = "http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/verificarCuenta.jsp";
         }
     });

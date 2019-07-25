@@ -9,12 +9,12 @@
 <!DOCTYPE html>
 <html>
     <head>    
-        <%@ include file="librerias.jsp" %>
+        <title>Autores</title>
+        <a href="librerias.jsp"></a>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/modals.js" type="text/javascript"></script>
         <script src="js/Autores.js" type="text/javascript"></script>
-        <title>Autores</title>
         <%@ include file="header.jsp" %>
     </head>
     

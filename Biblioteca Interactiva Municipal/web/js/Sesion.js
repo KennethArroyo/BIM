@@ -34,7 +34,7 @@ function iniciar(){
                             swal("Error", "Su usuario fue deshabilitado, contacte con el administrador", "error");
                         }
                     else
-                        swal("Error", "El usuario o la contaseña son incorrectos" + prueba, "error");
+                        swal("Error", "El usuario o la contaseña son incorrectos", "error");
               }                    
           }); 
       }
