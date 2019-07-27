@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
     <head>    
+        <title>Registro de Usuarios</title>
         <%@ include file="librerias.jsp" %>
         <script src="js/modals.js" type="text/javascript"></script>
-        <title>Registro de Usuarios</title>
+        
         <%@ include file="header.jsp" %>
     </head>
     

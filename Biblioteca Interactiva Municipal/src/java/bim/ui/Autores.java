@@ -5,7 +5,6 @@
  */
 package bim.ui;
 
-import bim.entidades.Asignatura;
 import bim.entidades.Autor;
 import bim.logica.Model;
 import com.google.gson.Gson;
@@ -110,15 +109,10 @@ public class Autores extends HttpServlet {
     
     private void agregarAutor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
         try{
-           // BufferedReader reader = request.getReader();
-            //HttpSession s = request.getSession(true);
-           // Gson gson = new Gson();
-            //response.setContentType("application/json; charset=UTF-8");
+            response.setContentType("application/json; charset=UTF-8");
             String autor = request.getParameter("nombre");
             Model.instance().agregarAutor(autor);
             response.setStatus(200); // ok with content
-            //request.getRequestDispatcher("autores.jsp").forward(request, response);
-
         }
         catch(Exception e){
             String ms = e.getMessage();
@@ -129,12 +123,10 @@ public class Autores extends HttpServlet {
     private void buscarAutor(HttpServletRequest request, HttpServletResponse response) {
         try {
             ArrayList<Autor> q;
-            //BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
-            //HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             q = Model.instance().buscarUltimosAutores();
-           // response.setContentType("application/json; charset=UTF-8");
+            response.setContentType("application/json; charset=UTF-8");
             out.write(gson.toJson(q));
             response.setStatus(200); // ok with content
         } catch (Exception e) {
@@ -146,9 +138,7 @@ public class Autores extends HttpServlet {
     private void buscarAutores(HttpServletRequest request, HttpServletResponse response) {
         try {
             ArrayList<Autor> q;
-           BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
-            HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             q = Model.instance().listarAutores();
             response.setContentType("application/json; charset=UTF-8");
@@ -162,9 +152,7 @@ public class Autores extends HttpServlet {
 
     private void modificarAutor(HttpServletRequest request, HttpServletResponse response) {
          try {
-            BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
-            HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             Model.instance().modificarAutor(Integer.parseInt(request.getParameter("id")),request.getParameter("nombre"));
             response.setContentType("application/json; charset=UTF-8");
@@ -178,12 +166,10 @@ public class Autores extends HttpServlet {
 
     private void eliminarAutor(HttpServletRequest request, HttpServletResponse response) {
          try {
-                BufferedReader reader = request.getReader();
-                PrintWriter out = response.getWriter();
-                HttpSession s = request.getSession(true);
+              PrintWriter out = response.getWriter();
                 Gson gson = new Gson();
                 Model.instance().eliminarAutor(Integer.parseInt(request.getParameter("id")));
-                response.setContentType("application/json; charset=UTF-8");
+               response.setContentType("application/json; charset=UTF-8");
                 out.write(gson.toJson("correcto")); 
                 response.setStatus(200); // ok with content
             } catch (Exception e) {

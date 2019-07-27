@@ -8,13 +8,13 @@
 <%@page import="java.util.*" session="true" %>
 <!DOCTYPE html>
 <html>
-    <head>    
+    <head>  
+        <title>Asignaturas</title>
         <%@ include file="librerias.jsp" %>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <link href="estilos/bootstrap4/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script src="js/modals.js" type="text/javascript"></script>
         <script src="js/Asignaturas.js" type="text/javascript"></script>
-        <title>Asignaturas</title>
         <%@include file="header.jsp" %>
 
     </head>

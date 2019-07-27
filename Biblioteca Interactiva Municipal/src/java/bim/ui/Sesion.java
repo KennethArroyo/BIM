@@ -137,7 +137,7 @@ public class Sesion extends HttpServlet {
     }
     
     private void iniciaSesion(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int error = 401;
+      /*  int error = 401;
         try {
             //HttpSession s = request.getSession(true);
             //BufferedReader reader = request.getReader();
@@ -174,10 +174,47 @@ public class Sesion extends HttpServlet {
             //error = 14;
             String msj = e.getMessage();
             response.sendError(error);
+        }*/
+      
+      int error = 401;
+      int sleep;
+        try {
+            //HttpSession s = request.getSession(true);
+            //BufferedReader reader = request.getReader();
+            PrintWriter out = response.getWriter();
+            //Gson gson = new Gson();
+            String json;
+            String usuario = request.getParameter("usuario");
+            sleep=1;
+            String contrasena = request.getParameter("contrasena");
+            sleep=2;
+            String hash = HashJavaMessageDigest(contrasena);
+            sleep=3;
+            Usuario us = Model.instance().buscarUsRegistrado(usuario, hash);
+            sleep=4;
+            if (us.getHabilitado() == 0) {
+                //response.sendError(0);
+                error = 405;
+                throw new Exception();
+            } else {
+                if ((us.getHabilitado() == 2) || (us.getHabilitado() == 3)) {
+                    //response.sendError(0);
+                    error = 406;
+                    throw new Exception();
+                }
+            }
+            //    out.write(gson.toJson(us));
+            sleep=5;
+            json = new Gson().toJson(us);
+            sleep=6;
+            out.print(json);
+            sleep=7;
+            //response.setStatus(200); // ok with content
+        } catch (Exception e) {
+            //error = 14;
+            String msj = e.getMessage();
+            response.sendError(error);
         }
-    }
-
-    private void cierraSesion(HttpServletRequest request, HttpServletResponse response) {
     }
     
     private String generarCodigo() {
