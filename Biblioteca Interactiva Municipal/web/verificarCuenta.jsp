@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
     <head>    
-        <%@ include file="librerias.jsp" %>
         <title>Verificación de Cuenta</title>
+        <%@ include file="librerias.jsp" %>
         <%@ include file="header.jsp" %>
     </head>
     
@@ -36,9 +36,7 @@
                 </div>
                 </form>
                     
-                 <form action="ReenviarVerificar" method="POST" action="ReenviarVerificar">  
-                     <button type="submit">Reenviar código</button>
-                 </form> 
+                  
                 <br>
             </div>    
         </div>

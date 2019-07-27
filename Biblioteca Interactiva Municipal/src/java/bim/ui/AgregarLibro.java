@@ -49,7 +49,7 @@ public class AgregarLibro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-
+            response.setContentType("text/html;charset=UTF-8");
         switch (request.getServletPath()) {
             case "/AgregarLibro":
                 this.agregarLibro(request, response);
@@ -208,9 +208,7 @@ public class AgregarLibro extends HttpServlet {
     private void buscarAsignatura(HttpServletRequest request, HttpServletResponse response) {
         try {
             ArrayList<Asignatura> q = new ArrayList<Asignatura>();
-            BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
-            HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             q = Model.instance().listarAsignaturas();
             response.setContentType("application/json; charset=UTF-8");
@@ -244,7 +242,7 @@ public class AgregarLibro extends HttpServlet {
         }
     }
     
-    protected void agregarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{
+    protected void agregarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{ 
     Asignatura asig = new Asignatura();
     Model.instance().agregarAsignatura(request.getParameter("asignatura"));
     request.getRequestDispatcher("asignaturas.jsp").forward(request, response);
@@ -253,9 +251,7 @@ public class AgregarLibro extends HttpServlet {
     
     protected void ModificarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{
          try {
-            BufferedReader reader = request.getReader();
             PrintWriter out = response.getWriter();
-            HttpSession s = request.getSession(true);
             Gson gson = new Gson();
             Model.instance().modificarAsignatura(Integer.parseInt(request.getParameter("id")),request.getParameter("nombre"));
             response.setContentType("application/json; charset=UTF-8");
@@ -269,9 +265,7 @@ public class AgregarLibro extends HttpServlet {
     
     protected void EliminarAsignatura(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception{
         try {
-                BufferedReader reader = request.getReader();
                 PrintWriter out = response.getWriter();
-                HttpSession s = request.getSession(true);
                 Gson gson = new Gson();
                 Model.instance().eliminarAsignatura(Integer.parseInt(request.getParameter("id")));
                 response.setContentType("application/json; charset=UTF-8");
