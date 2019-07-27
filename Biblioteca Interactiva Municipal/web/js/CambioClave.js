@@ -21,20 +21,6 @@ $(document).ready(function() {
      $("#contrasena, #verificacontrasena").keyup(validarClave);
 });
 
-$(document).ready(function() {
-    $("#show_hide_password-verify a").on('click', function(event) {
-        event.preventDefault();
-        if($('#show_hide_password-verify input').attr("type") === "text"){
-            $('#show_hide_password-verify input').attr('type', 'password');
-            $('#show_hide_password-verify i').addClass( "fa-eye-slash" );
-            $('#show_hide_password-verify i').removeClass( "fa-eye" );
-        }else if($('#show_hide_password-verify input').attr("type") === "password"){
-            $('#show_hide_password-verify input').attr('type', 'text');
-            $('#show_hide_password-verify i').removeClass( "fa-eye-slash" );
-            $('#show_hide_password-verify i').addClass( "fa-eye" );
-        }
-    });
-});
   
   function validarClave(){
     var password = document.getElementById("contrasena");
@@ -59,6 +45,7 @@ function cambiarClave(){
             success: 
               function(obj){
                 swal("Listo","Su contraseña ha sido modificada con éxito","success");
+                //window.location.assign("localhost:8080/Biblioteca_Interactiva_Municipal/inicioSesion.jsp");
                 window.location.assign("http://192.170.10.103/Biblioteca_Interactiva_Municipal/inicioSesion.jsp");
               },
             error: function(status){

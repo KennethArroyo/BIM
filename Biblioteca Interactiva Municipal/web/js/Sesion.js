@@ -77,8 +77,8 @@ function enviarCorreo(){
             success: 
               function(obj){
                   swal("Info", "Se ha enviado un código temporal a su correo electrónico necesario para cambiar su contraseña", "info");
-                  window.location.assign("localhost:80083/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
-               // window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
+                  //window.location.assign("localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
+                  window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
               },
             error: function(status){
                 swal("Error", "Ha ocurrido un error al enviar el código temporal", "error");
