@@ -70,7 +70,7 @@ function dibujarTabla(dataJson) {
 }
 
 function dibujarFila(rowData) {
-    t.row.add([rowData.nombre, '<button type="button" class="btn btn-danger" onclick="eliminarAct(' + rowData.id + ');">' + '<img src="imagenes/remove.png"/>' + '</button>']).draw();
+    t.row.add([rowData.nombre, '<button type="button" class="btn btn-danger" onclick="eliminarAct(' + rowData.id + ');">' + '<img src="imagenes/delete.png"/>' + '</button>']).draw();
 }
 }
 
