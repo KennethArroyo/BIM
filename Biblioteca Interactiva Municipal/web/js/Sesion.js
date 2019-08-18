@@ -69,20 +69,28 @@ function cerrar(){
 
 function enviarCorreo(){
     var correoUs = $("#correo").val();
-    if(correo.length !== 0){
+    if(correoUs.length !== 0){
     var datos = {correo:correoUs}; 
-    $.ajax({type: "POST",
+    $.ajax({type: 'POST',
             url:"SolicitudCambiar",
+            datatype: 'json',
             data:datos,
             success: 
-              function(obj){
-                  swal("Info", "Se ha enviado un código temporal a su correo electrónico necesario para cambiar su contraseña", "info");
+              function(status){
+                  swal('Info', 'Se ha enviado un codigo temporal a su correo electrónico necesario para cambiar su contraseña', 'info');
                   //window.location.assign("localhost:8080/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
-                  window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
+                  //window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
+                  //window.alert("Correo enviado");
               },
-            error: function(status){
-                swal("Error", "Ha ocurrido un error al enviar el código temporal", "error");
-              },
+              error:
+                function(status){
+                    if(status.status === 200){
+                        swal('Info', 'Se ha enviado un codigo temporal a su correo electrónico necesario para cambiar su contraseña', 'info');
+                        window.location.assign("http://192.170.10.176:8087/Biblioteca_Interactiva_Municipal/recuperarContrasena.jsp");
+                    }
+                    else    
+                        swal('Error', 'Se ha producido un error al enviar el correo', 'error');
+                }
           }); 
       }
 }

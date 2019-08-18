@@ -248,6 +248,7 @@ public class Sesion extends HttpServlet {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", MAIL_SMTP_HOST);
         props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 
         Session session = Session.getInstance(props,
             new javax.mail.Authenticator() {
@@ -282,8 +283,8 @@ public class Sesion extends HttpServlet {
         response.setStatus(200); // ok with content
         }
         catch(Exception e){
-        String msg = e.getMessage();
         response.setStatus(401);
+        String msg = e.getMessage();
         }
     }
 
